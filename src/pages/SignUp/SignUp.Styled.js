@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import mainColor from '../../styles/theme';
 
 export const SignUpForm = styled.div`
   width: 336px;
@@ -53,7 +54,7 @@ export const SignUpForm = styled.div`
   }
 
   .next-button {
-    button {
+    .button {
       width: 100%;
       height: 56px;
       font-size: 16px;
@@ -61,6 +62,17 @@ export const SignUpForm = styled.div`
       border-radius: 6px;
       color: #fff;
       border: none;
+    }
+    .activate {
+      width: 100%;
+      height: 56px;
+      font-size: 16px;
+      margin-top: 16px;
+      border-radius: 6px;
+      color: white;
+      border: none;
+      background-color: #01aef0;
+      cursor: pointer;
     }
   }
 `;

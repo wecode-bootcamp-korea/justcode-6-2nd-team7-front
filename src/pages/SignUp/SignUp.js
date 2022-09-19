@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './SignUp.Styled';
 
 function SignUp() {
   const [checkList, setCheckList] = useState([]);
+  const [activate, setActivate] = useState('button');
 
   // 체크박스 전체선택시 모두선택 체크박스 활성화시키기
   const checkAll = (e) => {
+    if (checkList.length === 6) {
+      setActivate('button');
+    } else {
+      setActivate('activate');
+    }
     e.target.checked ? setCheckList(['check1', 'check2', 'check3', 'check4', 'check5', 'check6']) : setCheckList([]);
   };
 
@@ -15,6 +21,15 @@ function SignUp() {
       ? setCheckList([...checkList, e.target.name])
       : setCheckList(checkList.filter((el) => el !== e.target.name));
   };
+
+  // 필수체크 풀리면 버튼활성화 해제
+  useEffect(() => {
+    if (checkList.includes('check1') && checkList.includes('check2') && checkList.includes('check3')) {
+      setActivate('activate');
+    } else {
+      setActivate('button');
+    }
+  }, [checkList]);
 
   return (
     <S.SignUpForm>
@@ -90,7 +105,7 @@ function SignUp() {
         </p>
       </div>
       <div className='next-button'>
-        <button>다음</button>
+        <button className={activate}>다음</button>
       </div>
     </S.SignUpForm>
   );
