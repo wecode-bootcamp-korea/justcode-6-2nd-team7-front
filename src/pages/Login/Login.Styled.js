@@ -48,6 +48,7 @@ export const InputContainer = styled.div`
   flex-direction: column;
   input {
     height: 40px;
+    padding-left: 30px;
     margin-bottom: 5px;
     border-radius: 5px;
   }
@@ -60,6 +61,60 @@ export const InputContainer = styled.div`
     border: none;
     border-radius: 5px;
     cursor: pointer;
+  }
+`;
+
+export const EmailInput = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+  &:after {
+    display: inline-block;
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    margin-left: 10px;
+    width: 18px;
+    height: 14px;
+    background: url('https://image.goodchoice.kr/images/web_v3/ico_inp_mail.png') 0 0 no-repeat;
+    background-size: 18px auto;
+  }
+
+  input {
+    width: 100%;
+
+    &:focus {
+      &::after {
+        position: absolute;
+        top: 15px;
+        left: 0;
+        margin-left: 10px;
+        background: url('https://image.goodchoice.kr/images/web_v3/ico_inp_mail.png') 0 -28px no-repeat;
+        background-size: 18px auto;
+      }
+    }
+  }
+`;
+
+export const PasswordInput = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+  &:after {
+    display: inline-block;
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    margin-left: 10px;
+    width: 18px;
+    height: 15px;
+    background: url('https://image.goodchoice.kr/images/web_v3/ico_inp_pw.png') 50% 0 no-repeat;
+    background-size: 18px auto;
+  }
+  input {
+    width: 100%;
   }
 `;
 

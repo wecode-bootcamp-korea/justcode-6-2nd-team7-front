@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import KaKaoLogin from './pages/Login/KaKaoLogin';
 import Login from './pages/Login/Login';
 import theme from './styles/theme';
 

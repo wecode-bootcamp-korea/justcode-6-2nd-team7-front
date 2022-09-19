@@ -11,13 +11,19 @@ function Login() {
           <span>또는</span>
         </S.LineContainere>
         <S.InputContainer>
-          <input placeholder='이메일주소' />
-          <input placeholder='비밀번호' />
+          <S.EmailInput>
+            <input placeholder='이메일주소' />
+          </S.EmailInput>
+
+          <S.PasswordInput>
+            <input placeholder='비밀번호' />
+          </S.PasswordInput>
+
           <button>로그인</button>
         </S.InputContainer>
         <S.LoginFooter>
           <Link>비밀번호 재설정</Link>
-          <Link>회원가입</Link>
+          <Link to={'/signup'}>회원가입</Link>
         </S.LoginFooter>
       </S.LoginInput>
     </S.LoginForm>
