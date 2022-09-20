@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const NavStyle = styled.nav`
   position: fixed;
   top: 0;
-  /* width: 100% */
   left: 0;
   right: 0;
   height: 72px;
   background-color: ${({ theme }) => theme.colors.mainColor};
+  z-index: 99;
 
   .nav-container {
     display: flex;
@@ -17,11 +17,21 @@ export const NavStyle = styled.nav`
     height: inherit;
     margin: auto;
 
-    li {
+    .navigate-list {
       list-style-type: none;
       ul {
         float: left;
         line-height: inherit;
+        a {
+          margin-left: 20px;
+          color: rgba(255, 255, 255, 0.767);
+          font-size: 17px;
+          text-decoration: none;
+
+          &:hover {
+            color: #ffff;
+          }
+        }
       }
     }
   }
