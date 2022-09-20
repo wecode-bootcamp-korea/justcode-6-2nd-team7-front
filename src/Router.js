@@ -13,7 +13,6 @@ const Router = (props) => {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          {/* <Route path='' element={} /> */}
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/signup-check' element={<PhoneCheck />} />
