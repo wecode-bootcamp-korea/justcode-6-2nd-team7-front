@@ -14,7 +14,7 @@ const MyModalStyle = styled.div`
   .modal-container {
     height: 240px;
     border-radius: 13px;
-    box-shadow: 0px 9px 9px rgb(0 0 0 / 15%);
+    box-shadow: 0px 8px 6px rgb(0 0 0 / 15%);
 
     .modal-list {
       height: inherit;

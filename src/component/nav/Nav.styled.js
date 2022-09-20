@@ -26,6 +26,7 @@ export const NavStyle = styled.nav`
     background-color: #ffff;
     height: inherit;
     transition: all ease 0.5s 0s;
+    box-shadow: 0 4px 4px -4px rgb(0 0 0 / 15%);
 
     a {
       color: rgb(82, 82, 82);
