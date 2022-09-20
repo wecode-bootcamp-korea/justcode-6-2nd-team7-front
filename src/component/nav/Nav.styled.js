@@ -7,6 +7,7 @@ export const NavStyle = styled.nav`
   right: 0;
   height: 72px;
   background-color: ${({ theme }) => theme.colors.mainColor};
+  font-family: pretendard;
   z-index: 99;
 
   .nav-container {
@@ -25,7 +26,7 @@ export const NavStyle = styled.nav`
         a {
           margin-left: 20px;
           color: rgba(255, 255, 255, 0.767);
-          font-size: 17px;
+          font-size: 18px;
           text-decoration: none;
 
           &:hover {
