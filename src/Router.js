@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import Login from './pages/Login/Login';
+import Login from './pages/login/Login';
 import PhoneCheck from './pages/signup/PhoneCheck';
 import SignUp from './pages/signup/SignUp';
 import SignUpPage from './pages/signup/SignUpPage';
