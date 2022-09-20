@@ -23,7 +23,7 @@ const MyModalStyle = styled.div`
       border: 1px solid #ffff;
       border-radius: 13px;
       background-color: #ffff;
-      color: black;
+      color: #000000;
       font-size: 16px;
 
       li {

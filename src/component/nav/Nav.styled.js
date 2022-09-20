@@ -13,12 +13,8 @@ export const NavStyle = styled.nav`
     height: inherit;
     background-color: ${({ theme }) => theme.colors.mainColor};
     transition: all ease 0.5s 0s;
-
     a {
       color: rgba(255, 255, 255, 0.767);
-      &:hover {
-        color: #ffff;
-      }
     }
   }
 
@@ -26,13 +22,9 @@ export const NavStyle = styled.nav`
     background-color: #ffff;
     height: inherit;
     transition: all ease 0.5s 0s;
-    box-shadow: 0 4px 4px -4px rgb(0 0 0 / 15%);
-
+    box-shadow: 0 4px 6px rgb(0 0 0 / 15%);
     a {
       color: rgb(82, 82, 82);
-      &:hover {
-        color: rgb(0, 0, 0);
-      }
     }
   }
 
@@ -59,10 +51,22 @@ export const NavStyle = styled.nav`
       .list {
         float: left;
         line-height: inherit;
+
+        .search-icon {
+          margin-right: 30px;
+          &:hover {
+            color: #ffff;
+            cursor: pointer;
+          }
+        }
+
         .nav-link {
           margin-left: 20px;
           font-size: 18px;
           text-decoration: none;
+          &:hover {
+            color: #ffff;
+          }
         }
       }
     }

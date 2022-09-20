@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import * as S from './Nav.styled.js';
 
 import MyModal from './MyModal.js';
@@ -29,7 +30,14 @@ const Nav = () => {
           </Link>
           <div className='nav-content'>
             <ul className='navigate-list'>
-              {/* <FontAwesomeIcon icon='fa-solid fa-magnifying-glass' /> */}
+              <li className='list'>
+                <FontAwesomeIcon
+                  icon={faMagnifyingGlass}
+                  className='search-icon'
+                  color='rgba(255, 255, 255, 0.767)'
+                  size='lg'
+                />
+              </li>
               <li className='list'>
                 <Link to='' className='nav-link'>
                   내주변
