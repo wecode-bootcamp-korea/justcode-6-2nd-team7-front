@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import mainColor from '../../styles/theme';
 
 export const SignUpForm = styled.div`
   width: 336px;

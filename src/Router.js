@@ -2,7 +2,9 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Login from './pages/Login/Login';
-import SignUp from './pages/SignUp/SignUp';
+import PhoneCheck from './pages/signup/PhoneCheck';
+import SignUp from './pages/signup/SignUp';
+
 import theme from './styles/theme';
 
 const Router = (props) => {
@@ -13,6 +15,7 @@ const Router = (props) => {
           {/* <Route path='' element={} /> */}
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
+          <Route path='/signup-check' element={<PhoneCheck />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
