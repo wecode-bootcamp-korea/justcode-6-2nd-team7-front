@@ -4,8 +4,13 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import * as S from './Nav.styled.js';
 
+import MyModal from './MyModal.js';
+import { faL } from '@fortawesome/free-solid-svg-icons';
+
 const Nav = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [myHover, setMyHover] = useState(false);
+
   const updateScroll = () => {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);
   };
@@ -38,12 +43,24 @@ const Nav = () => {
               </ul>
               <ul>
                 {localStorage.getItem('token') !== null ? (
-                  <Link to='/my'>마이페이지</Link>
+                  <>
+                    <Link
+                      to='/my'
+                      onMouseOver={() => {
+                        setMyHover(true);
+                      }}
+                      onMouseOut={() => {
+                        setMyHover(false);
+                      }}>
+                      마이페이지
+                    </Link>
+                  </>
                 ) : (
                   <Link to='/login'>로그인</Link>
                 )}
               </ul>
             </li>
+            {myHover == true && <MyModal />}
           </div>
         </div>
       </div>
