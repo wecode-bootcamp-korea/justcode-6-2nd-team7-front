@@ -5,7 +5,9 @@ import * as S from './Login.Styled';
 function Login() {
   return (
     <S.LoginForm>
-      <strong>여기어때</strong>
+      <div className='login-img'>
+        <img src='/images/logoBlue.svg' alt='logo' />
+      </div>
       <S.LoginInput>
         <S.LineContainere>
           <span>또는</span>

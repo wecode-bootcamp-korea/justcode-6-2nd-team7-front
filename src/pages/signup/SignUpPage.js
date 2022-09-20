@@ -5,7 +5,7 @@ function SignUpPage() {
   return (
     <S.SignUpContainer>
       <div className='signup-img'>
-        <img src='./images/logoBlue.svg' alt='logo' />
+        <img src='/images/logoBlue.svg' alt='logo' />
       </div>
       <form>
         <p className='signup'>회원가입</p>

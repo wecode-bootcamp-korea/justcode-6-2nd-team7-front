@@ -8,6 +8,17 @@ export const LoginForm = styled.form`
   border: 1px solid red;
   display: flex;
   flex-direction: column;
+
+  .login-img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 100px;
+      height: 80px;
+    }
+  }
 `;
 
 export const LoginInput = styled.div`
