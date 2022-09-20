@@ -5,7 +5,6 @@ export const PhoneContainer = styled.div`
   height: 550px;
   margin: auto;
   margin-top: 8%;
-  border: 1px solid red;
 
   .title {
     margin: 7% 0;
