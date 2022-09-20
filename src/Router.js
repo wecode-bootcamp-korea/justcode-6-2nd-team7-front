@@ -8,10 +8,13 @@ import SignUpPage from './pages/signup/SignUpPage';
 
 import theme from './styles/theme';
 
+import Nav from './component/nav/Nav';
+
 const Router = (props) => {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
+        <Nav />
         <Routes>
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
