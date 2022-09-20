@@ -5,7 +5,6 @@ export const LoginForm = styled.form`
   height: 550px;
   margin: auto;
   margin-top: 8%;
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
 
@@ -19,10 +18,32 @@ export const LoginForm = styled.form`
       height: 80px;
     }
   }
+
+  .login-btn {
+    height: 100px;
+    button {
+      width: 100%;
+      height: 50px;
+      margin-top: 3%;
+      border: none;
+      border-radius: 4px;
+    }
+    .kakao {
+      background: rgb(252, 229, 30);
+    }
+    .facebook {
+      background: rgb(24, 119, 242);
+      color: #fff;
+    }
+    .naver {
+      background: rgb(40, 209, 17);
+      color: #fff;
+    }
+  }
 `;
 
 export const LoginInput = styled.div`
-  margin-top: 70%;
+  margin-top: 30%;
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -58,16 +79,21 @@ export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   input {
-    height: 40px;
+    height: 50px;
+    font-size: 18px;
     padding-left: 30px;
     margin-bottom: 5px;
     border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.26);
   }
-
+  .email-check {
+    color: red;
+    font-size: 15px;
+  }
   button {
     margin-top: 5px;
-    height: 40px;
-    background: rgb(255, 0, 85);
+    height: 50px;
+    background: #01aef0;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -83,7 +109,7 @@ export const EmailInput = styled.div`
     display: inline-block;
     content: '';
     position: absolute;
-    top: 15px;
+    top: 19px;
     left: 0;
     margin-left: 10px;
     width: 18px;
@@ -98,7 +124,7 @@ export const EmailInput = styled.div`
     &:focus {
       &::after {
         position: absolute;
-        top: 15px;
+        top: 20px;
         left: 0;
         margin-left: 10px;
         background: url('https://image.goodchoice.kr/images/web_v3/ico_inp_mail.png') 0 -28px no-repeat;
