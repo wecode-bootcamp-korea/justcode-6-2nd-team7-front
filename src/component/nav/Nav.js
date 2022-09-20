@@ -34,7 +34,7 @@ const Nav = () => {
                 <FontAwesomeIcon
                   icon={faMagnifyingGlass}
                   className='search-icon'
-                  color='rgba(255, 255, 255, 0.767)'
+                  color={scrollPosition < 2 ? 'rgba(255, 255, 255, 0.767)' : ' rgb(82, 82, 82)'}
                   size='lg'
                 />
               </li>

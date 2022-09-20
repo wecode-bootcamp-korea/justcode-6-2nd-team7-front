@@ -15,6 +15,9 @@ export const NavStyle = styled.nav`
     transition: all ease 0.5s 0s;
     a {
       color: rgba(255, 255, 255, 0.767);
+      &:hover {
+        color: #ffff;
+      }
     }
   }
 
@@ -25,6 +28,9 @@ export const NavStyle = styled.nav`
     box-shadow: 0 4px 6px rgb(0 0 0 / 15%);
     a {
       color: rgb(82, 82, 82);
+      &:hover {
+        color: #000000;
+      }
     }
   }
 
@@ -55,7 +61,6 @@ export const NavStyle = styled.nav`
         .search-icon {
           margin-right: 30px;
           &:hover {
-            color: #ffff;
             cursor: pointer;
           }
         }
@@ -64,9 +69,6 @@ export const NavStyle = styled.nav`
           margin-left: 20px;
           font-size: 18px;
           text-decoration: none;
-          &:hover {
-            color: #ffff;
-          }
         }
       }
     }
