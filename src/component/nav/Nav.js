@@ -15,8 +15,7 @@ const Nav = () => {
 
   return (
     <S.NavStyle>
-      <div className={scrollPosition < 2 ? 'nav' : 'nav-change'}>
-        {/* style={{ backgroundColor: scrollPosition < 1 ? ({ theme }) => theme.colors.mainColor : '#ffff' }} */}
+      <div className={scrollPosition < 2 ? 'nav-origin' : 'nav-change'}>
         <div className='nav-container'>
           <Link to='/' className='logo-box'>
             {scrollPosition < 2 ? (

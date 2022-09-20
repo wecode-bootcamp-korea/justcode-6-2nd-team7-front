@@ -6,83 +6,64 @@ export const NavStyle = styled.nav`
   left: 0;
   right: 0;
   height: 72px;
-  background-color: ${({ theme }) => theme.colors.mainColor};
   font-family: pretendard;
   z-index: 99;
 
-  /* .nav {
+  .nav-origin {
+    height: inherit;
     background-color: ${({ theme }) => theme.colors.mainColor};
-  }*/
+    transition: all ease 0.5s 0s;
+
+    a {
+      color: rgba(255, 255, 255, 0.767);
+      &:hover {
+        color: #ffff;
+      }
+    }
+  }
 
   .nav-change {
     background-color: #ffff;
     height: inherit;
     transition: all ease 0.5s 0s;
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 1024px;
-      height: inherit;
-      margin: auto;
 
-      .navigate-list {
-        list-style-type: none;
-        ul {
-          float: left;
-          line-height: inherit;
-          a {
-            margin-left: 20px;
-            color: #000000;
-            font-size: 18px;
-            text-decoration: none;
-
-            &:hover {
-              color: #ffff;
-            }
-          }
-        }
-      }
-    }
-  }
-  .nav {
-    height: inherit;
-    transition: all ease 0.5s 0s;
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 1024px;
-      height: inherit;
-      margin: auto;
-
-      .navigate-list {
-        list-style-type: none;
-        ul {
-          float: left;
-          line-height: inherit;
-          a {
-            margin-left: 20px;
-            color: rgba(255, 255, 255, 0.767);
-            font-size: 18px;
-            text-decoration: none;
-
-            &:hover {
-              color: #ffff;
-            }
-          }
-        }
+    a {
+      color: rgb(82, 82, 82);
+      &:hover {
+        color: rgb(0, 0, 0);
       }
     }
   }
 
-  .logo-box {
+  .nav-container {
     display: flex;
-    height: inherit;
+    justify-content: space-between;
     align-items: center;
-    .logo {
-      width: 96px;
-      height: 27px;
+    width: 1024px;
+    height: inherit;
+    margin: auto;
+
+    .logo-box {
+      display: flex;
+      height: inherit;
+      align-items: center;
+      .logo {
+        width: 96px;
+        height: 27px;
+      }
+    }
+
+    .navigate-list {
+      list-style-type: none;
+      ul {
+        float: left;
+        line-height: inherit;
+        a {
+          margin-left: 20px;
+          font-size: 18px;
+          text-decoration: none;
+        }
+      }
     }
   }
 `;
