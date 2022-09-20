@@ -12,14 +12,42 @@ export const NavStyle = styled.nav`
 
   /* .nav {
     background-color: ${({ theme }) => theme.colors.mainColor};
-  }
+  }*/
 
   .nav-change {
     background-color: #ffff;
-    color: black;
-  } */
+    height: inherit;
+    transition: all ease 0.5s 0s;
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 1024px;
+      height: inherit;
+      margin: auto;
+
+      .navigate-list {
+        list-style-type: none;
+        ul {
+          float: left;
+          line-height: inherit;
+          a {
+            margin-left: 20px;
+            color: #000000;
+            font-size: 18px;
+            text-decoration: none;
+
+            &:hover {
+              color: #ffff;
+            }
+          }
+        }
+      }
+    }
+  }
   .nav {
     height: inherit;
+    transition: all ease 0.5s 0s;
     .nav-container {
       display: flex;
       justify-content: space-between;

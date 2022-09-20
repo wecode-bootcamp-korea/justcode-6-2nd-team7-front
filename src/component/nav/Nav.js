@@ -19,7 +19,11 @@ const Nav = () => {
         {/* style={{ backgroundColor: scrollPosition < 1 ? ({ theme }) => theme.colors.mainColor : '#ffff' }} */}
         <div className='nav-container'>
           <Link to='/' className='logo-box'>
-            <img className='logo' src='/images/logoWhite.svg' alt='logo' />
+            {scrollPosition < 2 ? (
+              <img className='logo' src='/images/logoWhite.svg' alt='logo' />
+            ) : (
+              <img className='logo' src='/images/logoBlue.svg' alt='logo' />
+            )}
           </Link>
           <div className='nav-content'>
             <li className='navigate-list'>
