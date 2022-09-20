@@ -6,10 +6,15 @@ const Nav = () => {
     <S.NavStyle>
       <div className='nav-container'>
         <img className='logo' src='/images/logoWhite.svg' alt='logo' />
-        <span>내주변</span>
-        <span>예약내역</span>
-        <span>더보기</span>
-        <span>로그인</span>
+        <div className='nav-content'>
+          <img />
+          <li>
+            <ul>내주변</ul>
+            <ul>예약내역</ul>
+            <ul>더보기</ul>
+            <ul>로그인</ul>
+          </li>
+        </div>
       </div>
     </S.NavStyle>
   );
