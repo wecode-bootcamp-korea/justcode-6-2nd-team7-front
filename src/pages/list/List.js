@@ -12,6 +12,7 @@ const List = (props) => {
   );
   const [seletedCity, setSelectedCity] = useState('서울');
   const [seletedRegion, setSelectedRegion] = useState('강남/역삼/삼성/신사/청담');
+  const [showMenu, setShowMenu] = useState(false);
 
   const handleSelected = (e) => {
     const text = e.target.textContent;
@@ -29,19 +30,24 @@ const List = (props) => {
     setSelectedRegion(e.target.textContent);
   };
 
+  const handleShowMenu = (e) => {
+    setShowMenu(true);
+    e.type === 'mouseleave' && setShowMenu(false);
+  };
+
   return (
     <>
-      <S.Header>
+      <S.Header onMouseLeave={handleShowMenu}>
         <div className='container'>
           <h2>호텔·리조트</h2>
-          <div className='btn-container'>
+          <div className='btn-container' onMouseEnter={handleShowMenu}>
             <div className='btn-area'>
               <span>{seletedCity}&nbsp;&nbsp;</span>
               <FontAwesomeIcon icon={faChevronRight} size='xs' />
               &nbsp;&nbsp;{seletedRegion}&nbsp;&nbsp;
               <FontAwesomeIcon icon={faCaretDown} size='2xs' />
             </div>
-            <div className='region-container'>
+            <div className={showMenu ? 'region-container' : 'region-container none'}>
               <ul className='city-list'>
                 {city &&
                   city.map((el) => {

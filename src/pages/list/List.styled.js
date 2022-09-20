@@ -24,10 +24,24 @@ export const Header = styled.header`
       padding: 10px 10px 7px 10px;
       background-color: #009fef;
       border-radius: 5px;
+      cursor: pointer;
 
       .btn-area {
         font-size: 18px;
         font-weight: 700;
+      }
+
+      .region-container.none {
+        display: none;
+
+        .city-list,
+        .region-list {
+          div {
+            li {
+              display: none;
+            }
+          }
+        }
       }
 
       .region-container {
@@ -37,7 +51,6 @@ export const Header = styled.header`
         top: 50px;
         left: -25px;
         background-color: #fff;
-        border: 1px solid red;
         border-radius: 5px;
         color: #000;
         font-size: 15px;
@@ -46,7 +59,7 @@ export const Header = styled.header`
         .city-list {
           width: 167px;
           padding: 25px 10px 25px 30px;
-          border-right: 1px solid #000;
+          border-right: 1px solid rgba(0, 0, 0, 0.08);
 
           div {
             display: flex;
