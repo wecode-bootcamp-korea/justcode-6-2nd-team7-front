@@ -1,11 +1,9 @@
 import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled from 'styled-components';
 import * as S from './Nav.styled.js';
 
 import MyModal from './MyModal.js';
-import { faL } from '@fortawesome/free-solid-svg-icons';
 
 const Nav = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -30,18 +28,24 @@ const Nav = () => {
             )}
           </Link>
           <div className='nav-content'>
-            <li className='navigate-list'>
+            <ul className='navigate-list'>
               {/* <FontAwesomeIcon icon='fa-solid fa-magnifying-glass' /> */}
-              <ul>
-                <Link to=''>내주변</Link>
-              </ul>
-              <ul>
-                <Link to='/my'>예약내역</Link>
-              </ul>
-              <ul>
-                <Link to=''>더보기</Link>
-              </ul>
-              <ul>
+              <li className='list'>
+                <Link to='' className='nav-link'>
+                  내주변
+                </Link>
+              </li>
+              <li className='list'>
+                <Link to='/my' className='nav-link'>
+                  예약내역
+                </Link>
+              </li>
+              <li className='list'>
+                <Link to='' className='nav-link'>
+                  더보기
+                </Link>
+              </li>
+              <li className='list'>
                 {localStorage.getItem('token') !== null ? (
                   <>
                     <Link
@@ -51,16 +55,19 @@ const Nav = () => {
                       }}
                       onMouseOut={() => {
                         setMyHover(false);
-                      }}>
+                      }}
+                      className='nav-link'>
                       마이페이지
+                      {myHover == true && <MyModal />}
                     </Link>
                   </>
                 ) : (
-                  <Link to='/login'>로그인</Link>
+                  <Link to='/login' className='nav-link'>
+                    로그인
+                  </Link>
                 )}
-              </ul>
-            </li>
-            {myHover == true && <MyModal />}
+              </li>
+            </ul>
           </div>
         </div>
       </div>

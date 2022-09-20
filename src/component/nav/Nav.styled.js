@@ -55,10 +55,10 @@ export const NavStyle = styled.nav`
 
     .navigate-list {
       list-style-type: none;
-      ul {
+      .list {
         float: left;
         line-height: inherit;
-        a {
+        .nav-link {
           margin-left: 20px;
           font-size: 18px;
           text-decoration: none;
