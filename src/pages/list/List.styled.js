@@ -8,11 +8,11 @@ export const Header = styled.header`
   .container {
     width: 1024px;
     margin: 0 auto 0 auto;
-    padding: 90px 31px 0 31px;
+    padding: 90px 31px 0 0;
     color: #fff;
 
     h2 {
-      margin: 10px 0 13px 31px;
+      margin: 0 0 13px 10px;
       font-size: 38px;
       font-weight: 400;
     }
@@ -20,7 +20,6 @@ export const Header = styled.header`
     .btn-container {
       display: inline-block;
       position: relative;
-      margin-left: 19px;
       padding: 10px 10px 7px 10px;
       background-color: #009fef;
       border-radius: 5px;
@@ -52,7 +51,7 @@ export const Header = styled.header`
         left: -25px;
         background-color: #fff;
         border-radius: 5px;
-        color: #000;
+        color: ${({ theme }) => theme.colors.bkText};
         font-size: 15px;
         box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 
@@ -114,13 +113,162 @@ export const Header = styled.header`
 export const Body = styled.div`
   display: flex;
   width: 1024px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  margin: 35px auto 0 auto;
+  color: ${({ theme }) => theme.colors.bkText};
 
   .side-filter {
-  }
-  main {
-    .thumbnail-container {
+    width: 30%;
+    margin-left: 10px;
+    padding: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 5px;
+
+    .date-container {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
+
+    .btn-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .btn {
+        width: 49%;
+        height: 40px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .btn.white {
+        background-color: #fff;
+        border: 1px solid ${({ theme }) => theme.colors.mainColor};
+        color: ${({ theme }) => theme.colors.mainColor};
+        &:hover {
+          color: #009fef;
+        }
+      }
+
+      .btn.blue {
+        background-color: ${({ theme }) => theme.colors.mainColor};
+        border: 1px solid ${({ theme }) => theme.colors.mainColor};
+        color: #fff;
+        &:hover {
+          background-color: #009fef;
+          border: 1px solid #009fef;
+        }
+      }
+    }
+
+    .accommodation-type {
+      font-size: 16px;
+    }
+
+    .count-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .count-box {
+        display: flex;
+        justify-content: space-around;
+        width: 60%;
+        color: ${({ theme }) => theme.colors.text};
+
+        .count {
+          width: 13px;
+          font-weight: 700;
+          color: ${({ theme }) => theme.colors.mainColor};
+        }
+      }
+    }
+
+    .bedtype-container {
+      font-size: 14px;
+
+      ul {
+        display: flex;
+        justify-content: space-between;
+
+        li {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .icon {
+            width: 48px;
+            height: 24px;
+            background-image: url('images/accommodation/ico_room.png');
+            background-size: 192px;
+            overflow: hidden;
+          }
+
+          .single.selected {
+            background-position: 0 -24px;
+          }
+
+          .double {
+            background-position: -48px 0;
+          }
+          .double.selected {
+            background-position: -48px -24px;
+          }
+
+          .twin {
+            background-position: -96px 0;
+          }
+          .twin.selected {
+            background-position: -96px -24px;
+          }
+
+          .sedentary {
+            background-position: -144px 0;
+          }
+          .sedentary.selected {
+            background-position: -144px -24px;
+          }
+
+          p {
+            color: ${({ theme }) => theme.colors.text};
+          }
+
+          p.selected {
+            color: ${({ theme }) => theme.colors.mainColor};
+          }
+        }
+      }
+    }
+  }
+
+  main {
+    border: 1px solid red;
+    .thumbnail-container {
+      border: 1px solid blue;
+    }
+  }
+
+  .mb12 {
+    margin-bottom: 12px;
+  }
+
+  .mb18 {
+    margin-bottom: 18px;
+  }
+
+  .mt32 {
+    margin-top: 32px;
+  }
+
+  .title {
+    font-weight: 700;
+    color: ${({ theme }) => theme.colors.text};
+  }
+
+  .title-bk {
+    font-size: 18px;
+    font-weight: 700;
+    color: ${({ theme }) => theme.colors.bkText};
   }
 `;
