@@ -1,18 +1,20 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+
+import Nav from './component/nav/Nav';
+import Main from './pages/main/Main';
 import Login from './pages/login/Login';
 import PhoneCheck from './pages/signup/PhoneCheck';
 import SignUp from './pages/signup/SignUp';
 import SignUpPage from './pages/signup/SignUpPage';
-
-import theme from './styles/theme';
-
-import Nav from './component/nav/Nav';
 import Points from './pages/mypage/components/Points';
 import Coupons from './pages/mypage/components/Coupons';
 import Reservation from './pages/mypage/components/Reservation';
 import My from './pages/mypage/components/My';
+import Footer from './component/footer/Footer';
+
+import theme from './styles/theme';
 
 const Router = (props) => {
   return (
@@ -20,6 +22,7 @@ const Router = (props) => {
       <BrowserRouter>
         <Nav />
         <Routes>
+          <Route path='/' element={<Main />} />
           <Route path='/login' element={<Login />} />
 
           <Route path='/signup' element={<SignUp />} />
@@ -31,6 +34,7 @@ const Router = (props) => {
           <Route path='/reservations' element={<Reservation />} />
           <Route path='/my' element={<My />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </ThemeProvider>
   );
