@@ -6,12 +6,13 @@ export const Header = styled.div`
   .box {
     width: 100%;
     height: 211px;
-    margin-top: 100px;
     margin-bottom: 30px;
     background-color: ${({ theme }) => theme.colors.mainColor};
 
     p {
       padding: 80px;
+      padding-top: 90px;
+      padding-left: 205px;
       color: #fff;
       font-size: 38px;
       font-weight: normal;
