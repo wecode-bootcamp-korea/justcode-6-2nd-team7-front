@@ -15,7 +15,7 @@ export const SearchModalBg = styled.div`
 export const Recommend = styled.div`
   position: relative;
   height: 30px;
-  margin: 23px auto 0px;
+  margin: 24px auto 0px;
   background-color: #ffff;
   &:hover {
     cursor: default;
