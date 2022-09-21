@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import theme from '../../../styles/theme';
 
 const MainLinkContainer = styled.div`
   width: 924px;
@@ -15,7 +16,7 @@ const MainLinkContainer = styled.div`
       flex-direction: column;
       width: 100px;
       text-align: center;
-      color: #7a7a7a;
+      color: ${({ theme }) => theme.colors.text};
       font-size: 18px;
       img {
         width: 60px;
