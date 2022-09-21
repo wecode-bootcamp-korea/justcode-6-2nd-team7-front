@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faL, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import * as S from './Nav.styled.js';
 
 import MyModal from './MyModal.js';
@@ -18,6 +18,8 @@ const Nav = () => {
     window.addEventListener('scroll', updateScroll);
   });
 
+  console.log(isSearch);
+
   return (
     <S.NavStyle>
       <div className={scrollPosition < 2 ? 'nav-origin' : 'nav-change'}>
@@ -30,15 +32,19 @@ const Nav = () => {
             )}
           </Link>
           <div className='nav-content'>
+            <div>
+              <FontAwesomeIcon
+                icon={faMagnifyingGlass}
+                className='search-icon'
+                color={scrollPosition < 2 ? 'rgba(255, 255, 255, 0.767)' : ' rgb(82, 82, 82)'}
+                size='lg'
+                onClick={() => {
+                  isSearch == false ? setIsSearch(true) : setIsSearch(false);
+                }}
+              />
+            </div>
             <ul className='navigate-list'>
-              <li className='list'>
-                <FontAwesomeIcon
-                  icon={faMagnifyingGlass}
-                  className='search-icon'
-                  color={scrollPosition < 2 ? 'rgba(255, 255, 255, 0.767)' : ' rgb(82, 82, 82)'}
-                  size='lg'
-                />
-              </li>
+              <li className='list'></li>
               <li className='list'>
                 <Link to='' className='nav-link'>
                   내주변

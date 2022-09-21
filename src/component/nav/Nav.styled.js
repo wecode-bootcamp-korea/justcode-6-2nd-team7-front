@@ -12,6 +12,7 @@ export const NavStyle = styled.nav`
     height: inherit;
     background-color: ${({ theme }) => theme.colors.mainColor};
     transition: all ease 0.5s 0s;
+
     a {
       color: rgba(255, 255, 255, 0.767);
       &:hover {
@@ -25,6 +26,7 @@ export const NavStyle = styled.nav`
     height: inherit;
     transition: all ease 0.5s 0s;
     box-shadow: 0 4px 6px rgb(0 0 0 / 15%);
+
     a {
       color: rgb(82, 82, 82);
       &:hover {
@@ -45,29 +47,35 @@ export const NavStyle = styled.nav`
       display: flex;
       height: inherit;
       align-items: center;
+
       .logo {
         width: 96px;
         height: 27px;
       }
     }
 
-    .navigate-list {
-      list-style-type: none;
-      .list {
-        float: left;
-        line-height: inherit;
+    .nav-content {
+      display: flex;
 
-        .search-icon {
-          margin-right: 30px;
-          &:hover {
-            cursor: pointer;
+      .navigate-list {
+        list-style-type: none;
+
+        .list {
+          float: left;
+          line-height: inherit;
+
+          .search-icon {
+            margin-right: 30px;
+            &:hover {
+              cursor: pointer;
+            }
           }
-        }
 
-        .nav-link {
-          margin-left: 20px;
-          font-size: 18px;
-          text-decoration: none;
+          .nav-link {
+            margin-left: 20px;
+            font-size: 18px;
+            text-decoration: none;
+          }
         }
       }
     }
