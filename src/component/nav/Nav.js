@@ -21,7 +21,7 @@ const Nav = () => {
   });
 
   const seacrhClick = (e) => {
-    // listStyle == "none" && -> 검색하기
+    // listStyle == "none" && -> 검색하기 구현해야 함
     listStyle == 'block' ? setIistStyle('none') : setIistStyle('block');
   };
 

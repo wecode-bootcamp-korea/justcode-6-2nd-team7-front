@@ -8,10 +8,19 @@ import * as S from './SeachModal.Styled';
 
 const SearchModal = ({ scrollPosition, setIistStyle }) => {
   const [inputColor, setInputColor] = useState('#ffffffc4');
+  const [recommendArr, setRecommendArr] = useState([]);
 
   useEffect(() => {
     scrollPosition > 2 ? setInputColor('#525252') : setInputColor('#ffffffc4');
   }, [scrollPosition]);
+
+  useEffect(() => {
+    fetch('/data/nav/recommend.json')
+      .then((res) => res.json())
+      .then((req) => {
+        setRecommendArr(req.data);
+      });
+  }, []);
 
   const cancleSearch = () => {
     setIistStyle('block');
@@ -46,14 +55,14 @@ const SearchModal = ({ scrollPosition, setIistStyle }) => {
         <S.Recommend>
           <div className='recommend-container'>
             <div className='title'>추천 검색어</div>
-            <Link to='/login' onClick={cancleSearch}>
-              강남 호텔
-            </Link>
-            <Link to=''>홍대 게스트하우스</Link>
-            <Link to=''>dd</Link>
-            <Link to=''>ddd</Link>
-            <Link to=''>dddd</Link>
-            <Link to=''>ddddd</Link>
+            {recommendArr.length != 0 &&
+              recommendArr.map((recommend) => {
+                return (
+                  <Link to='/login' onClick={cancleSearch}>
+                    {recommend}
+                  </Link>
+                );
+              })}
           </div>
         </S.Recommend>
       </SearchInput>
