@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { region } from './region';
+import SideFilter from './components/SideFilter';
+import TopFilter from './components/TopFilter';
+import { region } from './components/region';
 import * as S from './List.styled';
-import SideFilter from './SideFilter';
-import TopFilter from './TopFilter';
 
 const List = (props) => {
   const [city, setCity] = useState(

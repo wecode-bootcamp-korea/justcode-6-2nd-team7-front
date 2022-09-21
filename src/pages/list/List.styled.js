@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Header = styled.header`
   width: 100%;
   height: 211px;
-  background-color: ${(props) => props.theme.colors.mainColor};
+  background-color: ${({ theme }) => theme.colors.mainColor};
 
   .container {
     width: 1024px;
@@ -78,7 +78,7 @@ export const Header = styled.header`
 
           div.selected {
             li {
-              color: ${(props) => props.theme.colors.mainColor};
+              color: ${({ theme }) => theme.colors.mainColor};
             }
             .arrow {
               display: inline-block;
@@ -98,12 +98,12 @@ export const Header = styled.header`
               margin-bottom: 0;
             }
             &:hover {
-              color: ${(props) => props.theme.colors.mainColor};
+              color: ${({ theme }) => theme.colors.mainColor};
             }
           }
 
           li.selected {
-            color: ${(props) => props.theme.colors.mainColor};
+            color: ${({ theme }) => theme.colors.mainColor};
           }
         }
       }
