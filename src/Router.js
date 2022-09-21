@@ -5,6 +5,7 @@ import Login from './pages/login/Login';
 import PhoneCheck from './pages/signup/PhoneCheck';
 import SignUp from './pages/signup/SignUp';
 import SignUpPage from './pages/signup/SignUpPage';
+import Main from './pages/main/Main';
 
 import theme from './styles/theme';
 
@@ -16,6 +17,7 @@ const Router = (props) => {
       <BrowserRouter>
         <Nav />
         <Routes>
+          <Route path='/' element={<Main />} />
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/signup-check' element={<PhoneCheck />} />
