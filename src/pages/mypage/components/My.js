@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MyPage from '../MyPage';
 import styled from 'styled-components';
@@ -7,6 +7,16 @@ import * as S from '../MyPage.Styled';
 const MyContainer = styled.div`
   margin-top: 140px;
   width: 600px;
+
+  button {
+    width: 144px;
+    height: 40px;
+    border: solid 1px #ccc;
+    background: #fff;
+    font-size: 15px;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
 
   .my-header {
     padding: 0 0 43px 0;
@@ -102,19 +112,89 @@ const MyContainer = styled.div`
       text-decoration: underline;
     }
   }
+  /* toggle scss */
+  .hidden-nickname {
+    margin: 10px 0;
+    input {
+      width: 374px;
+      height: 45px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 5px;
+    }
 
-  button {
-    width: 144px;
-    height: 40px;
-    border: solid 1px #ccc;
-    background: #fff;
-    font-size: 15px;
-    border-radius: 5px;
-    margin-top: 5px;
+    .nickname-btn {
+      background-color: #000;
+      margin: 0;
+      width: 100px;
+      height: 45px;
+      border: none;
+      background-color: ${({ theme }) => theme.colors.mainColor};
+      color: white;
+    }
+
+    .change-nickname {
+      display: flex;
+
+      input {
+        margin-right: 7px;
+      }
+    }
+
+    button {
+      margin-top: 20px;
+      margin-right: 15px;
+    }
+
+    .btn-box {
+      /* margin-left: 12px; */
+    }
+  }
+
+  .btn-blue {
+    background-color: ${({ theme }) => theme.colors.mainColor};
+    color: #fff;
   }
 `;
 
 function My() {
+  const [nickname, setNickname] = useState(false);
+  const [myName, setMyname] = useState(false);
+  const [phone, setPhone] = useState(false);
+
+  const handleNickname = () => {
+    setNickname((prev) => !prev);
+  };
+
+  const handleCancel = () => {
+    setNickname((prev) => !prev);
+  };
+
+  const handleComplete = () => {
+    setNickname((prev) => !prev);
+  };
+
+  const handleNameCancel = () => {
+    setMyname((prev) => !prev);
+  };
+
+  const handleName = () => {
+    setMyname((prev) => !prev);
+  };
+
+  const handleNameComplete = () => {
+    setMyname((prev) => !prev);
+  };
+
+  const handlePhone = () => {
+    setPhone((prev) => !prev);
+  };
+  const handlePhoneCancel = () => {
+    setPhone((prev) => !prev);
+  };
+  const handlePhoneComplete = () => {
+    setPhone((prev) => !prev);
+  };
+
   return (
     <S.Header>
       <div className='box'>
@@ -136,11 +216,43 @@ function My() {
               <p>닉네임</p>
               <p className='nickname'>40세한치</p>
             </div>
-            <button>수정</button>
+            {/* toggle 창 */}
+            {nickname && (
+              <div className='hidden-nickname'>
+                <div className='change-nickname'>
+                  <input />
+                  <button className='nickname-btn'>딴거할래요</button>
+                </div>
+                <div className='btn-box'>
+                  <button className='btn-blue' onClick={handleComplete}>
+                    수정완료
+                  </button>
+                  <button onClick={handleCancel}>수정취소</button>
+                </div>
+              </div>
+            )}
+
+            {!nickname && <button onClick={handleNickname}>수정</button>}
           </div>
+
           <div className='my-reservation-name'>
             <p>예약자 이름</p>
-            <button>수정</button>
+            {/* toggle 창 */}
+            {myName && (
+              <div className='hidden-nickname'>
+                <div className='change-nickname'>
+                  <input />
+                </div>
+                <div className='btn-box'>
+                  <button className='btn-blue' onClick={handleNameComplete}>
+                    수정완료
+                  </button>
+                  <button onClick={handleNameCancel}>수정취소</button>
+                </div>
+              </div>
+            )}
+
+            {!myName && <button onClick={handleName}>수정</button>}
           </div>
           <div className='my-phone'>
             <div className='my-tel'>
@@ -148,7 +260,23 @@ function My() {
               <p className='tel'>010****4573</p>
             </div>
             <p className='description'>개인 정보 보호를 위해 내 정보는 모두 안전하게 암호화됩니다.</p>
-            <button>수정</button>
+            {/* toggle 창 */}
+            {phone && (
+              <div className='hidden-nickname'>
+                <div className='change-nickname'>
+                  <input />
+                  <button className='nickname-btn'>인증번호</button>
+                </div>
+                <div className='btn-box'>
+                  <button className='btn-blue' onClick={handlePhoneComplete}>
+                    수정완료
+                  </button>
+                  <button onClick={handlePhoneCancel}>수정취소</button>
+                </div>
+              </div>
+            )}
+
+            {!phone && <button onClick={handlePhone}>수정</button>}
           </div>
           <div className='container'></div>
           <div className='my-logout'>
