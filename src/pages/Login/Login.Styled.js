@@ -6,7 +6,7 @@ export const LoginForm = styled.form`
   width: 336px;
   height: 550px;
   margin: auto;
-  margin-top: 8%;
+  margin-top: 100px;
 
   .login-img {
     display: flex;

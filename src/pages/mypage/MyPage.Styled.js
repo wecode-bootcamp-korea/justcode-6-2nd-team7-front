@@ -10,8 +10,10 @@ export const Header = styled.div`
     background-color: ${({ theme }) => theme.colors.mainColor};
 
     p {
+      width: 1024px;
       padding: 80px;
-      padding-top: 90px;
+      height: 30px;
+      margin-top: 50px;
       padding-left: 205px;
       color: #fff;
       font-size: 38px;
@@ -22,13 +24,15 @@ export const Header = styled.div`
 
 export const MyPageContainer = styled.div`
   display: flex;
+  width: 100%;
 `;
 
 export const LinkContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 27%;
   margin-left: 100px;
+  padding-left: 95px;
 
   a {
     text-decoration-line: none;
@@ -37,16 +41,16 @@ export const LinkContainer = styled.div`
     font-weight: bold;
     color: rgba(0, 0, 0, 0.56);
     &.a {
-      color: #01aef0;
+      color: ${({ theme }) => theme.colors.mainColor};
     }
     &.b {
-      color: #01aef0;
+      color: ${({ theme }) => theme.colors.mainColor};
     }
     &.c {
-      color: #01aef0;
+      color: ${({ theme }) => theme.colors.mainColor};
     }
     &.d {
-      color: #01aef0;
+      color: ${({ theme }) => theme.colors.mainColor};
     }
   }
 `;

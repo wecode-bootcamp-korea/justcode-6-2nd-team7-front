@@ -11,7 +11,7 @@ import theme from './styles/theme';
 import Nav from './component/nav/Nav';
 import Points from './pages/mypage/components/Points';
 import Coupons from './pages/mypage/components/Coupons';
-import Reservation from './pages/mypage/components/Reservations';
+import Reservation from './pages/mypage/components/Reservation';
 import My from './pages/mypage/components/My';
 
 const Router = (props) => {

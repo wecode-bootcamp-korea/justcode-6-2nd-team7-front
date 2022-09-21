@@ -4,7 +4,7 @@ export const PhoneContainer = styled.div`
   width: 336px;
   height: 550px;
   margin: auto;
-  margin-top: 8%;
+  margin-top: 100px;
 
   .title {
     margin: 7% 0;
