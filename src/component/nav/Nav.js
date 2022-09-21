@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faL, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import * as S from './Nav.styled.js';
 
 import MyModal from './MyModal.js';
@@ -9,6 +9,7 @@ import MyModal from './MyModal.js';
 const Nav = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [myHover, setMyHover] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
 
   const updateScroll = () => {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);

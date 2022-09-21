@@ -6,7 +6,6 @@ export const NavStyle = styled.nav`
   left: 0;
   right: 0;
   height: 72px;
-  font-family: pretendard;
   z-index: 99;
 
   .nav-origin {
