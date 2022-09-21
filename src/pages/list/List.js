@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import SideFilter from './components/SideFilter';
 import TopFilter from './components/TopFilter';
+import ThumbnailList from './components/ThumbnailList';
 import { region } from './components/region';
 import * as S from './List.styled';
 
@@ -90,7 +91,10 @@ const List = (props) => {
         <SideFilter />
         <main>
           <TopFilter />
-          <div className='thumbnail-container'></div>
+          <ul className='thumbnail-container mt32'>
+            <ThumbnailList />
+            <ThumbnailList />
+          </ul>
         </main>
       </S.Body>
     </>

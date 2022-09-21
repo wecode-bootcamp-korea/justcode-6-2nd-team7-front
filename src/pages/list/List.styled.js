@@ -54,6 +54,7 @@ export const Header = styled.header`
         color: ${({ theme }) => theme.colors.bkText};
         font-size: 15px;
         box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+        z-index: 1;
 
         .city-list {
           width: 167px;
@@ -114,7 +115,7 @@ export const Body = styled.div`
   display: flex;
   width: 1024px;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin: 35px auto 0 auto;
   color: ${({ theme }) => theme.colors.bkText};
 
@@ -200,6 +201,7 @@ export const Body = styled.div`
           .icon {
             width: 48px;
             height: 24px;
+            margin-bottom: 5px;
             background-image: url('images/accommodation/ico_room.png');
             background-size: 192px;
             overflow: hidden;
@@ -243,9 +245,85 @@ export const Body = styled.div`
   }
 
   main {
-    border: 1px solid red;
+    width: 66%;
+
     .thumbnail-container {
-      border: 1px solid blue;
+      .sort-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: ${({ theme }) => theme.colors.text};
+      }
+
+      div.thumbnail {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        position: relative;
+        height: 280px;
+        padding: 25px;
+        background-color: #009fef;
+        color: #fff;
+
+        .event {
+          position: absolute;
+          left: 0;
+          top: 25px;
+          padding: 1px 10px 1px 15px;
+          background-color: rgba(0, 0, 0, 0.3);
+          font-size: 18px;
+        }
+
+        .align-container {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+
+          .rating {
+            display: inline-block;
+            margin-bottom: 7px;
+            padding: 2px;
+            background-color: ${({ theme }) => theme.colors.highRating};
+            font-size: 14px;
+          }
+
+          .name {
+            margin-bottom: 7px;
+            font-size: 26px;
+            font-weight: 700;
+            color: #fff;
+          }
+
+          .score {
+            margin-bottom: 7px;
+            color: ${({ theme }) => theme.colors.yellow};
+            font-size: 20px;
+          }
+
+          .location {
+            font-size: 20px;
+          }
+          .price-container {
+            text-align: right;
+
+            .remaining-room {
+              margin-bottom: 3px;
+              font-size: 20px;
+            }
+
+            .original-price {
+              margin-bottom: 3px;
+              font-size: 20px;
+              text-decoration: line-through;
+              opacity: 0.8;
+            }
+
+            .final-price {
+              font-weight: 700;
+              font-size: 22px;
+            }
+          }
+        }
+      }
     }
   }
 
