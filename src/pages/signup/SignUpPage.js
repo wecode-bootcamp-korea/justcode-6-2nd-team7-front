@@ -15,11 +15,11 @@ function SignUpPage() {
         </div>
         <div className='input-container'>
           <p>비밀번호</p>
-          <input placeholder='비밀번호를 입력해주세요.' />
+          <input type='password' placeholder='비밀번호를 입력해주세요.' />
         </div>
         <div className='input-container'>
           <p>비밀번호 확인</p>
-          <input placeholder='비밀번호를 입력해주세요.' />
+          <input type='password' placeholder='비밀번호를 입력해주세요.' />
         </div>
         <div className='input-container'>
           <p>닉네임</p>
