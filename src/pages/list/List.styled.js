@@ -110,3 +110,17 @@ export const Header = styled.header`
     }
   }
 `;
+
+export const Body = styled.div`
+  display: flex;
+  width: 1024px;
+  justify-content: center;
+  align-items: center;
+
+  .side-filter {
+  }
+  main {
+    .thumbnail-container {
+    }
+  }
+`;

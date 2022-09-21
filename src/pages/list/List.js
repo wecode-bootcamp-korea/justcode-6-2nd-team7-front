@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { region } from './region';
 import * as S from './List.styled';
+import SideFilter from './SideFilter';
+import TopFilter from './TopFilter';
 
 const List = (props) => {
   const [city, setCity] = useState(
@@ -84,6 +86,13 @@ const List = (props) => {
           </div>
         </div>
       </S.Header>
+      <S.Body>
+        <SideFilter />
+        <main>
+          <TopFilter />
+          <div className='thumbnail-container'></div>
+        </main>
+      </S.Body>
     </>
   );
 };
