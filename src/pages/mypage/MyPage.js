@@ -4,19 +4,19 @@ import * as S from './MyPage.Styled';
 function MyPage() {
   return (
     <S.LinkContainer>
-      <NavLink className={({ isActive }) => (isActive ? 'a' : '')} to='/mypage'>
+      <NavLink className={({ isActive }) => (isActive ? 'points' : '')} to='/mypage'>
         포인트
       </NavLink>
 
-      <NavLink className={({ isActive }) => (isActive ? 'b' : '')} to='/coupons'>
+      <NavLink className={({ isActive }) => (isActive ? 'coupons' : '')} to='/coupons'>
         쿠폰함
       </NavLink>
 
-      <NavLink className={({ isActive }) => (isActive ? 'c' : '')} to='/reservations'>
+      <NavLink className={({ isActive }) => (isActive ? 'reservations' : '')} to='/reservations'>
         예약내역
       </NavLink>
 
-      <NavLink className={({ isActive }) => (isActive ? 'd' : '')} to='/my'>
+      <NavLink className={({ isActive }) => (isActive ? 'my' : '')} to='/my'>
         내 정보 관리
       </NavLink>
     </S.LinkContainer>

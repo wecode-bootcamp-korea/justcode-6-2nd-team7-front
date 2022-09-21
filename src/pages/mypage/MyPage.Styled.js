@@ -41,16 +41,16 @@ export const LinkContainer = styled.div`
     color: rgba(0, 0, 0, 0.56);
     text-decoration-line: none;
 
-    &.a {
+    &.points {
       color: ${({ theme }) => theme.colors.mainColor};
     }
-    &.b {
+    &.coupons {
       color: ${({ theme }) => theme.colors.mainColor};
     }
-    &.c {
+    &.reservations {
       color: ${({ theme }) => theme.colors.mainColor};
     }
-    &.d {
+    &.my {
       color: ${({ theme }) => theme.colors.mainColor};
     }
   }

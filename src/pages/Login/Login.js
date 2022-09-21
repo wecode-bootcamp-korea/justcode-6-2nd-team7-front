@@ -29,9 +29,9 @@ function Login() {
         <button className='naver'>네이버로 로그인</button>
       </div>
       <S.LoginInput>
-        <S.LineContainere>
+        <S.LineContainer>
           <span>또는</span>
-        </S.LineContainere>
+        </S.LineContainer>
         <S.InputContainer>
           <S.EmailInput>
             <input value={email} placeholder='이메일주소' onChange={handleEmail} />

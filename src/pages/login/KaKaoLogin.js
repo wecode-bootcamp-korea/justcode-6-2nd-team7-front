@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function KaKaoLogin() {
+const KaKaoLogin = () => {
   const KaKaoLogin = styled.div`
     button {
       width: 100%;
@@ -27,6 +27,6 @@ function KaKaoLogin() {
       <button onClick={handleKaKaoLogin}>카카오</button>
     </KaKaoLogin>
   );
-}
+};
 
 export default KaKaoLogin;

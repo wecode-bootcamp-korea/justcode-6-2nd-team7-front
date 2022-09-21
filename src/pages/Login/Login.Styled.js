@@ -54,7 +54,7 @@ export const LoginInput = styled.div`
   margin-top: 35%;
 `;
 
-export const LineContainere = styled.div`
+export const LineContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 336px;
