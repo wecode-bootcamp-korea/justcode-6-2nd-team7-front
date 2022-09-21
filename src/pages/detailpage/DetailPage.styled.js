@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-export const DetailExplanation=styled.div` 
+export const DetailExplanation = styled.div` 
     width:1024px;
     height:447px;
     margin: 0 auto;
