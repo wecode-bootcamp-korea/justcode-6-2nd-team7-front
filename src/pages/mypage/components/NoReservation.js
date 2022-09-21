@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const NoReservationContainer = styled.div`
   margin-left: 20%;
+
   .no-reservation {
     margin-bottom: 10px;
     font-size: 20px;
@@ -16,16 +17,16 @@ const NoReservationContainer = styled.div`
   }
 
   .reservation-btn {
-    border: 1px solid rgb(242, 17, 76);
-    border-radius: 4px;
-    background: #fff;
-    font-size: 16px;
-    font-weight: normal;
-    color: rgb(230, 28, 81);
-    text-align: center;
     width: 165px;
     height: 48px;
     margin-top: 44px;
+    border: 1px solid rgb(242, 17, 76);
+    background: #fff;
+    border-radius: 4px;
+    color: rgb(230, 28, 81);
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
     cursor: pointer;
   }
 `;

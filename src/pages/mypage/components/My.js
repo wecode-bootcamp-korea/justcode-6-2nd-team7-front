@@ -161,6 +161,7 @@ function My() {
   const [myName, setMyname] = useState(false);
   const [phone, setPhone] = useState(false);
 
+  // 버튼 toggle
   const handleNickname = () => {
     setNickname((prev) => !prev);
   };

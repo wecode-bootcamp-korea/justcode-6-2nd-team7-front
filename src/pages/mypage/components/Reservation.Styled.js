@@ -22,11 +22,11 @@ export const ReservationContainer = styled.div`
 
     .reservation-container {
       position: relative;
-      border: 1px solid rgb(230, 230, 230);
       width: 300px;
       height: 380px;
       margin-right: 2%;
       margin-top: 2%;
+      border: 1px solid rgb(230, 230, 230);
 
       .delete {
         position: absolute;

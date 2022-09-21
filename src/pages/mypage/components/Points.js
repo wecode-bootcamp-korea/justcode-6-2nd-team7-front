@@ -1,7 +1,45 @@
 import React from 'react';
 import MyPage from '../MyPage';
 import * as S from '../MyPage.Styled';
-import * as A from './Points.Styled';
+import styled from 'styled-components';
+
+export const PointContainer = styled.div`
+  width: 100%;
+  margin: 10px;
+
+  .points {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .point-box {
+    width: 80%;
+    height: 100px;
+    padding: 20px;
+    background-color: #f2f8ff;
+    border-radius: 16px;
+
+    .my-points {
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: 400;
+      color: #1273e4;
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      font-size: 30px;
+      font-weight: 700;
+      color: #1273e4;
+    }
+
+    .point-delete {
+      font-size: 13px;
+      color: rgba(0, 0, 0, 0.48);
+    }
+  }
+`;
 
 function Points() {
   return (
@@ -11,7 +49,7 @@ function Points() {
       </div>
       <S.MyPageContainer>
         <MyPage />
-        <A.PointContainer>
+        <PointContainer>
           <p className='points'>포인트</p>
           <div className='point-box'>
             <div>
@@ -22,7 +60,7 @@ function Points() {
               </div>
             </div>
           </div>
-        </A.PointContainer>
+        </PointContainer>
       </S.MyPageContainer>
     </S.Header>
   );
