@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+import KaKaoLogin from './KaKaoLogin';
+
 import * as S from './Login.Styled';
 
 function Login() {
@@ -21,7 +24,7 @@ function Login() {
         <img src='/images/logoBlue.svg' alt='logo' />
       </div>
       <div className='login-btn'>
-        <button className='kakao'>카카오로 로그인</button>
+        <KaKaoLogin />
         <button className='facebook'>Facebook으로 로그인</button>
         <button className='naver'>네이버로 로그인</button>
       </div>
