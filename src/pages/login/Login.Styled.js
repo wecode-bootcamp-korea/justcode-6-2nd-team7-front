@@ -43,7 +43,7 @@ export const LoginForm = styled.form`
 `;
 
 export const LoginInput = styled.div`
-  margin-top: 30%;
+  margin-top: 35%;
   height: 300px;
   display: flex;
   flex-direction: column;
