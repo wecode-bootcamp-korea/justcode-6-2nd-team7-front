@@ -13,7 +13,7 @@ export const NavStyle = styled.nav`
     background-color: ${({ theme }) => theme.colors.mainColor};
     transition: all ease 0.5s 0s;
 
-    a {
+    .nav-link {
       color: #ffffffc4;
       &:hover {
         color: #ffff;
@@ -27,7 +27,7 @@ export const NavStyle = styled.nav`
     transition: all ease 0.5s 0s;
     box-shadow: 0 4px 6px rgb(0 0 0 / 15%);
 
-    a {
+    .nav-link {
       color: #525252;
       &:hover {
         color: #000000;
@@ -80,8 +80,6 @@ export const NavStyle = styled.nav`
       }
 
       .navigate-list {
-        list-style-type: none;
-
         .list {
           float: left;
           line-height: inherit;
@@ -89,7 +87,6 @@ export const NavStyle = styled.nav`
           .nav-link {
             margin-left: 20px;
             font-size: 18px;
-            text-decoration: none;
           }
         }
       }

@@ -45,7 +45,7 @@ const Nav = () => {
                 className='search-icon'
                 onClick={seacrhClick}
               />
-              {listStyle == 'none' && <SearchModal scrollPosition={scrollPosition} />}
+              {listStyle == 'none' && <SearchModal scrollPosition={scrollPosition} setIistStyle={setIistStyle} />}
             </div>
 
             <div style={{ display: listStyle }}>
