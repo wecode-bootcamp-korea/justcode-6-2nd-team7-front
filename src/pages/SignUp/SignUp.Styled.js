@@ -7,16 +7,16 @@ export const SignUpForm = styled.div`
   margin-top: 8%;
 
   .signup-container {
-    height: 70%;
     display: flex;
-    margin-top: 5%;
     flex-direction: column;
     justify-content: space-around;
+    height: 70%;
+    margin-top: 5%;
 
     .signup-header {
+      margin: 0 auto;
       font-size: 24px;
       font-weight: bold;
-      margin: 0 auto;
     }
 
     p {
@@ -34,6 +34,7 @@ export const SignUpForm = styled.div`
     p {
       display: flex;
       align-items: center;
+
       input {
         width: 24px;
         height: 24px;
@@ -42,10 +43,12 @@ export const SignUpForm = styled.div`
       span {
         font-size: 15px;
       }
+
       .underline {
         margin-left: 10px;
         text-decoration: underline;
       }
+
       .essential {
         color: red;
       }
@@ -56,21 +59,22 @@ export const SignUpForm = styled.div`
     .button {
       width: 100%;
       height: 56px;
-      font-size: 16px;
       margin-top: 16px;
+      border: none;
       border-radius: 6px;
       color: #fff;
-      border: none;
+      font-size: 16px;
     }
+
     .activate {
       width: 100%;
       height: 56px;
-      font-size: 16px;
       margin-top: 16px;
       border-radius: 6px;
-      color: white;
       border: none;
       background-color: #01aef0;
+      color: white;
+      font-size: 16px;
       cursor: pointer;
     }
   }
