@@ -10,6 +10,7 @@ function KaKaoLogin() {
       background: rgb(252, 229, 30);
       border: none;
       border-radius: 4px;
+      cursor: pointer;
     }
   `;
 
