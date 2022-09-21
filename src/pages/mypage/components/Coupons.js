@@ -1,7 +1,40 @@
 import React from 'react';
 import MyPage from '../MyPage';
 import * as S from '../MyPage.Styled';
-import * as A from './Coupons.Styled';
+import styled from 'styled-components';
+
+export const CouponsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  margin: 10px;
+
+  .coupons-box {
+    display: flex;
+    padding-left: 20px;
+
+    .coupons {
+      margin-right: 20px;
+      font-size: 18px;
+      font-weight: 700;
+      color: ${({ theme }) => theme.colors.mainColor};
+    }
+
+    .my-coupons {
+      font-size: 18px;
+      font-weight: 700;
+      color: ${({ theme }) => theme.colors.mainColor};
+    }
+  }
+
+  .content {
+    padding: 100px;
+    padding-left: 200px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+`;
 
 function Coupons() {
   return (
@@ -11,7 +44,7 @@ function Coupons() {
       </div>
       <S.MyPageContainer>
         <MyPage />
-        <A.CouponsContainer>
+        <CouponsContainer>
           <div className='coupons-box'>
             <p className='coupons'>보유쿠폰</p>
             <p className='my-coupons'>0 장</p>
@@ -19,7 +52,7 @@ function Coupons() {
           <div>
             <p className='content'>보유한 쿠폰이 없습니다.</p>
           </div>
-        </A.CouponsContainer>
+        </CouponsContainer>
       </S.MyPageContainer>
     </S.Header>
   );

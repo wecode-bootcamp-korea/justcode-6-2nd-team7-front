@@ -11,8 +11,8 @@ export const Header = styled.div`
 
     p {
       width: 1024px;
-      padding: 80px;
       height: 30px;
+      padding: 80px;
       margin-top: 50px;
       padding-left: 205px;
       color: #fff;
@@ -35,11 +35,12 @@ export const LinkContainer = styled.div`
   padding-left: 95px;
 
   a {
-    text-decoration-line: none;
     margin: 10px;
     font-size: 18px;
     font-weight: bold;
     color: rgba(0, 0, 0, 0.56);
+    text-decoration-line: none;
+
     &.a {
       color: ${({ theme }) => theme.colors.mainColor};
     }
