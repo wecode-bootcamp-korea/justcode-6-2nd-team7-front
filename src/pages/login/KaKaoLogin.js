@@ -1,8 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
 
 function KaKaoLogin() {
-  // GET /oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code HTTP/1.1
-  // Host: kauth.kakao.com
+  const KaKaoLogin = styled.div`
+    button {
+      width: 100%;
+      height: 50px;
+      margin-top: 3%;
+      background: rgb(252, 229, 30);
+      border: none;
+      border-radius: 4px;
+    }
+  `;
 
   const REST_API_KEY = '	5896c4071585205226ff70774816a5df';
   const REDIRECT_URI = 'http://localhost:3000/kakao-login';
@@ -13,9 +22,9 @@ function KaKaoLogin() {
     window.location.href = KAKAO_AUTH_URL;
   };
   return (
-    <div>
+    <KaKaoLogin>
       <button onClick={handleKaKaoLogin}>카카오</button>
-    </div>
+    </KaKaoLogin>
   );
 }
 
