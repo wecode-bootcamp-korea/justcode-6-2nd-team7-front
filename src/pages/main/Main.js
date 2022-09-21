@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { MainStyle } from './Main.styled';
-import MainLink from './component/MainLink';
+import MainLink from './components/MainLink';
 
 const Main = () => {
   return (
