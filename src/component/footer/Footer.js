@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import styled from 'styled-components';
 
@@ -84,6 +85,7 @@ const Footer = () => {
 
           <div>Copyright JGUD COMPANY Corp. All rights reserved.</div>
         </div>
+        <div>{/* <FontAwesomeIcon icon={faFacebook} /> */}</div>
       </div>
     </FooterStyle>
   );
