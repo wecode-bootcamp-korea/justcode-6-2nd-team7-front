@@ -9,6 +9,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [emailCheck, setEmailCheck] = useState(false);
 
+  // 로직 더 추가 할 예정...
   const handleEmail = (e) => {
     setEmail(e.target.value);
     if (!email.includes('@')) {
