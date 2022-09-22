@@ -6,11 +6,7 @@ const Main = () => {
     <>
       <MainStyle>
         <div className='main-img-container'>
-          <img
-            alt='대표이미지'
-            className='main-img'
-            src='https://cdn.pixabay.com/photo/2021/11/24/11/01/autumn-6820879__340.jpg'
-          />
+          <img alt='대표이미지' className='main-img' src='images/main/mainImg.png' />
         </div>
         <MainLink />
       </MainStyle>
