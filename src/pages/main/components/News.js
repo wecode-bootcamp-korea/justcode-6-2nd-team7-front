@@ -1,4 +1,4 @@
-import { NewsContainer } from './News.Styled';
+import { BoxStyle } from './BoxStyle.Styled';
 
 const News = () => {
   const newsArr = [
@@ -12,29 +12,29 @@ const News = () => {
       id: 2,
       eng: 'font',
       title: '저기어때 서체출시',
-      content: ' 젊고 당당한 저기어때 잘난체 \n지금 다운로드 받으세요!',
+      content: '젊고 당당한 저기어때 잘난체 \n지금 다운로드 받으세요!',
     },
   ];
 
   return (
-    <NewsContainer>
+    <BoxStyle>
       <div className='container'>
         <span>저기어때 소식</span>
-        <div className='news-box'>
+        <div className='box-container'>
           {newsArr.map((news) => {
             return (
-              <div className='news' key={news.id}>
+              <div className='box' key={news.id}>
                 <img className='img' alt={news.eng} src={`images/main/news/${news.eng}.png`} />
-                <div className='news-text'>
-                  <div className='news-title'>{news.title}</div>
-                  <div className='news-content'>{news.content}</div>
+                <div className='box-text'>
+                  <div className='box-title'>{news.title}</div>
+                  <div className='box-content'>{news.content}</div>
                 </div>
               </div>
             );
           })}
         </div>
       </div>
-    </NewsContainer>
+    </BoxStyle>
   );
 };
 

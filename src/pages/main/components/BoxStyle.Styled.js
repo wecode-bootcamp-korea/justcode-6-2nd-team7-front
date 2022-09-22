@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const NewsContainer = styled.section`
+export const BoxStyle = styled.section`
   width: 1024px;
   margin: 32px auto;
   padding: 0px 30px;
@@ -14,14 +14,15 @@ export const NewsContainer = styled.section`
       font-weight: 700;
     }
 
-    .news-box {
+    .box-container {
       display: flex;
       justify-content: space-between;
       margin-top: 30px;
 
-      .news {
+      .box {
         display: flex;
         width: 470px;
+        height: 162px;
         border: 1px solid #00000014;
         background-color: #ffff;
         &:hover {
@@ -33,23 +34,46 @@ export const NewsContainer = styled.section`
           height: 162px;
         }
 
-        .news-text {
+        .box-text {
           margin: auto 20px;
           font-size: 16px;
+
           div {
             margin: 10px auto;
           }
 
-          .news-title {
+          .box-title {
             font-size: 20px;
             font-weight: 500;
           }
 
-          .news-content {
+          .box-content {
             color: ${({ theme }) => theme.colors.text};
             font-weight: 300;
             line-height: 25px;
           }
+        }
+
+        .event {
+          margin: auto 40px;
+        }
+
+        .title-adv {
+          color: ${({ theme }) => theme.colors.mainColor};
+          font-size: 23px;
+          font-weight: 700;
+        }
+
+        .title-apply {
+          color: ${({ theme }) => theme.colors.bkText};
+          font-size: 23px;
+          font-weight: 700;
+        }
+
+        .event-icon {
+          width: 100px;
+          height: 100px;
+          margin: auto 0px auto 80px;
         }
       }
     }

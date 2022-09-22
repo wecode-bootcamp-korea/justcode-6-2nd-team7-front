@@ -1,6 +1,7 @@
 import MainLink from './components/MainLink';
 import News from './components/News';
 import AppDown from './components/AppDown';
+import Event from './components/Event';
 
 import { MainStyle } from './Main.styled';
 
@@ -14,6 +15,7 @@ const Main = () => {
         <MainLink />
         <News />
         <AppDown />
+        <Event />
       </MainStyle>
     </>
   );
