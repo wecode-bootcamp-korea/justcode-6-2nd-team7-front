@@ -23,10 +23,8 @@ const Router = (props) => {
       <BrowserRouter>
       <Nav />
         <Routes>
-          
           <Route path='/' element={<Main />} />
           <Route path='/login' element={<Login />} />
-
           <Route path='/signup' element={<SignUp />} />
           <Route path='/signup-check' element={<PhoneCheck />} />
           <Route path='/signup-page' element={<SignUpPage />} />
