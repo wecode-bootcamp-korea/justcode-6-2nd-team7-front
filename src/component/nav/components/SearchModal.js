@@ -8,25 +8,17 @@ import * as S from './SeachModal.Styled';
 
 const SearchModal = ({ scrollPosition, setIistStyle }) => {
   const [inputColor, setInputColor] = useState('#ffffffc4');
-  const [recommendArr, setRecommendArr] = useState([]);
+  const recommendArr = ['강남', '서울', '부산 호텔', '제주도 게스트하우스', '게스트하우스'];
 
   useEffect(() => {
     scrollPosition > 2 ? setInputColor('#525252') : setInputColor('#ffffffc4');
   }, [scrollPosition]);
 
-  useEffect(() => {
-    fetch('/data/nav/recommend.json')
-      .then((res) => res.json())
-      .then((req) => {
-        setRecommendArr(req.data);
-      });
-  }, []);
-
   const cancleSearch = () => {
     setIistStyle('block');
   };
 
-  const SearchInput = styled.div`
+  const InputContainer = styled.div`
     position: absolute;
     input {
       width: 460px;
@@ -39,7 +31,6 @@ const SearchModal = ({ scrollPosition, setIistStyle }) => {
       }
       &::placeholder {
         color: ${inputColor};
-        font-size: 17px;
       }
     }
   `;
@@ -47,7 +38,7 @@ const SearchModal = ({ scrollPosition, setIistStyle }) => {
   return (
     <>
       <S.SearchModalBg onClick={cancleSearch} />
-      <SearchInput>
+      <InputContainer>
         <div>
           <input placeholder='지역, 숙소명, 숙소타입' />
           <FontAwesomeIcon onClick={cancleSearch} icon={faXmark} color={scrollPosition > 2 ? '#525252' : '#ffffffc4'} />
@@ -65,7 +56,7 @@ const SearchModal = ({ scrollPosition, setIistStyle }) => {
               })}
           </div>
         </S.Recommend>
-      </SearchInput>
+      </InputContainer>
     </>
   );
 };
