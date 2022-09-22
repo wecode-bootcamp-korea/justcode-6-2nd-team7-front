@@ -1,20 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+import KaKaoLogin from './KaKaoLogin';
+
 import * as S from './Login.Styled';
 
 function Login() {
+  const [email, setEmail] = useState('');
+  const [emailCheck, setEmailCheck] = useState(false);
+
+  // 로직 더 추가 할 예정...
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+    if (!email.includes('@')) {
+      setEmailCheck(true);
+    } else {
+      setEmailCheck(false);
+    }
+  };
+
   return (
     <S.LoginForm>
-      <strong>여기어때</strong>
+      <div className='login-img'>
+        <img src='/images/logoBlue.svg' alt='logo' />
+      </div>
+      <div className='login-btn'>
+        <KaKaoLogin />
+        <button className='facebook'>Facebook으로 로그인</button>
+        <button className='naver'>네이버로 로그인</button>
+      </div>
       <S.LoginInput>
-        <S.LineContainere>
+        <S.LineContainer>
           <span>또는</span>
-        </S.LineContainere>
+        </S.LineContainer>
         <S.InputContainer>
           <S.EmailInput>
-            <input placeholder='이메일주소' />
+            <input value={email} placeholder='이메일주소' onChange={handleEmail} />
           </S.EmailInput>
-
+          {emailCheck && <p className='email-check'>이메일 주소를 확인해주세요.</p>}
           <S.PasswordInput>
             <input placeholder='비밀번호' />
           </S.PasswordInput>
