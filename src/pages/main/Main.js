@@ -1,6 +1,7 @@
-import { MainStyle } from './Main.styled';
 import MainLink from './components/MainLink';
-import Event from './components/Event';
+import News from './components/News';
+
+import { MainStyle } from './Main.styled';
 
 const Main = () => {
   return (
@@ -10,7 +11,7 @@ const Main = () => {
           <img alt='대표이미지' className='main-img' src='images/main/mainImg.png' />
         </div>
         <MainLink />
-        <Event />
+        <News />
       </MainStyle>
     </>
   );
