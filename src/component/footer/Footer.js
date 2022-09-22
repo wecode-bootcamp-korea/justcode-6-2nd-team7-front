@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const FooterStyle = styled.footer`
-  position: fixed;
-  width: 100vw;
   bottom: 0px;
   margin-top: 120px;
   font-size: 13px;

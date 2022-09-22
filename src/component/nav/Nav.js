@@ -8,7 +8,7 @@ import * as S from './Nav.styled.js';
 import MyModal from './components/MyModal';
 import SearchModal from './components/SearchModal';
 
-const Nav = () => {
+const Nav = ({ setSearchInput }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [myHover, setMyHover] = useState(false);
   const [listStyle, setIistStyle] = useState('block');
