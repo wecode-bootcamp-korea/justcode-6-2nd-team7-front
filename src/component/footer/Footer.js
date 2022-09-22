@@ -1,6 +1,4 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import styled from 'styled-components';
 
@@ -18,11 +16,9 @@ const FooterStyle = styled.footer`
   .footer-container {
     padding: 60px 30px;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
-
     .footer-box {
       width: 1024px;
       margin: auto;
-
       div {
         margin: 8px 0px;
       }
@@ -43,6 +39,16 @@ const FooterStyle = styled.footer`
 
       .service-center {
         font-weight: 600;
+      }
+    }
+
+    .icon-box {
+      width: 1024px;
+      margin: 20px auto 0px;
+      .social-icon {
+        width: 30px;
+        margin-right: 15px;
+        opacity: 50%;
       }
     }
   }
@@ -85,7 +91,10 @@ const Footer = () => {
 
           <div>Copyright JGUD COMPANY Corp. All rights reserved.</div>
         </div>
-        <div>{/* <FontAwesomeIcon icon={faFacebook} /> */}</div>
+        <div className='icon-box'>
+          <img className='social-icon' alt='facebook' src='/images/footer/facebook.png' />
+          <img className='social-icon' alt='blog' src='/images/footer/blog.png' />
+        </div>
       </div>
     </FooterStyle>
   );
