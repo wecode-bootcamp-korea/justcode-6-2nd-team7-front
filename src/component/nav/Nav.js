@@ -22,7 +22,7 @@ const Nav = () => {
 
   const seacrhClick = (e) => {
     // listStyle == "none" && -> 검색하기 구현해야 함
-    listStyle == 'block' ? setIistStyle('none') : setIistStyle('block');
+    listStyle === 'block' ? setIistStyle('none') : setIistStyle('block');
   };
 
   return (
@@ -37,7 +37,7 @@ const Nav = () => {
             )}
           </Link>
           <div className='nav-content'>
-            <div className={classnames('search-icon-box', { 'search-icon-change': listStyle == 'none' })}>
+            <div className={classnames('search-icon-box', { 'search-icon-change': listStyle === 'none' })}>
               <FontAwesomeIcon
                 icon={faMagnifyingGlass}
                 color={scrollPosition < 2 ? 'rgba(255, 255, 255, 0.767)' : ' rgb(82, 82, 82)'}
@@ -45,7 +45,7 @@ const Nav = () => {
                 className='search-icon'
                 onClick={seacrhClick}
               />
-              {listStyle == 'none' && <SearchModal scrollPosition={scrollPosition} setIistStyle={setIistStyle} />}
+              {listStyle === 'none' && <SearchModal scrollPosition={scrollPosition} setIistStyle={setIistStyle} />}
             </div>
 
             <div style={{ display: listStyle }}>
@@ -79,7 +79,7 @@ const Nav = () => {
                         }}
                         className='nav-link'>
                         마이페이지
-                        {myHover == true && <MyModal />}
+                        {myHover === true && <MyModal />}
                       </Link>
                     </>
                   ) : (

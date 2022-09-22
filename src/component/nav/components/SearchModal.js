@@ -55,7 +55,7 @@ const SearchModal = ({ scrollPosition, setIistStyle }) => {
         <S.Recommend>
           <div className='recommend-container'>
             <div className='title'>추천 검색어</div>
-            {recommendArr.length != 0 &&
+            {recommendArr.length !== 0 &&
               recommendArr.map((recommend) => {
                 return (
                   <Link to='/login' onClick={cancleSearch}>
