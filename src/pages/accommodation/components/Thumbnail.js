@@ -1,4 +1,4 @@
-import { handleRating } from './functions';
+import { handleRating, handleEvaluate } from './functions';
 import styled from 'styled-components';
 
 const ThumbList = styled.li`
@@ -96,7 +96,7 @@ const Thumbnail = ({ name, promotion, rating, score, review, region, remain, pri
             <h4 className='name'>{name}</h4>
             <p className='score'>
               <span>{score}&nbsp;</span>
-              <span>추천해요&nbsp;</span>
+              <span>{handleEvaluate(score)}&nbsp;</span>
               <span>({review})</span>
             </p>
             <p className='location'>{region}</p>

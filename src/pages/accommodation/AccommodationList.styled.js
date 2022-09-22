@@ -202,7 +202,7 @@ export const Body = styled.div`
             width: 48px;
             height: 24px;
             margin-bottom: 5px;
-            background-image: url('images/accommodation/ico_room.png');
+            background: no-repeat url('/images/accommodation/ico_room.png');
             background-size: 192px;
             overflow: hidden;
           }

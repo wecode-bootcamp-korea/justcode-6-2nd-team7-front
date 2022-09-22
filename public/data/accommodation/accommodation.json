@@ -47,7 +47,7 @@
         "rating": "관광",
         "name": "H 에비뉴 호텔 역삼점",
         "img": "https://images.unsplash.com/photo-1455587734955-081b22074882?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80",
-        "score": 8.0,
+        "score": "8.0",
         "review": 4,
         "region": "강남구",
         "lat": 37.502482,

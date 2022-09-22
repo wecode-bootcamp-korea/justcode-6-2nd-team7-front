@@ -28,3 +28,13 @@ export const handleRating = (rating) => {
   }
   return boolean;
 };
+
+export const handleEvaluate = (score) => {
+  if (Number(score) >= 9.6) {
+    return '최고에요';
+  } else if (8.9 < Number(score) < 9.6) {
+    return '추천해요';
+  } else {
+    return '만족해요';
+  }
+};
