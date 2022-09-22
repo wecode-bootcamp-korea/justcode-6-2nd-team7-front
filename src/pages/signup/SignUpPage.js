@@ -5,7 +5,7 @@ function SignUpPage() {
   return (
     <S.SignUpContainer>
       <div className='signup-img'>
-        <img src='/images/logoBlue.svg' alt='logo' />
+        <img src='./images/logoBlue.svg' alt='logo' />
       </div>
       <form>
         <p className='signup'>회원가입</p>
@@ -15,11 +15,11 @@ function SignUpPage() {
         </div>
         <div className='input-container'>
           <p>비밀번호</p>
-          <input type='password' placeholder='비밀번호를 입력해주세요.' />
+          <input placeholder='비밀번호를 입력해주세요.' />
         </div>
         <div className='input-container'>
           <p>비밀번호 확인</p>
-          <input type='password' placeholder='비밀번호를 입력해주세요.' />
+          <input placeholder='비밀번호를 입력해주세요.' />
         </div>
         <div className='input-container'>
           <p>닉네임</p>
