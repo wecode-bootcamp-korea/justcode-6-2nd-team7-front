@@ -31,49 +31,49 @@ const MainLink = () => {
       <ul className='link-list'>
         <li>
           <Link to='/accommodation/'>
-            <img src='images/main/icon/motel.png' />
+            <img alt='motel' src='images/main/icon/motel.png' />
             모텔
           </Link>
         </li>
         <li>
           <Link to='/accommodation/'>
-            <img src='images/main/icon/hotel.png' />
+            <img alt='hotel' src='images/main/icon/hotel.png' />
             호텔•리조트
           </Link>
         </li>
         <li>
           <Link to='/accommodation/'>
-            <img src='images/main/icon/pension.png' />
+            <img alt='pension' src='images/main/icon/pension.png' />
             펜션
           </Link>
         </li>
         <li>
           <Link to='/accommodation/'>
-            <img src='images/main/icon/ghestHouse.png' />
+            <img alt='ghestHouse' src='images/main/icon/ghestHouse.png' />
             게스트하우스
           </Link>
         </li>
         <li>
           <Link to='/accommodation/'>
-            <img src='images/main/icon/camping.png' />
+            <img alt='camping' src='images/main/icon/camping.png' />
             캠핑•글램핑
           </Link>
         </li>
         <li>
           <Link to='/accommodation/'>
-            <img src='images/main/icon/hanok.png' />
+            <img alt='hanok' src='images/main/icon/hanok.png' />
             한옥
           </Link>
         </li>
         <li>
           <Link to='/my'>
-            <img src='images/main/icon/my.png' />
+            <img alt='my' src='images/main/icon/my.png' />
             내주변
           </Link>
         </li>
         <li>
           <Link to=''>
-            <img src='/images/main/icon/sale.png' />
+            <img alt='sale' src='/images/main/icon/sale.png' />
             페이백
           </Link>
         </li>
