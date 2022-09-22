@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as S from './SignUp.Styled';
 
 function SignUp() {
   const [checkList, setCheckList] = useState([]);
   const [activate, setActivate] = useState('button');
+
+  const navigate = useNavigate();
 
   // 체크박스 전체선택시 모두선택 체크박스 활성화시키기
   const checkAll = (e) => {
@@ -30,6 +33,14 @@ function SignUp() {
       setActivate('button');
     }
   }, [checkList]);
+
+  // 버튼활성화됐을때 다음페이지 이동
+  const handleNext = (e) => {
+    e.preventDefault();
+    if (activate === 'activate') {
+      navigate('/signup-check');
+    }
+  };
 
   return (
     <S.SignUpForm>
@@ -105,7 +116,9 @@ function SignUp() {
         </p>
       </div>
       <div className='next-button'>
-        <button className={activate}>다음</button>
+        <button className={activate} onClick={handleNext}>
+          다음
+        </button>
       </div>
     </S.SignUpForm>
   );
