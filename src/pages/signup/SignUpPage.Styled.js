@@ -4,12 +4,12 @@ export const SignUpContainer = styled.div`
   width: 336px;
   height: 550px;
   margin: auto;
-  margin-top: 8%;
+  margin-top: 100px;
 
   .signup-img {
-    width: 100%;
     display: flex;
     justify-content: center;
+    width: 100%;
 
     img {
       width: 100px;
@@ -19,22 +19,24 @@ export const SignUpContainer = styled.div`
 
   form {
     .signup {
+      margin-bottom: 5%;
       text-align: center;
       font-size: 18px;
       font-weight: bold;
-      margin-bottom: 5%;
     }
 
     .input-container {
-      margin-left: 3%;
       display: flex;
       flex-direction: column;
+      margin-left: 3%;
+
       p {
+        margin-bottom: 3%;
+        color: rgba(0, 0, 0, 0.56);
         font-size: 16px;
         font-weight: bold;
-        color: rgba(0, 0, 0, 0.56);
-        margin-bottom: 3%;
       }
+
       input {
         width: 90%;
         height: 40px;
@@ -44,26 +46,28 @@ export const SignUpContainer = styled.div`
         border-radius: 6px;
         font-size: 18px;
       }
+
       .nickname {
         width: 60%;
         margin-right: 3%;
       }
+
       .nickname-btn {
         width: 27%;
         height: 43px;
         border-radius: 6px;
         border: none;
         background: #ebebeb;
+        color: rgba(0, 0, 0, 0.56);
         font-size: 14px;
         font-weight: bold;
-        color: rgba(0, 0, 0, 0.56);
       }
     }
 
     button {
-      margin-left: 3%;
       width: 95%;
       height: 50px;
+      margin-left: 3%;
       border: none;
       border-radius: 6px;
       color: white;
