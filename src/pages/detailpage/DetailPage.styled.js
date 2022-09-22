@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 export const DetailExplanation = styled.div` 
     width:1024px;
-    height:447px;
     margin: 0 auto;
 
     .item-wrapper{
@@ -110,5 +109,6 @@ export const MenuBar = styled.div`
 `;
 
 export const Context = styled.div`
-    width : 100%
+    width : 100%;
+  
 `;

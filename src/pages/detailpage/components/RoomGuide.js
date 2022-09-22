@@ -7,6 +7,8 @@ const RoomGuide = () => {
             {/* 달력기능구현 */}
         </div>
         <Room/>
+        <Room/>
+        <Room/>
         </>
     )
 }
