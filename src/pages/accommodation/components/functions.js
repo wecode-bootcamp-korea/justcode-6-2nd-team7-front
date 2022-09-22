@@ -1,32 +1,24 @@
 export const handleTitle = (type) => {
-  let title;
   switch (type) {
     case 'popular':
-      title = '인기추천';
-      break;
+      return '인기추천';
     case 'gangnam':
-      title = '강남구';
-      break;
+      return '강남구';
     default:
-      title = '';
-      break;
+      return '';
   }
-  return title;
 };
 
 export const handleRating = (rating) => {
-  let boolean;
   switch (rating) {
     case '5성급':
     case '특1급':
     case '특급':
     case '4성급':
-      boolean = true;
-      break;
+      return true;
     default:
-      boolean = false;
+      return false;
   }
-  return boolean;
 };
 
 export const handleEvaluate = (score) => {
