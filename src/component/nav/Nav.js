@@ -25,6 +25,8 @@ const Nav = ({ setSearchInput }) => {
     listStyle === 'block' ? setIistStyle('none') : setIistStyle('block');
   };
 
+  const handleInput = (e) => {};
+
   return (
     <S.NavStyle>
       <div className={scrollPosition < 2 ? 'nav-origin' : 'nav-change'}>
@@ -46,6 +48,9 @@ const Nav = ({ setSearchInput }) => {
                 onClick={seacrhClick}
               />
               {listStyle === 'none' && <SearchModal scrollPosition={scrollPosition} setIistStyle={setIistStyle} />}
+              {listStyle === 'none' && (
+                <input className='search-input' placeholder='지역, 숙소명, 숙소타입' onChange={handleInput} />
+              )}
             </div>
 
             <div style={{ display: listStyle }}>

@@ -11,7 +11,7 @@ const SearchContainer = styled.div`
   font-size: 38px;
 `;
 
-const Search = ({ searchInput }) => {
+const Search = () => {
   return <SearchContainer>{/* <header>{`'${searchInput}'`} </header> */}</SearchContainer>;
 };
 
