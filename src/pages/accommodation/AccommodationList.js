@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import SideFilter from './components/SideFilter';
@@ -16,6 +17,18 @@ const AccommodationList = (props) => {
   const [seletedCity, setSelectedCity] = useState('서울');
   const [seletedRegion, setSelectedRegion] = useState('강남/역삼/삼성/신사/청담');
   const [showMenu, setShowMenu] = useState(false);
+  const [list, setList] = useState();
+  const [acmType, setAcmType] = useState();
+
+  useEffect(() => {
+    axios
+      .get('/data/accommodation/accommodation.json')
+      .then((res) => {
+        setList(res.data.accommodation);
+        setAcmType(Object.keys(res.data.accommodation));
+      })
+      .catch((err) => console.log('ERROR', err));
+  }, []);
 
   const handleSelected = (e) => {
     const text = e.target.textContent;
@@ -91,10 +104,10 @@ const AccommodationList = (props) => {
         <SideFilter />
         <main>
           <TopFilter />
-          <ul className='thumbnail-container mt32'>
-            <ThumbnailList />
-            <ThumbnailList />
-          </ul>
+          {acmType &&
+            acmType.map((el, i) => {
+              return <ThumbnailList key={el} list={list[el]} type={el} />;
+            })}
         </main>
       </S.Body>
     </>
