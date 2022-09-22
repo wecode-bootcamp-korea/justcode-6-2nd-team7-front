@@ -5,9 +5,9 @@ import SideFilter from './components/SideFilter';
 import TopFilter from './components/TopFilter';
 import ThumbnailList from './components/ThumbnailList';
 import { region } from './components/region';
-import * as S from './List.styled';
+import * as S from './AccommodationList.styled';
 
-const List = (props) => {
+const AccommodationList = (props) => {
   const [city, setCity] = useState(
     region.map((el, i) => {
       return i === 0 ? { ...el, show: true } : { ...el, show: false };
@@ -101,4 +101,4 @@ const List = (props) => {
   );
 };
 
-export default List;
+export default AccommodationList;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import List from './pages/list/List';
+import AccommodationList from './pages/accommodation/AccommodationList';
 import { ThemeProvider } from 'styled-components';
 import Login from './pages/login/Login';
 import PhoneCheck from './pages/signup/PhoneCheck';
@@ -21,7 +21,7 @@ const Router = (props) => {
           <Route path='/signup' element={<SignUp />} />
           <Route path='/signup-check' element={<PhoneCheck />} />
           <Route path='/signup-page' element={<SignUpPage />} />
-          <Route path='/category' element={<List />} />
+          <Route path='/accommodation/:type' element={<AccommodationList />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
