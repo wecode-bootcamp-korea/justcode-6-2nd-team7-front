@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const MainLinkContainer = styled.div`
+const MainLinkContainer = styled.section`
   width: 924px;
   margin: 32px auto;
 

@@ -8,47 +8,48 @@ export const NewsContainer = styled.section`
 
   .container {
     color: ${({ theme }) => theme.colors.bkText};
+
     span {
       font-size: 24px;
       font-weight: 700;
     }
-  }
 
-  .news-box {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-
-    .news {
+    .news-box {
       display: flex;
-      width: 470px;
-      border: 1px solid #00000014;
-      background-color: #ffff;
-      &:hover {
-        cursor: pointer;
-      }
+      justify-content: space-between;
+      margin-top: 30px;
 
-      .img {
-        width: 162px;
-        height: 162px;
-      }
-
-      .news-text {
-        margin: auto 20px;
-        font-size: 16px;
-        div {
-          margin: 10px auto;
+      .news {
+        display: flex;
+        width: 470px;
+        border: 1px solid #00000014;
+        background-color: #ffff;
+        &:hover {
+          cursor: pointer;
         }
 
-        .news-title {
-          font-size: 20px;
-          font-weight: 500;
+        .img {
+          width: 162px;
+          height: 162px;
         }
 
-        .news-content {
-          color: ${({ theme }) => theme.colors.text};
-          font-weight: 300;
-          line-height: 25px;
+        .news-text {
+          margin: auto 20px;
+          font-size: 16px;
+          div {
+            margin: 10px auto;
+          }
+
+          .news-title {
+            font-size: 20px;
+            font-weight: 500;
+          }
+
+          .news-content {
+            color: ${({ theme }) => theme.colors.text};
+            font-weight: 300;
+            line-height: 25px;
+          }
         }
       }
     }
