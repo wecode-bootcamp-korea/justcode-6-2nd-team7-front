@@ -70,7 +70,7 @@ const Event = () => {
               </div>
             </div>
           </div>
-          <div className='event'>
+          <div className='news'>
             <img className='img' alt='business' src='images/main/news/font.png' />
             <div className='news-text'>
               <div className='news-title'>저기어때 서체출시</div>
