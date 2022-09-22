@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AccommodationList from './pages/accommodation/AccommodationList';
 import { ThemeProvider } from 'styled-components';
 
 import Nav from './component/nav/Nav';
@@ -21,14 +22,16 @@ const Router = (props) => {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-      <Nav />
+        <Nav />
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/login' element={<Login />} />
+
           <Route path='/signup' element={<SignUp />} />
           <Route path='/signup-check' element={<PhoneCheck />} />
           <Route path='/signup-page' element={<SignUpPage />} />
           <Route path='/detailPage' element={<DetailPage />} />
+          <Route path='/accommodation/:type' element={<AccommodationList />} />
           <Route path='/mypage' element={<Points />} />
           <Route path='/coupons' element={<Coupons />} />
           <Route path='/reservations' element={<Reservation />} />

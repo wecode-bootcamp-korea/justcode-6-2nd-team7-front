@@ -16,9 +16,11 @@ const FooterStyle = styled.footer`
   .footer-container {
     padding: 60px 30px;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
+
     .footer-box {
       width: 1024px;
       margin: auto;
+
       div {
         margin: 8px 0px;
       }
