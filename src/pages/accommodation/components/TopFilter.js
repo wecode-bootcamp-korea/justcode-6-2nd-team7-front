@@ -57,7 +57,7 @@ const Main = styled.div`
   }
 `;
 
-const TopFilter = (props) => {
+const TopFilter = ({ setShowModal }) => {
   return (
     <Main>
       <div className='filter-container'>
@@ -66,7 +66,7 @@ const TopFilter = (props) => {
         <button>낮은 가격 순</button>
         <button>높은 가격 순</button>
       </div>
-      <div className='btn-container'>
+      <div className='btn-container' onClick={() => setShowModal((prev) => !prev)}>
         <button>
           <FontAwesomeIcon icon={faMap} size='sm' />
           <span>지도</span>
