@@ -15,6 +15,7 @@ import Points from './pages/mypage/components/Points';
 import Coupons from './pages/mypage/components/Coupons';
 import ReservationList from './pages/mypage/components/ReservationList';
 import My from './pages/mypage/components/My';
+import Search from './pages/search/Search';
 import Footer from './component/footer/Footer';
 
 import theme from './styles/theme';
@@ -40,6 +41,8 @@ const Router = (props) => {
           <Route path='/coupons' element={<Coupons />} />
           <Route path='/reservation-list' element={<ReservationList />} />
           <Route path='/my' element={<My />} />
+
+          <Route path='/search' element={<Search />} />
         </Routes>
         <Footer />
       </BrowserRouter>
