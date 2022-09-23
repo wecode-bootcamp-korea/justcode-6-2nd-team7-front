@@ -4,34 +4,59 @@ const MainContainer = () => {
   return (
     <>
       <MainContainerStyle>
-        <div className='user-info'>
-          <div>예약자 정보</div>
+        <div className='user-info container'>
+          <h3 className='title'>예약자 정보</h3>
+
           <div>
-            <label for='name'>이름</label>이름
-            <input id='name' type='text' />
-            <label for='phone'>휴대폰 번호</label>
-            <div>개인정보 보호를 위해 안심번호로 숙소에 전송됩니다.</div>
-            <input id='phone' type='tel' />
+            <div>
+              <label htmlFor='name'>예약자 이름</label>
+              <input className='input-info' id='name' type='text' placeholder='체크인 시 필요한 정보입니다.' />
+              <div className='input-valid small-text'>
+                한글, 영문, 숫자만 입력 가능.(문자 사이 공백은 1칸만 입력 가능)
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor='phone'>휴대폰 번호</label>
+              <div className='small-text'>개인정보 보호를 위해 안심번호로 숙소에 전송됩니다.</div>
+              <input className='input-info' id='phone' type='tel' placeholder='체크인 시 필요한 정보입니다.' />
+              <div className='input-valid small-text'>휴대폰 번호를 확인해주세요.</div>
+            </div>
           </div>
         </div>
 
-        <div className='sale'>
-          <div>할인 수단 선택</div>
-          <div>구매총액</div>
-          <button>사용 가능 쿠폰 0장</button>
-          <div>40,000원</div>
-          <div>일반쿠폰</div>
-          <div>-</div>
-          <div>중복쿠폰</div>
-          <div>-</div>
+        <div className='sale container'>
+          <h3 className='title'>할인 수단 선택</h3>
 
-          <button>포인트 사용 0P</button>
-          <input placeholder='0' type='number' />
-          <span>P</span>
+          <p>
+            <div>구매총액</div>
+            <div className='totalPrice'>40,000원</div>
+          </p>
+          <button className='button-line'>사용 가능 쿠폰 0장</button>
+          <p>
+            <div className='small-text'>일반쿠폰</div>
+            <div>-</div>
+          </p>
+          <p>
+            <div className='small-text'>중복쿠폰</div>
+            <div>-</div>
+          </p>
+          <p className='button-line'>
+            <button>포인트 사용 0P</button>
+            <div>
+              <input className='input-point' placeholder='0' type='text' dir='rtl' />
+              <span>P</span>
+            </div>
+          </p>
+          <p className='button-line'>
+            <button>상품권 사용</button>
+            <div>-</div>
+          </p>
         </div>
 
-        <div className='payment'>
-          <div>결제수단 선택</div>
+        <div className='payment container'>
+          <h3 className='title'>결제수단 선택</h3>
+
           <select>
             <option>카카오페이</option>
             <option>토스</option>
@@ -46,7 +71,7 @@ const MainContainer = () => {
           <div className='check-container'>
             <label>
               <input type='checkbox' />
-              <span>전체동의</span>
+              <span className='check-title title'>전체동의</span>
             </label>
             <div>
               <input type='checkbox' name='check1' />
