@@ -79,5 +79,11 @@ export const SignUpContainer = styled.div`
     .active {
       background-color: ${({ theme }) => theme.colors.mainColor};
     }
+
+    .signup-error {
+      margin-top: 10px;
+      text-align: center;
+      color: #ff0000;
+    }
   }
 `;
