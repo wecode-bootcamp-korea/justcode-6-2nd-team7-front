@@ -99,6 +99,12 @@ export const InputContainer = styled.div`
     font-size: 15px;
   }
 
+  .error-message {
+    margin-top: 5px;
+    color: red;
+    font-size: 15px;
+  }
+
   button {
     height: 50px;
     margin-top: 5px;

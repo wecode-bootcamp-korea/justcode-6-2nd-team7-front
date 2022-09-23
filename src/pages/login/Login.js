@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import KaKaoLogin from './KaKaoLogin';
@@ -10,6 +10,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailCheck, setEmailCheck] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -31,14 +32,30 @@ function Login() {
     window.location.href = KAKAO_AUTH_URL;
   };
 
+  // 에러문구 2초뒤 사라짐
+  const Error = useCallback(() => {
+    setErrorMessage('아이디,비밀번호가 일치하지 않습니다.');
+    let timer = setTimeout(() => {
+      setErrorMessage('');
+    }, 2000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  // 로그인 통신 토큰 localstorage에 저장
   const handleLogin = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8000/login', { email, password }).then((res) => {
-      if (res.data.message === 'LOGIN_SUCCESS!') {
-        localStorage.setItem('token', res.data.token);
-        navigate('/');
-      }
-    });
+    axios
+      .post('http://localhost:8000/login', { email, password })
+      .then((res) => {
+        if (res.data.message === 'LOGIN_SUCCESS!') {
+          localStorage.setItem('token', res.data.token);
+          navigate('/');
+        }
+      })
+      .catch((err) => Error());
   };
 
   return (
@@ -67,6 +84,7 @@ function Login() {
           </S.PasswordInput>
 
           <button onClick={handleLogin}>로그인</button>
+          <p className='error-message'>{errorMessage}</p>
         </S.InputContainer>
         <S.LoginFooter>
           <Link>비밀번호 재설정</Link>
