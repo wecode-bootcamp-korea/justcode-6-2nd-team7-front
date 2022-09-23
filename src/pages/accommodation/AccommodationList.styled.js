@@ -126,6 +126,12 @@ export const Body = styled.div`
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 5px;
 
+    section {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
     .date-container {
       border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     }
@@ -199,8 +205,23 @@ export const Body = styled.div`
     .price-container {
       margin-bottom: 50px;
 
-      input {
-        width: 100%;
+      h5 > span {
+        margin-left: 15px;
+        font-size: 14px;
+        font-weight: 400;
+        color: ${({ theme }) => theme.colors.mainColor};
+      }
+
+      .slider-box {
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      .price-range {
+        display: flex;
+        justify-content: space-between;
+        color: ${({ theme }) => theme.colors.text};
+        font-size: 14px;
       }
     }
 

@@ -115,9 +115,15 @@ const SideFilter = ({ param }) => {
         )}
         {handleShowRange(param) && (
           <section className='price-container mt32 mb18'>
-            <h5 className='title mt32 mb18'>가격</h5>
-            <div style={{ width: '90%', margin: '0 auto' }}>
+            <h5 className='title mt32 mb18'>
+              가격<span>3만원이상</span>
+            </h5>
+            <div className='slider-box'>
               <CustomSlider value={value} handleChange={handleChange} />
+            </div>
+            <div className='price-range'>
+              <p>1만원</p>
+              <p>30만원</p>
             </div>
           </section>
         )}
