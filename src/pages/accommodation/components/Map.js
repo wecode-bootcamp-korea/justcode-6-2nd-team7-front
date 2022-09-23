@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
+import { returnHtml } from '../data/functions';
 
 const { kakao } = window;
 
@@ -51,7 +52,7 @@ const Map = ({ setShowModal, list }) => {
       Object.keys(list)
         .map((region) => {
           return list[region].map((el) => {
-            return { title: el.name, lat: el.lat, lng: el.lng };
+            return { name: el.name, lat: el.lat, lng: el.lng, saleprice: el.saleprice, img: el.img };
           });
         })
         .flat();
@@ -62,14 +63,36 @@ const Map = ({ setShowModal, list }) => {
       level: 6,
     };
     const kakaoMap = new kakao.maps.Map(container, options);
+    const zoomControl = new kakao.maps.ZoomControl();
+    kakaoMap.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+    const makeOverListener = (map, marker, infowindow) => {
+      return () => {
+        infowindow.open(kakaoMap, marker);
+      };
+    };
+
+    const makeOutListener = (infowindow) => {
+      return () => {
+        infowindow.close();
+      };
+    };
 
     newlist &&
       newlist.forEach((el) => {
-        new kakao.maps.Marker({
-          map: kakaoMap,
+        const marker = new kakao.maps.Marker({
           position: new kakao.maps.LatLng(el.lat, el.lng),
-          title: el.name,
         });
+        marker.setMap(kakaoMap);
+
+        const content = returnHtml(el.name, el.img, el.saleprice);
+        const infowindow = new kakao.maps.InfoWindow({
+          position: new kakao.maps.LatLng(el.lat, el.lng),
+          content: content,
+        });
+
+        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(kakaoMap, marker, infowindow));
+        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
       });
   }, [list]);
 

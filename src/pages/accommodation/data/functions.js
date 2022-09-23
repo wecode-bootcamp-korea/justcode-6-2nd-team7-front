@@ -118,3 +118,10 @@ export const handleShowBedtype = (param) => {
       return false;
   }
 };
+
+export const returnHtml = (name, img, price) => {
+  return `<div style="width: 200px; height: auto; display: flex;">
+  <img src="${img}" alt="${name}" style="width: 30%" />
+  <div style="padding: 5px; font-size: 0.8em"><p style="font-weight: 700;">${name}</p><p style="font-weight: 400;">${price}</p></div>
+  </div>`;
+};
