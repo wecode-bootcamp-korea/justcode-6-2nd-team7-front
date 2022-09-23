@@ -40,9 +40,12 @@ function Timer({ isActive, phoneNum }) {
         phoneNumber: phoneNum,
         verifyCode: num,
       })
-      .then((res) =>
-        res.data.message === 'SMS_VERIFY_SUCCESS' ? navigate('/signup-page') : setErrorMessage('일치하지 않습니다.'),
-      );
+      .then((res) => {
+        if (res.data.message === 'SMS_VERIFY_SUCCESS') {
+          navigate('/signup-page');
+        }
+      })
+      .catch((err) => setErrorMessage('일치하지 않습니다.'));
   };
 
   return (

@@ -77,7 +77,7 @@ function SignUpPage() {
       };
       console.log(body);
       axios.post('http://localhost:8000/signup', body).then((res) => {
-        if (res.data.message) {
+        if (res.data.message === 'SIGNUP_SUCCESS!') {
           navigate('/login');
         } else {
           setErrorMessage('회원가입에 실패 하였습니다.');
