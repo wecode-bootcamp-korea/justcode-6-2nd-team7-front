@@ -53,13 +53,13 @@ export const Header = styled.header`
         border-radius: 5px;
         color: ${({ theme }) => theme.colors.bkText};
         font-size: 15px;
-        box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 6px #32325d1c, 0 1px 3px #00000014;
         z-index: 1;
 
         .city-list {
           width: 167px;
           padding: 25px 10px 25px 30px;
-          border-right: 1px solid rgba(0, 0, 0, 0.08);
+          border-right: 1px solid #00000014;
 
           div {
             display: flex;
@@ -123,11 +123,17 @@ export const Body = styled.div`
     width: 30%;
     margin-left: 10px;
     padding: 25px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid #00000014;
     border-radius: 5px;
 
+    section {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
     .date-container {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid #00000014;
     }
 
     .btn-container {
@@ -163,14 +169,24 @@ export const Body = styled.div`
       }
     }
 
+    .no-title {
+      li {
+        &:last-child {
+          margin-bottom: 50px;
+        }
+      }
+    }
+
     .accommodation-type {
       font-size: 16px;
+      margin-bottom: 50px;
     }
 
     .count-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 50px;
 
       .count-box {
         display: flex;
@@ -186,8 +202,31 @@ export const Body = styled.div`
       }
     }
 
+    .price-container {
+      margin-bottom: 50px;
+
+      h5 > span {
+        margin-left: 15px;
+        font-size: 14px;
+        font-weight: 400;
+        color: ${({ theme }) => theme.colors.mainColor};
+      }
+
+      .slider-box {
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      .price-range {
+        display: flex;
+        justify-content: space-between;
+        color: ${({ theme }) => theme.colors.text};
+        font-size: 14px;
+      }
+    }
+
     .bedtype-container {
-      font-size: 14px;
+      margin-bottom: 50px;
 
       ul {
         display: flex;
@@ -197,6 +236,7 @@ export const Body = styled.div`
           display: flex;
           flex-direction: column;
           align-items: center;
+          font-size: 14px;
 
           .icon {
             width: 48px;
