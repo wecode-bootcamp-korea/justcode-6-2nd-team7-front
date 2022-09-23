@@ -6,6 +6,7 @@ import Date from './Date';
 import CheckItem from './CheckItem';
 import OptionList from './OptionList';
 import CustomSlider from './CustomSilder';
+import Calendar from './Calendar';
 import { options } from './options';
 import { handleSelectFilter, handleShowRange, handleShowCount, handleShowBedtype } from './functions';
 import styled from 'styled-components';
@@ -56,6 +57,7 @@ const SideFilter = ({ param }) => {
       <section className='date-container'>
         <h3 className='title-bk mb12'>날짜</h3>
         <Date />
+        <Calendar />
       </section>
       <div className='mt32'>
         <h3 className='title-bk mb12'>상세조건</h3>

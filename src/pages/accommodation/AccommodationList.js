@@ -38,7 +38,7 @@ const AccommodationList = (props) => {
       })
       .catch((err) => console.log('ERROR', err));
     // axios
-    //   .get('http://localhost:8000/accommodation/hotel')
+    //   .get(`http://localhost:8000/accommodation/${param}`)
     //   .then((res) => {
     //     setList(res.data.accommodation);
     //     setAcmType(Object.keys(res.data.accommodation));
