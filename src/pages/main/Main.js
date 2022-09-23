@@ -1,18 +1,21 @@
-import { MainStyle } from './Main.styled';
 import MainLink from './components/MainLink';
+import News from './components/News';
+import AppDown from './components/AppDown';
+import Event from './components/Event';
+
+import { MainStyle } from './Main.styled';
 
 const Main = () => {
   return (
     <>
       <MainStyle>
         <div className='main-img-container'>
-          <img
-            alt='대표이미지'
-            className='main-img'
-            src='https://cdn.pixabay.com/photo/2021/11/24/11/01/autumn-6820879__340.jpg'
-          />
+          <img alt='대표이미지' className='main-img' src='images/main/main.png' />
         </div>
         <MainLink />
+        <News />
+        <AppDown />
+        <Event />
       </MainStyle>
     </>
   );

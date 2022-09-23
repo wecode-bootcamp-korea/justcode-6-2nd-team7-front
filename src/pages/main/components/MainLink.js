@@ -1,8 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const MainLinkContainer = styled.div`
+const MainLinkContainer = styled.section`
   width: 924px;
   margin: 32px auto;
 
@@ -17,6 +16,10 @@ const MainLinkContainer = styled.div`
       text-align: center;
       color: ${({ theme }) => theme.colors.text};
       font-size: 18px;
+      &:hover {
+        cursor: pointer;
+      }
+
       img {
         width: 60px;
         margin: 0px auto 15px;
@@ -26,57 +29,62 @@ const MainLinkContainer = styled.div`
 `;
 
 const MainLink = () => {
+  const accommodationArr = [
+    {
+      id: 1,
+      name: '모텔',
+      eng: 'motel',
+    },
+    {
+      id: 2,
+      name: '호텔·리조트',
+      eng: 'hotel',
+    },
+    {
+      id: 3,
+      name: '펜션',
+      eng: 'pension',
+    },
+    {
+      id: 4,
+      name: '게스트하우스',
+      eng: 'ghestHouse',
+    },
+    {
+      id: 5,
+      name: '캠핑·글램핑',
+      eng: 'camping',
+    },
+    {
+      id: 6,
+      name: '한옥',
+      eng: 'koreanHouse',
+    },
+    {
+      id: 7,
+      name: '내주변',
+      eng: 'mySpace',
+    },
+    {
+      id: 8,
+      name: '페이백',
+      eng: 'payBack',
+    },
+  ];
+
   return (
     <MainLinkContainer>
       <ul className='link-list'>
-        <li>
-          <Link to='/accommodation/motel'>
-            <img src='/images/main/motel.png' />
-            모텔
-          </Link>
-        </li>
-        <li>
-          <Link to='/accommodation/hotel'>
-            <img src='/images/main/hotel.png' />
-            호텔•리조트
-          </Link>
-        </li>
-        <li>
-          <Link to='/accommodation/pension'>
-            <img src='/images/main/pension.png' />
-            펜션
-          </Link>
-        </li>
-        <li>
-          <Link to='/accommodation/ghesthouse'>
-            <img src='/images/main/ghestHouse.png' />
-            게스트하우스
-          </Link>
-        </li>
-        <li>
-          <Link to='/accommodation/camping'>
-            <img src='/images/main/camping.png' />
-            캠핑•글램핑
-          </Link>
-        </li>
-        <li>
-          <Link to='/accommodation/hanok'>
-            <img src='/images/main/hanok.png' />
-            한옥
-          </Link>
-        </li>
-        <li>
-          <Link to='/accommodation/nearby'>
-            <img src='/images/main/my.png' />
-            내주변
-          </Link>
-        </li>
-        <li>
-          <Link to=''>
-            <img src='/images/main/sale.png' />
-            페이백
-          </Link>
-        </li>
+        {accommodationArr.map((accommodation) => {
+          return (
+            <li key={accommodation.id}>
+              <Link to={`${accommodation.url}`}>
+                <img alt={accommodation.eng} src={`images/main/icon/${accommodation.eng}.png`} />
+                {accommodation.name}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </MainLinkContainer>
   );

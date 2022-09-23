@@ -73,7 +73,7 @@ export const SignUpForm = styled.div`
       border-radius: 6px;
       border: none;
       background-color: #01aef0;
-      color: white;
+      color: #fff;
       font-size: 16px;
       cursor: pointer;
     }
