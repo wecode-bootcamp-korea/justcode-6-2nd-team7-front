@@ -13,7 +13,7 @@ const MySlider = styled(Slider)`
     height: 1.6em;
     background-color: #009fef;
     border: 1px solid #fff;
-    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 6px #32325d1c, 0 1px 3px #00000014;
 
     &::after {
       content: '';

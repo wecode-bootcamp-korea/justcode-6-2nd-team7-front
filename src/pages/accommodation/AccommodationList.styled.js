@@ -53,13 +53,13 @@ export const Header = styled.header`
         border-radius: 5px;
         color: ${({ theme }) => theme.colors.bkText};
         font-size: 15px;
-        box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 6px #32325d1c, 0 1px 3px #00000014;
         z-index: 1;
 
         .city-list {
           width: 167px;
           padding: 25px 10px 25px 30px;
-          border-right: 1px solid rgba(0, 0, 0, 0.08);
+          border-right: 1px solid #00000014;
 
           div {
             display: flex;
@@ -123,7 +123,7 @@ export const Body = styled.div`
     width: 30%;
     margin-left: 10px;
     padding: 25px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid #00000014;
     border-radius: 5px;
 
     section {
@@ -133,7 +133,7 @@ export const Body = styled.div`
     }
 
     .date-container {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid #00000014;
     }
 
     .btn-container {

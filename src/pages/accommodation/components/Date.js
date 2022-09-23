@@ -7,9 +7,9 @@ const Main = styled.div`
   display: flex;
   margin-bottom: 32px;
   padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid #00000014;
   border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: #00000005;
   color: ${({ theme }) => theme.colors.text};
   font-size: 18px;
   font-weight: 400;
