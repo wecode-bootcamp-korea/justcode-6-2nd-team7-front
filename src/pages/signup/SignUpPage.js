@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as S from './SignUpPage.Styled';
 import { useRecoilValue } from 'recoil';
@@ -11,6 +11,7 @@ function SignUpPage() {
   const [passwordCheck, setPasswordCheck] = useState('');
   const [userNic, setUserNic] = useState('');
 
+  // recoil사용
   const phoneNum = useRecoilValue(phoneCheckState);
 
   const [isValid, setIsValid] = useState(false);
@@ -65,6 +66,7 @@ function SignUpPage() {
     setUserNic(e.target.value);
   };
 
+  // 회원가입 통신
   const handleSuccess = (e) => {
     e.preventDefault();
 
