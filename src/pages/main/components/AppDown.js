@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const AppDownContainer = styled.section`
   width: 962px;
   height: 320px;
-  margin: auto;
+  margin: 70px auto;
   color: ${({ theme }) => theme.colors.bkText};
 
   .bg {
