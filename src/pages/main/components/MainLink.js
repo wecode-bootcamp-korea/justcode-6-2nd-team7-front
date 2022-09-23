@@ -30,43 +30,43 @@ const MainLink = () => {
     <MainLinkContainer>
       <ul className='link-list'>
         <li>
-          <Link to='/accommodation/'>
+          <Link to='/accommodation/motel'>
             <img src='/images/main/motel.png' />
             모텔
           </Link>
         </li>
         <li>
-          <Link to='/accommodation/'>
+          <Link to='/accommodation/hotel'>
             <img src='/images/main/hotel.png' />
             호텔•리조트
           </Link>
         </li>
         <li>
-          <Link to='/accommodation/'>
+          <Link to='/accommodation/pension'>
             <img src='/images/main/pension.png' />
             펜션
           </Link>
         </li>
         <li>
-          <Link to='/accommodation/'>
+          <Link to='/accommodation/ghesthouse'>
             <img src='/images/main/ghestHouse.png' />
             게스트하우스
           </Link>
         </li>
         <li>
-          <Link to='/accommodation/'>
+          <Link to='/accommodation/camping'>
             <img src='/images/main/camping.png' />
             캠핑•글램핑
           </Link>
         </li>
         <li>
-          <Link to='/accommodation/'>
+          <Link to='/accommodation/hanok'>
             <img src='/images/main/hanok.png' />
             한옥
           </Link>
         </li>
         <li>
-          <Link to='/my'>
+          <Link to='/accommodation/nearby'>
             <img src='/images/main/my.png' />
             내주변
           </Link>
