@@ -17,10 +17,11 @@ import My from './pages/mypage/components/My';
 import Footer from './component/footer/Footer';
 
 import theme from './styles/theme';
+import { browserWidth, reponsive } from './styles/responsive';
 
 const Router = (props) => {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} responsive={{ browserWidth, reponsive }}>
       <BrowserRouter>
         <Nav />
         <Routes>
