@@ -1,5 +1,5 @@
 import Thumbnail from './Thumbnail';
-import { handleTitle } from './functions';
+import { handleTitle } from '../data/functions';
 
 const ThumbnailList = ({ list, type }) => {
   return (

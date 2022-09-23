@@ -11,7 +11,7 @@ export const ThumbList = styled.li`
     position: relative;
     height: 280px;
     padding: 25px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+    background: linear-gradient(to bottom, #00000000, #000000b3);
     color: #fff;
 
     .promotion {
@@ -19,7 +19,7 @@ export const ThumbList = styled.li`
       left: 0;
       top: 25px;
       padding: 1px 10px 1px 15px;
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: #0000004d;
       font-size: 18px;
     }
 

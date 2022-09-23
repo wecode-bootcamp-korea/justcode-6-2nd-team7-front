@@ -1,10 +1,14 @@
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+
 import Date from './Date';
 import CheckItem from './CheckItem';
 import OptionList from './OptionList';
-import { options } from './options';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import CustomSlider from './CustomSilder';
+import Calendar from './Calendar';
+import { options } from '../data/options';
+import { handleSelectFilter, handleShowRange, handleShowCount, handleShowBedtype } from '../data/functions';
 import styled from 'styled-components';
 
 const Down = styled.span`
@@ -17,7 +21,7 @@ const Up = styled.span`
   opacity: ${(props) => (props.count === 10 ? 0.5 : 1)};
 `;
 
-const SideFilter = (props) => {
+const SideFilter = ({ param }) => {
   const [count, setCount] = useState(1);
   const [bedtype, setBedtype] = useState([
     { id: 1, title: '싱글', class: 'single', selected: false },
@@ -42,11 +46,18 @@ const SideFilter = (props) => {
     setBedtype(newBedtype);
   };
 
+  const [value, setValue] = useState([1, 30]);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <aside className='side-filter'>
       <section className='date-container'>
         <h3 className='title-bk mb12'>날짜</h3>
         <Date />
+        <Calendar />
       </section>
       <div className='mt32'>
         <h3 className='title-bk mb12'>상세조건</h3>
@@ -54,46 +65,72 @@ const SideFilter = (props) => {
           <button className='btn white'>초기화</button>
           <button className='btn blue'>적용</button>
         </div>
-        <section className='mt32'>
+        <section className='no-title mt32 mb18'>
           <ul>
-            <CheckItem text='예약 가능' />
-            <CheckItem text='프로모션' />
+            {options[handleSelectFilter(param)].availablePromotion &&
+              options[handleSelectFilter(param)].availablePromotion.map((el) => {
+                return <CheckItem text={el} key={el} />;
+              })}
           </ul>
         </section>
-        {options[1].typeList && <OptionList list={options[1].typeList} title={options[1].type} />}
-        <section className='count-container mt32 mb18'>
-          <h5 className='title'>인원</h5>
-          <div className='count-box'>
-            <Down count={count} className='down'>
-              <FontAwesomeIcon icon={faMinus} onClick={handleCount} />
-            </Down>
-            <span className='count'>{count}</span>
-            <Up count={count} className='up'>
-              <FontAwesomeIcon icon={faPlus} onClick={handleCount} />
-            </Up>
-          </div>
-        </section>
-        <section className='bedtype-container mt32 mb18'>
-          <h5 className='title mt32 mb18'>베드 타입</h5>
-          <ul>
-            {bedtype.map((type, i) => {
-              return type.selected ? (
-                <li key={type.id} index={i} onClick={handleSelectBedtype}>
-                  <div className={`icon ${type.class} selected`}></div>
-                  <p className='selected'>{type.title}</p>
-                </li>
-              ) : (
-                <li key={type.id} index={i} onClick={handleSelectBedtype}>
-                  <div className={`icon ${type.class}`}></div>
-                  <p>{type.title}</p>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-        {options[1].options.map((type, i) => {
-          return <OptionList key={i} list={type} />;
-        })}
+        {options[handleSelectFilter(param)].typeList && (
+          <OptionList
+            list={options[handleSelectFilter(param)].typeList}
+            title={options[handleSelectFilter(param)].type}
+          />
+        )}
+        {options[handleSelectFilter(param)].theme &&
+          options[handleSelectFilter(param)].theme.map((type, i) => <OptionList key={i} list={type} />)}
+        {handleShowCount(param) && (
+          <section className='count-container mt32 mb18'>
+            <h5 className='title'>인원</h5>
+            <div className='count-box'>
+              <Down count={count} className='down'>
+                <FontAwesomeIcon icon={faMinus} onClick={handleCount} />
+              </Down>
+              <span className='count'>{count}</span>
+              <Up count={count} className='up'>
+                <FontAwesomeIcon icon={faPlus} onClick={handleCount} />
+              </Up>
+            </div>
+          </section>
+        )}
+        {handleShowBedtype(param) && (
+          <section className='bedtype-container mt32 mb18'>
+            <h5 className='title mt32 mb18'>베드 타입</h5>
+            <ul>
+              {bedtype.map((type, i) => {
+                return type.selected ? (
+                  <li key={type.id} index={i} onClick={handleSelectBedtype}>
+                    <div className={`icon ${type.class} selected`}></div>
+                    <p className='selected'>{type.title}</p>
+                  </li>
+                ) : (
+                  <li key={type.id} index={i} onClick={handleSelectBedtype}>
+                    <div className={`icon ${type.class}`}></div>
+                    <p>{type.title}</p>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
+        {handleShowRange(param) && (
+          <section className='price-container mt32 mb18'>
+            <h5 className='title mt32 mb18'>
+              가격<span>3만원이상</span>
+            </h5>
+            <div className='slider-box'>
+              <CustomSlider value={value} handleChange={handleChange} />
+            </div>
+            <div className='price-range'>
+              <p>1만원</p>
+              <p>30만원</p>
+            </div>
+          </section>
+        )}
+        {options[handleSelectFilter(param)].options &&
+          options[handleSelectFilter(param)].options.map((type, i) => <OptionList key={i} list={type} />)}
       </div>
     </aside>
   );

@@ -12,7 +12,7 @@ const Main = styled.div`
   .filter-container {
     width: 100%;
     margin-right: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid #00000014;
     border-radius: 5px;
     overflow: hidden;
 
@@ -20,9 +20,9 @@ const Main = styled.div`
       width: 25%;
       height: 38px;
       border: none;
-      border-right: 1px solid rgba(0, 0, 0, 0.08);
+      border-right: 1px solid #00000014;
       border-radius: 0;
-      background-color: rgba(0, 0, 0, 0.02);
+      background-color: #00000005;
       color: ${({ theme }) => theme.colors.text};
       font-size: 16px;
       cursor: pointer;
@@ -36,7 +36,7 @@ const Main = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid #00000014;
     border-radius: 5px;
     overflow: hidden;
 
@@ -45,7 +45,7 @@ const Main = styled.div`
       height: 38px;
       border: none;
       border-radius: 0;
-      background-color: rgba(0, 0, 0, 0.02);
+      background-color: #00000005;
       color: ${({ theme }) => theme.colors.text};
       font-size: 16px;
       cursor: pointer;
@@ -57,7 +57,7 @@ const Main = styled.div`
   }
 `;
 
-const TopFilter = (props) => {
+const TopFilter = ({ setShowModal }) => {
   return (
     <Main>
       <div className='filter-container'>
@@ -66,7 +66,7 @@ const TopFilter = (props) => {
         <button>낮은 가격 순</button>
         <button>높은 가격 순</button>
       </div>
-      <div className='btn-container'>
+      <div className='btn-container' onClick={() => setShowModal((prev) => !prev)}>
         <button>
           <FontAwesomeIcon icon={faMap} size='sm' />
           <span>지도</span>
