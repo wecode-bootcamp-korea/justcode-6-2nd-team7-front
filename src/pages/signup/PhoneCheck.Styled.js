@@ -20,15 +20,9 @@ export const PhoneContainer = styled.div`
   }
 `;
 
-<<<<<<< HEAD
-  /* .phone-container {
-    height: 100px;
-    margin-left: 5px;
-=======
 export const PhoneBox = styled.div`
   height: 100px;
   margin-left: 5px;
->>>>>>> main
 
   p {
     margin-bottom: 3%;
@@ -39,11 +33,6 @@ export const PhoneBox = styled.div`
     position: relative;
     height: 50%;
 
-<<<<<<< HEAD
-    .phone-num {
-      position: relative;
-      height: 50%;
-=======
     input {
       height: 80%;
       width: 57%;
@@ -53,7 +42,6 @@ export const PhoneBox = styled.div`
       border-radius: 5px;
       font-size: 18px;
     }
->>>>>>> main
 
     .timer {
       position: absolute;
@@ -61,24 +49,6 @@ export const PhoneBox = styled.div`
       bottom: 10px;
     }
 
-<<<<<<< HEAD
-      .timer {
-        position: absolute;
-        left: 140px;
-        bottom: 10px;
-      }
-
-      .button {
-        width: 30%;
-        height: 83%;
-        margin-left: 15px;
-        background: #01aef0;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-=======
     button {
       width: 30%;
       height: 83%;
@@ -94,64 +64,6 @@ export const PhoneBox = styled.div`
     .disabled {
       background: #ccc;
       color: #fff;
-    }
->>>>>>> main
-
-    .phone-error {
-      color: red;
-      font-size: 14px;
-    }
-  } */
-`;
-
-export const PhoneBox = styled.div`
-  height: 100px;
-  margin-left: 5px;
-
-  p {
-    margin-bottom: 3%;
-    font-size: 16px;
-  }
-
-  .phone-num {
-    position: relative;
-    height: 50%;
-
-    input {
-      height: 80%;
-      width: 57%;
-      padding-left: 15px;
-      color: rgba(0, 0, 0, 0.56);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      border-radius: 5px;
-      font-size: 18px;
-    }
-
-    .timer {
-      position: absolute;
-      left: 140px;
-      bottom: 10px;
-    }
-
-    .button {
-      width: 30%;
-      height: 83%;
-      margin-left: 15px;
-      background: #01aef0;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .disabled {
-      width: 30%;
-      height: 83%;
-      margin-left: 15px;
-      background: #ccc;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
     }
 
     .phone-error {

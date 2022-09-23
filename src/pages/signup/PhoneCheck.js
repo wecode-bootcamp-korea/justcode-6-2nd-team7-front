@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-<<<<<<< HEAD
-
-=======
 import Timer from './Timer';
->>>>>>> main
 import * as S from './PhoneCheck.Styled';
-import Timer from './Timer';
-
-import { useRecoilState } from 'recoil';
-import { phoneCheckState } from '../../atom';
 
 import { useRecoilState } from 'recoil';
 import { phoneCheckState } from '../../atom';
