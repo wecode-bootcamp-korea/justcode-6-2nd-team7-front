@@ -1,6 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import * as S from './SignUpPage.Styled';
+import { useRecoilValue } from 'recoil';
+import { phoneCheckState } from '../../atom';
+import { useNavigate } from 'react-router-dom';
 
 function SignUpPage() {
   const [email, setEmail] = useState('');
@@ -8,11 +11,15 @@ function SignUpPage() {
   const [passwordCheck, setPasswordCheck] = useState('');
   const [userNic, setUserNic] = useState('');
 
+  const phoneNum = useRecoilValue(phoneCheckState);
+
   const [isValid, setIsValid] = useState(false);
   // 이메일 비밀번호 문구
   const [emailCheck, setEmailCheck] = useState(false);
   const [pwCheck, setPwCheck] = useState(false);
   const [pwTest, setPwTest] = useState('');
+
+  const navigate = useNavigate();
 
   const handleEmailInput = (e) => {
     setEmail(e.target.value);
@@ -25,7 +32,7 @@ function SignUpPage() {
 
   const handlePwInput = (e) => {
     setPassword(e.target.value);
-    if (password.length < 5) {
+    if (password.length < 10) {
       setPwCheck(true);
     } else {
       setPwCheck(false);
@@ -45,7 +52,7 @@ function SignUpPage() {
   }, [passwordCheck]);
 
   const handleBtn = () => {
-    if (email.includes('@') && password.length > 5 && password === passwordCheck) {
+    if (email.includes('@') && password.length > 10 && password === passwordCheck) {
       setIsValid(true);
     } else {
       setIsValid(false);
@@ -59,14 +66,20 @@ function SignUpPage() {
 
   const handleSuccess = (e) => {
     e.preventDefault();
+
     if (isValid) {
-      axios
-        .post('http://localhost:8000/signup', {
-          email: email,
-          password: password,
-          nickName: userNic,
-        })
-        .then((res) => console.log(res));
+      const body = {
+        email: email,
+        password: password,
+        nickName: userNic,
+        phoneNumber: phoneNum,
+      };
+      console.log(body);
+      axios.post('http://localhost:8000/signup', body).then((res) => {
+        if (res.data.message) {
+          navigate('/login');
+        }
+      });
     }
   };
 
@@ -99,7 +112,7 @@ function SignUpPage() {
             placeholder='비밀번호를 입력해주세요.'
             onKeyUp={handleBtn}
           />
-          {pwCheck && <p className='check'>사용불가 : 최소 6자 이상 입력해주세요.</p>}
+          {pwCheck && <p className='check'>사용불가 : 최소 10자 이상 입력해주세요.</p>}
         </div>
         <div className='input-container'>
           <label>비밀번호 확인</label>
@@ -122,7 +135,7 @@ function SignUpPage() {
             </button>
           </div>
         </div>
-        <button type='submit' className={isValid ? 'active' : ''} onClick={handleSuccess}>
+        <button className={isValid ? 'active' : ''} onClick={handleSuccess}>
           가입하기
         </button>
       </form>

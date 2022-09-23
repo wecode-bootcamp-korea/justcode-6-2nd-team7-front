@@ -4,9 +4,12 @@ import axios from 'axios';
 import * as S from './PhoneCheck.Styled';
 import Timer from './Timer';
 
+import { useRecoilState } from 'recoil';
+import { phoneCheckState } from '../../atom';
+
 function PhoneCheck() {
   const [phoneCheck, setPhoneCheck] = useState(false);
-  const [phoneNum, setPhoneNum] = useState('');
+  const [phoneNum, setPhoneNum] = useRecoilState(phoneCheckState);
   const [isActive, setIsActive] = useState(false);
 
   const handleBtnActive = (e) => {
