@@ -1,5 +1,6 @@
+import axios from 'axios';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import KaKaoLogin from './KaKaoLogin';
 
@@ -7,12 +8,19 @@ import * as S from './Login.Styled';
 
 function Login() {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [emailCheck, setEmailCheck] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
 
     !email.includes('@') ? setEmailCheck(true) : setEmailCheck(false);
+  };
+
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
   };
 
   const REST_API_KEY = '5896c4071585205226ff70774816a5df';
@@ -21,6 +29,16 @@ function Login() {
   const handleKakao = (e) => {
     e.preventDefault();
     window.location.href = KAKAO_AUTH_URL;
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    axios.post('http://localhost:8000/login', { email, password }).then((res) => {
+      if (res.data.message === 'LOGIN_SUCCESS!') {
+        localStorage.setItem('token', res.data.token);
+        navigate('/');
+      }
+    });
   };
 
   return (
@@ -45,10 +63,10 @@ function Login() {
           </S.EmailInput>
           {emailCheck && <p className='email-check'>이메일 주소를 확인해주세요.</p>}
           <S.PasswordInput>
-            <input placeholder='비밀번호' />
+            <input value={password} type='password' placeholder='비밀번호' onChange={handlePassword} />
           </S.PasswordInput>
 
-          <button>로그인</button>
+          <button onClick={handleLogin}>로그인</button>
         </S.InputContainer>
         <S.LoginFooter>
           <Link>비밀번호 재설정</Link>

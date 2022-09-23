@@ -102,10 +102,11 @@ export const InputContainer = styled.div`
   button {
     height: 50px;
     margin-top: 5px;
-    background: #01aef0;
-    color: #fff;
+    color: #000;
     border: none;
     border-radius: 5px;
+    background: ${({ theme }) => theme.colors.mainColor};
+    color: #fff;
     cursor: pointer;
   }
 `;
