@@ -9,8 +9,8 @@ import SideFilter from './components/SideFilter';
 import TopFilter from './components/TopFilter';
 import ThumbnailList from './components/ThumbnailList';
 
-import { region } from './components/region';
-import { handleCategory } from './components/functions';
+import { region } from './data/region';
+import { handleCategory } from './data/functions';
 
 import * as S from './AccommodationList.styled';
 

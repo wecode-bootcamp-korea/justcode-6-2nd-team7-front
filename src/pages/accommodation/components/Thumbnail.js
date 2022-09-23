@@ -1,4 +1,4 @@
-import { handleRating, handleEvaluate } from './functions';
+import { handleRating, handleEvaluate } from '../data/functions';
 import { ThumbList } from './Thumbnail.styled';
 
 const Thumbnail = ({ name, promotion, rating, score, review, region, remain, price, saleprice, img }) => {

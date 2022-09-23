@@ -7,8 +7,8 @@ import CheckItem from './CheckItem';
 import OptionList from './OptionList';
 import CustomSlider from './CustomSilder';
 import Calendar from './Calendar';
-import { options } from './options';
-import { handleSelectFilter, handleShowRange, handleShowCount, handleShowBedtype } from './functions';
+import { options } from '../data/options';
+import { handleSelectFilter, handleShowRange, handleShowCount, handleShowBedtype } from '../data/functions';
 import styled from 'styled-components';
 
 const Down = styled.span`
