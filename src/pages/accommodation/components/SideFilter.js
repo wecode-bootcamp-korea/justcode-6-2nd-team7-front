@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+
 import Date from './Date';
 import CheckItem from './CheckItem';
 import OptionList from './OptionList';
+import CustomSlider from './CustomSilder';
 import { options } from './options';
 import { handleSelectFilter, handleShowRange, handleShowCount, handleShowBedtype } from './functions';
 import styled from 'styled-components';
@@ -41,6 +43,12 @@ const SideFilter = ({ param }) => {
     });
 
     setBedtype(newBedtype);
+  };
+
+  const [value, setValue] = useState([1, 30]);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
   return (
@@ -105,10 +113,14 @@ const SideFilter = ({ param }) => {
             </ul>
           </section>
         )}
-        {/* <section className='price-container mt32 mb18'>
-          <h5 className='title mt32 mb18'>가격</h5>
-          <input type='range' />
-        </section> */}
+        {handleShowRange(param) && (
+          <section className='price-container mt32 mb18'>
+            <h5 className='title mt32 mb18'>가격</h5>
+            <div style={{ width: '90%', margin: '0 auto' }}>
+              <CustomSlider value={value} handleChange={handleChange} />
+            </div>
+          </section>
+        )}
         {options[handleSelectFilter(param)].options &&
           options[handleSelectFilter(param)].options.map((type, i) => <OptionList key={i} list={type} />)}
       </div>
