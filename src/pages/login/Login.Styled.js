@@ -95,13 +95,13 @@ export const InputContainer = styled.div`
   }
 
   .email-check {
-    color: red;
+    color: #ff0000;
     font-size: 15px;
   }
 
   .error-message {
     margin-top: 5px;
-    color: red;
+    color: #ff0000;
     font-size: 15px;
   }
 
