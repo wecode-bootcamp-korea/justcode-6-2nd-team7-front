@@ -26,12 +26,16 @@ const Event = () => {
     },
   ];
 
+  // 'https://image.goodchoice.kr/images/cms/home_img/3c13f7bf4ea5ef67729fa285aca7896f.jpg';
+  // 'https://image.goodchoice.kr/images/cms/home_img/4b9d41f51f329355f76c0daad7dc5027.jpg';
+  // 'https://image.goodchoice.kr/images/cms/home_img/fb4507e69d3fa1779d4623946aa76244.jpg'
+
   return (
     <>
-      <SlideStyle></SlideStyle>
       <BoxStyle>
         <div className='container'>
           <span>이벤트</span>
+          <SlideStyle>이벤트 슬라이드</SlideStyle>
           <div className='box-container'>
             {eventArr.map((event) => {
               return (
