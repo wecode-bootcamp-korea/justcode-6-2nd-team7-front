@@ -17,28 +17,30 @@ import My from './pages/mypage/components/My';
 import Footer from './component/footer/Footer';
 
 import theme from './styles/theme';
+import { browserWidth, reponsive } from './styles/responsive';
 
 const Router = (props) => {
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Nav />
-        <Routes>
-          <Route path='/' element={<Main />} />
-          <Route path='/login' element={<Login />} />
-
-          <Route path='/signup' element={<SignUp />} />
-          <Route path='/signup-check' element={<PhoneCheck />} />
-          <Route path='/signup-page' element={<SignUpPage />} />
-          <Route path='/detailPage' element={<DetailPage />} />
-          <Route path='/accommodation/:type' element={<AccommodationList />} />
-          <Route path='/mypage' element={<Points />} />
-          <Route path='/coupons' element={<Coupons />} />
-          <Route path='/reservations' element={<Reservation />} />
-          <Route path='/my' element={<My />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+      <ThemeProvider theme={theme} responsive={{ browserWidth, reponsive }}>
+        <BrowserRouter>
+          <Nav />
+          <Routes>
+            <Route path='/' element={<Main />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<SignUp />} />
+            <Route path='/signup-check' element={<PhoneCheck />} />
+            <Route path='/signup-page' element={<SignUpPage />} />
+            <Route path='/detailPage' element={<DetailPage />} />
+            <Route path='/accommodation/:type' element={<AccommodationList />} />
+            <Route path='/mypage' element={<Points />} />
+            <Route path='/coupons' element={<Coupons />} />
+            <Route path='/reservations' element={<Reservation />} />
+            <Route path='/my' element={<My />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </ThemeProvider>
     </ThemeProvider>
   );
 };
