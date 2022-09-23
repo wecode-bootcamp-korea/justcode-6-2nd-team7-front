@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+
 import Map from './components/Map';
 import SideFilter from './components/SideFilter';
 import TopFilter from './components/TopFilter';
 import ThumbnailList from './components/ThumbnailList';
+
 import { region } from './components/region';
+import { handleCategory } from './components/functions';
+
 import * as S from './AccommodationList.styled';
 
 const AccommodationList = (props) => {
@@ -22,6 +27,8 @@ const AccommodationList = (props) => {
   const [acmType, setAcmType] = useState();
   const [showModal, setShowModal] = useState(false);
 
+  const param = useParams().type;
+
   useEffect(() => {
     axios
       .get('/data/accommodation/accommodation.json')
@@ -30,6 +37,13 @@ const AccommodationList = (props) => {
         setAcmType(Object.keys(res.data.accommodation));
       })
       .catch((err) => console.log('ERROR', err));
+    // axios
+    //   .get('http://localhost:8000/accommodation/hotel')
+    //   .then((res) => {
+    //     setList(res.data.accommodation);
+    //     setAcmType(Object.keys(res.data.accommodation));
+    //   })
+    //   .catch((err) => console.log('ERROR', err));
   }, []);
 
   const handleSelected = (e) => {
@@ -57,7 +71,7 @@ const AccommodationList = (props) => {
     <>
       <S.Header onMouseLeave={handleShowMenu}>
         <div className='container'>
-          <h2>호텔·리조트</h2>
+          <h2>{handleCategory(param)}</h2>
           <div className='btn-container' onMouseEnter={handleShowMenu}>
             <div className='btn-area'>
               <span>{seletedCity}&nbsp;&nbsp;</span>
@@ -103,12 +117,12 @@ const AccommodationList = (props) => {
         </div>
       </S.Header>
       <S.Body>
-        <SideFilter />
+        <SideFilter param={param} />
         <main>
-          {showModal && <Map setShowModal={setShowModal} />}
+          {showModal && <Map setShowModal={setShowModal} list={list} />}
           <TopFilter setShowModal={setShowModal} />
           {acmType &&
-            acmType.map((el, i) => {
+            acmType.map((el) => {
               return <ThumbnailList key={el} list={list[el]} type={el} />;
             })}
         </main>

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
@@ -39,33 +39,45 @@ const Main = styled.div`
   }
 `;
 
-const Map = ({ setShowModal }) => {
+const Map = ({ setShowModal, list }) => {
+  const mapEl = useRef();
   const handleShowModal = (e) => {
-    e.target.id !== 'map' ? setShowModal(false) : setShowModal(true);
+    !mapEl.current.contains(e.target) ? setShowModal(false) : setShowModal(true);
   };
-  // useEffect(() => {
-  //   const container = document.getElementById('map');
-  //   const options = {
-  //     center: new kakao.maps.LatLng(35.624915, 127.151226),
-  //     level: 13,
-  //   };
-  //   const kakaoMap = new kakao.maps.Map(container, options);
 
-  //   list &&
-  //     list.forEach((el) => {
-  //       new kakao.maps.Marker({
-  //         map: kakaoMap,
-  //         position: new kakao.maps.LatLng(el.lat, el.lng),
-  //         title: el.name,
-  //       });
-  //     });
-  // }, [list]);
+  useEffect(() => {
+    const newlist =
+      list &&
+      Object.keys(list)
+        .map((region) => {
+          return list[region].map((el) => {
+            return { title: el.name, lat: el.lat, lng: el.lng };
+          });
+        })
+        .flat();
+
+    const container = document.getElementById('map');
+    const options = {
+      center: new kakao.maps.LatLng(37.504897, 127.04961),
+      level: 6,
+    };
+    const kakaoMap = new kakao.maps.Map(container, options);
+
+    newlist &&
+      newlist.forEach((el) => {
+        new kakao.maps.Marker({
+          map: kakaoMap,
+          position: new kakao.maps.LatLng(el.lat, el.lng),
+          title: el.name,
+        });
+      });
+  }, [list]);
 
   return (
     <Main onClick={handleShowModal}>
       <div className='container'>
         <FontAwesomeIcon icon={faXmark} className='x-icon' size='3x' />
-        <div id='map' className='mapDetail' />
+        <div id='map' className='mapDetail' ref={mapEl} />
       </div>
     </Main>
   );

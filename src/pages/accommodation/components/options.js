@@ -3,7 +3,8 @@ export const options = [
     id: 1,
     type: '모텔',
     typeList: null,
-    options: [
+    availablePromotion: ['대실 예약', '숙박 예약', '50%할인'],
+    theme: [
       {
         id: 1,
         title: '이색테마',
@@ -36,6 +37,7 @@ export const options = [
     id: 2,
     type: '호텔·리조트',
     typeList: ['5성급', '특1급', '특급'],
+    availablePromotion: ['예약 가능', '프로모션'],
     options: [
       {
         id: 1,
@@ -111,6 +113,7 @@ export const options = [
     id: 3,
     type: '펜션',
     typeList: ['펜션', '풀빌라', '럭셔리'],
+    availablePromotion: ['예약 가능'],
     options: [
       {
         id: 1,
@@ -185,8 +188,64 @@ export const options = [
   },
   {
     id: 4,
+    type: '게스트하우스',
+    availablePromotion: ['예약 가능', '프로모션'],
+    options: [
+      {
+        id: 1,
+        title: '공용시설',
+        optionList: [
+          '세탁기',
+          '라운지',
+          '주방/식당',
+          '건조기',
+          '탈수기',
+          '엘레베이터',
+          '주차장',
+          '공용PC',
+          'BBQ',
+          '카페',
+          '전자레인지',
+          '취사가능',
+        ],
+      },
+      {
+        id: 2,
+        title: '객실 내 시설',
+        optionList: [
+          '와이파이',
+          '개인콘센트',
+          '욕실용품',
+          '에어컨',
+          '냉장고',
+          '객실샤워실',
+          '욕조',
+          '드라이기',
+          '다리미',
+          'TV',
+        ],
+      },
+      {
+        id: 3,
+        title: '기타',
+        optionList: [
+          '조식포함',
+          '개인사물함',
+          '객실내흡연',
+          '반려견동반',
+          '짐보관가능',
+          '프린터사용',
+          '무료주차',
+          '카드결제',
+        ],
+      },
+    ],
+  },
+  {
+    id: 5,
     type: '캠핑',
     typeList: ['오토캠핑', '글램핑', '카라반'],
+    availablePromotion: ['예약 가능'],
     options: [
       {
         id: 1,
@@ -248,60 +307,6 @@ export const options = [
           '픽업가능',
           '캠프파이어',
           '금연',
-        ],
-      },
-    ],
-  },
-  {
-    id: 5,
-    type: '게스트하우스',
-    options: [
-      {
-        id: 1,
-        title: '공용시설',
-        optionList: [
-          '세탁기',
-          '라운지',
-          '주방/식당',
-          '건조기',
-          '탈수기',
-          '엘레베이터',
-          '주차장',
-          '공용PC',
-          'BBQ',
-          '카페',
-          '전자레인지',
-          '취사가능',
-        ],
-      },
-      {
-        id: 2,
-        title: '객실 내 시설',
-        optionList: [
-          '와이파이',
-          '개인콘센트',
-          '욕실용품',
-          '에어컨',
-          '냉장고',
-          '객실샤워실',
-          '욕조',
-          '드라이기',
-          '다리미',
-          'TV',
-        ],
-      },
-      {
-        id: 3,
-        title: '기타',
-        optionList: [
-          '조식포함',
-          '개인사물함',
-          '객실내흡연',
-          '반려견동반',
-          '짐보관가능',
-          '프린터사용',
-          '무료주차',
-          '카드결제',
         ],
       },
     ],

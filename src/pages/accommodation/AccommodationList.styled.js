@@ -163,14 +163,24 @@ export const Body = styled.div`
       }
     }
 
+    .no-title {
+      li {
+        &:last-child {
+          margin-bottom: 50px;
+        }
+      }
+    }
+
     .accommodation-type {
       font-size: 16px;
+      margin-bottom: 50px;
     }
 
     .count-container {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 50px;
 
       .count-box {
         display: flex;
@@ -186,8 +196,16 @@ export const Body = styled.div`
       }
     }
 
+    .price-container {
+      margin-bottom: 50px;
+
+      input {
+        width: 100%;
+      }
+    }
+
     .bedtype-container {
-      font-size: 14px;
+      margin-bottom: 50px;
 
       ul {
         display: flex;
@@ -197,6 +215,7 @@ export const Body = styled.div`
           display: flex;
           flex-direction: column;
           align-items: center;
+          font-size: 14px;
 
           .icon {
             width: 48px;
