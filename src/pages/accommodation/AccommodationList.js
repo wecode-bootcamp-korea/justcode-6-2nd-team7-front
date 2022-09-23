@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import Map from './components/Map';
 import SideFilter from './components/SideFilter';
 import TopFilter from './components/TopFilter';
 import ThumbnailList from './components/ThumbnailList';
@@ -19,6 +20,7 @@ const AccommodationList = (props) => {
   const [showMenu, setShowMenu] = useState(false);
   const [list, setList] = useState();
   const [acmType, setAcmType] = useState();
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     axios
@@ -103,7 +105,8 @@ const AccommodationList = (props) => {
       <S.Body>
         <SideFilter />
         <main>
-          <TopFilter />
+          {showModal && <Map setShowModal={setShowModal} />}
+          <TopFilter setShowModal={setShowModal} />
           {acmType &&
             acmType.map((el, i) => {
               return <ThumbnailList key={el} list={list[el]} type={el} />;
