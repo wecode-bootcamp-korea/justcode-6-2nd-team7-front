@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
-import * as S from './PhoneCheck.Styled';
 import Timer from './Timer';
+import * as S from './PhoneCheck.Styled';
 
 import { useRecoilState } from 'recoil';
 import { phoneCheckState } from '../../atom';

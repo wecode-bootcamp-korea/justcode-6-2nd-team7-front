@@ -14,6 +14,7 @@ function SignUpPage() {
   // recoil사용
   const phoneNum = useRecoilValue(phoneCheckState);
 
+  // 버튼 색상 변경
   const [isValid, setIsValid] = useState(false);
   // 이메일 비밀번호 문구
   const [emailCheck, setEmailCheck] = useState(false);
@@ -25,20 +26,13 @@ function SignUpPage() {
 
   const handleEmailInput = (e) => {
     setEmail(e.target.value);
-    if (!email.includes('@')) {
-      setEmailCheck(true);
-    } else {
-      setEmailCheck(false);
-    }
+    !email.includes('@') ? setEmailCheck(true) : setEmailCheck(false);
   };
 
   const handlePwInput = (e) => {
     setPassword(e.target.value);
-    if (password.length < 10) {
-      setPwCheck(true);
-    } else {
-      setPwCheck(false);
-    }
+
+    password.length < 10 ? setPwCheck(true) : setPwCheck(false);
   };
 
   const handlePwCheckInput = (e) => {
@@ -46,19 +40,12 @@ function SignUpPage() {
   };
 
   useEffect(() => {
-    if (password === passwordCheck) {
-      setPwTest('');
-    } else {
-      setPwTest('일치하지 않습니다.');
-    }
+    password === passwordCheck ? setPwTest('') : setPwTest('일치하지 않습니다.');
   }, [passwordCheck]);
 
+  // 버튼색상변경
   const handleBtn = () => {
-    if (email.includes('@') && password.length > 10 && password === passwordCheck) {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
-    }
+    email.includes('@') && password.length > 10 && password === passwordCheck ? setIsValid(true) : setIsValid(false);
   };
 
   // 사용자가 입력한 닉네임
@@ -77,7 +64,7 @@ function SignUpPage() {
         nickName: userNic,
         phoneNumber: phoneNum,
       };
-      console.log(body);
+
       axios.post('http://localhost:8000/signup', body).then((res) => {
         if (res.data.message === 'SIGNUP_SUCCESS!') {
           navigate('/login');
@@ -113,8 +100,8 @@ function SignUpPage() {
             value={password}
             name='password'
             type='password'
-            onChange={handlePwInput}
             placeholder='비밀번호를 입력해주세요.'
+            onChange={handlePwInput}
             onKeyUp={handleBtn}
           />
           {pwCheck && <p className='check'>사용불가 : 최소 10자 이상 입력해주세요.</p>}
@@ -123,10 +110,10 @@ function SignUpPage() {
           <label>비밀번호 확인</label>
           <input
             value={passwordCheck}
-            onChange={handlePwCheckInput}
             name='passwordCheck'
             type='password'
             placeholder='비밀번호를 입력해주세요.'
+            onChange={handlePwCheckInput}
             onKeyUp={handleBtn}
           />
           <p className='check'>{pwTest}</p>
