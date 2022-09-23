@@ -9,14 +9,18 @@ function Login() {
   const [email, setEmail] = useState('');
   const [emailCheck, setEmailCheck] = useState(false);
 
-  // 로직 더 추가 할 예정...
   const handleEmail = (e) => {
     setEmail(e.target.value);
-    if (!email.includes('@')) {
-      setEmailCheck(true);
-    } else {
-      setEmailCheck(false);
-    }
+
+    !email.includes('@') ? setEmailCheck(true) : setEmailCheck(false);
+  };
+
+  const REST_API_KEY = '5896c4071585205226ff70774816a5df';
+  const REDIRECT_URI = 'http://localhost:3000/kakao-login';
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+  const handleKakao = (e) => {
+    e.preventDefault();
+    window.location.href = KAKAO_AUTH_URL;
   };
 
   return (
@@ -25,7 +29,9 @@ function Login() {
         <img src='/images/logoBlue.svg' alt='logo' />
       </div>
       <div className='login-btn'>
-        <KaKaoLogin />
+        <button className='kakao' onClick={handleKakao}>
+          카카오로 로그인
+        </button>
         <button className='facebook'>Facebook으로 로그인</button>
         <button className='naver'>네이버로 로그인</button>
       </div>
