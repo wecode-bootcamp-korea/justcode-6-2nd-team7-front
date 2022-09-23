@@ -6,29 +6,43 @@ const SubContainer = () => {
       <SubContainerStyle>
         <div className='container'>
           <div>
-            <div>숙소이름</div>
-            <div>홍대 스타일 게스트하우스</div>
+            <div className='title'>숙소이름</div>
+            <div className='content'>
+              <span>홍대</span> <span>스타일 게스트하우스</span>
+            </div>
           </div>
 
           <div>
-            <div>객실타입/기간</div>
-            <div>더블룸 (객실내 전용욕실) / 1박</div>
+            <div className='title'>객실타입/기간</div>
+            <div className='content'>
+              <span>더블룸</span> (<span>객실내 전용욕실</span>) / <span>1</span>박
+            </div>
           </div>
 
           <div>
-            <div>체크인</div>
-            <div>09.24 금 14:00</div>
+            <div className='title'>체크인</div>
+            <div className='content'>
+              <span>09.24</span> <span>금</span> <span>14:00</span>
+            </div>
           </div>
 
           <div>
-            <div>체크아웃</div>
-            <div>09.25 토 11:00</div>
+            <div className='title'>체크아웃</div>
+            <div className='content'>
+              <span>09.25</span> <span>토</span> <span>11:00</span>
+            </div>
           </div>
 
           <div>
-            <span>총 결제 금액</span>
-            <span>(VAT포함)</span>
-            <div></div>
+            <div className='total'>
+              <span className='bold'>총 결제 금액</span>
+              <span>(VAT포함)</span>
+              <div className='totalPrice'>
+                <span>329,000</span>
+                <span>원</span>
+              </div>
+            </div>
+
             <ul>
               <li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
               <li>
@@ -37,8 +51,7 @@ const SubContainer = () => {
             </ul>
           </div>
         </div>
-
-        <button>결제하기</button>
+        <button className='btn'>결제하기</button>
       </SubContainerStyle>
     </>
   );
