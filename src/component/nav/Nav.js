@@ -1,17 +1,21 @@
 import { React, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
+import { useRecoilState } from 'recoil';
+import { searchInput } from '../../atom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-import * as S from './Nav.styled.js';
 
 import MyModal from './components/MyModal';
 import SearchModal from './components/SearchModal';
 
-const Nav = ({ setSearchInput }) => {
+import * as S from './Nav.styled.js';
+
+const Nav = () => {
+  const [, setInput] = useRecoilState(searchInput);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [myHover, setMyHover] = useState(false);
-  const [listStyle, setIistStyle] = useState('block');
+  const [myHover, setMyHover] = useState(true);
+  const [listStyle, setListStyle] = useState('block');
 
   const updateScroll = () => {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);
@@ -22,16 +26,20 @@ const Nav = ({ setSearchInput }) => {
 
   const seacrhClick = (e) => {
     // listStyle == "none" && -> 검색하기 구현해야 함
-    listStyle === 'block' ? setIistStyle('none') : setIistStyle('block');
+    listStyle === 'block' ? setListStyle('none') : setListStyle('block');
+    setInput('');
   };
 
-  const handleInput = (e) => {};
+  const logoClick = () => {
+    setListStyle('block');
+    setInput('');
+  };
 
   return (
     <S.NavStyle>
       <div className={scrollPosition < 2 ? 'nav-origin' : 'nav-change'}>
         <div className='nav-container'>
-          <Link to='/' className='logo-box'>
+          <Link to='/' className='logo-box' onClick={logoClick}>
             {scrollPosition < 2 ? (
               <img className='logo' src='/images/logoWhite.svg' alt='logo' />
             ) : (
@@ -42,15 +50,12 @@ const Nav = ({ setSearchInput }) => {
             <div className={classnames('search-icon-box', { 'search-icon-change': listStyle === 'none' })}>
               <FontAwesomeIcon
                 icon={faMagnifyingGlass}
-                color={scrollPosition < 2 ? 'rgba(255, 255, 255, 0.767)' : ' rgb(82, 82, 82)'}
+                color={scrollPosition < 2 ? '#ffffffc4' : '#525252'}
                 size='lg'
                 className='search-icon'
                 onClick={seacrhClick}
               />
-              {listStyle === 'none' && <SearchModal scrollPosition={scrollPosition} setIistStyle={setIistStyle} />}
-              {listStyle === 'none' && (
-                <input className='search-input' placeholder='지역, 숙소명, 숙소타입' onChange={handleInput} />
-              )}
+              <SearchModal scrollPosition={scrollPosition} setListStyle={setListStyle} listStyle={listStyle} />
             </div>
 
             <div style={{ display: listStyle }}>
@@ -78,14 +83,16 @@ const Nav = ({ setSearchInput }) => {
                         to='/my'
                         onMouseOver={() => {
                           setMyHover(true);
+                          console.log(myHover);
                         }}
                         onMouseOut={() => {
                           setMyHover(false);
+                          console.log(myHover);
                         }}
                         className='nav-link'>
                         마이페이지
-                        {myHover === true && <MyModal />}
                       </Link>
+                      <MyModal myHover={myHover} />
                     </>
                   ) : (
                     <Link to='/login' className='nav-link'>

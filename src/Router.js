@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AccommodationList from './pages/accommodation/AccommodationList';
 import { ThemeProvider } from 'styled-components';
@@ -23,12 +22,10 @@ import { browserWidth, reponsive } from './styles/responsive';
 import KaKaoLogin from './pages/login/KaKaoLogin';
 
 const Router = (props) => {
-  const [searchInput, setSearchInput] = useState('검색어 샘플');
-
   return (
     <ThemeProvider theme={theme} responsive={{ browserWidth, reponsive }}>
       <BrowserRouter>
-        <Nav setSearchInput={setSearchInput} />
+        <Nav />
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/login' element={<Login />} />
@@ -43,7 +40,7 @@ const Router = (props) => {
           <Route path='/coupons' element={<Coupons />} />
           <Route path='/reservation-list' element={<ReservationList />} />
           <Route path='/my' element={<My />} />
-          <Route path='/search' element={<Search searchInput={searchInput} />} />
+          <Route path='/search' element={<Search />} />
         </Routes>
         <Footer />
       </BrowserRouter>

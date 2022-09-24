@@ -75,7 +75,6 @@ export const NavStyle = styled.nav`
       .search-icon-change {
         .search-icon {
           transform: translate(-500px, 0px);
-          transition-duration: 0.5s;
         }
       }
 
@@ -90,6 +89,10 @@ export const NavStyle = styled.nav`
           }
         }
       }
+    }
+
+    .none {
+      display: none;
     }
   }
 `;

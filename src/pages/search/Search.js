@@ -1,3 +1,6 @@
+// import { useParams } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { searchInput } from '../../atom';
 import styled from 'styled-components';
 
 const SearchContainer = styled.div`
@@ -13,10 +16,15 @@ const SearchContainer = styled.div`
   }
 `;
 
-const Search = ({ searchInput }) => {
+const Search = () => {
+  const [search] = useRecoilState(searchInput);
+  // const param = useParams().type;
+
   return (
     <SearchContainer>
-      <header>{`'${searchInput}'`} </header>
+      <header>' {search} '</header>
+      {/* <SideFilter param={param} /> */}
+      <section></section>
     </SearchContainer>
   );
 };

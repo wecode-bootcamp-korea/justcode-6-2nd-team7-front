@@ -1,14 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { useRecoilState } from 'recoil';
+
 import styled from 'styled-components';
+import { searchInput } from '../../../atom';
 
 import * as S from './SeachModal.Styled';
 
-const SearchModal = ({ scrollPosition, setIistStyle }) => {
+const InputContainer = styled.div`
+  display: ${(props) => (props.listStyle === 'block' ? 'none' : 'block')};
+  position: absolute;
+  input {
+    width: 460px;
+    border: none;
+    background: transparent;
+    color: ${(props) => props.inputColor};
+    font-size: 17px;
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      color: ${(props) => props.inputColor};
+    }
+  }
+  .none {
+    display: none;
+  }
+`;
+
+const SearchModal = ({ scrollPosition, setListStyle, listStyle }) => {
+  const navigate = useNavigate();
+  const [input, setInput] = useRecoilState(searchInput);
   const [inputColor, setInputColor] = useState('#ffffffc4');
-  // const [searchChange, setSearchChange] = useState('');{
   const recommendArr = [
     { id: 1, keyword: '강남' },
     { id: 2, keyword: '서울' },
@@ -22,37 +47,34 @@ const SearchModal = ({ scrollPosition, setIistStyle }) => {
   }, [scrollPosition]);
 
   const cancleSearch = () => {
-    setIistStyle('block');
+    setListStyle('block');
+    setInput('');
   };
 
-  // const handleInput = (e) => {
-  //   setSearchChange(e.target.value);
-  // };
+  const handleInput = (e) => {
+    setInput(e.target.value);
+  };
 
-  const InputContainer = styled.div`
-    position: absolute;
-    input {
-      width: 460px;
-      border: none;
-      background: transparent;
-      color: ${inputColor};
-      font-size: 17px;
-      &:focus {
-        outline: none;
-      }
-      &::placeholder {
-        color: ${inputColor};
-      }
+  const submitSearch = (e) => {
+    console.log(e.key === 'Enter');
+    if (e.key === 'Enter') {
+      setListStyle('block');
+      navigate('/search');
     }
-  `;
+  };
 
   return (
     <>
-      <S.SearchModalBg onClick={cancleSearch} />
-      <InputContainer>
+      <S.SearchModalBg onClick={cancleSearch} listStyle={listStyle} />
+      <InputContainer inputColor={inputColor} listStyle={listStyle}>
         <div>
-          <input placeholder='지역, 숙소명, 숙소타입' />
-          {/* <input value={searchChange} onChange={handleInput} placeholder='지역, 숙소명, 숙소타입' /> */}
+          <input
+            type='text'
+            placeholder='지역, 숙소명, 숙소타입'
+            value={input}
+            onChange={handleInput}
+            onKeyDown={submitSearch}
+          />
           <FontAwesomeIcon onClick={cancleSearch} icon={faXmark} color={scrollPosition > 2 ? '#525252' : '#ffffffc4'} />
         </div>
         <S.Recommend>
