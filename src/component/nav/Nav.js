@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import classnames from 'classnames';
 import { useRecoilState } from 'recoil';
 import { searchInput } from '../../atom';
@@ -12,6 +12,7 @@ import SearchModal from './components/SearchModal';
 import * as S from './Nav.styled.js';
 
 const Nav = () => {
+  const navigate = useNavigate();
   const [, setInput] = useRecoilState(searchInput);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [myHover, setMyHover] = useState(true);
@@ -27,7 +28,7 @@ const Nav = () => {
   const seacrhClick = (e) => {
     // listStyle == "none" && -> 검색하기 구현해야 함
     listStyle === 'block' ? setListStyle('none') : setListStyle('block');
-    setInput('');
+    listStyle === 'block' ? setInput('') : navigate('/search');
   };
 
   const logoClick = () => {

@@ -17,12 +17,12 @@ const SearchContainer = styled.div`
 `;
 
 const Search = () => {
-  const [search] = useRecoilState(searchInput);
+  const [input] = useRecoilState(searchInput);
   // const param = useParams().type;
 
   return (
     <SearchContainer>
-      <header>' {search} '</header>
+      <header>' {input === '' ? '검색어를 입력해주세요.' : input} '</header>
       {/* <SideFilter param={param} /> */}
       <section></section>
     </SearchContainer>
