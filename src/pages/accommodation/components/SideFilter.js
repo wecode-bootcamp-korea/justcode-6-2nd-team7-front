@@ -20,7 +20,7 @@ const Up = styled.span`
   opacity: ${(props) => (props.count === 10 ? 0.5 : 1)};
 `;
 
-const SideFilter = ({ param }) => {
+const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow }) => {
   const [count, setCount] = useState(1);
   const [bedtype, setBedtype] = useState([
     { id: 1, title: '싱글', class: 'single', selected: false },
@@ -55,7 +55,12 @@ const SideFilter = ({ param }) => {
     <aside className='side-filter'>
       <section className='date-container'>
         <h3 className='title-bk mb12'>날짜</h3>
-        <Calendar />
+        <Calendar
+          firstShow={firstShow}
+          setFirstShow={setFirstShow}
+          secondShow={secondShow}
+          setSecondShow={setSecondShow}
+        />
       </section>
       <div className='mt32'>
         <h3 className='title-bk mb12'>상세조건</h3>

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { registerLocale } from 'react-datepicker';
 import ko from 'date-fns/locale/ko';
@@ -47,29 +47,24 @@ const StyledDatePicker = styled(DatePicker)`
   }
 `;
 
-const Calendar = (props) => {
+const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState();
-  const [firstShow, setFirstShow] = useState(false);
-  const [secondShow, setSecondShow] = useState(false);
-  const firstRef = useRef();
-  const secondRef = useRef();
 
+  useEffect(() => {
+    startDate > endDate && setEndDate();
+  }, [startDate]);
   const handleFirstInput = (e) => {
     setFirstShow(true);
-    const input = document.getElementById('first');
-    !firstRef.current.contains(input) ? setFirstShow(false) : setFirstShow(true);
   };
 
   const handleSecondInput = (e) => {
     setSecondShow(true);
-    const input = document.getElementById('second');
-    !secondRef.current.contains(input) ? setSecondShow(false) : setSecondShow(true);
   };
 
   return (
     <>
-      <Main ref={firstRef}>
+      <Main>
         <FontAwesomeIcon icon={faCalendar} className='calendar-icon' onClick={handleFirstInput} />
         <StyledDatePicker
           selected={startDate}
@@ -93,7 +88,7 @@ const Calendar = (props) => {
         </StyledDatePicker>
         <FontAwesomeIcon icon={faChevronDown} size='sm' onClick={handleFirstInput} className='chevron-icon' />
       </Main>
-      <Main ref={secondRef}>
+      <Main>
         <FontAwesomeIcon icon={faCalendar} className='calendar-icon' onClick={handleSecondInput} />
         <StyledDatePicker
           selected={endDate}
