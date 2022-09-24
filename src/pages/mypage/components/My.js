@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MyPage from '../MyPage';
+import LogoutModal from '../../../component/modal/LogoutModal';
 import * as A from './My.Styled';
 import * as S from '../MyPage.Styled';
 
@@ -8,6 +9,7 @@ const My = () => {
   const [nickname, setNickname] = useState(false);
   const [myName, setMyname] = useState(false);
   const [phone, setPhone] = useState(false);
+  const [modal, setModal] = useState(false);
 
   // 버튼 toggle
   const handleNickname = () => {
@@ -108,7 +110,13 @@ const My = () => {
           <div className='container'></div>
           <div className='my-logout'>
             <p>여기어때를 이용하고 싶지 않으신가요? </p>
-            <Link to='/login'>로그아웃</Link>
+            <Link
+              onClick={() => {
+                setModal(true);
+              }}>
+              로그아웃
+            </Link>
+            {modal && <LogoutModal />}
             <Link to='/login'>회원탈퇴</Link>
           </div>
         </A.MyContainer>
