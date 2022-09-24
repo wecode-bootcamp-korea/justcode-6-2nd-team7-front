@@ -12,7 +12,7 @@ function MyPage() {
         쿠폰함
       </NavLink>
 
-      <NavLink className={({ isActive }) => (isActive ? 'reservations' : '')} to='/reservations'>
+      <NavLink className={({ isActive }) => (isActive ? 'reservations' : '')} to='/reservation-list'>
         예약내역
       </NavLink>
 
