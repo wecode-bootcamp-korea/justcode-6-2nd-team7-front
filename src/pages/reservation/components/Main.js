@@ -52,7 +52,6 @@ const Main = () => {
       <MainContainerStyle>
         <div className='user-info container'>
           <h3 className='title'>예약자 정보</h3>
-
           <div>
             <div>
               <label htmlFor='name'>예약자 이름</label>
@@ -71,7 +70,6 @@ const Main = () => {
                 한글, 영문, 숫자 5자리 입력 가능.(문자 사이 공백은 1칸만 입력 가능)
               </div>
             </div>
-
             <div>
               <label htmlFor='phone'>휴대폰 번호</label>
               <div className='small-text'>개인정보 보호를 위해 안심번호로 숙소에 전송됩니다.</div>
@@ -94,7 +92,6 @@ const Main = () => {
 
         <div className='sale container'>
           <h3 className='title'>할인 수단 선택</h3>
-
           <div className='line'>
             <div>구매총액</div>
             <div className='totalPrice'>40,000원</div>
@@ -132,10 +129,8 @@ const Main = () => {
             <div>-</div>
           </div>
         </div>
-
         <div className='payment container'>
           <h3 className='title'>결제수단 선택</h3>
-
           <select>
             <option>카카오페이</option>
             <option>토스</option>
@@ -159,7 +154,6 @@ const Main = () => {
                 <span className='check-title title'>전체동의</span>
               </label>
             </div>
-
             <div>
               <input
                 type='checkbox'

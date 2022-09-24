@@ -11,21 +11,18 @@ const Sub = () => {
               <span>홍대</span> <span>스타일 게스트하우스</span>
             </div>
           </div>
-
           <div>
             <div className='title'>객실타입/기간</div>
             <div className='content'>
               <span>더블룸</span> (<span>객실내 전용욕실</span>) / <span>1</span>박
             </div>
           </div>
-
           <div>
             <div className='title'>체크인</div>
             <div className='content'>
               <span>09.24</span> <span>금</span> <span>14:00</span>
             </div>
           </div>
-
           <div>
             <div className='title'>체크아웃</div>
             <div className='content'>
@@ -42,7 +39,6 @@ const Sub = () => {
                 <span>원</span>
               </div>
             </div>
-
             <ul>
               <li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
               <li>
@@ -51,6 +47,7 @@ const Sub = () => {
             </ul>
           </div>
         </div>
+
         <button>결제하기</button>
       </SubContainerStyle>
     </>

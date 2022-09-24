@@ -3,7 +3,7 @@ import Sub from './components/Sub';
 
 import { ReservationStyle } from './Reservation.Styled';
 
-const Reservation2 = () => {
+const Reservation = () => {
   return (
     <ReservationStyle>
       <Main />
@@ -12,4 +12,4 @@ const Reservation2 = () => {
   );
 };
 
-export default Reservation2;
+export default Reservation;
