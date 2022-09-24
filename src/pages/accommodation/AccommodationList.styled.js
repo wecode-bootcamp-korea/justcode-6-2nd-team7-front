@@ -199,7 +199,14 @@ export const Body = styled.div`
       margin: 5px 0 10px 0;
       color: #fff;
     }
-    .react-datepicker__day--selected {
+
+    .react-datepicker__day--in-selecting-range {
+      background-color: #009fef66;
+      color: #fff;
+    }
+
+    .react-datepicker__day--selected,
+    .react-datepicker__day--in-range {
       background-color: #009fef;
       color: #fff;
       font-weight: 700;
