@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import DatePicker from 'react-datepicker';
 import { registerLocale } from 'react-datepicker';
 import ko from 'date-fns/locale/ko';
@@ -20,6 +20,7 @@ const Main = styled.div`
   border-radius: 5px;
   background-color: #00000005;
   color: ${({ theme }) => theme.colors.text};
+  transition: all 300ms ease-in-out;
 
   .mr10 {
     margin-right: 10px;
@@ -41,11 +42,33 @@ const StyledDatePicker = styled(DatePicker)`
 
 const Calendar = (props) => {
   const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
+  const [open, setOpen] = useState(false);
+  // const [choosenDate, setChoosenDate] = useState([new Date('2022-9-23'), new Date()]);
+  const myRef = useRef();
+
+  const handleShowCalendar = (e) => {
+    // setOpen((prev) => !prev);
+    // e.target.contains(myRef) ? setOpen(true) : setOpen(false);
+  };
 
   return (
-    <Main>
+    <Main onClick={handleShowCalendar}>
       <FontAwesomeIcon icon={faCalendar} className='mr10' />
-      <StyledDatePicker selected={startDate} onChange={(date) => setStartDate(date)} locale='ko' />
+      <StyledDatePicker
+        ref={myRef}
+        selected={startDate}
+        onChange={(date) => {
+          setStartDate(date);
+        }}
+        minDate={new Date()}
+        locale='ko'
+        dateFormat='M.d'
+        // open={open}
+        // highlightDates={[...choosenDate]}
+        disabledKeyboardNavigation>
+        <button className='btn'>선택완료</button>
+      </StyledDatePicker>
       <FontAwesomeIcon icon={faChevronDown} size='sm' />
     </Main>
   );
