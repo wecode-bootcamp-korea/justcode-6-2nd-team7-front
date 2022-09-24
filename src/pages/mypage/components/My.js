@@ -4,12 +4,14 @@ import MyPage from '../MyPage';
 import LogoutModal from '../../../component/modal/LogoutModal';
 import * as A from './My.Styled';
 import * as S from '../MyPage.Styled';
+import { useRecoilState } from 'recoil';
+import { logoutModalState } from '../../../atom';
 
 const My = () => {
   const [nickname, setNickname] = useState(false);
   const [myName, setMyname] = useState(false);
   const [phone, setPhone] = useState(false);
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useRecoilState(logoutModalState);
 
   // 버튼 toggle
   const handleNickname = () => {

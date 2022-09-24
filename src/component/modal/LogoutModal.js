@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+import { logoutModalState } from '../../atom';
 
 const ModalContainer = styled.div`
   display: flex;
@@ -51,7 +53,8 @@ const ModalContainer = styled.div`
   }
 `;
 
-function LogoutModal({ setModal }) {
+function LogoutModal() {
+  const [, setModal] = useRecoilState(logoutModalState);
   const outline = useRef();
   const navigate = useNavigate();
 
