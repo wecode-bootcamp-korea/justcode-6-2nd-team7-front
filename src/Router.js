@@ -18,6 +18,7 @@ import Footer from './component/footer/Footer';
 
 import theme from './styles/theme';
 import { browserWidth, reponsive } from './styles/responsive';
+import KaKaoLogin from './pages/login/KaKaoLogin';
 
 const Router = (props) => {
   return (
@@ -27,6 +28,7 @@ const Router = (props) => {
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/kakao-login' element={<KaKaoLogin />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/signup-check' element={<PhoneCheck />} />
           <Route path='/signup-page' element={<SignUpPage />} />

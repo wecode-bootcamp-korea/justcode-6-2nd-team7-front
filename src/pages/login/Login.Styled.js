@@ -31,7 +31,16 @@ export const LoginForm = styled.form`
       margin-top: 3%;
       border: none;
       border-radius: 4px;
-      font-size: 16px;
+      font-size: 17px;
+
+      .icon {
+        font-size: 20px;
+      }
+
+      .letter {
+        font-size: 16px;
+        margin-left: 6px;
+      }
     }
 
     .kakao {
@@ -39,7 +48,6 @@ export const LoginForm = styled.form`
       color: #2c1510;
     }
     p {
-      margin-left: 6px;
     }
 
     .facebook {
@@ -50,6 +58,10 @@ export const LoginForm = styled.form`
     .naver {
       background: rgb(40, 209, 17);
       color: #fff;
+
+      span {
+        font-weight: 900;
+      }
     }
   }
 `;

@@ -33,12 +33,18 @@ const KaKaoLogin = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        if (data.access_token) {
-          localStorage.setItem('kakaoToken', data.access_token);
-        }
+        fetch('http://localhost:8000/kakao', {
+          method: 'POST',
+          headers: { Authorization: JSON.stringify(data.access_token) },
+        }).then((res) => console.log(res));
+
+        // if (data.access_token) {
+        //   localStorage.setItem('kakaoToken', data.access_token);
+        // }
       });
   };
+
+  console.log(localStorage.getItem('kakaoToken'));
 
   useEffect(() => {
     if (!location.search) return;
