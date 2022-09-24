@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 const MyModalStyle = styled.div`
   display: ${(props) => (props.myHover === true ? 'block' : 'none')};
-  /* display: block; */
   position: absolute;
   top: 38px;
   left: inherit;

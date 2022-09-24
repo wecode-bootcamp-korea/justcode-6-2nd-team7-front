@@ -48,16 +48,14 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle }) => {
 
   const cancleSearch = () => {
     setListStyle('block');
-    setInput('');
   };
 
   const handleInput = (e) => {
     setInput(e.target.value);
   };
 
-  const submitSearch = (e) => {
-    console.log(e.key === 'Enter');
-    if (e.key === 'Enter') {
+  const pressEnter = (e) => {
+    if (e.key === 'Enter' && input !== '') {
       setListStyle('block');
       navigate('/search');
     }
@@ -73,7 +71,7 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle }) => {
             placeholder='지역, 숙소명, 숙소타입'
             value={input}
             onChange={handleInput}
-            onKeyDown={submitSearch}
+            onKeyDown={pressEnter}
           />
           <FontAwesomeIcon onClick={cancleSearch} icon={faXmark} color={scrollPosition > 2 ? '#525252' : '#ffffffc4'} />
         </div>

@@ -13,7 +13,7 @@ import * as S from './Nav.styled.js';
 
 const Nav = () => {
   const navigate = useNavigate();
-  const [, setInput] = useRecoilState(searchInput);
+  const [input, setInput] = useRecoilState(searchInput);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [myHover, setMyHover] = useState(true);
   const [listStyle, setListStyle] = useState('block');
@@ -26,9 +26,8 @@ const Nav = () => {
   });
 
   const seacrhClick = (e) => {
-    // listStyle == "none" && -> 검색하기 구현해야 함
     listStyle === 'block' ? setListStyle('none') : setListStyle('block');
-    listStyle === 'block' ? setInput('') : navigate('/search');
+    listStyle === 'none' && input !== '' && navigate('/search');
   };
 
   const logoClick = () => {
