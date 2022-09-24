@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
-import Date from './Date';
 import CheckItem from './CheckItem';
 import OptionList from './OptionList';
 import CustomSlider from './CustomSilder';
@@ -56,7 +55,6 @@ const SideFilter = ({ param }) => {
     <aside className='side-filter'>
       <section className='date-container'>
         <h3 className='title-bk mb12'>날짜</h3>
-        <Date />
         <Calendar />
       </section>
       <div className='mt32'>
