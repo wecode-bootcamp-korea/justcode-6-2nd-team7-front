@@ -23,15 +23,23 @@ export const LoginForm = styled.form`
     height: 100px;
 
     button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 100%;
       height: 50px;
       margin-top: 3%;
       border: none;
       border-radius: 4px;
+      font-size: 16px;
     }
 
     .kakao {
       background: rgb(252, 229, 30);
+      color: #2c1510;
+    }
+    p {
+      margin-left: 6px;
     }
 
     .facebook {

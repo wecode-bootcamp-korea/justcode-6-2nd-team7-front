@@ -4,6 +4,9 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import KaKaoLogin from './KaKaoLogin';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faComment } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import * as S from './Login.Styled';
 
 function Login() {
@@ -65,9 +68,13 @@ function Login() {
       </div>
       <div className='login-btn'>
         <button className='kakao' onClick={handleKakao}>
-          카카오로 로그인
+          <FontAwesomeIcon icon={faComment} />
+          <p>카카오톡으로 로그인</p>
         </button>
-        <button className='facebook'>Facebook으로 로그인</button>
+        <button className='facebook'>
+          <FontAwesomeIcon icon={faFacebook} />
+          <p>Facebook으로 로그인</p>
+        </button>
         <button className='naver'>네이버로 로그인</button>
       </div>
       <S.LoginInput>
