@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const grayBorder = '#00000030';
 
-//<<<<<<<<<<가장 바깥 컨테이너>>>>>>>>>>
 export const ReservationStyle = styled.section`
   display: flex;
   justify-content: space-between;
@@ -19,7 +18,6 @@ export const ReservationStyle = styled.section`
   }
 `;
 
-//<<<<<<<<<<서브 컴포넌트>>>>>>>>>>
 export const SubContainerStyle = styled.section`
   width: 310px;
   color: ${({ theme }) => theme.colors.bkText};

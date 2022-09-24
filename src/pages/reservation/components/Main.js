@@ -14,7 +14,6 @@ const Main = () => {
   const [phoneValid, setPhoneValid] = useState(true);
   const [nameValid, setNameValid] = useState(true);
 
-  //input 입력값 업데이트
   const changeInput = (e) => {
     const { id, value } = e.target;
     setInputs({
@@ -23,7 +22,6 @@ const Main = () => {
     });
   };
 
-  //예약자 이름 유효성 검사
   const handledNameInput = (e) => {
     const valid = /^[0-9|a-zA-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣 ]*$/;
     6 > e.target.value.length > 0 && e.target.value.split(' ').length - 1 < 2 && valid.test(e.target.value)
@@ -31,18 +29,15 @@ const Main = () => {
       : setNameValid(false);
   };
 
-  //전화번호 유효성검사
   const handlePhoneInput = (e) => {
     const valid = /^[0-9]*$/;
     e.target.value.length > (9 || 1) && valid.test(e.target.value) ? setPhoneValid(true) : setPhoneValid(false);
   };
 
-  //체크박스 1개 선택or해제 시 checkList state값 반영
   const handleSingleCheck = (checked, name) => {
     checked ? setCheckList((prev) => [...prev, name]) : setCheckList(checkList.filter((check) => check !== name));
   };
 
-  //전체동의 클릭 시 전체 선택or해제
   const handleAllCheck = (e) => {
     e.target.checked ? setCheckList(['check1', 'check2', 'check3']) : setCheckList([]);
   };

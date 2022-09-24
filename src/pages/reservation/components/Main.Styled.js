@@ -2,13 +2,11 @@ import styled from 'styled-components';
 
 const grayBorder = '#00000030';
 
-//<<<<<<<<<<메인 컴포넌트>>>>>>>>>>
 export const MainContainerStyle = styled.section`
   width: 564px;
   color: ${({ theme }) => theme.colors.text};
   font-size: 17.8px;
 
-  /* 공통으로 사용되는 클래스 */
   .container {
     padding-bottom: 10px;
     margin-bottom: 28px;
@@ -50,7 +48,6 @@ export const MainContainerStyle = styled.section`
     }
   }
 
-  /* 예약자정보 관련 클래스 */
   .user-info {
     label {
       font-weight: 600;
@@ -71,7 +68,6 @@ export const MainContainerStyle = styled.section`
     }
   }
 
-  /* 할인수단 관련 클래스 */
   .sale {
     padding-bottom: 30px;
 
@@ -93,7 +89,6 @@ export const MainContainerStyle = styled.section`
     }
   }
 
-  /* 결제 관련 클래스 */
   .payment {
     select {
       width: 288px;
