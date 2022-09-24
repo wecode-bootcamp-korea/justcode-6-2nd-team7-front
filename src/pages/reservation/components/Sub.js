@@ -1,6 +1,6 @@
 import { SubContainerStyle } from '../Reservation.Styled';
 
-const SubContainer = () => {
+const Sub = () => {
   return (
     <>
       <SubContainerStyle>
@@ -51,10 +51,10 @@ const SubContainer = () => {
             </ul>
           </div>
         </div>
-        <button className='btn'>결제하기</button>
+        <button>결제하기</button>
       </SubContainerStyle>
     </>
   );
 };
 
-export default SubContainer;
+export default Sub;
