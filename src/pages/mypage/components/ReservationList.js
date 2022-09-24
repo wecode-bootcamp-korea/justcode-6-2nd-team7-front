@@ -3,9 +3,9 @@ import MyPage from '../MyPage';
 
 import * as S from '../MyPage.Styled';
 import NoReservation from './NoReservation';
-import * as A from './Reservation.Styled';
+import * as A from './ReservationList.Styled';
 
-function Reservation() {
+function ReservationList() {
   const [reservation, setReservation] = useState(false);
 
   const handleDelete = () => {
@@ -52,4 +52,4 @@ function Reservation() {
   );
 }
 
-export default Reservation;
+export default ReservationList;
