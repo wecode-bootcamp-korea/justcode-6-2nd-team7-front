@@ -100,6 +100,9 @@ export const Header = styled.header`
             &:hover {
               color: ${({ theme }) => theme.colors.mainColor};
             }
+            &:active {
+              color: #0098d6;
+            }
           }
 
           li.selected {
@@ -255,22 +258,32 @@ export const Body = styled.div`
         cursor: pointer;
       }
 
-      .btn.white {
+      .white {
         background-color: #fff;
         border: 1px solid ${({ theme }) => theme.colors.mainColor};
         color: ${({ theme }) => theme.colors.mainColor};
         &:hover {
           color: #009fef;
         }
+        &:active {
+          background-color: ${({ theme }) => theme.colors.mainColor};
+          border: 1px solid ${({ theme }) => theme.colors.mainColor};
+          color: #fff;
+        }
       }
 
-      .btn.blue {
+      .blue {
         background-color: ${({ theme }) => theme.colors.mainColor};
         border: 1px solid ${({ theme }) => theme.colors.mainColor};
         color: #fff;
         &:hover {
           background-color: #009fef;
           border: 1px solid #009fef;
+        }
+        &:active {
+          background-color: #fff;
+          border: 1px solid ${({ theme }) => theme.colors.mainColor};
+          color: ${({ theme }) => theme.colors.mainColor};
         }
       }
     }
