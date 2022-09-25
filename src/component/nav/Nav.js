@@ -67,7 +67,9 @@ const Nav = () => {
                   </Link>
                 </li>
                 <li className='list'>
-                  <Link to='/my' className='nav-link'>
+                  <Link
+                    to={localStorage.getItem('token') !== null ? '/reservation-list' : '/login'}
+                    className='nav-link'>
                     예약내역
                   </Link>
                 </li>
