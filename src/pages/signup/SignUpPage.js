@@ -64,7 +64,6 @@ function SignUpPage() {
         nickName: userNic,
         phoneNumber: phoneNum,
       };
-
       axios.post('http://localhost:8000/signup', body).then((res) => {
         if (res.data.message === 'SIGNUP_SUCCESS!') {
           navigate('/login');

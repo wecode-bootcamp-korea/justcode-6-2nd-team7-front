@@ -61,21 +61,21 @@ export const NavStyle = styled.nav`
         flex-direction: row-reverse;
         width: 584px;
         margin-right: 30px;
-        padding-right:0px
+        padding-right: 0px;
         transition-duration: 0.5s;
         &:hover {
           cursor: pointer;
         }
-        
-        .search-icon{
-        transition-duration: 0.5s;
+
+        .search-icon {
+          transition-duration: 0.5s;
         }
       }
 
       .search-icon-change {
-        .search-icon{
-        transform: translate(-500px, 0px);
-        transition-duration: 0.5s;
+        .search-icon {
+          transform: translate(-500px, 0px);
+          transition-duration: 0.5s;
         }
       }
 
