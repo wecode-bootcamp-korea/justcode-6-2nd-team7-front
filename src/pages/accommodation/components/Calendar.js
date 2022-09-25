@@ -41,7 +41,6 @@ const StyledDatePicker = styled(DatePicker)`
   color: ${({ theme }) => theme.colors.text};
   font-size: 18px;
   font-weight: 400;
-  transition: 300ms;
   cursor: pointer;
 
   &:focus {
@@ -70,11 +69,11 @@ const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow }) => {
     };
   }, []);
 
-  const handleFirstInput = () => {
+  const handleFirstInput = (e) => {
     setFirstShow(true);
   };
 
-  const handleSecondInput = () => {
+  const handleSecondInput = (e) => {
     setSecondShow(true);
   };
 
