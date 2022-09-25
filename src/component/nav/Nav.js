@@ -1,8 +1,8 @@
-import { React, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import classnames from 'classnames';
 import { useRecoilState } from 'recoil';
-import { searchInput } from '../../atom';
+import { searchInputState } from '../../atom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,7 +13,7 @@ import * as S from './Nav.styled.js';
 
 const Nav = () => {
   const navigate = useNavigate();
-  const [input, setInput] = useRecoilState(searchInput);
+  const [input, setInput] = useRecoilState(searchInputState);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [myHover, setMyHover] = useState(true);
   const [listStyle, setListStyle] = useState('block');
@@ -87,7 +87,6 @@ const Nav = () => {
                         }}
                         onMouseOut={() => {
                           setMyHover(false);
-                          console.log(myHover);
                         }}
                         className='nav-link'>
                         마이페이지

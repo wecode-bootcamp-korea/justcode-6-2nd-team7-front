@@ -10,7 +10,7 @@ export const logoutModalState = atom({
   default: false,
 });
 
-export const searchInput = atom({
-  key: 'searchInput',
+export const searchInputState = atom({
+  key: 'searchInputState',
   default: '',
 });

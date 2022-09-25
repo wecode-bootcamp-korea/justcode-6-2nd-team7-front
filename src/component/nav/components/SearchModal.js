@@ -5,7 +5,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useRecoilState } from 'recoil';
 
 import styled from 'styled-components';
-import { searchInput } from '../../../atom';
+import { searchInputState } from '../../../atom';
 
 import * as S from './SeachModal.Styled';
 
@@ -32,7 +32,7 @@ const InputContainer = styled.div`
 
 const SearchModal = ({ scrollPosition, setListStyle, listStyle }) => {
   const navigate = useNavigate();
-  const [input, setInput] = useRecoilState(searchInput);
+  const [input, setInput] = useRecoilState(searchInputState);
   const [inputColor, setInputColor] = useState('#ffffffc4');
   const recommendArr = [
     { id: 1, keyword: '강남' },

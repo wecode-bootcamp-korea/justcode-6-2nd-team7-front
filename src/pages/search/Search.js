@@ -1,7 +1,7 @@
 // import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
-import { searchInput } from '../../atom';
+import { searchInputState } from '../../atom';
 import styled from 'styled-components';
 
 const SearchContainer = styled.div`
@@ -33,7 +33,7 @@ const SearchContainer = styled.div`
 `;
 
 const Search = () => {
-  const [input] = useRecoilState(searchInput);
+  const input = useRecoilState(searchInputState);
   const body = {
     inputWord: input,
   };
