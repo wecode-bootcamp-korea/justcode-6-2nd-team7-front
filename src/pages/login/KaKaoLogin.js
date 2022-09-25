@@ -9,7 +9,7 @@ const KaKaoLogin = () => {
       width: 100%;
       height: 100px;
       margin-top: 3%;
-      background: rgb(252, 229, 30);
+      background: #fce51e;
       border: none;
       border-radius: 4px;
       cursor: pointer;
