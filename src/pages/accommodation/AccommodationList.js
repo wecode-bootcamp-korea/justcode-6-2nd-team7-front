@@ -8,6 +8,7 @@ import Map from './components/Map';
 import SideFilter from './components/SideFilter';
 import TopFilter from './components/TopFilter';
 import ThumbnailList from './components/ThumbnailList';
+import NoData from './components/NoData';
 
 import { region } from './data/region';
 import { handleCategory } from './data/functions';
@@ -33,12 +34,16 @@ const AccommodationList = (props) => {
 
   useEffect(() => {
     axios
-      .get('/data/accommodation/accommodation.json')
+      .get('/data/accommodation/accommodationNoData.json')
       .then((res) => {
         setList(res.data.accommodation);
         setAcmType(Object.keys(res.data.accommodation));
+        Object.keys(res.data.accommodation).length === 0 && setList([]);
       })
-      .catch((err) => console.log('ERROR', err));
+      .catch((err) => {
+        console.log(err);
+        setList([]);
+      });
     // axios
     //   .get(`http://localhost:8000/accommodation/${param}`)
     //   .then((res) => {
@@ -67,7 +72,7 @@ const AccommodationList = (props) => {
   const handleShowMenu = (e) => {
     setShowMenu(true);
     e.type === 'mouseleave' && setShowMenu(false);
-    (!firstDateShow || !secondDateShow) && setShowMenu(false);
+    (firstDateShow || secondDateShow) && setShowMenu(false);
   };
 
   return (
@@ -82,7 +87,7 @@ const AccommodationList = (props) => {
               &nbsp;&nbsp;{seletedRegion}&nbsp;&nbsp;
               <FontAwesomeIcon icon={faCaretDown} size='2xs' />
             </div>
-            <div className={showMenu ? 'region-container' : 'region-container none'}>
+            <S.Menu showMenu={showMenu}>
               <ul className='city-list'>
                 {city &&
                   city.map((el) => {
@@ -115,7 +120,7 @@ const AccommodationList = (props) => {
                     );
                   })}
               </ul>
-            </div>
+            </S.Menu>
           </div>
         </div>
       </S.Header>
@@ -134,6 +139,7 @@ const AccommodationList = (props) => {
             acmType.map((el) => {
               return <ThumbnailList key={el} list={list[el]} type={el} />;
             })}
+          {list && list.length === 0 && <NoData />}
         </main>
       </S.Body>
     </>

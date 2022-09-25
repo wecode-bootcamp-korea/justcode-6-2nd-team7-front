@@ -19,6 +19,7 @@ import Footer from './component/footer/Footer';
 
 import theme from './styles/theme';
 import { browserWidth, reponsive } from './styles/responsive';
+import TopButton from './component/topbutton/TopButton';
 import KaKaoLogin from './pages/login/KaKaoLogin';
 
 const Router = (props) => {
@@ -43,6 +44,7 @@ const Router = (props) => {
           <Route path='/search' element={<Search />} />
         </Routes>
         <Footer />
+        <TopButton />
       </BrowserRouter>
     </ThemeProvider>
   );

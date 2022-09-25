@@ -26,8 +26,12 @@ export const handleEvaluate = (score) => {
     return '최고에요';
   } else if (8.9 < Number(score) < 9.6) {
     return '추천해요';
-  } else {
+  } else if (6.9 < Number(score) < 9.0) {
     return '만족해요';
+  } else if (4.9 < Number(score) < 7.0) {
+    return '좋아요';
+  } else {
+    return '평범해요';
   }
 };
 
@@ -68,6 +72,8 @@ export const handleSelectFilter = (param) => {
       return 5;
     case 'nearby':
       return 1;
+    case 'search':
+      return 6;
     default:
       return '';
   }
@@ -80,6 +86,7 @@ export const handleShowRange = (param) => {
     case 'ghesthouse':
     case 'camping':
     case 'hanok':
+    case 'search':
       return true;
     case 'hotel':
     case 'nearby':
@@ -92,6 +99,7 @@ export const handleShowCount = (param) => {
   switch (param) {
     case 'motel':
     case 'nearby':
+    case 'search':
       return false;
     case 'hotel':
     case 'pension':
@@ -122,6 +130,6 @@ export const handleShowBedtype = (param) => {
 export const returnHtml = (name, img, price) => {
   return `<div style="width: 200px; height: auto; display: flex;">
   <img src="${img}" alt="${name}" style="width: 30%" />
-  <div style="padding: 5px; font-size: 0.8em"><p style="font-weight: 700;">${name}</p><p style="font-weight: 400;">${price}</p></div>
+  <div style="padding: 5px; font-size: 0.8em"><p style="font-weight: 700;">${name}</p><p style="font-weight: 400;">${price}원</p></div>
   </div>`;
 };
