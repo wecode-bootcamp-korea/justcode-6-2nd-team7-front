@@ -8,7 +8,7 @@ import Login from './pages/login/Login';
 import PhoneCheck from './pages/signup/PhoneCheck';
 import SignUp from './pages/signup/SignUp';
 import SignUpPage from './pages/signup/SignUpPage';
-import DetailPage from './pages/detailpage/DetailPage';
+import Detail from './pages/detail/Detail';
 import Reservation from './pages/reservation/Reservation';
 import Points from './pages/mypage/components/Points';
 import Coupons from './pages/mypage/components/Coupons';
@@ -33,7 +33,7 @@ const Router = (props) => {
           <Route path='/signup' element={<SignUp />} />
           <Route path='/signup-check' element={<PhoneCheck />} />
           <Route path='/signup-page' element={<SignUpPage />} />
-          <Route path='/detailPage' element={<DetailPage />} />
+          <Route path='/detail/:id' element={<Detail />} />
           <Route path='/reservation' element={<Reservation />} />
           <Route path='/accommodation/:type' element={<AccommodationList />} />
           <Route path='/mypage' element={<Points />} />
