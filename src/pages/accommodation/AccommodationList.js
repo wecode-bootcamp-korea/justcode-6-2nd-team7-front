@@ -34,7 +34,7 @@ const AccommodationList = (props) => {
 
   useEffect(() => {
     axios
-      .get('/data/accommodation/accommodation.json')
+      .get('/data/accommodation/accommodationNoData.json')
       .then((res) => {
         setList(res.data.accommodation);
         setAcmType(Object.keys(res.data.accommodation));
