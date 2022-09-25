@@ -52,7 +52,6 @@ export const SignUpContainer = styled.div`
       }
 
       .nickname {
-        width: 60%;
         margin-right: 3%;
       }
 
