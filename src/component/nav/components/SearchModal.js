@@ -3,9 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useRecoilState } from 'recoil';
-
-import styled from 'styled-components';
 import { searchInputState } from '../../../atom';
+import styled from 'styled-components';
+
+import EmptyInputModal from './EmptyInputModal';
 
 import * as S from './SeachModal.Styled';
 
@@ -32,8 +33,10 @@ const InputContainer = styled.div`
 
 const SearchModal = ({ scrollPosition, setListStyle, listStyle }) => {
   const navigate = useNavigate();
-  const [input, setInput] = useRecoilState(searchInputState);
+  const [, setKeword] = useRecoilState(searchInputState);
+  const [input, setInput] = useState('');
   const [inputColor, setInputColor] = useState('#ffffffc4');
+  const [emptySubmit, setEmptySubmit] = useState(false);
   const recommendArr = [
     { id: 1, keyword: '강남' },
     { id: 2, keyword: '서울' },
@@ -58,6 +61,9 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle }) => {
     if (e.key === 'Enter' && input !== '') {
       setListStyle('block');
       navigate('/search');
+      setKeword(input);
+    } else if (e.key === 'Enter' && input === '') {
+      setEmptySubmit(true);
     }
   };
 
@@ -87,6 +93,7 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle }) => {
                 );
               })}
           </div>
+          {emptySubmit && <EmptyInputModal setEmptySubmit={setEmptySubmit} />}
         </S.Recommend>
       </InputContainer>
     </>
