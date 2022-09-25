@@ -5,7 +5,7 @@ const ThumbnailList = ({ list, type }) => {
   return (
     <>
       <ul className='thumbnail-container mt32'>
-        <h3 className='sort-title mb12'>{handleTitle(type)}</h3>
+        {type && <h3 className='sort-title mb12'>{handleTitle(type)}</h3>}
         {list &&
           list.map((el) => (
             <Thumbnail
