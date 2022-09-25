@@ -44,19 +44,17 @@ export const LoginForm = styled.form`
     }
 
     .kakao {
-      background: rgb(252, 229, 30);
+      background: #fce51e;
       color: #2c1510;
-    }
-    p {
     }
 
     .facebook {
-      background: rgb(24, 119, 242);
+      background: #1877f2;
       color: #fff;
     }
 
     .naver {
-      background: rgb(40, 209, 17);
+      background: #28d111;
       color: #fff;
 
       span {
@@ -84,7 +82,7 @@ export const LineContainer = styled.div`
     height: 40px;
     margin-top: -30px;
     background: white;
-    color: rgba(0, 0, 0, 0.38);
+    color: #00000061;
     font-size: 16px;
     text-align: center;
     line-height: 56px;
@@ -97,7 +95,7 @@ export const LineContainer = styled.div`
     position: absolute;
     width: 336px;
     height: 1px;
-    background: rgba(0, 0, 0, 0.08);
+    background: #00000014;
   }
 `;
 
@@ -111,7 +109,7 @@ export const InputContainer = styled.div`
     margin-bottom: 5px;
     font-size: 18px;
     border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.26);
+    border: 1px solid #00000042;
   }
 
   .email-check {
@@ -210,7 +208,7 @@ export const LoginFooter = styled.div`
         width: 2px;
         height: 15px;
         right: 50%;
-        background: rgba(0, 0, 0, 0.08);
+        background: #00000014;
       }
     }
 
