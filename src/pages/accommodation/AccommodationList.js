@@ -67,7 +67,7 @@ const AccommodationList = (props) => {
   const handleShowMenu = (e) => {
     setShowMenu(true);
     e.type === 'mouseleave' && setShowMenu(false);
-    (!firstDateShow || !secondDateShow) && setShowMenu(false);
+    (firstDateShow || secondDateShow) && setShowMenu(false);
   };
 
   return (
