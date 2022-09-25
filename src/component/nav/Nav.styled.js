@@ -45,6 +45,7 @@ export const NavStyle = styled.nav`
     .logo-box {
       display: flex;
       height: inherit;
+      padding-left: 30px;
       align-items: center;
 
       .logo {
@@ -59,7 +60,7 @@ export const NavStyle = styled.nav`
       .search-icon-box {
         display: flex;
         flex-direction: row-reverse;
-        width: 584px;
+        width: 524px;
         margin-right: 30px;
         padding-right: 0px;
         transition-duration: 0.5s;
