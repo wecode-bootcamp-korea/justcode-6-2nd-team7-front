@@ -19,6 +19,7 @@ import Footer from './component/footer/Footer';
 
 import theme from './styles/theme';
 import { browserWidth, reponsive } from './styles/responsive';
+import TopButton from './component/topbutton/TopButton';
 
 const Router = (props) => {
   return (
@@ -40,6 +41,7 @@ const Router = (props) => {
           <Route path='/my' element={<My />} />
         </Routes>
         <Footer />
+        <TopButton />
       </BrowserRouter>
     </ThemeProvider>
   );
