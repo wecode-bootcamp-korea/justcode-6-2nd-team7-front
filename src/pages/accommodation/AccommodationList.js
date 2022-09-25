@@ -26,6 +26,8 @@ const AccommodationList = (props) => {
   const [list, setList] = useState();
   const [acmType, setAcmType] = useState();
   const [showModal, setShowModal] = useState(false);
+  const [firstDateShow, setFirstDateShow] = useState(false);
+  const [secondDateShow, setSecondDateShow] = useState(false);
 
   const param = useParams().type;
 
@@ -65,6 +67,7 @@ const AccommodationList = (props) => {
   const handleShowMenu = (e) => {
     setShowMenu(true);
     e.type === 'mouseleave' && setShowMenu(false);
+    (!firstDateShow || !secondDateShow) && setShowMenu(false);
   };
 
   return (
@@ -117,7 +120,13 @@ const AccommodationList = (props) => {
         </div>
       </S.Header>
       <S.Body>
-        <SideFilter param={param} />
+        <SideFilter
+          param={param}
+          firstShow={firstDateShow}
+          setFirstShow={setFirstDateShow}
+          secondShow={secondDateShow}
+          setSecondShow={setSecondDateShow}
+        />
         <main>
           {showModal && <Map setShowModal={setShowModal} list={list} />}
           <TopFilter setShowModal={setShowModal} />
