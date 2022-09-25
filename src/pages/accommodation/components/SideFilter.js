@@ -58,14 +58,13 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
     <aside className='side-filter'>
       <section className='date-container'>
         <h3 className='title-bk mb12'>날짜</h3>
-        <div className='hide-area'>
-          <Calendar
-            firstShow={firstShow}
-            setFirstShow={setFirstShow}
-            secondShow={secondShow}
-            setSecondShow={setSecondShow}
-          />
-        </div>
+        <Calendar
+          firstShow={firstShow}
+          setFirstShow={setFirstShow}
+          secondShow={secondShow}
+          setSecondShow={setSecondShow}
+          align='column'
+        />
       </section>
       <div className='mt32'>
         <h3 className='title-bk mb12'>상세조건</h3>
