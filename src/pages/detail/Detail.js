@@ -85,7 +85,7 @@ const Detail = () => {
           </S.MenuBar>
           <S.Context className='content'>
             {component === 1 && <RoomGuide roomType={showData.roomTypes} />}
-            {component === 2 && <Information />}
+            {component === 2 && <Information informations={showData} />}
             {component === 3 && <Review />}
           </S.Context>
         </S.DetailExplanation>
@@ -93,4 +93,5 @@ const Detail = () => {
     </>
   );
 };
+
 export default Detail;
