@@ -3,10 +3,9 @@ import DatePicker from 'react-datepicker';
 import { registerLocale } from 'react-datepicker';
 import ko from 'date-fns/locale/ko';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
-import { faCalendar } from '@fortawesome/free-regular-svg-icons';
 
 registerLocale('ko', ko);
 
