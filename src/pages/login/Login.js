@@ -1,10 +1,9 @@
-import axios from 'axios';
 import React, { useCallback, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import axios from 'axios';
 import * as S from './Login.Styled';
 
 function Login() {
@@ -21,7 +20,6 @@ function Login() {
     !email.includes('@') ? setEmailCheck(true) : setEmailCheck(false);
   };
 
-  console.log(process.env.REACT_APP_REST_API_KEY);
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
