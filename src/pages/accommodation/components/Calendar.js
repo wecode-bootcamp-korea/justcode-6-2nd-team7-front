@@ -41,6 +41,8 @@ const StyledDatePicker = styled(DatePicker)`
   color: ${({ theme }) => theme.colors.text};
   font-size: 18px;
   font-weight: 400;
+  transition: 300ms;
+  cursor: pointer;
 
   &:focus {
     outline: none;
@@ -53,12 +55,26 @@ const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow }) => {
 
   useEffect(() => {
     startDate > endDate && setEndDate();
-  }, [startDate]);
-  const handleFirstInput = (e) => {
+  }, [startDate, endDate]);
+
+  const handleShowCalendar = (e) => {
+    !e.target.closest('.hide-area') && setFirstShow(false);
+    !e.target.closest('.hide-area') && setSecondShow(false);
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleShowCalendar);
+
+    return () => {
+      document.removeEventListener('mousedown', handleShowCalendar);
+    };
+  }, []);
+
+  const handleFirstInput = () => {
     setFirstShow(true);
   };
 
-  const handleSecondInput = (e) => {
+  const handleSecondInput = () => {
     setSecondShow(true);
   };
 
@@ -80,8 +96,7 @@ const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow }) => {
           open={firstShow}
           disabledKeyboardNavigation
           dateFormat='yy년 M월 d일'
-          locale='ko'
-          id='first'>
+          locale='ko'>
           <button className='btn' onClick={() => setFirstShow(false)}>
             선택완료
           </button>
@@ -104,8 +119,7 @@ const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow }) => {
           open={secondShow}
           disabledKeyboardNavigation
           dateFormat='yy년 M월 d일'
-          locale='ko'
-          id='second'>
+          locale='ko'>
           <button className='btn' onClick={() => setSecondShow(false)}>
             선택완료
           </button>

@@ -1,5 +1,22 @@
 import styled from 'styled-components';
 
+export const Menu = styled.div`
+  display: flex;
+  height: 555px;
+  position: absolute;
+  top: 50px;
+  left: -25px;
+  background-color: #fff;
+  border-radius: 5px;
+  color: ${({ theme }) => theme.colors.bkText};
+  font-size: 15px;
+  box-shadow: 0 4px 6px #32325d1c, 0 1px 3px #00000014;
+  z-index: 1;
+  opacity: ${({ showMenu }) => (showMenu ? '1' : '0')};
+  visibility: ${({ showMenu }) => (showMenu ? 'visible' : 'hidden')};
+  transition: 0.3s;
+`;
+
 export const Header = styled.header`
   width: 100%;
   height: 211px;
@@ -30,32 +47,7 @@ export const Header = styled.header`
         font-weight: 700;
       }
 
-      .region-container.none {
-        display: none;
-
-        .city-list,
-        .region-list {
-          div {
-            li {
-              display: none;
-            }
-          }
-        }
-      }
-
-      .region-container {
-        display: flex;
-        height: 555px;
-        position: absolute;
-        top: 50px;
-        left: -25px;
-        background-color: #fff;
-        border-radius: 5px;
-        color: ${({ theme }) => theme.colors.bkText};
-        font-size: 15px;
-        box-shadow: 0 4px 6px #32325d1c, 0 1px 3px #00000014;
-        z-index: 1;
-
+      ${Menu} {
         .city-list {
           width: 167px;
           padding: 25px 10px 25px 30px;
@@ -356,6 +348,7 @@ export const Body = styled.div`
           flex-direction: column;
           align-items: center;
           font-size: 14px;
+          cursor: pointer;
 
           .icon {
             width: 48px;
@@ -393,6 +386,9 @@ export const Body = styled.div`
 
           p {
             color: ${({ theme }) => theme.colors.text};
+            &:active {
+              color: #009fef;
+            }
           }
 
           p.selected {
