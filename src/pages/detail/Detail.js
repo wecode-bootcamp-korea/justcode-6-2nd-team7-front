@@ -69,7 +69,6 @@ const Detail = () => {
                   />
                 )}
               </div>
-
               <div className='comment-ceo'>
                 <p className='ceo'>사장님의 한마디</p>
                 <p className='ripple'>{showData.ceo}</p>

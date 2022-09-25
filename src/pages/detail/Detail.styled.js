@@ -7,39 +7,31 @@ export const DetailExplanation = styled.div`
     display: flex;
     justify-content: space-around;
     margin-top: 100px;
-  }
-  .size {
-    width: 490px;
-    height: 348px;
-  }
-  .type {
-    vertical-align: top;
-    line-height: 27px;
-    color: #ffffff;
-    background-color: ${({ theme }) => theme.colors.lowRating};
-    font-size: 20px;
-  }
-  .title {
-    display: inline;
-    margin: 9px 0 0 0;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  .recommend {
-    color: ${({ theme }) => theme.colors.yellow};
-    font-size: 18px;
-  }
-  .rate {
-    margin-right: 15px;
-    padding: 0 5px;
-    border-radius: 5px;
-    background-color: ${({ theme }) => theme.colors.yellow};
-    color: #ffffff;
-    font-size: 14px;
-  }
-  .icon-flex {
-    display: flex;
-    justify-content: space-between;
+    .type {
+      vertical-align: top;
+      line-height: 27px;
+      color: #ffffff;
+      background-color: ${({ theme }) => theme.colors.lowRating};
+      font-size: 20px;
+    }
+    .title {
+      display: inline;
+      margin: 9px 0 0 0;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .recommend {
+      color: ${({ theme }) => theme.colors.yellow};
+      font-size: 18px;
+    }
+    .rate {
+      margin-right: 15px;
+      padding: 0 5px;
+      border-radius: 5px;
+      background-color: ${({ theme }) => theme.colors.yellow};
+      color: #ffffff;
+      font-size: 14px;
+    }
   }
   .address {
     margin: 6px 0 8px 0;
@@ -56,13 +48,20 @@ export const DetailExplanation = styled.div`
     border: none;
     background: linear-gradient(to right, #009abd 0%, #12b1a2 100%);
     cursor: pointer;
+
+    .icon-flex {
+      display: flex;
+      justify-content: space-between;
+
+      .li-style {
+        padding-left: 16px;
+        color: #ffffff;
+        text-align: left;
+        list-style: inside;
+      }
+    }
   }
-  .li-style {
-    padding-left: 16px;
-    color: #ffffff;
-    text-align: left;
-    list-style: inside;
-  }
+
   .comment-ceo {
     display: block;
     position: relative;
@@ -70,21 +69,22 @@ export const DetailExplanation = styled.div`
     margin-top: 16px;
     padding: 26px 24px;
     background: #fafafa;
-  }
-  .ceo {
-    display: block;
-    margin-bottom: 15px;
-    font-size: 16px;
-    color: ${({ theme }) => theme.colors.bkText};
-    font-weight: bold;
-  }
-  .ripple {
-    display: block;
-    height: auto;
-    line-height: 26px;
-    color: #8c8c8c;
-    font-size: 16px;
-    overflow: hidden;
+
+    .ceo {
+      display: block;
+      margin-bottom: 15px;
+      font-size: 16px;
+      color: ${({ theme }) => theme.colors.bkText};
+      font-weight: bold;
+    }
+    .ripple {
+      display: block;
+      height: auto;
+      line-height: 26px;
+      color: #8c8c8c;
+      font-size: 16px;
+      overflow: hidden;
+    }
   }
 `;
 

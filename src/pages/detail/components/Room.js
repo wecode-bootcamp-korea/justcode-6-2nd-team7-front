@@ -7,7 +7,6 @@ import Slide from './Slide';
 import UseModal from './UseModal';
 
 const Room = ({ roomType }) => {
-  //console.log("데이터나와라",roomType)
   const [openBtn, setOpenBtn] = useState(false);
   const [useBtn, setUseBtn] = useState(false);
 
