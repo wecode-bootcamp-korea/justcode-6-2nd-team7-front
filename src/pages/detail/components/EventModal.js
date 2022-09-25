@@ -56,7 +56,6 @@ const EventModal = ({ onClose }) => {
     <Modal>
       <div className='modal-container'>
         <button className='close-btn' onClick={handleClose}>
-          {' '}
           <FontAwesomeIcon icon={faXmark} size='lg' />{' '}
         </button>
         <div>

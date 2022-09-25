@@ -20,13 +20,10 @@ const Detail = () => {
     switch (e.target.value) {
       case '객실안내/예약':
         return setComponent(1);
-
       case '숙소정보':
         return setComponent(2);
-
       case '리뷰':
         return setComponent(3);
-
       default:
     }
   };
