@@ -57,6 +57,7 @@ const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow, align })
             open={firstShow}
             disabledKeyboardNavigation
             dateFormat='yy년 M월 d일'
+            dateFormatCalendar='yyyy년 M월'
             locale='ko'>
             <button className='btn' onClick={() => setFirstShow(false)}>
               선택완료
@@ -80,6 +81,7 @@ const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow, align })
             open={secondShow}
             disabledKeyboardNavigation
             dateFormat='yy년 M월 d일'
+            dateFormatCalendar='yyyy년 M월'
             locale='ko'>
             <button className='btn' onClick={() => setSecondShow(false)}>
               선택완료
