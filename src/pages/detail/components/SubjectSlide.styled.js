@@ -1,0 +1,72 @@
+import styled from 'styled-components';
+
+export const Wrapper = styled.div`
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+
+  .swiper-slide {
+    text-align: center;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    /* object-fit: cover; */
+  }
+
+  .swiper {
+    width: 100%;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .swiper-slide {
+    background-size: cover;
+    background-position: center;
+  }
+
+  .mySwiper2 {
+    height: 250%;
+  }
+
+  .mySwiper {
+    height: 100%;
+    width: 80%;
+    box-sizing: border-box;
+    padding: 10px 0;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+  }
+  .swiper-button-prev {
+    position: absolute;
+    color: ${({ theme }) => theme.colors.text};
+    ::after {
+      font-variant: unset;
+    }
+  }
+  .swiper-button-next {
+    color: ${({ theme }) => theme.colors.text};
+    ::after {
+      font-variant: unset;
+    }
+  }
+`;
