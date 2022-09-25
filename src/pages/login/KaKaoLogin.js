@@ -10,10 +10,12 @@ const KaKaoLogin = () => {
   const REDIRECT_URI = 'http://localhost:3000/kakao-login';
   const REST_API_KEY = '5896c4071585205226ff70774816a5df';
 
+  // const requestURL = `https://kauth.kakao.com/oauth/token?grant_type=authorization_code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&code=${KAKAO_CODE}`;
+
   const getKaKaoToken = () => {
     fetch('https://kauth.kakao.com/oauth/token', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
       body: `grant_type=authorization_code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&code=${KAKAO_CODE}`,
     })
       .then((res) => res.json())
