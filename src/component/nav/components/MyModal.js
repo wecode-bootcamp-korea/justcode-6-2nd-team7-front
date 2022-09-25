@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const MyModalStyle = styled.div`
-  display: block;
+  display: ${(props) => (props.myHover === true ? 'block' : 'none')};
   position: absolute;
   top: 38px;
   left: inherit;
@@ -11,7 +11,6 @@ const MyModalStyle = styled.div`
   z-index: 100;
 
   .modal-container {
-    height: 240px;
     border-radius: 13px;
     box-shadow: 0px 8px 6px rgb(0 0 0 / 15%);
 
@@ -62,6 +61,9 @@ const MyModal = () => {
           </li>
           <li>
             <Link to='/my'>예약내역</Link>
+          </li>
+          <li>
+            <Link to='/my'>로그아웃</Link>
           </li>
         </ul>
       </div>

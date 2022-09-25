@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const SearchModalBg = styled.div`
+  display: ${(props) => (props.listStyle === 'block' ? 'none' : 'block')};
   position: fixed;
   top: 72px;
   left: 0px;

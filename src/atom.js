@@ -9,3 +9,8 @@ export const logoutModalState = atom({
   key: 'logoutModalState',
   default: false,
 });
+
+export const searchInputState = atom({
+  key: 'searchInputState',
+  default: '',
+});
