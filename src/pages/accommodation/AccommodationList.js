@@ -67,7 +67,7 @@ const AccommodationList = (props) => {
   const handleShowMenu = (e) => {
     setShowMenu(true);
     e.type === 'mouseleave' && setShowMenu(false);
-    (!firstDateShow || !secondDateShow) && setShowMenu(false);
+    (firstDateShow || secondDateShow) && setShowMenu(false);
   };
 
   return (
@@ -82,7 +82,7 @@ const AccommodationList = (props) => {
               &nbsp;&nbsp;{seletedRegion}&nbsp;&nbsp;
               <FontAwesomeIcon icon={faCaretDown} size='2xs' />
             </div>
-            <div className={showMenu ? 'region-container' : 'region-container none'}>
+            <S.Menu showMenu={showMenu}>
               <ul className='city-list'>
                 {city &&
                   city.map((el) => {
@@ -115,7 +115,7 @@ const AccommodationList = (props) => {
                     );
                   })}
               </ul>
-            </div>
+            </S.Menu>
           </div>
         </div>
       </S.Header>

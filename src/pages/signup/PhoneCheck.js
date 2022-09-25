@@ -1,47 +1,64 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Timer from './Timer';
-import * as S from './PhoneCheck.Styled';
+import React, { useState } from 'react';
 
-import { useRecoilState } from 'recoil';
-import { phoneCheckState } from '../../atom';
+import * as S from './PhoneCheck.Styled';
 
 function PhoneCheck() {
   const [phoneCheck, setPhoneCheck] = useState(false);
-  const [phoneNum, setPhoneNum] = useRecoilState(phoneCheckState);
+  const [num, setNum] = useState('');
+
+  // 4자리 랜덤숫자
+  const randomNum = Math.floor(Math.random() * (9999 - 1000 + 1) + 1000);
+
   const [isActive, setIsActive] = useState(false);
 
   const handleBtnActive = (e) => {
     const { value } = e.target;
-    setPhoneNum(e.target.value);
     if (value.length > 10) {
       setIsActive(true);
     } else {
       setIsActive(false);
     }
   };
+  const handleCheck = (e) => {
+    if (isActive) {
+      setPhoneCheck(true);
 
-  // 핸드폰번호 post요청후 인증번호 받기
-  const handlePhoneBtn = () => {
-    phoneNum.length < 10 ? setPhoneCheck(false) : setPhoneCheck(true);
+      alert(randomNum);
+    }
+  };
 
-    axios.post('http://localhost:8000/send', { phoneNumber: phoneNum });
+  const checkNum = (e) => {
+    console.log(e.target.value);
+    console.log(randomNum);
+    setNum(e.target.value);
+  };
+
+  const checkBtnNum = () => {
+    console.log(randomNum);
   };
 
   return (
     <S.PhoneContainer>
       <p className='title'>휴대폰 본인 확인</p>
       <p className='subTitle'>원활한 서비스 제공을 위해, 휴대폰 번호를 입력해주세요.</p>
-      <S.PhoneBox>
+      <div className='phone-container'>
         <p>휴대폰 번호</p>
         <div className='phone-num'>
-          <input type='tel' maxLength='13' value={phoneNum} onChange={handleBtnActive} />
-          <button className={isActive ? 'button' : 'disabled'} onClick={handlePhoneBtn}>
+          <input type='tel' maxLength='13' onChange={handleBtnActive} />
+          <button className={isActive ? 'button' : 'disabled'} onClick={handleCheck}>
             인증번호 전송
           </button>
         </div>
-      </S.PhoneBox>
-      {phoneCheck && <Timer phoneNum={phoneNum} isActive={isActive} />}
+      </div>
+      {phoneCheck && (
+        <div className='phone-container'>
+          <p>인증번호</p>
+          <div className='phone-num'>
+            <input type='tel' maxLength='4' value={num} onChange={checkNum} />
+            <button className={isActive ? 'button' : 'disabled'}>확인</button>
+          </div>
+        </div>
+      )}
     </S.PhoneContainer>
   );
 }

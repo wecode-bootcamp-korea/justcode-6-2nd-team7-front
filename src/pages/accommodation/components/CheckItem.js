@@ -12,6 +12,7 @@ const List = styled.li`
 
   label {
     padding-left: 12px;
+    cursor: pointer;
   }
 
   input {
@@ -29,6 +30,7 @@ const List = styled.li`
     height: 21px;
     border: 1px solid ${({ theme }) => theme.colors.text};
     border-radius: 3px;
+    cursor: pointer;
 
     .check {
       display: none;

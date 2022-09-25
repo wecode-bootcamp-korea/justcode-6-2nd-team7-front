@@ -12,12 +12,15 @@ import styled from 'styled-components';
 
 const Down = styled.span`
   color: ${({ theme }) => theme.colors.text};
-  opacity: ${(props) => (props.count === 1 ? 0.5 : 1)};
+  opacity: ${({ count }) => (count === 1 ? 0.5 : 1)};
+  /* cursor: pointer; */
+  cursor: ${({ count }) => (count === 1 ? 'not-allowed' : 'pointer')};
 `;
 
 const Up = styled.span`
   color: ${({ theme }) => theme.colors.text};
-  opacity: ${(props) => (props.count === 10 ? 0.5 : 1)};
+  opacity: ${({ count }) => (count === 10 ? 0.5 : 1)};
+  cursor: ${({ count }) => (count === 10 ? 'not-allowed' : 'pointer')};
 `;
 
 const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow }) => {
@@ -55,12 +58,14 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
     <aside className='side-filter'>
       <section className='date-container'>
         <h3 className='title-bk mb12'>날짜</h3>
-        <Calendar
-          firstShow={firstShow}
-          setFirstShow={setFirstShow}
-          secondShow={secondShow}
-          setSecondShow={setSecondShow}
-        />
+        <div className='hide-area'>
+          <Calendar
+            firstShow={firstShow}
+            setFirstShow={setFirstShow}
+            secondShow={secondShow}
+            setSecondShow={setSecondShow}
+          />
+        </div>
       </section>
       <div className='mt32'>
         <h3 className='title-bk mb12'>상세조건</h3>
