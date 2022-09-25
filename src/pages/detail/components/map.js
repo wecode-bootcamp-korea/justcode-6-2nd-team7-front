@@ -16,7 +16,6 @@ const Main = styled.div`
 `;
 
 const Map = ({ list, map }) => {
-  console.log('지도지도', map);
   useEffect(() => {
     const container = document.getElementById('map');
     const options = {
