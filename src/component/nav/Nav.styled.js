@@ -75,7 +75,7 @@ export const NavStyle = styled.nav`
 
       .search-icon-change {
         .search-icon {
-          transform: translate(-500px, 0px);
+          transform: translate(-480px, 0px);
         }
       }
 

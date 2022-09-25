@@ -1,9 +1,14 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { logoutModalState } from '../../../atom';
+
+import LogoutModal from '../../modal/LogoutModal';
 
 import styled from 'styled-components';
 
 const MyModalStyle = styled.div`
-  display: ${(props) => (props.myHover === true ? 'block' : 'none')};
+  display: block;
   position: absolute;
   top: 38px;
   left: inherit;
@@ -45,6 +50,12 @@ const MyModalStyle = styled.div`
 `;
 
 const MyModal = () => {
+  const [modal, setModal] = useRecoilState(logoutModalState);
+
+  const clickLogOut = () => {
+    setModal(true);
+  };
+
   return (
     <MyModalStyle>
       <div className='modal-container'>
@@ -54,16 +65,17 @@ const MyModal = () => {
             <Link to='/my'>내정보</Link>
           </li>
           <li>
-            <Link to='/my'>포인트</Link>
+            <Link to='/mypage'>포인트</Link>
           </li>
           <li>
-            <Link to='/my'>쿠폰</Link>
+            <Link to='/coupons'>쿠폰</Link>
           </li>
           <li>
-            <Link to='/my'>예약내역</Link>
+            <Link to='/reservation-list'>예약내역</Link>
           </li>
           <li>
-            <Link to='/my'>로그아웃</Link>
+            <Link onClick={clickLogOut}>로그아웃</Link>
+            {modal && <LogoutModal />}
           </li>
         </ul>
       </div>

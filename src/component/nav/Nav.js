@@ -85,15 +85,14 @@ const Nav = () => {
                         to='/my'
                         onMouseOver={() => {
                           setMyHover(true);
-                          console.log(myHover);
                         }}
                         onMouseOut={() => {
                           setMyHover(false);
                         }}
                         className='nav-link'>
                         마이페이지
+                        {myHover && <MyModal myHover={myHover} />}
                       </Link>
-                      <MyModal myHover={myHover} />
                     </>
                   ) : (
                     <Link to='/login' className='nav-link'>
