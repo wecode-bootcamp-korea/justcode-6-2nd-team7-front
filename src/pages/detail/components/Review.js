@@ -1,6 +1,10 @@
 const Review = ({ review }) => {
   console.log('리뷰의평점', review);
-  return <></>;
+  return (
+    <>
+      <div></div>
+    </>
+  );
 };
 
 export default Review;
