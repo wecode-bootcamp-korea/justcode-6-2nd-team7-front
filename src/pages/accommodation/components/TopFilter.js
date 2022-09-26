@@ -12,7 +12,7 @@ const TopFilter = ({ setShowModal }) => {
     { id: 4, content: '높은 가격 순', selected: false },
   ]);
 
-  const handleSetList = (e) => {
+  const handleSetMenu = (e) => {
     const newMenu = menu.map((el) => {
       return e.target.textContent === el.content ? { ...el, selected: true } : { ...el, selected: false };
     });
@@ -23,7 +23,7 @@ const TopFilter = ({ setShowModal }) => {
       <div className='filter-container'>
         {menu.map((menu) => {
           return (
-            <button className={menu.selected ? 'selected' : null} onClick={handleSetList} key={menu.id}>
+            <button className={menu.selected ? 'selected' : null} onClick={handleSetMenu} key={menu.id}>
               <FontAwesomeIcon icon={faCheck} className='icon' />
               {menu.content}
             </button>

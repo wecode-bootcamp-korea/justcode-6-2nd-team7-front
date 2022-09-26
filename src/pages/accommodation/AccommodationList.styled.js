@@ -295,14 +295,6 @@ export const Body = styled.div`
 
   main {
     width: 66%;
-
-    .thumbnail-container {
-      .sort-title {
-        font-size: 18px;
-        font-weight: 700;
-        color: ${({ theme }) => theme.colors.text};
-      }
-    }
   }
 
   .mb12 {

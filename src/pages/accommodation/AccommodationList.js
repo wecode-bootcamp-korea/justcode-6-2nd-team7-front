@@ -7,7 +7,7 @@ import { faChevronRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import Map from './components/Map';
 import SideFilter from './components/SideFilter';
 import TopFilter from './components/TopFilter';
-import ThumbnailList from './components/ThumbnailList';
+import Thumbnail from './components/Thumbnail';
 import NoData from './components/NoData';
 
 import { region } from './data/region';
@@ -25,7 +25,6 @@ const AccommodationList = (props) => {
   const [seletedRegion, setSelectedRegion] = useState('강남/역삼/삼성/신사/청담');
   const [showMenu, setShowMenu] = useState(false);
   const [list, setList] = useState();
-  const [acmType, setAcmType] = useState();
   const [showModal, setShowModal] = useState(false);
   const [firstDateShow, setFirstDateShow] = useState(false);
   const [secondDateShow, setSecondDateShow] = useState(false);
@@ -38,7 +37,6 @@ const AccommodationList = (props) => {
       //   .get(`http://localhost:8000/accommodation/${param}`)
       .then((res) => {
         setList(res.data.accommodation);
-        setAcmType(Object.keys(res.data.accommodation));
         Object.keys(res.data.accommodation).length === 0 && setList([]);
       })
       .catch((err) => {
@@ -82,9 +80,9 @@ const AccommodationList = (props) => {
               <FontAwesomeIcon icon={faCaretDown} size='2xs' />
             </div>
             <S.Menu showMenu={showMenu}>
-              <ul className='city-list'>
-                {city &&
-                  city.map((el) => {
+              {city && (
+                <ul className='city-list'>
+                  {city.map((el) => {
                     return (
                       <div key={el.id} className={el.show ? 'selected' : null}>
                         <li className='title' onMouseOver={handleSelected}>
@@ -94,10 +92,11 @@ const AccommodationList = (props) => {
                       </div>
                     );
                   })}
-              </ul>
-              <ul className='region-list'>
-                {city &&
-                  city.map((el) => {
+                </ul>
+              )}
+              {city && (
+                <ul className='region-list'>
+                  {city.map((el) => {
                     return (
                       el.show &&
                       el.detail.map((detailEl) =>
@@ -113,7 +112,8 @@ const AccommodationList = (props) => {
                       )
                     );
                   })}
-              </ul>
+                </ul>
+              )}
             </S.Menu>
           </div>
         </div>
@@ -129,10 +129,27 @@ const AccommodationList = (props) => {
         <main>
           {showModal && <Map setShowModal={setShowModal} list={list} />}
           <TopFilter setShowModal={setShowModal} />
-          {acmType &&
-            acmType.map((el) => {
-              return <ThumbnailList key={el} list={list[el]} type={el} />;
-            })}
+          {list && (
+            <ul className='thumbnail-container mt32'>
+              {list.map((el) => {
+                return (
+                  <Thumbnail
+                    key={el.name}
+                    name={el.name}
+                    promotion={el.promotion}
+                    rating={el.rating}
+                    score={el.score}
+                    review={el.review}
+                    region={el.region}
+                    remain={el.remain}
+                    price={el.price}
+                    saleprice={el.saleprice}
+                    img={el.img}
+                  />
+                );
+              })}
+            </ul>
+          )}
           {list && list.length === 0 && <NoData />}
         </main>
       </S.Body>
