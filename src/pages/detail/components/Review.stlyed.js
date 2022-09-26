@@ -21,10 +21,11 @@ export const ReviewContainer = styled.div`
       background: no-repeat url('/images/detail/star.png');
       background-size: 328px;
       overflow: hidden;
+      background-position: 4px ${(props) => props.score}px;
     }
-    .one {
+    /* .one {
       background-position: 4 -45px;
-    }
+    } */
   }
   .score-num {
     margin-top: 4px;
@@ -59,15 +60,17 @@ export const ReviewContainer = styled.div`
     .score {
       margin-top: 10px;
       display: flex;
+      .star {
+        width: 122px;
+        height: 22px;
+        background: no-repeat url('/images/detail/star.png');
+        background-size: 180px;
+        overflow: hidden;
+        /* background-position: 4px ${(props) => props.score}px; */
+        /* background-position: 4px 3px; */
+      }
     }
-    .star {
-      border: 1px solid black;
-      width: 100px;
-      height: 20px;
-      background: no-repeat url('/images/detail/star.png');
-      background-size: 128px;
-      overflow: hidden;
-    }
+
     .name {
       padding: 15px 0 15px 0;
       color: ${({ theme }) => theme.colors.text};
