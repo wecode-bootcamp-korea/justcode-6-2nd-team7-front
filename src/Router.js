@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AccommodationList from './pages/accommodation/AccommodationList';
 import { ThemeProvider } from 'styled-components';
+import { useRecoilState } from 'recoil';
+import { logoutModalState } from './atom';
 
 import Nav from './component/nav/Nav';
 import Main from './pages/main/Main';
@@ -21,8 +23,11 @@ import theme from './styles/theme';
 import { browserWidth, reponsive } from './styles/responsive';
 import TopButton from './component/topbutton/TopButton';
 import KaKaoLogin from './pages/login/KaKaoLogin';
+import LogoutModal from './component/modal/LogoutModal';
 
-const Router = (props) => {
+const Router = () => {
+  const [logoutModal] = useRecoilState(logoutModalState);
+
   return (
     <ThemeProvider theme={theme} responsive={{ browserWidth, reponsive }}>
       <BrowserRouter>
@@ -45,6 +50,7 @@ const Router = (props) => {
         </Routes>
         <Footer />
         <TopButton />
+        {logoutModal && <LogoutModal />}
       </BrowserRouter>
     </ThemeProvider>
   );
