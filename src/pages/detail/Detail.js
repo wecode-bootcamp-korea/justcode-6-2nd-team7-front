@@ -99,7 +99,7 @@ const Detail = () => {
             ) : component === 2 ? (
               <Information informations={showData} />
             ) : (
-              <Review />
+              <Review review={showData} />
             )}
           </S.Context>
         </S.DetailExplanation>
