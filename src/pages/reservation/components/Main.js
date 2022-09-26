@@ -7,7 +7,7 @@ const Main = () => {
     userName: '',
     phone: '',
     coupon: 0,
-    pointInput: 0,
+    pointInput: '',
   });
   const [point, setPoint] = useState(0);
   const { userName, phone, coupon, pointInput } = inputs;
@@ -38,7 +38,7 @@ const Main = () => {
           setPoint(pointSum);
         });
     }
-  }, []);
+  }, [inputs]);
 
   const changeInput = (e) => {
     const { id, value } = e.target;
