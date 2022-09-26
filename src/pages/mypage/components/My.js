@@ -147,7 +147,12 @@ const My = () => {
                   <button className='btn-blue' onClick={handleName}>
                     수정완료
                   </button>
-                  <button>수정취소</button>
+                  <button
+                    onClick={() => {
+                      setMyname((prev) => !prev);
+                    }}>
+                    수정취소
+                  </button>
                 </div>
               </div>
             )}
@@ -157,7 +162,7 @@ const My = () => {
           <div className='my-phone'>
             <div className='my-tel'>
               <p>휴대폰 번호</p>
-              <p className='tel'>{information.userPhoneNumber}</p>
+              <p className='tel'>{information.userPhoneNumber.length > 5 && information.userPhoneNumber}</p>
             </div>
             <p className='description'>개인 정보 보호를 위해 내 정보는 모두 안전하게 암호화됩니다.</p>
             {/* toggle 창 */}
