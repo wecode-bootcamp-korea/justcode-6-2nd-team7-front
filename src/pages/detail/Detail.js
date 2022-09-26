@@ -84,9 +84,13 @@ const Detail = () => {
             </button>
           </S.MenuBar>
           <S.Context className='content'>
-            {component === 1 && <RoomGuide roomType={showData.roomTypes} />}
-            {component === 2 && <Information informations={showData} />}
-            {component === 3 && <Review />}
+            {component === 1 ? (
+              <RoomGuide roomType={showData.roomTypes} />
+            ) : component === 2 ? (
+              <Information informations={showData} />
+            ) : (
+              <Review />
+            )}
           </S.Context>
         </S.DetailExplanation>
       )}

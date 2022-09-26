@@ -39,14 +39,18 @@ const Information = ({ informations }) => {
         </button>
         <FontAwesomeIcon icon={faAngleDown} />
       </div>
-      <div>{accInfo === true ? <AccommodationInfo accommodation={informations} /> : null}</div>
+      <div>
+        accInfo === true ? <AccommodationInfo accommodation={informations} />
+      </div>
       <div className='info-flex'>
         <button className='information' onClick={handleBasicClick}>
           기본정보
         </button>
         <FontAwesomeIcon icon={faAngleDown} />
       </div>
-      <div>{basicInfo === true ? <AccommodationInfo /> : null}</div>
+      <div>
+        basicInfo === true ? <AccommodationInfo />{' '}
+      </div>
     </Info>
   );
 };
