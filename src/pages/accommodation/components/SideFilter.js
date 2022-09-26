@@ -13,7 +13,6 @@ import styled from 'styled-components';
 const Down = styled.span`
   color: ${({ theme }) => theme.colors.text};
   opacity: ${({ count }) => (count === 1 ? 0.5 : 1)};
-  /* cursor: pointer; */
   cursor: ${({ count }) => (count === 1 ? 'not-allowed' : 'pointer')};
 `;
 
@@ -58,14 +57,13 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
     <aside className='side-filter'>
       <section className='date-container'>
         <h3 className='title-bk mb12'>날짜</h3>
-        <div className='hide-area'>
-          <Calendar
-            firstShow={firstShow}
-            setFirstShow={setFirstShow}
-            secondShow={secondShow}
-            setSecondShow={setSecondShow}
-          />
-        </div>
+        <Calendar
+          firstShow={firstShow}
+          setFirstShow={setFirstShow}
+          secondShow={secondShow}
+          setSecondShow={setSecondShow}
+          align='column'
+        />
       </section>
       <div className='mt32'>
         <h3 className='title-bk mb12'>상세조건</h3>
@@ -81,12 +79,14 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
               })}
           </ul>
         </section>
+
         {options[handleSelectFilter(param)].typeList && (
           <OptionList
             list={options[handleSelectFilter(param)].typeList}
             title={options[handleSelectFilter(param)].type}
           />
         )}
+
         {options[handleSelectFilter(param)].theme &&
           options[handleSelectFilter(param)].theme.map((type, i) => <OptionList key={i} list={type} />)}
         {handleShowCount(param) && (
@@ -103,6 +103,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
             </div>
           </section>
         )}
+
         {handleShowBedtype(param) && (
           <section className='bedtype-container mt32 mb18'>
             <h5 className='title mt32 mb18'>베드 타입</h5>
@@ -123,6 +124,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
             </ul>
           </section>
         )}
+
         {handleShowRange(param) && (
           <section className='price-container mt32 mb18'>
             <h5 className='title mt32 mb18'>

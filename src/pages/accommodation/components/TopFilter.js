@@ -18,6 +18,7 @@ const TopFilter = ({ setShowModal }) => {
     });
     setMenu(newMenu);
   };
+
   return (
     <S.Main>
       <div className='filter-container'>

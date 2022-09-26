@@ -1,64 +1,29 @@
 import { useEffect, useState } from 'react';
-import DatePicker from 'react-datepicker';
+import { useRecoilState } from 'recoil';
+import { startDateState, endDateState } from '../../../atom';
+
 import { registerLocale } from 'react-datepicker';
 import ko from 'date-fns/locale/ko';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faCalendar } from '@fortawesome/free-regular-svg-icons';
+
 import 'react-datepicker/dist/react-datepicker.css';
-import styled from 'styled-components';
+import * as S from './Calendar.styled';
 
 registerLocale('ko', ko);
 
-const Main = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 8px;
-  border: 1px solid #00000014;
-  border-radius: 5px;
-  background-color: #00000005;
-  color: ${({ theme }) => theme.colors.text};
-  transition: all 300ms ease-in-out;
-
-  .calendar-icon {
-    padding-left: 10px;
-  }
-  .chevron-icon {
-    padding-right: 10px;
-  }
-
-  &:last-child {
-    margin-bottom: 32px;
-  }
-`;
-
-const StyledDatePicker = styled(DatePicker)`
-  width: 100%;
-  padding: 10px;
-  background-color: #00000000;
-  border: none;
-  color: ${({ theme }) => theme.colors.text};
-  font-size: 18px;
-  font-weight: 400;
-  cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
-`;
-
-const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow }) => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState();
+const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow, align }) => {
+  const [startDate, setStartDate] = useRecoilState(startDateState);
+  const [endDate, setEndDate] = useRecoilState(endDateState);
 
   useEffect(() => {
     startDate > endDate && setEndDate();
   }, [startDate, endDate]);
 
   const handleShowCalendar = (e) => {
-    !e.target.closest('.hide-area') && setFirstShow(false);
-    !e.target.closest('.hide-area') && setSecondShow(false);
+    !e.target.closest('.container') && setFirstShow(false);
+    !e.target.closest('.container') && setSecondShow(false);
   };
 
   useEffect(() => {
@@ -79,52 +44,56 @@ const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow }) => {
 
   return (
     <>
-      <Main>
-        <FontAwesomeIcon icon={faCalendar} className='calendar-icon' onClick={handleFirstInput} />
-        <StyledDatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          onFocus={() => {
-            setFirstShow(true);
-            setSecondShow(false);
-          }}
-          selectsStart
-          startDate={startDate}
-          endDate={endDate}
-          minDate={new Date()}
-          open={firstShow}
-          disabledKeyboardNavigation
-          dateFormat='yy년 M월 d일'
-          locale='ko'>
-          <button className='btn' onClick={() => setFirstShow(false)}>
-            선택완료
-          </button>
-        </StyledDatePicker>
-        <FontAwesomeIcon icon={faChevronDown} size='sm' onClick={handleFirstInput} className='chevron-icon' />
-      </Main>
-      <Main>
-        <FontAwesomeIcon icon={faCalendar} className='calendar-icon' onClick={handleSecondInput} />
-        <StyledDatePicker
-          selected={endDate}
-          onChange={(date) => setEndDate(date)}
-          onFocus={() => {
-            setSecondShow(true);
-            setFirstShow(false);
-          }}
-          selectsEnd
-          startDate={startDate}
-          endDate={endDate}
-          minDate={startDate}
-          open={secondShow}
-          disabledKeyboardNavigation
-          dateFormat='yy년 M월 d일'
-          locale='ko'>
-          <button className='btn' onClick={() => setSecondShow(false)}>
-            선택완료
-          </button>
-        </StyledDatePicker>
-        <FontAwesomeIcon icon={faChevronDown} size='sm' onClick={handleSecondInput} className='chevron-icon' />
-      </Main>
+      <S.Main align={align}>
+        <div className='container'>
+          <FontAwesomeIcon icon={faCalendar} className='calendar-icon' onClick={handleFirstInput} />
+          <S.StyledDatePicker
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            onFocus={() => {
+              setFirstShow(true);
+              setSecondShow(false);
+            }}
+            selectsStart
+            startDate={startDate}
+            endDate={endDate}
+            minDate={new Date()}
+            open={firstShow}
+            disabledKeyboardNavigation
+            dateFormat='yy년 M월 d일'
+            dateFormatCalendar='yyyy년 M월'
+            locale='ko'>
+            <button className='btn' onClick={() => setFirstShow(false)}>
+              선택완료
+            </button>
+          </S.StyledDatePicker>
+          <FontAwesomeIcon icon={faChevronDown} size='sm' onClick={handleFirstInput} className='chevron-icon' />
+        </div>
+        <div className='container'>
+          <FontAwesomeIcon icon={faCalendar} className='calendar-icon' onClick={handleSecondInput} />
+          <S.StyledDatePicker
+            selected={endDate}
+            onChange={(date) => setEndDate(date)}
+            onFocus={() => {
+              setSecondShow(true);
+              setFirstShow(false);
+            }}
+            selectsEnd
+            startDate={startDate}
+            endDate={endDate}
+            minDate={startDate}
+            open={secondShow}
+            disabledKeyboardNavigation
+            dateFormat='yy년 M월 d일'
+            dateFormatCalendar='yyyy년 M월'
+            locale='ko'>
+            <button className='btn' onClick={() => setSecondShow(false)}>
+              선택완료
+            </button>
+          </S.StyledDatePicker>
+          <FontAwesomeIcon icon={faChevronDown} size='sm' onClick={handleSecondInput} className='chevron-icon' />
+        </div>
+      </S.Main>
     </>
   );
 };
