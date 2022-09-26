@@ -68,9 +68,6 @@ const Main = () => {
     e.target.checked ? setCheckList(['check1', 'check2', 'check3']) : setCheckList([]);
   };
 
-  console.log('point', point);
-  console.log('pointInput', pointInput);
-
   return (
     <>
       <MainContainerStyle>
