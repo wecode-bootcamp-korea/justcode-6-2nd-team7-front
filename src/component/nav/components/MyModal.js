@@ -48,11 +48,15 @@ const MyModalStyle = styled.div`
   }
 `;
 
-const MyModal = () => {
+const MyModal = ({ setMyHover }) => {
   const [modal, setModal] = useRecoilState(logoutModalState);
 
   const clickLogOut = () => {
     setModal(true);
+  };
+
+  const clickTab = () => {
+    setMyHover(false);
   };
 
   return (
@@ -61,16 +65,24 @@ const MyModal = () => {
         <ul className='modal-list'>
           <li className='nickname'>닉네임</li>
           <li>
-            <Link to='/my'>내정보</Link>
+            <Link to='/my' onClick={clickTab}>
+              내정보
+            </Link>
           </li>
           <li>
-            <Link to='/mypage'>포인트</Link>
+            <Link to='/mypage' onClick={clickTab}>
+              포인트
+            </Link>
           </li>
           <li>
-            <Link to='/coupons'>쿠폰</Link>
+            <Link to='/coupons' onClick={clickTab}>
+              쿠폰
+            </Link>
           </li>
           <li>
-            <Link to='/reservation-list'>예약내역</Link>
+            <Link to='/reservation-list' onClick={clickTab}>
+              예약내역
+            </Link>
           </li>
           <li>
             <Link onClick={clickLogOut}>로그아웃</Link>

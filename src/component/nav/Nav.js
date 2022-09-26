@@ -13,16 +13,17 @@ import * as S from './Nav.styled.js';
 
 const Nav = () => {
   const navigate = useNavigate();
+  const [scrollPosition, setScrollPosition] = useState(0);
   const [, setKeword] = useRecoilState(searchInputState);
   const [input, setInput] = useState('');
   const [emptySubmit, setEmptySubmit] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [myHover, setMyHover] = useState(true);
   const [listStyle, setListStyle] = useState('block');
+  const [myHover, setMyHover] = useState(false);
 
   const updateScroll = () => {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);
   };
+
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
   });
@@ -35,7 +36,6 @@ const Nav = () => {
     } else if (listStyle === 'none' && input === '') {
       setEmptySubmit(true);
     }
-    console.log(input);
   };
 
   const logoClick = () => {
@@ -106,7 +106,7 @@ const Nav = () => {
                         }}
                         className='nav-link'>
                         마이페이지
-                        {myHover && <MyModal myHover={myHover} />}
+                        {myHover && <MyModal setMyHover={setMyHover} />}
                       </Link>
                     </>
                   ) : (
