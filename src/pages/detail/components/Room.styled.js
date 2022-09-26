@@ -58,6 +58,7 @@ export const RoomType = styled.div`
     color: #fff;
     border-radius: 4px;
     border: none;
+    font-size: 18px;
     text-align: center;
   }
   .remain {
