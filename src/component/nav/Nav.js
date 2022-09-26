@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import classnames from 'classnames';
 import { useRecoilState } from 'recoil';
 import { searchInputState } from '../../atom';
+import { logoutModalState } from '../../atom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
@@ -19,6 +20,7 @@ const Nav = () => {
   const [emptySubmit, setEmptySubmit] = useState(false);
   const [listStyle, setListStyle] = useState('block');
   const [myHover, setMyHover] = useState(false);
+  const [logOut, setLogOut] = useRecoilState(logoutModalState);
 
   const updateScroll = () => {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);

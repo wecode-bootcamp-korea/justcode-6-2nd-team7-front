@@ -1,30 +1,34 @@
-import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { logoutModalState } from '../../atom';
 
 const ModalContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #000000c7;
-  z-index: 999;
+  .bg {
+    display: 'flex';
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    height: 100vh;
+    width: 100vw;
+    background-color: #000000c7;
+    color: ${({ theme }) => theme.colors.text};
+    z-index: 99;
+  }
 
   .logout-container {
+    position: fixed;
+    top: 38%;
+    left: 40%;
     width: 360px;
-    height: 170px;
+    margin: auto;
     background-color: #fff;
     border-radius: 8px;
+    z-index: 100;
 
     p {
       width: 100%;
-      padding: 50px 20px;
+      padding: 50px 30px 40px;
       border-bottom: 1px solid #b8b8b8;
       font-size: 16px;
       color: #000000de;
@@ -33,9 +37,10 @@ const ModalContainer = styled.div`
     .logout-btn {
       display: flex;
       justify-content: end;
-      padding: 0 15px;
+      padding: 0px 15px;
       button {
         width: 70px;
+        height: 48px;
         border: none;
         outline: none;
         background-color: #fff;
@@ -44,10 +49,10 @@ const ModalContainer = styled.div`
         cursor: pointer;
       }
       .cancel {
-        color: #5d5d5d;
+        color: ${({ theme }) => theme.colors.text};
       }
       .logout {
-        color: #0e7562;
+        color: ${({ theme }) => theme.colors.mainColor};
       }
     }
   }
@@ -55,23 +60,21 @@ const ModalContainer = styled.div`
 
 function LogoutModal() {
   const [, setModal] = useRecoilState(logoutModalState);
-  const outline = useRef();
   const navigate = useNavigate();
 
-  // 바깥영역 클릭 했을때 모달창 닫힘
-  const handleClose = (e) => {
-    if (outline.current === e.target) {
-      setModal(false);
-    }
+  const clickBg = () => {
+    setModal(false);
   };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/');
+    setModal(false);
   };
 
   return (
-    <ModalContainer ref={outline} onClick={handleClose}>
+    <ModalContainer>
+      <div className='bg' onClick={clickBg}></div>
       <div className='logout-container'>
         <p>로그아웃 하시겠습니까?</p>
         <div className='logout-btn'>

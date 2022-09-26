@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { logoutModalState } from '../../../atom';
 
-import LogoutModal from '../../modal/LogoutModal';
-
 import styled from 'styled-components';
 
 const MyModalStyle = styled.div`
@@ -49,7 +47,7 @@ const MyModalStyle = styled.div`
 `;
 
 const MyModal = ({ setMyHover }) => {
-  const [modal, setModal] = useRecoilState(logoutModalState);
+  const [, setModal] = useRecoilState(logoutModalState);
 
   const clickLogOut = () => {
     setModal(true);
@@ -86,7 +84,6 @@ const MyModal = ({ setMyHover }) => {
           </li>
           <li>
             <Link onClick={clickLogOut}>로그아웃</Link>
-            {modal && <LogoutModal />}
           </li>
         </ul>
       </div>

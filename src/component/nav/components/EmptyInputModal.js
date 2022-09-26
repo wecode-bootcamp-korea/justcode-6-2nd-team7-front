@@ -32,19 +32,17 @@ const ModalContainer = styled.div`
       line-height: 30px;
     }
 
-    .logout-btn {
-      button {
-        width: 290px;
-        height: 56px;
-        margin-left: 36px;
-        border: none;
-        border-radius: 5px;
-        outline: none;
-        background-color: ${({ theme }) => theme.colors.mainColor};
-        font-weight: 700;
-        font-size: 15px;
-        cursor: pointer;
-      }
+    button {
+      width: 290px;
+      height: 56px;
+      margin-left: 36px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      background-color: ${({ theme }) => theme.colors.mainColor};
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
     }
   }
 `;
@@ -63,7 +61,7 @@ function EmptyInputModal({ setEmptySubmit }) {
           <br />
           검색어를 입력하세요.
         </p>
-        <div className='logout-btn'>
+        <div className='btn'>
           <button
             className='close'
             onClick={() => {
