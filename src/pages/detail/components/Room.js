@@ -18,6 +18,8 @@ const Room = ({ roomType }) => {
   const [info, setInfo] = useRecoilState(reservInfoState);
   const [openBtn, setOpenBtn] = useState(false);
   const [useBtn, setUseBtn] = useState(false);
+  const [period] = useState(startDate.getDate() - startDate.getDate());
+  // const [period, setPeriod] = useState(EndDate.getDate() - startDate.getDate());
 
   const handleToggleBtn = () => {
     setOpenBtn((openBtn) => !openBtn);
@@ -35,7 +37,7 @@ const Room = ({ roomType }) => {
     setInfo({
       ...info,
       roomType: roomType.type,
-      totalPrice: roomType.price * (endDate.getDate() - startDate.getDate()),
+      totalPrice: roomType.price * period,
     });
   };
 
@@ -54,7 +56,10 @@ const Room = ({ roomType }) => {
             <div className='remain'>남은객실 {roomType.remain}개</div>
             <div className='flex underline-style'>
               <strong>가격</strong>
-              <strong className='font-style'>{roomType.price}원</strong>
+              <strong className='font-style'>
+                {roomType.price}원{period >= 0 && `/${period}박`}
+                {/* {roomType.price}원{period >= 2 && `/${period}박`} */}
+              </strong>
             </div>
             <div className='flex-btn'>
               <button className='use-button' onClick={handleUseBtn}>
@@ -72,7 +77,8 @@ const Room = ({ roomType }) => {
             </div>
             <div>
               <button className='reservation-button' onClick={handleResrvBtn}>
-                예약
+                예약하기{period >= 0 && ` | ${period * roomType.price}원 (${period}박)`}
+                {/* 예약{period >= 2 && ` | ${period * roomType.price}원 (${period}박)`} */}
               </button>
             </div>
           </div>

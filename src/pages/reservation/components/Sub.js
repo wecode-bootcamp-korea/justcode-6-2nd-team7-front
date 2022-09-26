@@ -3,10 +3,6 @@ import { startDateState, endDateState, reservInfoState } from '../../../atom';
 
 import { SubContainerStyle } from '../Reservation.Styled';
 
-// 필요한 데이터
-// 전체금액
-// 완성 : 체크인 날짜, 체크아웃 날짜, 숙소이름, 객실타입, 숙박일수,
-
 const Sub = () => {
   const [startDate] = useRecoilState(startDateState);
   const [endDate] = useRecoilState(endDateState);
