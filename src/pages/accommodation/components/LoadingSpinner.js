@@ -27,7 +27,7 @@ const LoadingSpinner = (props) => {
       <CircularProgress color='info' />
       <p className='bold '>잠시만 기다려주세요.</p>
       <br />
-      <p>거리를 계산 중입니다.</p>
+      <p>로딩 중입니다.</p>
     </Loading>
   );
 };
