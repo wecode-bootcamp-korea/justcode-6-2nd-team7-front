@@ -1,12 +1,32 @@
+import { useEffect } from 'react';
 import { useState } from 'react';
 import * as S from './Review.stlyed';
 
 const Review = ({ review }) => {
   const [score, setScore] = useState();
+  console.log('점수', review.score);
+  useEffect(() => {
+    if (review.score <= 2.9) {
+      setScore(2); //별1개
+    } else if (review.score <= 3.9) {
+      setScore(-32); //별1.5
+    } else if (review.score <= 4.9) {
+      setScore(-73); //별2
+    } else if (review.score <= 5.9) {
+      setScore(-109); //별2.5
+    } else if (review.score <= 6.9) {
+      setScore(-145); //별3
+    } else if (review.score <= 7.9) {
+      setScore(-180); //별3.5
+    } else if (review.score <= 8.9) {
+      setScore(-214); //별 4
+    } else if (review.score <= 9.9) {
+      setScore(-252); //별4.5
+    } else if (review.score === 10) {
+      setScore(-289); //별5
+    }
+  }, []);
 
-  // if(review.score === 1||2){setScore
-
-  // }
   return (
     <S.ReviewContainer score={score}>
       <div>
@@ -31,7 +51,7 @@ const Review = ({ review }) => {
               <strong>여기라면 가요</strong>
             </div>
             <div className='score'>
-              <div className='star'></div>
+              <div className='star position'></div>
               <div>{review.comment[0].score}</div>
             </div>
             <div className='name-flex'>
