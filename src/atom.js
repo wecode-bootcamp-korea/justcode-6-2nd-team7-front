@@ -24,8 +24,3 @@ export const endDateState = atom({
   key: 'endDateState',
   default: null,
 });
-
-export const pointState = atom({
-  key: 'pointState',
-  dafault: 0,
-});
