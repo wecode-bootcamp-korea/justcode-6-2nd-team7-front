@@ -1,13 +1,21 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { useRecoilState } from 'recoil';
+import { queryState } from '../../../atom';
 
 import CheckItem from './CheckItem';
 import OptionList from './OptionList';
 import CustomSlider from './CustomSilder';
 import Calendar from './Calendar';
 import { options } from '../data/options';
-import { handleSelectFilter, handleShowRange, handleShowCount, handleShowBedtype } from '../data/functions';
+import {
+  handleSelectFilter,
+  handleShowRange,
+  handleShowCount,
+  handleShowBedtype,
+  getQueryNumber,
+} from '../data/functions';
 import styled from 'styled-components';
 
 const Down = styled.span`
@@ -30,6 +38,8 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
     { id: 3, title: '트윈', class: 'twin', selected: false },
     { id: 4, title: '온돌', class: 'sedentary', selected: false },
   ]);
+  const [value, setValue] = useState([1, 30]);
+  const [queryArr, setQueryArr] = useRecoilState(queryState);
 
   const handleCount = (e) => {
     e.target.closest('.down') && setCount((prev) => (prev === 1 ? 1 : prev - 1));
@@ -47,10 +57,20 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
     setBedtype(newBedtype);
   };
 
-  const [value, setValue] = useState([1, 30]);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const getOptions = (e) => {
+    const option = e.currentTarget.childNodes[0].name;
+    const checked = e.currentTarget.childNodes[0].checked;
+    !checked
+      ? setQueryArr((prev) => [...new Set([...prev, getQueryNumber(option)])])
+      : setQueryArr((prev) => {
+          const newArr = [...prev];
+          newArr.splice(prev.indexOf(getQueryNumber(option)), 1);
+          return newArr;
+        });
   };
 
   return (
@@ -75,7 +95,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
           <ul>
             {options[handleSelectFilter(param)].availablePromotion &&
               options[handleSelectFilter(param)].availablePromotion.map((el) => {
-                return <CheckItem text={el} key={el} />;
+                return <CheckItem text={el} key={el} id={el} getOptions={getOptions} />;
               })}
           </ul>
         </section>
@@ -84,11 +104,15 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
           <OptionList
             list={options[handleSelectFilter(param)].typeList}
             title={options[handleSelectFilter(param)].type}
+            getOptions={getOptions}
           />
         )}
 
         {options[handleSelectFilter(param)].theme &&
-          options[handleSelectFilter(param)].theme.map((type, i) => <OptionList key={i} list={type} />)}
+          options[handleSelectFilter(param)].theme.map((type, i) => (
+            <OptionList key={i} list={type} getOptions={getOptions} />
+          ))}
+
         {handleShowCount(param) && (
           <section className='count-container mt32 mb18'>
             <h5 className='title'>인원</h5>
@@ -140,7 +164,9 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
           </section>
         )}
         {options[handleSelectFilter(param)].options &&
-          options[handleSelectFilter(param)].options.map((type, i) => <OptionList key={i} list={type} />)}
+          options[handleSelectFilter(param)].options.map((type, i) => (
+            <OptionList key={i} list={type} getOptions={getOptions} />
+          ))}
       </div>
     </aside>
   );

@@ -48,22 +48,16 @@ const List = styled.li`
   }
 `;
 
-const CheckItem = ({ text }) => {
+const CheckItem = ({ text, getOptions }) => {
   const [check, setCheck] = useState(false);
 
-  const getInputName = (e) => {
-    console.log(`checked: ${e.target.checked}, name: ${e.target.name}`);
-  };
-
   return (
-    <List>
-      <input id={text} name={text} type='checkbox' checked={check} readOnly onClick={getInputName} />
+    <List onClick={getOptions}>
+      <input id={text} name={text} type='checkbox' checked={check} readOnly />
       <span
         className='checkbox'
-        id={text}
         onClick={(e) => {
           setCheck((prev) => !prev);
-          getInputName(e);
         }}>
         <FontAwesomeIcon icon={faCheck} className='check' />
       </span>
@@ -71,7 +65,6 @@ const CheckItem = ({ text }) => {
         htmlFor={text}
         onClick={(e) => {
           setCheck((prev) => !prev);
-          getInputName(e);
         }}>
         {text}
       </label>
