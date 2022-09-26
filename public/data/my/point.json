@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "pointId": 1,
+      "point": 10000,
+      "history": "가입기념"
+    },
+    {
+      "pointId": 2,
+      "point": 30000,
+      "history": "이벤트 당첨"
+    },
+    {
+      "pointId": 3,
+      "point": -10000,
+      "history": "호텔 예약"
+    }
+  ]
+}
