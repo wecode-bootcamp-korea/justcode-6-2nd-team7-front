@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { MainContainerStyle } from './Main.Styled';
 
 const Main = () => {
@@ -13,6 +14,35 @@ const Main = () => {
   const [checkList, setCheckList] = useState([]);
   const [phoneValid, setPhoneValid] = useState(true);
   const [nameValid, setNameValid] = useState(true);
+
+  useEffect(() => {
+    if (localStorage.getItem('token') !== null) {
+      axios
+        .get('/data/my/userInfo.json')
+        // .get('http://localhost:8000/my', { headers: { Authorization: localStorage.getItem('token') } })
+        .then((res) => {
+          setInputs({
+            ...inputs,
+            userName: res.data.data[0].userName,
+            phone: res.data.data[0].userPhoneNumber,
+          });
+        });
+      axios
+        .get('/data/my/point.json')
+        // .get('http://localhost:8000/my/point', { headers: { Authorization: localStorage.getItem('token') } })
+        .then((res) => {
+          let pointSum = 0;
+
+          res.data.data.forEach((data) => {
+            pointSum = pointSum + data.point;
+          });
+          setInputs({
+            ...inputs,
+            point: pointSum,
+          });
+        });
+    }
+  }, []);
 
   const changeInput = (e) => {
     const { id, value } = e.target;
@@ -104,7 +134,7 @@ const Main = () => {
           </div>
           <div className='button-line line'>
             <button>
-              포인트 사용 <span>{point}</span>P
+              포인트 사용 <span>{point.toLocaleString()}</span>P
             </button>
             <div>
               <input
