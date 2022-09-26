@@ -1,5 +1,9 @@
 import { SubContainerStyle } from '../Reservation.Styled';
 
+// 필요한 데이터
+// 숙소이름, 객실타입, 숙박일수,
+//   체크인 날짜, 체크아웃 날짜, 전체금액
+
 const Sub = () => {
   return (
     <>
