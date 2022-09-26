@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useRecoilState } from 'recoil';
 import { searchInputState } from '../../atom';
 import styled from 'styled-components';
+import { useState } from 'react';
 
 const SearchContainer = styled.div`
   header {
@@ -33,26 +34,34 @@ const SearchContainer = styled.div`
 `;
 
 const Search = () => {
-  const keword = useRecoilState(searchInputState);
-  const body = {
-    inputWord: keword,
-  };
+  const [keyword] = useRecoilState(searchInputState);
+  const [searchList, setSearchList] = useState([]);
+
+  // 추후 원희님 필터/카드 컴포넌트 추가되면 수정될 수 있음
+  // useEffect(() => {
+  //   axios
+  //     .get('/data/accommodation/accommodation.json')
+  //     //   .get(`http://localhost:8000/accommodation/${param}`)
+  //     .then((res) => {
+  //       setList(res.data.accommodation);
+  //       Object.keys(res.data.accommodation).length === 0 && setList([]);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       setList([]);
+  //     });
+  // }, []);
 
   //const param = useParams().type; => SideFilter, TopFilet등 가져와야 하는데
   //원희님의 도움이 필요할 것 같아요 ㅠ 라이브러리 복잡혀..
 
-  //검색어에 해당하는 숙소정보 가져와야함. 수정예정
-  axios.post('http://localhost:8000/signup', body).then((res) => {
-    console.log(res.data.message);
-  });
-
   return (
     <SearchContainer>
-      <header>' {keword === '' ? '검색어를 입력해주세요' : keword} '</header>
+      <header>' {keyword === '' ? '검색어를 입력해주세요' : keyword} '</header>
       {/* <SideFilter param={param} /> */}
       <div className='result-empty'>
         <div>
-          <div>' {keword} '에 대한 검색결과가 없습니다.</div>
+          <div>' {keyword} '에 대한 검색결과가 없습니다.</div>
           <br />
           <span>다시 입력해주세요</span>
         </div>
