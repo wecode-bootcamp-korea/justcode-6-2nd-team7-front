@@ -1,11 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import MyPage from '../MyPage';
 import * as A from './My.Styled';
 import * as S from '../MyPage.Styled';
 import LogoutModal from '../../../component/modal/LogoutModal';
-import PhoneCheck from '../../signup/PhoneCheck';
 import PhoneTimer from './PhoneTimer';
 
 const My = () => {
@@ -50,6 +49,12 @@ const My = () => {
   const handlePhone = () => {
     setPhone((prev) => !prev);
   };
+
+  axios
+    .get('http://localhost:8000/my', {
+      headers: { Authorization: localStorage.getItem('token') },
+    })
+    .then((data) => console.log(data.data));
 
   return (
     <S.Header>
