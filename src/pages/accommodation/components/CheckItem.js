@@ -60,6 +60,7 @@ const CheckItem = ({ text }) => {
       <input id={text} name={text} type='checkbox' checked={check} readOnly onClick={getInputName} />
       <span
         className='checkbox'
+        id={text}
         onClick={(e) => {
           setCheck((prev) => !prev);
           getInputName(e);
