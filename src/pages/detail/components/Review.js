@@ -1,5 +1,6 @@
-const Review = () => {
-  return <>리뷰페이지입니다.</>;
+const Review = ({ review }) => {
+  console.log('리뷰의평점', review);
+  return <></>;
 };
 
 export default Review;
