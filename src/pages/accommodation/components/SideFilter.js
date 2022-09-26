@@ -79,12 +79,14 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
               })}
           </ul>
         </section>
+
         {options[handleSelectFilter(param)].typeList && (
           <OptionList
             list={options[handleSelectFilter(param)].typeList}
             title={options[handleSelectFilter(param)].type}
           />
         )}
+
         {options[handleSelectFilter(param)].theme &&
           options[handleSelectFilter(param)].theme.map((type, i) => <OptionList key={i} list={type} />)}
         {handleShowCount(param) && (
@@ -101,6 +103,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
             </div>
           </section>
         )}
+
         {handleShowBedtype(param) && (
           <section className='bedtype-container mt32 mb18'>
             <h5 className='title mt32 mb18'>베드 타입</h5>
@@ -121,6 +124,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
             </ul>
           </section>
         )}
+
         {handleShowRange(param) && (
           <section className='price-container mt32 mb18'>
             <h5 className='title mt32 mb18'>

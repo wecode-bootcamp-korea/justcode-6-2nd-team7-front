@@ -7,6 +7,7 @@ import { faChevronRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import Map from './components/Map';
 import SideFilter from './components/SideFilter';
 import TopFilter from './components/TopFilter';
+
 import Thumbnail from './components/Thumbnail';
 import NoData from './components/NoData';
 
@@ -34,6 +35,7 @@ const AccommodationList = (props) => {
   useEffect(() => {
     axios
       .get('/data/accommodation/accommodation.json')
+      //   .get(`http://localhost:8000/accommodation/${param}`)
       //   .get(`http://localhost:8000/accommodation/${param}`)
       .then((res) => {
         setList(res.data.accommodation);
