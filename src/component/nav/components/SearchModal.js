@@ -36,10 +36,6 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput,
   const navigate = useNavigate();
   const [keyword, setKeword] = useRecoilState(searchInputState);
   const [inputColor, setInputColor] = useState('#ffffffc4');
-  const body = {
-    keyword: keyword.split(' '),
-  };
-
   const recommendArr = [
     { id: 1, keyword: '강남' },
     { id: 2, keyword: '서울' },
@@ -47,6 +43,9 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput,
     { id: 4, keyword: '제주도 게스트하우스' },
     { id: 5, keyword: '게스트하우스' },
   ];
+  const body = {
+    keyword: keyword.replace(/ /g, '|'),
+  };
 
   useEffect(() => {
     scrollPosition > 2 ? setInputColor('#525252') : setInputColor('#ffffffc4');
@@ -65,7 +64,7 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput,
       setListStyle('block');
       navigate('/search');
       setKeword(input);
-      // axios.post('http://localhost:8000/signup', body).then((res) => {
+      // axios.post('http://localhost:8000/search', body).then((res) => {
       //   console.log(res.data.message);
       // });
     } else if (e.key === 'Enter' && input === '') {
