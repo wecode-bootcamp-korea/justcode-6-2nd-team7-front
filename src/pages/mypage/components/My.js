@@ -22,8 +22,6 @@ const My = () => {
   const [changeNickname, setChangeNickname] = useState('');
   const [userName, setUserName] = useState('');
 
-  console.log(information);
-
   const handleBtnActive = (e) => {
     const { value } = e.target;
     setPhoneNum(e.target.value);
@@ -33,6 +31,8 @@ const My = () => {
       setIsActive(false);
     }
   };
+
+  console.log(information);
 
   // 핸드폰번호 post요청후 인증번호 받기
   const handlePhoneBtn = () => {
@@ -75,7 +75,9 @@ const My = () => {
         { phoneNumber: phoneNum },
         { headers: { Authorization: localStorage.getItem('token') } },
       )
-      .then(() => setPhoneNum(phoneNum));
+      .then((res) => {
+        setInformation(res.data.data);
+      });
   };
 
   // 유저정보 get
@@ -85,7 +87,7 @@ const My = () => {
         headers: { Authorization: localStorage.getItem('token') },
       })
       .then((data) => setInformation(data.data.data[0]));
-  }, [changeNickname, userName, phoneNum]);
+  }, [changeNickname, userName, information.userPhoneNumber]);
 
   return (
     <S.Header>
