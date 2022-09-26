@@ -13,7 +13,9 @@ import * as S from './Nav.styled.js';
 
 const Nav = () => {
   const navigate = useNavigate();
-  const [input, setInput] = useRecoilState(searchInputState);
+  const [, setKeword] = useRecoilState(searchInputState);
+  const [input, setInput] = useState('');
+  const [emptySubmit, setEmptySubmit] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [myHover, setMyHover] = useState(true);
   const [listStyle, setListStyle] = useState('block');
@@ -25,14 +27,20 @@ const Nav = () => {
     window.addEventListener('scroll', updateScroll);
   });
 
-  const seacrhClick = (e) => {
+  const seacrhClick = () => {
     listStyle === 'block' ? setListStyle('none') : setListStyle('block');
-    listStyle === 'none' && input !== '' && navigate('/search');
+    if (listStyle === 'none' && input !== '') {
+      setKeword(input);
+      navigate('/search');
+    } else if (listStyle === 'none' && input === '') {
+      setEmptySubmit(true);
+    }
+    console.log(input);
   };
 
   const logoClick = () => {
     setListStyle('block');
-    setInput('');
+    setKeword('');
   };
 
   return (
@@ -52,10 +60,19 @@ const Nav = () => {
                 icon={faMagnifyingGlass}
                 color={scrollPosition < 2 ? '#ffffffc4' : '#525252'}
                 size='lg'
+                name='searchIcon'
                 className='search-icon'
                 onClick={seacrhClick}
               />
-              <SearchModal scrollPosition={scrollPosition} setListStyle={setListStyle} listStyle={listStyle} />
+              <SearchModal
+                scrollPosition={scrollPosition}
+                setListStyle={setListStyle}
+                listStyle={listStyle}
+                input={input}
+                setInput={setInput}
+                emptySubmit={emptySubmit}
+                setEmptySubmit={setEmptySubmit}
+              />
             </div>
 
             <div style={{ display: listStyle }}>
@@ -74,9 +91,7 @@ const Nav = () => {
                   </Link>
                 </li>
                 <li className='list'>
-                  <Link to='' className='nav-link'>
-                    더보기
-                  </Link>
+                  <Link className='nav-link'>더보기</Link>
                 </li>
                 <li className='list'>
                   {localStorage.getItem('token') !== null ? (

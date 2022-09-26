@@ -13,7 +13,7 @@ const ModalContainer = styled.div`
     z-index: 99;
   }
 
-  .logout-container {
+  .container {
     position: fixed;
     top: 38%;
     left: 40%;
@@ -57,7 +57,7 @@ function EmptyInputModal({ setEmptySubmit }) {
   return (
     <ModalContainer>
       <div className='bg' onClick={handleClose}></div>
-      <div className='logout-container'>
+      <div className='container'>
         <p>
           검색어가 없습니다.
           <br />

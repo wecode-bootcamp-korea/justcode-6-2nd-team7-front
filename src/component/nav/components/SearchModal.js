@@ -31,12 +31,11 @@ const InputContainer = styled.div`
   }
 `;
 
-const SearchModal = ({ scrollPosition, setListStyle, listStyle }) => {
+const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput, emptySubmit, setEmptySubmit }) => {
   const navigate = useNavigate();
   const [, setKeword] = useRecoilState(searchInputState);
-  const [input, setInput] = useState('');
   const [inputColor, setInputColor] = useState('#ffffffc4');
-  const [emptySubmit, setEmptySubmit] = useState(false);
+
   const recommendArr = [
     { id: 1, keyword: '강남' },
     { id: 2, keyword: '서울' },
@@ -79,7 +78,14 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle }) => {
             onChange={handleInput}
             onKeyDown={pressEnter}
           />
-          <FontAwesomeIcon onClick={cancleSearch} icon={faXmark} color={scrollPosition > 2 ? '#525252' : '#ffffffc4'} />
+          <FontAwesomeIcon
+            onClick={(e) => {
+              cancleSearch(e);
+              setInput('');
+            }}
+            icon={faXmark}
+            color={scrollPosition > 2 ? '#525252' : '#ffffffc4'}
+          />
         </div>
         <S.Recommend>
           <div className='recommend-container'>
