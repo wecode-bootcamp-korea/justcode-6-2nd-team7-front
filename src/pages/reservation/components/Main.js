@@ -7,10 +7,10 @@ const Main = () => {
     userName: '',
     phone: '',
     coupon: 0,
-    point: 0,
     pointInput: 0,
   });
-  const { userName, phone, coupon, point, pointInput } = inputs;
+  const [point, setPoint] = useState(0);
+  const { userName, phone, coupon, pointInput } = inputs;
   const [checkList, setCheckList] = useState([]);
   const [phoneValid, setPhoneValid] = useState(true);
   const [nameValid, setNameValid] = useState(true);
@@ -32,14 +32,10 @@ const Main = () => {
         // .get('http://localhost:8000/my/point', { headers: { Authorization: localStorage.getItem('token') } })
         .then((res) => {
           let pointSum = 0;
-
           res.data.data.forEach((data) => {
             pointSum = pointSum + data.point;
           });
-          setInputs({
-            ...inputs,
-            point: pointSum,
-          });
+          setPoint(pointSum);
         });
     }
   }, []);
@@ -71,6 +67,9 @@ const Main = () => {
   const handleAllCheck = (e) => {
     e.target.checked ? setCheckList(['check1', 'check2', 'check3']) : setCheckList([]);
   };
+
+  console.log('point', point);
+  console.log('pointInput', pointInput);
 
   return (
     <>

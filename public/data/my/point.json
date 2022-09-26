@@ -2,7 +2,7 @@
   "data": [
     {
       "pointId": 1,
-      "point": 5000,
+      "point": 10000,
       "history": "가입기념"
     },
     {
@@ -12,7 +12,7 @@
     },
     {
       "pointId": 3,
-      "point": -1000,
+      "point": -10000,
       "history": "호텔 예약"
     }
   ]

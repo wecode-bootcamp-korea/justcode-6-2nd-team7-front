@@ -9,6 +9,7 @@ export const logoutModalState = atom({
   key: 'logoutModalState',
   default: false,
 });
+
 export const searchInputState = atom({
   key: 'searchInputState',
   default: '',
@@ -22,4 +23,9 @@ export const startDateState = atom({
 export const endDateState = atom({
   key: 'endDateState',
   default: null,
+});
+
+export const pointState = atom({
+  key: 'pointState',
+  dafault: 0,
 });
