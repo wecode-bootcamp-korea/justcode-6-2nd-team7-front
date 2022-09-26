@@ -2,27 +2,26 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import * as S from './Review.stlyed';
 
-const Review = ({ review }) => {
+const Review = ({ showData }) => {
   const [score, setScore] = useState();
-  console.log('점수', review.score);
   useEffect(() => {
-    if (review.score <= 2.9) {
+    if (showData.score <= 2.9) {
       setScore(2); //별1개
-    } else if (review.score <= 3.9) {
+    } else if (showData.score <= 3.9) {
       setScore(-32); //별1.5
-    } else if (review.score <= 4.9) {
+    } else if (showData.score <= 4.9) {
       setScore(-73); //별2
-    } else if (review.score <= 5.9) {
+    } else if (showData.score <= 5.9) {
       setScore(-109); //별2.5
-    } else if (review.score <= 6.9) {
+    } else if (showData.score <= 6.9) {
       setScore(-145); //별3
-    } else if (review.score <= 7.9) {
+    } else if (showData.score <= 7.9) {
       setScore(-180); //별3.5
-    } else if (review.score <= 8.9) {
+    } else if (showData.score <= 8.9) {
       setScore(-214); //별 4
-    } else if (review.score <= 9.9) {
+    } else if (showData.score <= 9.9) {
       setScore(-252); //별4.5
-    } else if (review.score === 10) {
+    } else if (showData.score === 10) {
       setScore(-289); //별5
     }
   }, []);
@@ -31,40 +30,45 @@ const Review = ({ review }) => {
     <S.ReviewContainer score={score}>
       <div>
         <div className='score-top'>
-          <div className='general-review'>추천해요</div>
+          <div className='general-showData'>추천해요</div>
           <div className='score-total'>
-            <div className='star-total one'></div>
-            <div className='score-num'>{review.score}</div>
+            <div className='star-total'></div>
+            <div className='score-num'>{showData.score}</div>
           </div>
-          <div className='review-style'>
+          <div className='showData-style'>
             <span>전체리뷰</span>
-            <span>{review.review}</span>
+            <span>{showData.showData}</span>
           </div>
         </div>
-        <div className='review-flex '>
-          <div>
-            <img className='img-size' src='https://image.goodchoice.kr/profile/ico/ico_24.png' />
-          </div>
-          <div className='comment-wrapper '>
-            <img src='https://static.goodchoice.kr/images/web_v3/img_bestreview_badge.svg' />
-            <div>
-              <strong>여기라면 가요</strong>
-            </div>
-            <div className='score'>
-              <div className='star position'></div>
-              <div>{review.comment[0].score}</div>
-            </div>
-            <div className='name-flex'>
-              <div className='name'>
-                {review.comment[0].roomType} · {review.comment[0].nickName}
+
+        {showData.comment.map((comment) => {
+          return (
+            <div className='showData-flex '>
+              <div>
+                <img className='icon-size' src='https://image.goodchoice.kr/profile/ico/ico_24.png' />
+              </div>
+              <div className='comment-wrapper '>
+                <img src='https://static.goodchoice.kr/images/web_v3/img_bestreview_badge.svg' />
+                <div>
+                  <strong>여기 만한 곳은 없을 거예요 </strong>
+                </div>
+                <div className='score'>
+                  <div className='star'></div>
+                  <div>{comment.score}</div>
+                </div>
+                <div className='name-flex'>
+                  <div className='name'>
+                    {comment.roomType} · {comment.nickName}
+                  </div>
+                </div>
+                <div className='comment-style'>{comment.comment}</div>
+                <div>
+                  <img class='image-size' src={comment.url} />
+                </div>
               </div>
             </div>
-            <div className='comment-style'>{review.comment[0].comment}</div>
-            <div>
-              <img class='image-size' src={review.comment[0].url} />
-            </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
     </S.ReviewContainer>
   );
