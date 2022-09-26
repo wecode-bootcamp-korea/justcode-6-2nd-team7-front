@@ -45,7 +45,6 @@ export const SignUpContainer = styled.div`
         font-size: 18px;
       }
       .nickname {
-        width: 60%;
         margin-right: 3%;
       }
       .nickname-btn {
