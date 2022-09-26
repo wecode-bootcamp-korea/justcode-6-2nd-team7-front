@@ -1,3 +1,14 @@
+export const handleSelectUrl = (id) => {
+  switch (String(id)) {
+    case '3':
+      return '?sort=lowprice';
+    case '4':
+      return '?sort=highprice';
+    default:
+      return '';
+  }
+};
+
 export const handleRating = (rating) => {
   switch (rating) {
     case '5성급':
@@ -121,4 +132,29 @@ export const returnHtml = (name, img, price) => {
   <img src="${img}" alt="${name}" style="width: 30%" />
   <div style="padding: 5px; font-size: 0.8em"><p style="font-weight: 700;">${name}</p><p style="font-weight: 400;">${price}원</p></div>
   </div>`;
+};
+
+export const getDistanceFromLatLonInKm = (lat1, lng1, lat2, lng2) => {
+  const deg2rad = (deg) => {
+    return deg * (Math.PI / 180);
+  };
+
+  var R = 6371; // Radius of the earth in km
+  var dLat = deg2rad(lat2 - lat1); // deg2rad below
+  var dLon = deg2rad(lng2 - lng1);
+  var a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var distance = (R * c).toFixed(3); // Distance in km
+  return distance;
+};
+
+export const handleNodataType = (keyword) => {
+  switch (keyword) {
+    case 'no location':
+      return false;
+    default:
+      return '';
+  }
 };

@@ -47,16 +47,6 @@ const Map = ({ setShowModal, list }) => {
   };
 
   useEffect(() => {
-    const newlist =
-      list &&
-      Object.keys(list)
-        .map((region) => {
-          return list[region].map((el) => {
-            return { name: el.name, lat: el.lat, lng: el.lng, saleprice: el.saleprice, img: el.img };
-          });
-        })
-        .flat();
-
     const container = document.getElementById('map');
     const options = {
       center: new kakao.maps.LatLng(37.504897, 127.04961),
@@ -78,8 +68,8 @@ const Map = ({ setShowModal, list }) => {
       };
     };
 
-    newlist &&
-      newlist.forEach((el) => {
+    list &&
+      list.forEach((el) => {
         const marker = new kakao.maps.Marker({
           position: new kakao.maps.LatLng(el.lat, el.lng),
         });

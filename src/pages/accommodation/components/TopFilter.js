@@ -4,7 +4,7 @@ import { faMap } from '@fortawesome/free-regular-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import * as S from './TopFilter.styled';
 
-const TopFilter = ({ setShowModal }) => {
+const TopFilter = ({ setShowModal, getNewList }) => {
   const [menu, setMenu] = useState([
     { id: 1, content: '추천순', selected: true },
     { id: 2, content: '거리순', selected: false },
@@ -17,6 +17,7 @@ const TopFilter = ({ setShowModal }) => {
       return e.target.textContent === el.content ? { ...el, selected: true } : { ...el, selected: false };
     });
     setMenu(newMenu);
+    getNewList(e.target.id);
   };
 
   return (
@@ -24,7 +25,7 @@ const TopFilter = ({ setShowModal }) => {
       <div className='filter-container'>
         {menu.map((menu) => {
           return (
-            <button className={menu.selected ? 'selected' : null} onClick={handleSetList} key={menu.id}>
+            <button className={menu.selected ? 'selected' : null} onClick={handleSetList} id={menu.id} key={menu.id}>
               <FontAwesomeIcon icon={faCheck} className='icon' />
               {menu.content}
             </button>
