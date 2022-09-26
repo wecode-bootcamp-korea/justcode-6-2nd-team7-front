@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { startDateState, endDateState } from '../../../atom';
+
 import { registerLocale } from 'react-datepicker';
 import ko from 'date-fns/locale/ko';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faCalendar } from '@fortawesome/free-regular-svg-icons';
+
 import 'react-datepicker/dist/react-datepicker.css';
 import * as S from './Calendar.styled';
 
 registerLocale('ko', ko);
 
 const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow, align }) => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState();
+  const [startDate, setStartDate] = useRecoilState(startDateState);
+  const [endDate, setEndDate] = useRecoilState(endDateState);
 
   useEffect(() => {
     startDate > endDate && setEndDate();
@@ -37,6 +41,8 @@ const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow, align })
   const handleSecondInput = (e) => {
     setSecondShow(true);
   };
+
+  console.log('start', startDate, 'end', endDate);
 
   return (
     <>

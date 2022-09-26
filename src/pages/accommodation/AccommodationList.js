@@ -34,7 +34,8 @@ const AccommodationList = (props) => {
 
   useEffect(() => {
     axios
-      .get('/data/accommodation/accommodationNoData.json')
+      .get('/data/accommodation/accommodation.json')
+      //   .get(`http://localhost:8000/accommodation/${param}`)
       .then((res) => {
         setList(res.data.accommodation);
         setAcmType(Object.keys(res.data.accommodation));
@@ -44,13 +45,6 @@ const AccommodationList = (props) => {
         console.log(err);
         setList([]);
       });
-    // axios
-    //   .get(`http://localhost:8000/accommodation/${param}`)
-    //   .then((res) => {
-    //     setList(res.data.accommodation);
-    //     setAcmType(Object.keys(res.data.accommodation));
-    //   })
-    //   .catch((err) => console.log('ERROR', err));
   }, []);
 
   const handleSelected = (e) => {
