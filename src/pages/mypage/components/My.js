@@ -1,16 +1,42 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useRef, useState } from 'react';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 import MyPage from '../MyPage';
 import * as A from './My.Styled';
 import * as S from '../MyPage.Styled';
-import { useRecoilState } from 'recoil';
-import { logoutModalState } from '../../../atom';
+import LogoutModal from '../../../component/modal/LogoutModal';
+import PhoneCheck from '../../signup/PhoneCheck';
+import PhoneTimer from './PhoneTimer';
 
 const My = () => {
   const [nickname, setNickname] = useState(false);
   const [myName, setMyname] = useState(false);
   const [phone, setPhone] = useState(false);
-  const [, setModal] = useRecoilState(logoutModalState);
+  const [phoneCheck, setPhoneCheck] = useState(false);
+
+  const [phoneNum, setPhoneNum] = useState('');
+  const [isActive, setIsActive] = useState(false);
+
+  const handleBtnActive = (e) => {
+    const { value } = e.target;
+    setPhoneNum(e.target.value);
+    if (value.length > 10) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
+  };
+
+  // 핸드폰번호 post요청후 인증번호 받기
+  const handlePhoneBtn = () => {
+    phoneNum.length < 10 ? setPhoneCheck(false) : setPhoneCheck(true);
+
+    axios.post('http://localhost:8000/send', { phoneNumber: phoneNum }).then((res) => console.log(res));
+  };
+
+  const [modal, setModal] = useState(false);
+
+  const navigate = useNavigate();
 
   // 버튼 toggle
   const handleNickname = () => {
@@ -66,7 +92,10 @@ const My = () => {
           </div>
 
           <div className='my-reservation-name'>
-            <p>예약자 이름</p>
+            <div className='username'>
+              <p className='user'>예약자 이름</p>
+              <p className='name'>서지원</p>
+            </div>
             {/* toggle 창 */}
             {myName && (
               <div className='hidden-nickname'>
@@ -94,9 +123,16 @@ const My = () => {
             {phone && (
               <div className='hidden-nickname'>
                 <div className='change-nickname'>
-                  <input />
-                  <button className='nickname-btn'>인증번호</button>
+                  <div>
+                    <div className='phone-num'>
+                      <input type='tel' maxLength='13' value={phoneNum} onChange={handleBtnActive} />
+                      <button className={isActive ? 'button' : 'disabled'} onClick={handlePhoneBtn}>
+                        인증번호 전송
+                      </button>
+                    </div>
+                  </div>
                 </div>
+                {phoneCheck && <PhoneTimer />}
                 <div className='btn-box'>
                   <button className='btn-blue' onClick={handlePhone}>
                     수정완료
@@ -117,6 +153,8 @@ const My = () => {
               }}>
               로그아웃
             </Link>
+            {/* 로그아웃 모달 창 */}
+            {modal && <LogoutModal setModal={setModal} />}
             <Link to='/login'>회원탈퇴</Link>
           </div>
         </A.MyContainer>
