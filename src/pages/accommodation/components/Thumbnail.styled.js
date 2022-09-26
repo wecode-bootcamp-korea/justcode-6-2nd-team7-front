@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ThumbList = styled.li`
+export const Thumb = styled.li`
   background: url(${(props) => props.img}) no-repeat top center;
   background-size: cover;
 

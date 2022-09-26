@@ -1,14 +1,3 @@
-export const handleTitle = (type) => {
-  switch (type) {
-    case 'popular':
-      return '인기추천';
-    case 'gangnam':
-      return '강남구';
-    default:
-      return '';
-  }
-};
-
 export const handleRating = (rating) => {
   switch (rating) {
     case '5성급':
