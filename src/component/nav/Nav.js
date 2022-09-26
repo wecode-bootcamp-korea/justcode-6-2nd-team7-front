@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import classnames from 'classnames';
 import { useRecoilState } from 'recoil';
 import { searchInputState } from '../../atom';
+import { logoutModalState } from '../../atom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,26 +14,35 @@ import * as S from './Nav.styled.js';
 
 const Nav = () => {
   const navigate = useNavigate();
-  const [input, setInput] = useRecoilState(searchInputState);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [myHover, setMyHover] = useState(true);
+  const [, setKeword] = useRecoilState(searchInputState);
+  const [input, setInput] = useState('');
+  const [emptySubmit, setEmptySubmit] = useState(false);
   const [listStyle, setListStyle] = useState('block');
+  const [myHover, setMyHover] = useState(false);
+  const [logOut, setLogOut] = useRecoilState(logoutModalState);
 
   const updateScroll = () => {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);
   };
+
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
   });
 
-  const seacrhClick = (e) => {
+  const seacrhClick = () => {
     listStyle === 'block' ? setListStyle('none') : setListStyle('block');
-    listStyle === 'none' && input !== '' && navigate('/search');
+    if (listStyle === 'none' && input !== '') {
+      setKeword(input);
+      navigate('/search');
+    } else if (listStyle === 'none' && input === '') {
+      setEmptySubmit(true);
+    }
   };
 
   const logoClick = () => {
     setListStyle('block');
-    setInput('');
+    setKeword('');
   };
 
   return (
@@ -52,10 +62,19 @@ const Nav = () => {
                 icon={faMagnifyingGlass}
                 color={scrollPosition < 2 ? '#ffffffc4' : '#525252'}
                 size='lg'
+                name='searchIcon'
                 className='search-icon'
                 onClick={seacrhClick}
               />
-              <SearchModal scrollPosition={scrollPosition} setListStyle={setListStyle} listStyle={listStyle} />
+              <SearchModal
+                scrollPosition={scrollPosition}
+                setListStyle={setListStyle}
+                listStyle={listStyle}
+                input={input}
+                setInput={setInput}
+                emptySubmit={emptySubmit}
+                setEmptySubmit={setEmptySubmit}
+              />
             </div>
 
             <div style={{ display: listStyle }}>
@@ -67,14 +86,14 @@ const Nav = () => {
                   </Link>
                 </li>
                 <li className='list'>
-                  <Link to='/my' className='nav-link'>
+                  <Link
+                    to={localStorage.getItem('token') !== null ? '/reservation-list' : '/login'}
+                    className='nav-link'>
                     예약내역
                   </Link>
                 </li>
                 <li className='list'>
-                  <Link to='' className='nav-link'>
-                    더보기
-                  </Link>
+                  <Link className='nav-link'>더보기</Link>
                 </li>
                 <li className='list'>
                   {localStorage.getItem('token') !== null ? (
@@ -83,15 +102,14 @@ const Nav = () => {
                         to='/my'
                         onMouseOver={() => {
                           setMyHover(true);
-                          console.log(myHover);
                         }}
                         onMouseOut={() => {
                           setMyHover(false);
                         }}
                         className='nav-link'>
                         마이페이지
+                        {myHover && <MyModal setMyHover={setMyHover} />}
                       </Link>
-                      <MyModal myHover={myHover} />
                     </>
                   ) : (
                     <Link to='/login' className='nav-link'>

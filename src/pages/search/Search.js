@@ -33,9 +33,9 @@ const SearchContainer = styled.div`
 `;
 
 const Search = () => {
-  const input = useRecoilState(searchInputState);
+  const keword = useRecoilState(searchInputState);
   const body = {
-    inputWord: input,
+    inputWord: keword,
   };
 
   //const param = useParams().type; => SideFilter, TopFilet등 가져와야 하는데
@@ -48,11 +48,11 @@ const Search = () => {
 
   return (
     <SearchContainer>
-      <header>' {input === '' ? '검색어를 입력해주세요' : input} '</header>
+      <header>' {keword === '' ? '검색어를 입력해주세요' : keword} '</header>
       {/* <SideFilter param={param} /> */}
       <div className='result-empty'>
         <div>
-          <div>' {input} '에 대한 검색결과가 없습니다.</div>
+          <div>' {keword} '에 대한 검색결과가 없습니다.</div>
           <br />
           <span>다시 입력해주세요</span>
         </div>
