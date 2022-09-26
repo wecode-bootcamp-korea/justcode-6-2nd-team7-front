@@ -38,7 +38,9 @@ const NoData = ({ keyword }) => {
       )}
       {!handleNodataType(keyword) && (
         <Main>
-          <p className='bold'>현재 위치 접근을 수락해주세요.</p>
+          <p className='bold'>현재 위치를 확인할 수 없습니다.</p>
+          <br />
+          <p>시스템 환경설정을 확인해주세요.</p>
         </Main>
       )}
     </>

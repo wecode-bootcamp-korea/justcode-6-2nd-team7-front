@@ -58,7 +58,11 @@ const AccommodationList = () => {
         const myLng = res.coords.longitude;
         handleSortList(myLat, myLng);
       };
-      navigator.geolocation.getCurrentPosition(getLatLng, (err) => setKeyword('no location'));
+      navigator.geolocation.getCurrentPosition(getLatLng, (err) => {
+        setKeyword('no location');
+        setList([]);
+        setLoading(false);
+      });
     } else {
       axios
         .get(`/data/accommodation/accommodation.json`)
