@@ -1,9 +1,9 @@
 import { handleRating, handleEvaluate } from '../data/functions';
-import { ThumbList } from './Thumbnail.styled';
+import { Thumb } from './Thumbnail.styled';
 
 const Thumbnail = ({ name, promotion, rating, score, review, region, remain, price, saleprice, img }) => {
   return (
-    <ThumbList img={img}>
+    <Thumb img={img}>
       <div className='filter'>
         {promotion && (
           <div className='promotion'>
@@ -28,7 +28,7 @@ const Thumbnail = ({ name, promotion, rating, score, review, region, remain, pri
           </div>
         </div>
       </div>
-    </ThumbList>
+    </Thumb>
   );
 };
 
