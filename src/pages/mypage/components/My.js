@@ -130,7 +130,7 @@ const My = () => {
           <div className='my-reservation-name'>
             <div className='username'>
               <p className='user'>예약자 이름</p>
-              <p className='name'>{information.userName}</p>
+              <p className='name'>{information.userName && information.userName.replace(/(?<=.{1})./, '*')}</p>
             </div>
             {/* toggle 창 */}
             {myName && (
@@ -162,7 +162,9 @@ const My = () => {
           <div className='my-phone'>
             <div className='my-tel'>
               <p>휴대폰 번호</p>
-              <p className='tel'>{information.userPhoneNumber.length > 5 && information.userPhoneNumber}</p>
+              <p className='tel'>
+                {information.userPhoneNumber && information.userPhoneNumber.replace(/\d(?=\d{4})/g, '*')}
+              </p>
             </div>
             <p className='description'>개인 정보 보호를 위해 내 정보는 모두 안전하게 암호화됩니다.</p>
             {/* toggle 창 */}
