@@ -11,9 +11,10 @@ import Thumbnail from './components/Thumbnail';
 import NoData from './components/NoData';
 
 import { region } from './data/region';
-import { handleCategory, handleSelectUrl } from './data/functions';
+import { handleCategory, handleSelectUrl, getDistanceFromLatLonInKm } from './data/functions';
 
 import * as S from './AccommodationList.styled';
+import LoadingSpinner from './components/LoadingSpinner';
 
 const AccommodationList = () => {
   const [city, setCity] = useState(
@@ -28,6 +29,8 @@ const AccommodationList = () => {
   const [showModal, setShowModal] = useState(false);
   const [firstDateShow, setFirstDateShow] = useState(false);
   const [secondDateShow, setSecondDateShow] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [keyword, setKeyword] = useState();
 
   const param = useParams().type;
 
@@ -35,9 +38,9 @@ const AccommodationList = () => {
     axios
       .get('/data/accommodation/accommodation.json')
       //   .get(`http://localhost:8000/accommodation/${param}`)
-      //   .get(`http://localhost:8000/accommodation/${param}`)
       .then((res) => {
         setList(res.data.accommodation);
+        setLoading(false);
         res.data.accommodation.length === 0 && setList([]);
       })
       .catch((err) => {
@@ -47,17 +50,40 @@ const AccommodationList = () => {
   }, []);
 
   const getNewList = (id) => {
-    axios
-      .get(`/data/accommodation/accommodation.json`)
-      // .get(`http://localhost:8000/accommodation/${param}${handleSelectUrl(id)}`)
-      .then((res) => {
-        setList(res.data.accommodation);
-        res.data.accommodation.length === 0 && setList([]);
-      })
-      .catch((err) => {
-        console.log(err);
-        setList([]);
-      });
+    setLoading(true);
+
+    if (Number(id) === 2) {
+      const getLatLng = (res) => {
+        const myLat = res.coords.latitude;
+        const myLng = res.coords.longitude;
+        handleSortList(myLat, myLng);
+      };
+      navigator.geolocation.getCurrentPosition(getLatLng, (err) => setKeyword('no location'));
+    } else {
+      axios
+        .get(`/data/accommodation/accommodation.json`)
+        // .get(`http://localhost:8000/accommodation/${param}${handleSelectUrl(id)}`)
+        .then((res) => {
+          setList(res.data.accommodation);
+          setLoading(false);
+          setKeyword();
+          res.data.accommodation.length === 0 && setList([]);
+        })
+        .catch((err) => {
+          console.log(err);
+          setList([]);
+        });
+    }
+  };
+
+  const handleSortList = (lat, lng) => {
+    const haveDisList = list.map((el) => ({
+      ...el,
+      distance: Number(getDistanceFromLatLonInKm(lat, lng, el.lat, el.lng)),
+    }));
+    haveDisList.sort((a, b) => a.distance - b.distance);
+    setList(haveDisList);
+    setLoading(false);
   };
 
   const handleSelected = (e) => {
@@ -144,7 +170,7 @@ const AccommodationList = () => {
         <main>
           {showModal && <Map setShowModal={setShowModal} list={list} />}
           <TopFilter setShowModal={setShowModal} getNewList={getNewList} />
-          {list && (
+          {!loading && (
             <ul className='thumbnail-container mt32'>
               {list.map((el) => {
                 return (
@@ -165,7 +191,8 @@ const AccommodationList = () => {
               })}
             </ul>
           )}
-          {list && list.length === 0 && <NoData />}
+          {loading && <LoadingSpinner />}
+          {list && list.length === 0 && <NoData keyword={keyword} />}
         </main>
       </S.Body>
     </>
