@@ -1,12 +1,9 @@
-import axios from 'axios';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-import KaKaoLogin from './KaKaoLogin';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComment, faN } from '@fortawesome/free-solid-svg-icons';
+import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import axios from 'axios';
 import * as S from './Login.Styled';
 
 function Login() {
@@ -27,9 +24,8 @@ function Login() {
     setPassword(e.target.value);
   };
 
-  const REST_API_KEY = '5896c4071585205226ff70774816a5df';
   const REDIRECT_URI = 'http://localhost:3000/kakao-login';
-  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
   const handleKakao = (e) => {
     e.preventDefault();
     window.location.href = KAKAO_AUTH_URL;

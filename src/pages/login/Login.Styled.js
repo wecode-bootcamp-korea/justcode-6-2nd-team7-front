@@ -46,16 +46,19 @@ export const LoginForm = styled.form`
     .kakao {
       background: #fce51e;
       color: #2c1510;
+      cursor: pointer;
     }
 
     .facebook {
       background: #1877f2;
       color: #fff;
+      cursor: pointer;
     }
 
     .naver {
       background: #28d111;
       color: #fff;
+      cursor: pointer;
 
       span {
         font-weight: 900;

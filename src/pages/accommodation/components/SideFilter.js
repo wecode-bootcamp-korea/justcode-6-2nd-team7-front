@@ -13,7 +13,6 @@ import styled from 'styled-components';
 const Down = styled.span`
   color: ${({ theme }) => theme.colors.text};
   opacity: ${({ count }) => (count === 1 ? 0.5 : 1)};
-  /* cursor: pointer; */
   cursor: ${({ count }) => (count === 1 ? 'not-allowed' : 'pointer')};
 `;
 

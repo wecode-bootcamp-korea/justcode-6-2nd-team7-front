@@ -42,8 +42,6 @@ const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow, align })
     setSecondShow(true);
   };
 
-  console.log('start', startDate, 'end', endDate);
-
   return (
     <>
       <S.Main align={align}>

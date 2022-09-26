@@ -83,7 +83,7 @@
       },
       {
         "id": 4,
-        "rating": "관광",
+        "rating": "5성급",
         "name": "노보텔 앰배서더 서울 강남",
         "img": "https://images.unsplash.com/photo-1534679541758-8dc76ff8081d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2416&q=80",
         "score": 9.8,
@@ -110,7 +110,7 @@
       },
       {
         "id": 6,
-        "rating": "5성급",
+        "rating": "관광",
         "name": "호텔 엔트라 강남",
         "img": "https://images.unsplash.com/photo-1586278609586-41878b27097c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2490&q=80",
         "score": "8.0",

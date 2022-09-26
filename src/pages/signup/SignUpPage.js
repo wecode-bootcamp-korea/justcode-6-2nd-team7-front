@@ -121,9 +121,6 @@ function SignUpPage() {
           <label>닉네임</label>
           <div>
             <input value={userNic} className='nickname' onChange={handleNickname} />
-            <button type='button' className='nickname-btn'>
-              딴거할래요
-            </button>
           </div>
         </div>
         <button className={isValid ? 'active' : ''} onClick={handleSuccess}>
