@@ -1,3 +1,14 @@
+export const handleSelectUrl = (id) => {
+  switch (String(id)) {
+    case '3':
+      return '?sort=lowprice';
+    case '4':
+      return '?sort=highprice';
+    default:
+      return '';
+  }
+};
+
 export const handleRating = (rating) => {
   switch (rating) {
     case '5성급':

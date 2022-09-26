@@ -11,11 +11,11 @@ import Thumbnail from './components/Thumbnail';
 import NoData from './components/NoData';
 
 import { region } from './data/region';
-import { handleCategory } from './data/functions';
+import { handleCategory, handleSelectUrl } from './data/functions';
 
 import * as S from './AccommodationList.styled';
 
-const AccommodationList = (props) => {
+const AccommodationList = () => {
   const [city, setCity] = useState(
     region.map((el, i) => {
       return i === 0 ? { ...el, show: true } : { ...el, show: false };
@@ -38,13 +38,27 @@ const AccommodationList = (props) => {
       //   .get(`http://localhost:8000/accommodation/${param}`)
       .then((res) => {
         setList(res.data.accommodation);
-        Object.keys(res.data.accommodation).length === 0 && setList([]);
+        res.data.accommodation.length === 0 && setList([]);
       })
       .catch((err) => {
         console.log(err);
         setList([]);
       });
   }, []);
+
+  const getNewList = (id) => {
+    axios
+      .get(`/data/accommodation/accommodation.json`)
+      // .get(`http://localhost:8000/accommodation/${param}${handleSelectUrl(id)}`)
+      .then((res) => {
+        setList(res.data.accommodation);
+        res.data.accommodation.length === 0 && setList([]);
+      })
+      .catch((err) => {
+        console.log(err);
+        setList([]);
+      });
+  };
 
   const handleSelected = (e) => {
     const text = e.target.textContent;
@@ -129,7 +143,7 @@ const AccommodationList = (props) => {
         />
         <main>
           {showModal && <Map setShowModal={setShowModal} list={list} />}
-          <TopFilter setShowModal={setShowModal} />
+          <TopFilter setShowModal={setShowModal} getNewList={getNewList} />
           {list && (
             <ul className='thumbnail-container mt32'>
               {list.map((el) => {
