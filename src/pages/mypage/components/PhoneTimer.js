@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+import { phoneCheckState } from '../../../atom';
 
 const TimerContainer = styled.div`
   position: relative;
@@ -20,9 +22,10 @@ const TimerContainer = styled.div`
   }
 `;
 
-function PhoneTimer({ isActive, phoneNum }) {
+function PhoneTimer({ isActive }) {
   const [num, setNum] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const phoneNum = useRecoilValue(phoneCheckState);
   const navigate = useNavigate();
 
   // timer
@@ -57,9 +60,14 @@ function PhoneTimer({ isActive, phoneNum }) {
         phoneNumber: phoneNum,
         verifyCode: num,
       })
-      .then((res) =>
-        res.data.message === 'SMS_VERIFY_SUCCESS' ? navigate('/signup-page') : setErrorMessage('일치하지 않습니다.'),
-      );
+      .then((res) => {
+        console.log(res.data.message);
+        if (res.data.message !== 'SMS_VERIFY_SUCCESS') {
+          setErrorMessage('일치하지 않습니다.');
+        } else {
+          setErrorMessage('일치합니다.');
+        }
+      });
   };
 
   return (

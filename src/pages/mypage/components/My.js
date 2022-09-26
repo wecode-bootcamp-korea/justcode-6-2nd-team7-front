@@ -6,6 +6,8 @@ import * as A from './My.Styled';
 import * as S from '../MyPage.Styled';
 import LogoutModal from '../../../component/modal/LogoutModal';
 import PhoneTimer from './PhoneTimer';
+import { useRecoilState } from 'recoil';
+import { phoneCheckState } from '../../../atom';
 
 const My = () => {
   const [nickname, setNickname] = useState(false);
@@ -13,12 +15,14 @@ const My = () => {
   const [phone, setPhone] = useState(false);
   const [phoneCheck, setPhoneCheck] = useState(false);
 
-  const [phoneNum, setPhoneNum] = useState('');
+  const [phoneNum, setPhoneNum] = useRecoilState(phoneCheckState);
   const [isActive, setIsActive] = useState(false);
 
   const [information, setInformation] = useState([]);
   const [changeNickname, setChangeNickname] = useState('');
   const [userName, setUserName] = useState('');
+
+  console.log(information);
 
   const handleBtnActive = (e) => {
     const { value } = e.target;
@@ -38,8 +42,6 @@ const My = () => {
   };
 
   const [modal, setModal] = useState(false);
-
-  const navigate = useNavigate();
 
   // 버튼 toggle
   const handleNickname = () => {
@@ -67,6 +69,13 @@ const My = () => {
 
   const handlePhone = () => {
     setPhone((prev) => !prev);
+    axios
+      .patch(
+        'http://localhost:8000/my/phoneNumber',
+        { phoneNumber: phoneNum },
+        { headers: { Authorization: localStorage.getItem('token') } },
+      )
+      .then(() => setPhoneNum(phoneNum));
   };
 
   // 유저정보 get
@@ -76,7 +85,7 @@ const My = () => {
         headers: { Authorization: localStorage.getItem('token') },
       })
       .then((data) => setInformation(data.data.data[0]));
-  }, [changeNickname, userName]);
+  }, [changeNickname, userName, phoneNum]);
 
   return (
     <S.Header>
