@@ -1,10 +1,21 @@
+import { useRecoilState } from 'recoil';
+import { startDateState, endDateState } from '../../../atom';
+
 import { SubContainerStyle } from '../Reservation.Styled';
 
 // 필요한 데이터
 // 숙소이름, 객실타입, 숙박일수,
-//   체크인 날짜, 체크아웃 날짜, 전체금액
+// 전체금액
+// 체크인 날짜, 체크아웃 날짜,
 
 const Sub = () => {
+  const [startDate] = useRecoilState(startDateState);
+  const [endDate] = useRecoilState(endDateState);
+  const week = ['일', '월', '화', '수', '목', '금', '토'];
+  console.log(week[startDate.getDay()]);
+
+  // const changeDay
+
   return (
     <>
       <SubContainerStyle>
@@ -24,13 +35,13 @@ const Sub = () => {
           <div>
             <div className='title'>체크인</div>
             <div className='content'>
-              <span>09.24</span> <span>금</span> <span>14:00</span>
+              <span>09.{startDate.getDate()}</span> <span>{week[startDate.getDay()]}</span> <span>15:00</span>
             </div>
           </div>
           <div>
             <div className='title'>체크아웃</div>
             <div className='content'>
-              <span>09.25</span> <span>토</span> <span>11:00</span>
+              <span>09.{startDate.getDate()}</span> <span>{week[startDate.getDay()]}</span> <span>11:00</span>
             </div>
           </div>
 

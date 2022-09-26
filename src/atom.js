@@ -24,3 +24,11 @@ export const endDateState = atom({
   key: 'endDateState',
   default: null,
 });
+
+export const reservInfoState = atom({
+  key: 'reservInfoState',
+  dafault: {
+    name: '제주도 오라이',
+    totalPrice: 100000,
+  },
+});
