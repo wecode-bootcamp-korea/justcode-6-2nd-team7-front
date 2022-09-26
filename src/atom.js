@@ -27,8 +27,9 @@ export const endDateState = atom({
 
 export const reservInfoState = atom({
   key: 'reservInfoState',
-  dafault: {
-    name: '제주도 오라이',
-    totalPrice: 100000,
+  default: {
+    name: '',
+    roomType: '',
+    totalPrice: 0,
   },
 });

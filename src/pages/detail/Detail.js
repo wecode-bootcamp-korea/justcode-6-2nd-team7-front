@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import { reservInfoState, startDateState, endDateState } from '../../atom';
 import Information from './components/Information';
 import Review from './components/Review';
 import RoomGuide from './components/RoomGuide';
@@ -9,6 +11,9 @@ import EventModal from './components/EventModal';
 import SubjectSlide from './components/SubjectSlide';
 
 const Detail = () => {
+  const [info, setInfo] = useRecoilState(reservInfoState);
+  const [startDate, setStartDate] = useRecoilState(startDateState);
+  const [endDate, setEndDate] = useRecoilState(endDateState);
   const [openModal, setOpenModal] = useState(false);
   const [showData, setShowData] = useState();
   const [component, setComponent] = useState(1);
@@ -16,6 +21,7 @@ const Detail = () => {
   const handleClickBtn = () => {
     setOpenModal(true);
   };
+
   const clickTab = (e) => {
     switch (e.target.value) {
       case '객실안내/예약':
@@ -33,6 +39,10 @@ const Detail = () => {
       .then((res) => res.json())
       .then((data) => {
         setShowData(data.roomTypeData);
+        setInfo({
+          ...info,
+          name: data.roomTypeData.name,
+        });
       });
   }, []);
 

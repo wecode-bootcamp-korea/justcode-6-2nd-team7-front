@@ -1,12 +1,21 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { startDateState, endDateState, reservInfoState } from '../../../atom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { faImages } from '@fortawesome/free-solid-svg-icons';
-import * as S from './Room.styled';
-import { useState } from 'react';
+
 import Slide from './Slide';
 import UseModal from './UseModal';
 
+import * as S from './Room.styled';
+
 const Room = ({ roomType }) => {
+  const navigate = useNavigate();
+  const [startDate] = useRecoilState(startDateState);
+  const [endDate] = useRecoilState(endDateState);
+  const [info, setInfo] = useRecoilState(reservInfoState);
   const [openBtn, setOpenBtn] = useState(false);
   const [useBtn, setUseBtn] = useState(false);
 
@@ -16,6 +25,18 @@ const Room = ({ roomType }) => {
 
   const handleUseBtn = () => {
     setUseBtn(true);
+  };
+
+  const handleResrvBtn = () => {
+    navigate('/reservation');
+    window.scrollTo({
+      top: 0,
+    });
+    setInfo({
+      ...info,
+      roomType: roomType.type,
+      totalPrice: roomType.price * (endDate.getDate() - startDate.getDate()),
+    });
   };
 
   return (
@@ -50,7 +71,9 @@ const Room = ({ roomType }) => {
               )}
             </div>
             <div>
-              <button className='reservation-button'>예약</button>
+              <button className='reservation-button' onClick={handleResrvBtn}>
+                예약
+              </button>
             </div>
           </div>
         </div>

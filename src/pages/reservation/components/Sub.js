@@ -1,20 +1,17 @@
 import { useRecoilState } from 'recoil';
-import { startDateState, endDateState } from '../../../atom';
+import { startDateState, endDateState, reservInfoState } from '../../../atom';
 
 import { SubContainerStyle } from '../Reservation.Styled';
 
 // 필요한 데이터
-// 숙소이름, 객실타입, 숙박일수,
 // 전체금액
-// 체크인 날짜, 체크아웃 날짜,
+// 완성 : 체크인 날짜, 체크아웃 날짜, 숙소이름, 객실타입, 숙박일수,
 
 const Sub = () => {
   const [startDate] = useRecoilState(startDateState);
   const [endDate] = useRecoilState(endDateState);
+  const [info] = useRecoilState(reservInfoState);
   const week = ['일', '월', '화', '수', '목', '금', '토'];
-  console.log(week[startDate.getDay()]);
-
-  // const changeDay
 
   return (
     <>
@@ -23,13 +20,14 @@ const Sub = () => {
           <div>
             <div className='title'>숙소이름</div>
             <div className='content'>
-              <span>홍대</span> <span>스타일 게스트하우스</span>
+              <span>{info.name}</span>
             </div>
           </div>
           <div>
             <div className='title'>객실타입/기간</div>
             <div className='content'>
-              <span>더블룸</span> (<span>객실내 전용욕실</span>) / <span>1</span>박
+              <span>{info.roomType}</span> / <span>{startDate.getDate() - startDate.getDate()}</span>박
+              {/* <span>{info.type}</span> / <span>{endDate.getDate() - startDate.getDate()}</span>박 */}
             </div>
           </div>
           <div>
@@ -42,6 +40,7 @@ const Sub = () => {
             <div className='title'>체크아웃</div>
             <div className='content'>
               <span>09.{startDate.getDate()}</span> <span>{week[startDate.getDay()]}</span> <span>11:00</span>
+              {/* <span>09.{endDate.getDate()}</span> <span>{week[endDate.getDay()]}</span> <span>11:00</span> */}
             </div>
           </div>
 
@@ -50,7 +49,7 @@ const Sub = () => {
               <span className='bold'>총 결제 금액</span>
               <span>(VAT포함)</span>
               <div className='totalPrice'>
-                <span>329,000</span>
+                <span>{info.totalPrice.toLocaleString()}</span>
                 <span>원</span>
               </div>
             </div>
