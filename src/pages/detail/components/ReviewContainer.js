@@ -7,23 +7,24 @@ const ReviewContainer = ({ showData }) => {
   const [score, setScore] = useState();
   useEffect(() => {
     if (showData.score <= 2.9) {
-      setScore(2); //별1개
+      setScore(2);
     } else if (showData.score <= 3.9) {
-      setScore(-32); //별1.5
+      setScore(-32);
     } else if (showData.score <= 4.9) {
-      setScore(-73); //별2
+      setScore(-73);
     } else if (showData.score <= 5.9) {
-      setScore(-109); //별2.5
+      setScore(-109);
     } else if (showData.score <= 6.9) {
-      setScore(-145); //별3
+      setScore(-145);
     } else if (showData.score <= 7.9) {
-      setScore(-180); //별3.5
+      setScore(-180);
+      ㅌ;
     } else if (showData.score <= 8.9) {
-      setScore(-214); //별 4
+      setScore(-214);
     } else if (showData.score <= 9.9) {
-      setScore(-252); //별4.5
+      setScore(-252);
     } else if (showData.score === 10) {
-      setScore(-289); //별5
+      setScore(-289);
     }
   }, [showData.score]);
 
