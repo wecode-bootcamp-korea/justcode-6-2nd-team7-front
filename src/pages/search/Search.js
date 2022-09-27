@@ -23,24 +23,7 @@ const SearchContainer = styled.div`
     color: ${({ theme }) => theme.colors.bkText};
     font-size: 38px;
   }
-
-  /* .result-empty {
-    text-align: center;
-    width: 635px;
-    height: 150px;
-    margin: 150px 0px 0px;
-    color: ${({ theme }) => theme.colors.text};
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-
-    span {
-      font-weight: 400;
-    }
-  } */
 `;
-// 사용하는 컴포넌트
-// 탑필터, 사이드필터, 썸네일
 
 const Search = () => {
   const params = useParams();
@@ -102,7 +85,7 @@ const Search = () => {
 
   return (
     <SearchContainer>
-      <header>' {params.keyword === '' ? '검색어를 입력해주세요' : params.keyword} '</header>
+      <header>' {params.keyword} '</header>
       <S.Body>
         <SideFilter
           param={'search'}
