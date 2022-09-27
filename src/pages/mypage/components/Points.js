@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MyPage from '../MyPage';
 import * as S from '../MyPage.Styled';
 import styled from 'styled-components';
+import axios from 'axios';
 
 export const PointContainer = styled.div`
   width: 100%;
@@ -42,6 +43,15 @@ export const PointContainer = styled.div`
 `;
 
 function Points() {
+  const [points, setPoints] = useState({});
+  useEffect(() => {
+    axios
+      .get('http://localhost:8000/my/point', {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+      })
+      .then((res) => setPoints(res.data.data[0]));
+  }, []);
+
   return (
     <S.Header>
       <div className='box'>
@@ -53,10 +63,12 @@ function Points() {
           <p className='points'>포인트</p>
           <div className='point-box'>
             <div>
-              <p className='my-points'>내 포인트</p>
-              <h2>0 P</h2>
+              <p className='my-points'>{points.history}</p>
+              <h2>{points.point && points.point.toLocaleString()}</h2>
               <div>
-                <p className='point-delete'>30일 내 0 P가 소멸될 예정이에요.</p>
+                <p className='point-delete'>
+                  30일 내 {points.point && points.point.toLocaleString()}P가 소멸될 예정이에요.
+                </p>
               </div>
             </div>
           </div>

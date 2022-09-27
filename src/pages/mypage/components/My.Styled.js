@@ -50,7 +50,7 @@ export const MyContainer = styled.div`
       }
 
       .nickname {
-        color: rgb(93, 93, 93);
+        color: #5d5d5d;
       }
     }
   }
@@ -58,8 +58,19 @@ export const MyContainer = styled.div`
   .my-reservation-name {
     margin-bottom: 50px;
 
-    p {
-      font-size: 18px;
+    .username {
+      display: flex;
+
+      p {
+        font-size: 18px;
+      }
+
+      .user {
+        margin-right: 50px;
+      }
+      .name {
+        color: #5d5d5d;
+      }
     }
   }
 
@@ -75,14 +86,14 @@ export const MyContainer = styled.div`
         font-size: 18px;
       }
       .tel {
-        color: rgb(93, 93, 93);
+        color: #5d5d5d;
       }
     }
 
     .description {
       margin-bottom: 6px;
       font-size: 14px;
-      color: rgb(93, 93, 93);
+      color: #5d5d5d;
     }
   }
 
@@ -99,7 +110,7 @@ export const MyContainer = styled.div`
 
     p {
       margin-right: 50px;
-      color: rgb(93, 93, 93);
+      color: #5d5d5d;
     }
 
     a {
@@ -114,8 +125,18 @@ export const MyContainer = styled.div`
     input {
       width: 374px;
       height: 45px;
-      border: 1px solid rgba(0, 0, 0, 0.08);
+      border: 1px solid #00000014;
       border-radius: 5px;
+    }
+
+    .button {
+      background: #01aef0;
+      color: #fff;
+      cursor: pointer;
+    }
+    .disabled {
+      background: #ccc;
+      color: #fff;
     }
 
     .nickname-btn {
@@ -139,10 +160,6 @@ export const MyContainer = styled.div`
     button {
       margin-top: 20px;
       margin-right: 15px;
-    }
-
-    .btn-box {
-      /* margin-left: 12px; */
     }
   }
 

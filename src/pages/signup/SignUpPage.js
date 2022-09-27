@@ -20,7 +20,6 @@ function SignUpPage() {
   const [emailCheck, setEmailCheck] = useState(false);
   const [pwCheck, setPwCheck] = useState(false);
   const [pwTest, setPwTest] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -66,11 +65,6 @@ function SignUpPage() {
       };
       axios.post('http://localhost:8000/signup', body).then((res) => {
         navigate('/login');
-        // if (res.data.message === 'SIGNUP_SUCCESS!') {
-        //   navigate('/login');
-        // } else {
-        //   setErrorMessage('회원가입에 실패 하였습니다.');
-        // }
       });
     }
   };
@@ -127,7 +121,6 @@ function SignUpPage() {
         <button className={isValid ? 'active' : ''} onClick={handleSuccess}>
           가입하기
         </button>
-        <p className='signup-error'>{errorMessage}</p>
       </form>
     </S.SignUpContainer>
   );
