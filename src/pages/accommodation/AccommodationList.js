@@ -195,6 +195,7 @@ const AccommodationList = () => {
                 return (
                   <Thumbnail
                     key={el.name}
+                    id={el.id}
                     name={el.name}
                     promotion={el.promotion}
                     rating={el.rating}
