@@ -13,12 +13,16 @@ const TimerContainer = styled.div`
     input {
       margin-right: 7px;
     }
-  }
 
-  .timer {
-    position: absolute;
-    left: 320px;
-    top: 50px;
+    .timer {
+      position: absolute;
+      left: 320px;
+      top: 50px;
+    }
+
+    .phone-error {
+      color: #ff0000;
+    }
   }
 `;
 

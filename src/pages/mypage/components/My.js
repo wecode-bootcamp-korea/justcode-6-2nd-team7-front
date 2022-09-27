@@ -51,7 +51,7 @@ const My = () => {
       .patch(
         'http://localhost:8000/my/nickName',
         { nickName: changeNickname },
-        { headers: { Authorization: localStorage.getItem('token') } },
+        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
       )
       .then(() => setChangeNickname(''));
   };
@@ -62,7 +62,7 @@ const My = () => {
       .patch(
         'http://localhost:8000/my/name',
         { name: userName },
-        { headers: { Authorization: localStorage.getItem('token') } },
+        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
       )
       .then(() => setUserName(''));
   };
@@ -73,7 +73,7 @@ const My = () => {
       .patch(
         'http://localhost:8000/my/phoneNumber',
         { phoneNumber: phoneNum },
-        { headers: { Authorization: localStorage.getItem('token') } },
+        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } },
       )
       .then((res) => {
         setInformation(res.data.data);
@@ -84,10 +84,12 @@ const My = () => {
   useEffect(() => {
     axios
       .get('http://localhost:8000/my', {
-        headers: { Authorization: localStorage.getItem('token') },
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       })
       .then((data) => setInformation(data.data.data[0]));
   }, [changeNickname, userName, information.userPhoneNumber]);
+
+  console.log(information);
 
   return (
     <S.Header>
@@ -99,7 +101,7 @@ const My = () => {
         <A.MyContainer>
           <p className='my-header'>내 정보 수정</p>
           <div className='my-img'>
-            <img src='https://image.goodchoice.kr/profile/ico/ico_21.png' alt='my-logo' />
+            <img src='images/smile_icon.png' alt='my-logo' />
 
             <p>
               <span>{information.userEmail} </span>회원으로 로그인
