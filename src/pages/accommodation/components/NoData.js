@@ -1,3 +1,4 @@
+import { handleNodataType } from '../data/functions';
 import styled from 'styled-components';
 
 const Main = styled.div`
