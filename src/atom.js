@@ -15,9 +15,10 @@ export const startDateState = atom({
   default: new Date(),
 });
 
+const today = new Date();
 export const endDateState = atom({
   key: 'endDateState',
-  default: null,
+  default: new Date(today.setDate(today.getDate() + 1)),
 });
 
 export const reservInfoState = atom({
