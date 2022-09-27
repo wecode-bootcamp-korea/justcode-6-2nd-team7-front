@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { reservInfoState, startDateState, endDateState } from '../../atom';
 import Information from './components/Information';
-import Review from './components/Review';
+import ReviewContainer from './components/ReviewContainer';
 import RoomGuide from './components/RoomGuide';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
@@ -99,7 +99,7 @@ const Detail = () => {
             ) : component === 2 ? (
               <Information informations={showData} />
             ) : (
-              <Review />
+              <ReviewContainer showData={showData} />
             )}
           </S.Context>
         </S.DetailExplanation>
