@@ -10,6 +10,8 @@ import Thumbnail from '../accommodation/components/Thumbnail';
 import NoData from '../accommodation/components/NoData';
 import LoadingSpinner from '../accommodation/components/LoadingSpinner';
 
+import { handleSelectUrl, getDistanceFromLatLonInKm } from '../accommodation/data/functions';
+
 import * as S from '../accommodation/AccommodationList.styled';
 
 const SearchContainer = styled.div`
@@ -28,6 +30,7 @@ const SearchContainer = styled.div`
 const Search = () => {
   const params = useParams();
   const [list, setList] = useState();
+  const [keyword, setKeyword] = useState();
   const [showModal, setShowModal] = useState(false);
   const [firstDateShow, setFirstDateShow] = useState(false);
   const [secondDateShow, setSecondDateShow] = useState(false);
@@ -36,8 +39,8 @@ const Search = () => {
   //처음 검색했을 때 받아오는 정보
   useEffect(() => {
     axios
-      // .get('/data/accommodation/accommodation.json')
-      .get(`/data/accommodation/accommodationNoData.json`)
+      .get('/data/accommodation/accommodation.json')
+      // .get(`/data/accommodation/accommodationNoData.json`)
       // .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
       .then((res) => {
         // console.log(res);
@@ -53,35 +56,47 @@ const Search = () => {
   //탑필터 누를때마다 받아오는 정보
   const getNewList = (id) => {
     setLoading(true);
+    if (Number(id) === 2) {
+      const getLatLng = (res) => {
+        const myLat = res.coords.latitude;
+        const myLng = res.coords.longitude;
+        handleSortList(myLat, myLng);
+      };
 
-    // if (Number(id) === 2) {
-    //   const getLatLng = (res) => {
-    //     const myLat = res.coords.latitude;
-    //     const myLng = res.coords.longitude;
-    //     // handleSortList(myLat, myLng);
-    //   };
-    //   navigator.geolocation.getCurrentPosition(getLatLng, (err) => {
-    //     setKeyword('no location');
-    //     setList([]);
-    //     setLoading(false);
-    //   });
-    // } else {
-    axios
-      // .get(`/data/accommodation/accommodation.json`)
-      .get(`/data/accommodation/accommodationNoData.json`)
-      // .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
-      .then((res) => {
-        // console.log(res);
-        setList(res.data.accommodation);
-        setLoading(false);
-        // setKeyword();
-        res.data.accommodation.length === 0 && setList([]);
-      })
-      .catch((err) => {
-        console.log(err);
+      navigator.geolocation.getCurrentPosition(getLatLng, (err) => {
+        setKeyword('no location');
         setList([]);
+        setLoading(false);
       });
-    // }
+    } else {
+      axios
+        .get(`/data/accommodation/accommodation.json`)
+        // .get(`/data/accommodation/accommodationNoData.json`)
+        // .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
+        // .get(`http://localhost:8000/accommodation/${param}${handleSelectUrl(id)}`)
+
+        .then((res) => {
+          // console.log(res);
+          setList(res.data.accommodation);
+          setLoading(false);
+          setKeyword(params.keyword);
+          res.data.accommodation.length === 0 && setList([]);
+        })
+        .catch((err) => {
+          console.log(err);
+          setList([]);
+        });
+    }
+  };
+
+  const handleSortList = (lat, lng) => {
+    const haveDisList = list.map((el) => ({
+      ...el,
+      distance: Number(getDistanceFromLatLonInKm(lat, lng, el.lat, el.lng)),
+    }));
+    haveDisList.sort((a, b) => a.distance - b.distance);
+    setList(haveDisList);
+    setLoading(false);
   };
 
   return (
@@ -120,7 +135,7 @@ const Search = () => {
             </ul>
           )}
           {loading && <LoadingSpinner />}
-          {list && list.length === 0 && <NoData keyword={params.keyword} />}
+          {list && list.length === 0 && <NoData keyword={keyword} />}
         </main>
       </S.Body>
     </SearchContainer>
