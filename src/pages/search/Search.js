@@ -32,12 +32,12 @@ const Search = () => {
   const [firstDateShow, setFirstDateShow] = useState(false);
   const [secondDateShow, setSecondDateShow] = useState(false);
   const [loading, setLoading] = useState(true);
-  // const [keyword, setKeyword] = useState();
 
   //처음 검색했을 때 받아오는 정보
   useEffect(() => {
     axios
-      .get('/data/accommodation/accommodation.json')
+      // .get('/data/accommodation/accommodation.json')
+      .get(`/data/accommodation/accommodationNoData.json`)
       // .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
       .then((res) => {
         // console.log(res);
@@ -67,7 +67,8 @@ const Search = () => {
     //   });
     // } else {
     axios
-      .get(`/data/accommodation/accommodation.json`)
+      // .get(`/data/accommodation/accommodation.json`)
+      .get(`/data/accommodation/accommodationNoData.json`)
       // .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
       .then((res) => {
         // console.log(res);
