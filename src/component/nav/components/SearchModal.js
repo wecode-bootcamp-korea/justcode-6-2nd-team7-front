@@ -2,10 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useRecoilState } from 'recoil';
-import { searchInputState } from '../../../atom';
 import styled from 'styled-components';
-
 import EmptyInputModal from './EmptyInputModal';
 
 import * as S from './SeachModal.Styled';
@@ -33,7 +30,6 @@ const InputContainer = styled.div`
 
 const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput, emptySubmit, setEmptySubmit }) => {
   const navigate = useNavigate();
-  const [, setKeword] = useRecoilState(searchInputState);
   const [inputColor, setInputColor] = useState('#ffffffc4');
   const recommendArr = [
     { id: 1, keyword: '강남' },
@@ -60,7 +56,6 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput,
     if (e.key === 'Enter' && input !== '') {
       setListStyle('block');
       setInput('');
-      setKeword(input);
       navigate(`/search/${input}`);
     } else if (e.key === 'Enter' && input === '') {
       setEmptySubmit(true);

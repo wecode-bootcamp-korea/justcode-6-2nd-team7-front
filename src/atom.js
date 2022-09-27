@@ -10,11 +10,6 @@ export const logoutModalState = atom({
   default: false,
 });
 
-export const searchInputState = atom({
-  key: 'searchInputState',
-  default: '',
-});
-
 export const startDateState = atom({
   key: 'startDateState',
   default: new Date(),

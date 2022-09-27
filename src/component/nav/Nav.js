@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import classnames from 'classnames';
-import { useRecoilState } from 'recoil';
-import { searchInputState } from '../../atom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,8 +12,7 @@ import * as S from './Nav.styled.js';
 const Nav = () => {
   const navigate = useNavigate();
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [keyword, setKeword] = useRecoilState(searchInputState);
-  const [input, setInput] = useState(keyword);
+  const [input, setInput] = useState('');
   const [emptySubmit, setEmptySubmit] = useState(false);
   const [listStyle, setListStyle] = useState('block');
   const [myHover, setMyHover] = useState(false);
@@ -31,7 +28,6 @@ const Nav = () => {
   const seacrhClick = () => {
     listStyle === 'block' ? setListStyle('none') : setListStyle('block');
     if (listStyle === 'none' && input !== '') {
-      setKeword(input);
       navigate(`/search/${input}`);
       setInput('');
     } else if (listStyle === 'none' && input === '') {
@@ -41,7 +37,6 @@ const Nav = () => {
 
   const logoClick = () => {
     setListStyle('block');
-    setKeword('');
   };
 
   return (
