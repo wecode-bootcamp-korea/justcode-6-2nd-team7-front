@@ -194,7 +194,8 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
         {handleShowRange(param) && (
           <section className='price-container mt32 mb18'>
             <h5 className='title mt32 mb18'>
-              가격<span>3만원이상</span>
+              가격{value[0] !== 1 && <span>{value[0]}만원이상</span>}
+              {value[1] !== 30 && <span>{value[1]}만원이하</span>}
             </h5>
             <div className='slider-box'>
               <CustomSlider value={value} handleChange={handleChange} />
