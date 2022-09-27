@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { useRecoilState } from 'recoil';
@@ -42,6 +42,12 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
   const [queryArr, setQueryArr] = useRecoilState(queryState);
   const [startDate, setStartDate] = useRecoilState(startDateState);
   const [endDate, setEndDate] = useRecoilState(endDateState);
+  const [state, updateState] = useState();
+  const [checkedAll, setCheckedAll] = useState(true);
+  // const forceUpdate = useCallback(() => {
+  //   console.log('실행');
+  //   updateState({});
+  // }, []);
 
   const handleCount = (e) => {
     e.target.closest('.down') && setCount((prev) => (prev === 1 ? 1 : prev - 1));
@@ -59,17 +65,16 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
     newBedtype.forEach((el) => {
       return el.selected
         ? setQueryArr((prev) => [...new Set([...prev, getQueryNumber(el.title)])])
-        : queryArr.includes(getQueryNumber(el.title))
-        ? setQueryArr((prev) => {
-            let arr = [];
-            for (let i = 0; i < prev.length; i++) {
-              if (prev[i] !== getQueryNumber(el.title)) {
-                arr.push(prev[i]);
+        : queryArr.includes(getQueryNumber(el.title)) &&
+            setQueryArr((prev) => {
+              let arr = [];
+              for (let i = 0; i < prev.length; i++) {
+                if (prev[i] !== getQueryNumber(el.title)) {
+                  arr.push(prev[i]);
+                }
               }
-            }
-            return arr;
-          })
-        : null;
+              return arr;
+            });
     });
   };
 
@@ -94,8 +99,6 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
 
   console.log('arr', queryArr);
 
-  const handleResetCheck = () => {};
-
   const handleResetFilter = (e) => {
     setValue([1, 30]);
     setCount(1);
@@ -108,6 +111,8 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
     setStartDate(new Date());
     setEndDate(null);
     setQueryArr([]);
+    setCheckedAll(false);
+    // forceUpdate();
   };
 
   return (
@@ -146,7 +151,6 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
             list={options[handleSelectFilter(param)].typeList}
             title={options[handleSelectFilter(param)].type}
             getOptions={getOptions}
-            handleResetCheck={handleResetCheck}
           />
         )}
 
