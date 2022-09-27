@@ -21,15 +21,6 @@ export const endDateState = atom({
   default: new Date(today.setDate(today.getDate() + 1)),
 });
 
-export const reservInfoState = atom({
-  key: 'reservInfoState',
-  default: {
-    name: '',
-    roomType: '',
-    totalPrice: 0,
-  },
-});
-
 export const queryState = atom({
   key: 'queryState',
   default: [],
@@ -38,4 +29,13 @@ export const queryState = atom({
 export const personsState = atom({
   key: 'personsState',
   default: 1,
+});
+
+export const reservInfoState = atom({
+  key: 'reservInfoState',
+  default: {
+    name: '',
+    roomType: '',
+    totalPrice: 0,
+  },
 });
