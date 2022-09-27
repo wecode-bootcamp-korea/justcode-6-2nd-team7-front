@@ -66,7 +66,6 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
           }),
     );
   };
-  console.log('arr', queryArr);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
