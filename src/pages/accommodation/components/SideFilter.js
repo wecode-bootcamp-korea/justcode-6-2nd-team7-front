@@ -45,7 +45,6 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
   const [state, updateState] = useState();
   const [checkedAll, setCheckedAll] = useState(true);
   // const forceUpdate = useCallback(() => {
-  //   console.log('실행');
   //   updateState({});
   // }, []);
 
@@ -96,8 +95,6 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
           return newArr;
         });
   };
-
-  console.log('arr', queryArr);
 
   const handleResetFilter = (e) => {
     setValue([1, 30]);
