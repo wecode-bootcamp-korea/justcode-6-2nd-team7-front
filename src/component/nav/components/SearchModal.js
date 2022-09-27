@@ -2,11 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
-import { useRecoilState } from 'recoil';
-import { searchInputState } from '../../../atom';
 import styled from 'styled-components';
-
 import EmptyInputModal from './EmptyInputModal';
 
 import * as S from './SeachModal.Styled';
@@ -34,12 +30,7 @@ const InputContainer = styled.div`
 
 const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput, emptySubmit, setEmptySubmit }) => {
   const navigate = useNavigate();
-  const [keyword, setKeword] = useRecoilState(searchInputState);
   const [inputColor, setInputColor] = useState('#ffffffc4');
-  const body = {
-    keyword: keyword.split(' '),
-  };
-
   const recommendArr = [
     { id: 1, keyword: '강남' },
     { id: 2, keyword: '서울' },
@@ -52,8 +43,9 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput,
     scrollPosition > 2 ? setInputColor('#525252') : setInputColor('#ffffffc4');
   }, [scrollPosition]);
 
-  const cancleSearch = () => {
+  const clickRecommend = (e) => {
     setListStyle('block');
+    navigate(`/search/${input}`);
   };
 
   const handleInput = (e) => {
@@ -63,11 +55,8 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput,
   const pressEnter = (e) => {
     if (e.key === 'Enter' && input !== '') {
       setListStyle('block');
-      navigate('/search');
-      setKeword(input);
-      // axios.post('http://localhost:8000/signup', body).then((res) => {
-      //   console.log(res.data.message);
-      // });
+      setInput('');
+      navigate(`/search/${input}`);
     } else if (e.key === 'Enter' && input === '') {
       setEmptySubmit(true);
     }
@@ -75,7 +64,12 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput,
 
   return (
     <>
-      <S.SearchModalBg onClick={cancleSearch} listStyle={listStyle} />
+      <S.SearchModalBg
+        onClick={() => {
+          setListStyle('block');
+        }}
+        listStyle={listStyle}
+      />
       <InputContainer inputColor={inputColor} listStyle={listStyle}>
         <div>
           <input
@@ -86,8 +80,8 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput,
             onKeyDown={pressEnter}
           />
           <FontAwesomeIcon
-            onClick={(e) => {
-              cancleSearch(e);
+            onClick={() => {
+              setListStyle('block');
               setInput('');
             }}
             icon={faXmark}
@@ -100,7 +94,7 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput,
             {recommendArr.length !== 0 &&
               recommendArr.map((recommend) => {
                 return (
-                  <Link to='/login' onClick={cancleSearch} key={recommend.id}>
+                  <Link to={`/search/${recommend.keyword}`} onClick={clickRecommend} key={recommend.id}>
                     {recommend.keyword}
                   </Link>
                 );
