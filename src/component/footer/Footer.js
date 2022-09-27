@@ -94,8 +94,8 @@ const Footer = () => {
           <div>Copyright JGUD COMPANY Corp. All rights reserved.</div>
         </div>
         <div className='icon-box'>
-          <img className='social-icon' alt='facebook' src='images/footer/facebook.png' />
-          <img className='social-icon' alt='blog' src='images/footer/blog.png' />
+          <img className='social-icon' alt='facebook' src='https://cdn-icons-png.flaticon.com/128/20/20673.png' />
+          <img className='social-icon' alt='blog' src='https://cdn-icons-png.flaticon.com/128/3669/3669981.png' />
         </div>
       </div>
     </FooterStyle>
