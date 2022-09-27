@@ -18,11 +18,6 @@ export const NavStyle = styled.nav`
       &:hover {
         color: #ffff;
       }
-
-      .caret-down {
-        margin-bottom: 12px;
-        padding-left: 8px;
-      }
     }
   }
 
@@ -90,20 +85,21 @@ export const NavStyle = styled.nav`
         line-height: 55px;
         .list {
           float: left;
-          /* padding-top: 16px; */
-
-          /* line-height: 40px; */
           line-height: inherit;
 
           .nav-link {
             margin-left: 20px;
             font-size: 18px;
-            /* line-height: 40px; */
 
             .smile-icon {
               width: 40px;
               height: 40px;
               margin-top: 10px;
+            }
+
+            .caret-down {
+              margin-bottom: 12px;
+              padding-left: 8px;
             }
           }
         }
