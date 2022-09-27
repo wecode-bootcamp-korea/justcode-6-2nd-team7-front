@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { deleteReservationState } from '../../../atom';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { deleteReservationState, userIdState } from '../../../atom';
 import MyPage from '../MyPage';
 import DeleteModal from './DeleteModal';
 import NoReservation from './NoReservation';
@@ -11,7 +11,11 @@ import axios from 'axios';
 function ReservationList() {
   const [reservationList, setReservationList] = useState([]);
   const [modal, setModal] = useRecoilState(deleteReservationState);
+  const userId = useRecoilValue(userIdState);
 
+  console.log(userId);
+
+  // 데이터 받아올때 유저아이디 포함 요청
   useEffect(() => {
     axios.get('data/my/reservationList.json').then((res) => setReservationList(res.data.reservation));
   }, []);
@@ -27,11 +31,11 @@ function ReservationList() {
   };
 
   const getDay = (date1, date2) => {
-    const splitDay1 = date1.split('.');
-    const splitDay2 = date2.split('.');
+    const splitDay1 = date1.split('-');
+    const splitDay2 = date2.split('-');
 
-    const day1 = new Date(2022, splitDay1[0], splitDay1[1]);
-    const day2 = new Date(2022, splitDay2[0], splitDay2[1]);
+    const day1 = new Date(splitDay1[0], splitDay1[1], splitDay1[2]);
+    const day2 = new Date(splitDay2[0], splitDay2[1], splitDay2[2]);
 
     const time = day2.getTime() - day1.getTime();
     const elapsedDay = time / 1000 / 60 / 60 / 24;

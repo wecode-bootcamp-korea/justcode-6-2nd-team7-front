@@ -67,6 +67,7 @@ const DeleteModal = () => {
     setModal(false);
   };
 
+  // 삭제 통신 예약아이디
   const handleLogout = () => {
     setModal(false);
   };

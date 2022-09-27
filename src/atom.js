@@ -5,6 +5,11 @@ export const phoneCheckState = atom({
   default: '',
 });
 
+export const userIdState = atom({
+  key: 'userIdState',
+  default: '',
+});
+
 export const logoutModalState = atom({
   key: 'logoutModalState',
   default: false,

@@ -5,12 +5,15 @@ import { faComment } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import axios from 'axios';
 import * as S from './Login.Styled';
+import { useRecoilState } from 'recoil';
+import { userIdState } from '../../atom';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailCheck, setEmailCheck] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [userId, setUserID] = useRecoilState(userIdState);
 
   const navigate = useNavigate();
 
@@ -49,9 +52,9 @@ function Login() {
     axios
       .post('http://localhost:8000/login', { email, password })
       .then((res) => {
-        console.log(res);
         if (res.data.message === 'LOGIN_SUCCESS!') {
           localStorage.setItem('token', res.data.token);
+          setUserID(res.data.userId);
           navigate('/');
         }
       })

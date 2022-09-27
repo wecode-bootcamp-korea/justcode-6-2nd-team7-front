@@ -4,22 +4,22 @@
       "id": 1,
       "name": "AC 호텔 바이 메리어트 서울 강남",
       "img": "https://images.unsplash.com/photo-1568084680786-a84f91d1153c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80",
-      "date1": "5.01",
-      "date2": "5.05"
+      "date1": "2022-05-01",
+      "date2": "2022-05-05"
     },
     {
       "id": 2,
       "name": "호텔 크레센도 서울",
       "img": "https://images.unsplash.com/photo-1455587734955-081b22074882?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80",
-      "date1": "7.28",
-      "date2": "8.07"
+      "date1": "2022-07-08",
+      "date2": "2022-07-10"
     },
     {
       "id": 3,
       "name": "글래드 강남 코엑스센터",
       "img": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-      "date1": "10.22",
-      "date2": "10.24"
+      "date1": "2022-05-01",
+      "date2": "2022-05-01"
     }
   ]
 }
