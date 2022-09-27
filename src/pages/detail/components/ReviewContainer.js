@@ -18,7 +18,6 @@ const ReviewContainer = ({ showData }) => {
       setScore(-145);
     } else if (showData.score <= 7.9) {
       setScore(-180);
-      ㅌ;
     } else if (showData.score <= 8.9) {
       setScore(-214);
     } else if (showData.score <= 9.9) {
