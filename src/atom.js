@@ -13,7 +13,7 @@ export const logoutModalState = atom({
 const today = new Date();
 export const startDateState = atom({
   key: 'startDateState',
-  default: today,
+  default: new Date(),
 });
 
 export const endDateState = atom({
