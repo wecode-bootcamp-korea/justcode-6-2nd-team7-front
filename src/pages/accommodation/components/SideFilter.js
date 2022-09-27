@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { useRecoilState } from 'recoil';
-import { queryState } from '../../../atom';
+import { queryState, personsState, startDateState, endDateState } from '../../../atom';
 
 import CheckItem from './CheckItem';
 import OptionList from './OptionList';
@@ -30,8 +30,8 @@ const Up = styled.span`
   cursor: ${({ count }) => (count === 10 ? 'not-allowed' : 'pointer')};
 `;
 
-const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow }) => {
-  const [count, setCount] = useState(1);
+const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow, getFilteredList }) => {
+  const [count, setCount] = useRecoilState(personsState);
   const [bedtype, setBedtype] = useState([
     { id: 1, title: '싱글', class: 'single', selected: false },
     { id: 2, title: '더블', class: 'double', selected: false },
@@ -40,6 +40,8 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
   ]);
   const [value, setValue] = useState([1, 30]);
   const [queryArr, setQueryArr] = useRecoilState(queryState);
+  const [startDate, setStartDate] = useRecoilState(startDateState);
+  const [endDate, setEndDate] = useRecoilState(endDateState);
 
   const handleCount = (e) => {
     e.target.closest('.down') && setCount((prev) => (prev === 1 ? 1 : prev - 1));
@@ -53,9 +55,18 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
         ? { id: type.id, title: type.title, class: type.class, selected: !type.selected }
         : { ...type };
     });
-
     setBedtype(newBedtype);
+    newBedtype.forEach((el) =>
+      el.selected
+        ? setQueryArr((prev) => [...new Set([...prev, getQueryNumber(el.title)])])
+        : setQueryArr((prev) => {
+            const newArr = [...prev];
+            newArr.splice(prev.indexOf(getQueryNumber(el.title)), 1);
+            return newArr;
+          }),
+    );
   };
+  console.log('arr', queryArr);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -64,13 +75,31 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
   const getOptions = (e) => {
     const option = e.currentTarget.childNodes[0].name;
     const checked = e.currentTarget.childNodes[0].checked;
+    console.log('checked', checked);
     !checked
       ? setQueryArr((prev) => [...new Set([...prev, getQueryNumber(option)])])
       : setQueryArr((prev) => {
           const newArr = [...prev];
           newArr.splice(prev.indexOf(getQueryNumber(option)), 1);
+          console.log('index', prev.indexOf(getQueryNumber(option)), 'option', getQueryNumber(option));
           return newArr;
         });
+  };
+
+  const handleResetCheck = () => {};
+
+  const handleResetFilter = (e) => {
+    setValue([1, 30]);
+    setCount(1);
+    setBedtype([
+      { id: 1, title: '싱글', class: 'single', selected: false },
+      { id: 2, title: '더블', class: 'double', selected: false },
+      { id: 3, title: '트윈', class: 'twin', selected: false },
+      { id: 4, title: '온돌', class: 'sedentary', selected: false },
+    ]);
+    setStartDate(new Date());
+    setEndDate(null);
+    setQueryArr([]);
   };
 
   return (
@@ -88,8 +117,12 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
       <div className='mt32'>
         <h3 className='title-bk mb12'>상세조건</h3>
         <div className='btn-container'>
-          <button className='btn white'>초기화</button>
-          <button className='btn blue'>적용</button>
+          <button className='btn white' onClick={handleResetFilter}>
+            초기화
+          </button>
+          <button className='btn blue' onClick={getFilteredList}>
+            적용
+          </button>
         </div>
         <section className='no-title mt32 mb18'>
           <ul>
@@ -105,6 +138,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow 
             list={options[handleSelectFilter(param)].typeList}
             title={options[handleSelectFilter(param)].type}
             getOptions={getOptions}
+            handleResetCheck={handleResetCheck}
           />
         )}
 

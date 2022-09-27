@@ -162,205 +162,213 @@ export const handleNodataType = (keyword) => {
 export const getQueryNumber = (option) => {
   switch (option) {
     case '피트니스':
-      return 'option=1';
+      return 'facility=1';
     case '수영장':
-      return 'option=2';
+      return 'facility=2';
     case '사우나':
-      return 'option=3';
+      return 'facility=3';
     case '골프장':
-      return 'option=4';
+      return 'facility=4';
     case '레스토랑':
-      return 'option=5';
+      return 'facility=5';
     case '엘레베이터':
-      return 'option=6';
+      return 'facility=6';
     case '라운지':
-      return 'option=7';
+      return 'facility=7';
     case '공용PC':
-      return 'option=8';
+      return 'facility=8';
     case 'BBQ':
-      return 'option=9';
+      return 'facility=9';
     case '카페':
-      return 'option=10';
+      return 'facility=10';
     case '공용스파':
-      return 'option=11';
+      return 'facility=11';
     case '족구장':
-      return 'option=12';
+      return 'facility=12';
     case '세미나실':
-      return 'option=13';
+      return 'facility=13';
     case '편의점':
-      return 'option=14';
+      return 'facility=14';
     case '노래방':
-      return 'option=15';
+      return 'facility=15';
     case '주방/식당':
-      return 'option=16';
+      return 'facility=16';
     case '세탁기':
-      return 'option=17';
+      return 'facility=17';
     case '건조기':
-      return 'option=18';
+      return 'facility=18';
     case '탈수기':
-      return 'option=19';
+      return 'facility=19';
     case '주차장':
-      return 'option=20';
-    case '취사기능':
-      return 'option=21';
+      return 'facility=20';
+    case '취사가능':
+      return 'facility=21';
     case '공용샤워실':
-      return 'option=22';
+      return 'facility=22';
     case '온천':
-      return 'option=23';
+      return 'facility=23';
     case '스키장':
-      return 'option=24';
+      return 'facility=24';
     case '놀이방':
-      return 'option=25';
+      return 'facility=25';
     case '전자레인지':
-      return 'option=26';
+      return 'facility=26';
     case '전기사용가능':
-      return 'option=27';
+      return 'facility=27';
     case '개수대':
-      return 'option=28';
+      return 'facility=28';
     case '인터넷':
-      return 'option=29';
+      return 'facility=29';
     case '매점':
-      return 'option=30';
+      return 'facility=30';
     case '공용화장실':
-      return 'option=31';
+      return 'facility=31';
     case '물놀이시설':
-      return 'option=32';
+      return 'facility=32';
     case '객실스파':
-      return 'option=33';
+      return 'facility=33';
     case '미니바':
-      return 'option=34';
+      return 'facility=34';
     case '와이파이':
-      return 'option=35';
+      return 'facility=35';
     case '욕실용품':
-      return 'option=36';
+      return 'facility=36';
     case 'TV':
-      return 'option=37';
+      return 'facility=37';
     case '에어컨':
-      return 'option=38';
+      return 'facility=38';
     case '냉장고':
-      return 'option=39';
+      return 'facility=39';
     case '객실샤워실':
-      return 'option=40';
+      return 'facility=40';
     case '욕조':
-      return 'option=41';
+      return 'facility=41';
     case '드라이기':
-      return 'option=42';
+      return 'facility=42';
     case '다리미':
-      return 'option=43';
+      return 'facility=43';
     case '전기밥솥':
-      return 'option=44';
+      return 'facility=44';
     case '세면도구':
-      return 'option=45';
+      return 'facility=45';
     case '개인콘센트':
-      return 'option=46';
+      return 'facility=46';
     case '반려견동반':
-      return 'option=47';
+      return 'facility=47';
     case '조식포함':
-      return 'option=48';
+      return 'facility=48';
     case '객실내흡연':
-      return 'option=49';
+      return 'facility=49';
     case '발렛파킹':
-      return 'option=50';
+      return 'facility=50';
     case '금연':
-      return 'option=51';
+      return 'facility=51';
     case '객실내취사':
-      return 'option=52';
+      return 'facility=52';
     case '프린터사용':
-      return 'option=53';
+      return 'facility=53';
     case '짐보관가능':
-      return 'option=54';
+      return 'facility=54';
     case '개인사물함':
-      return 'option=55';
+      return 'facility=55';
     case '무료주차':
-      return 'option=56';
+      return 'facility=56';
     case '픽업가능':
-      return 'option=57';
+      return 'facility=57';
     case '캠프파이어':
-      return 'option=58';
+      return 'facility=58';
     case '카드결제':
-      return 'option=59';
+      return 'facility=59';
     case '장애인편의시설':
-      return 'option=60';
+      return 'facility=60';
     case '장비대여':
-      return 'option=61';
+      return 'facility=61';
     case '사이트주차':
-      return 'option=62';
+      return 'facility=62';
     case '무인텔':
-      return 'option=63';
+      return 'facility=63';
     case '파티룸':
-      return 'option=64';
+      return 'facility=64';
     case '거울룸':
-      return 'option=65';
+      return 'facility=65';
     case '복층룸':
-      return 'option=66';
+      return 'facility=66';
     case '공주룸':
-      return 'option=67';
+      return 'facility=67';
     case '트윈베드':
-      return 'option=68';
+      return 'facility=68';
     case '야외테라스':
-      return 'option=69';
+      return 'facility=69';
     case '바다뷰':
-      return 'option=70';
+      return 'facility=70';
     case '호수뷰':
-      return 'option=71';
+      return 'facility=71';
     case '하늘뷰':
-      return 'option=72';
+      return 'facility=72';
     case '스파/월풀':
-      return 'option=73';
+      return 'facility=73';
     case '사우나/찜질방':
-      return 'option=74';
+      return 'facility=74';
     case '맛사지 베드':
-      return 'option=75';
+      return 'facility=75';
     case '히노끼탕':
-      return 'option=76';
+      return 'facility=76';
     case '노천탕':
-      return 'option=77';
+      return 'facility=77';
     case '반신욕':
-      return 'option=78';
+      return 'facility=78';
     case '욕실 TV':
-      return 'option=79';
+      return 'facility=79';
     case '당구대':
-      return 'option=80';
+      return 'facility=80';
     case '게임기':
-      return 'option=81';
+      return 'facility=81';
     case '안마의자':
-      return 'option=82';
+      return 'facility=82';
     case '커플 PC':
-      return 'option=83';
+      return 'facility=83';
     case '3D TV':
-      return 'option=84';
+      return 'facility=84';
     case '빔프로젝터':
-      return 'option=85';
+      return 'facility=85';
     case '5성급':
-      return 'type=1';
+      return 'grade=1';
     case '특1급':
-      return 'type=2';
+      return 'grade=2';
     case '특급':
-      return 'type=3';
+      return 'grade=3';
     case '펜션':
-      return 'type=4';
+      return 'grade=4';
     case '풀빌라':
-      return 'type=5';
+      return 'grade=5';
     case '럭셔리':
-      return 'type=6';
+      return 'grade=6';
     case '오토캠핑':
-      return 'type=7';
+      return 'grade=7';
     case '글램핑':
-      return 'type=8';
+      return 'grade=8';
     case '카라반':
-      return 'type=9';
+      return 'grade=9';
     case '호텔':
-      return 'type=10';
+      return 'grade=10';
     case '고택':
-      return 'type=11';
+      return 'grade=11';
     case '종택':
-      return 'type=12';
+      return 'grade=12';
     case '게스트하우스':
-      return 'type=13';
+      return 'grade=13';
     case '예약 가능':
-      return 'reservation=2';
+      return 'reserve=2';
     case '프로모션':
-      return 'reservation=3';
+      return 'reserve=3';
+    case '싱글':
+      return 'bed_type=1';
+    case '더블':
+      return 'bed_type=2';
+    case '트윈':
+      return 'bed_type=3';
+    case '온돌':
+      return 'bed_type=4';
     default:
       return null;
   }
