@@ -9,6 +9,8 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import * as S from './Detail.styled';
 import EventModal from './components/EventModal';
 import SubjectSlide from './components/SubjectSlide';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const Detail = () => {
   const [info, setInfo] = useRecoilState(reservInfoState);
@@ -17,6 +19,8 @@ const Detail = () => {
   const [openModal, setOpenModal] = useState(false);
   const [showData, setShowData] = useState();
   const [component, setComponent] = useState(1);
+
+  const param = useParams().id;
 
   const handleClickBtn = () => {
     setOpenModal(true);
@@ -33,16 +37,20 @@ const Detail = () => {
       default:
     }
   };
-  // axios로 수정예정
   useEffect(() => {
-    fetch('/data/detail/roomType.json')
-      .then((res) => res.json())
-      .then((data) => {
-        setShowData(data.roomTypeData);
+    axios
+      .get('/data/detail/roomType.json')
+      // .get(`http://localhost:8000/accomodation/rooms/details/${id}`)
+      .then((res) => {
+        setShowData(res.data.roomTypeData);
         setInfo({
           ...info,
-          name: data.roomTypeData.name,
+          name: res.data.roomTypeData.name,
         });
+        //console.log('뫄', res);
+      }) //console은 나중에 지우도록 하겠습니다.
+      .catch((err) => {
+        //console.log('뭐지', err);
       });
   }, []);
 
