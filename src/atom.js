@@ -10,12 +10,12 @@ export const logoutModalState = atom({
   default: false,
 });
 
+const today = new Date();
 export const startDateState = atom({
   key: 'startDateState',
-  default: new Date(),
+  default: today,
 });
 
-const today = new Date();
 export const endDateState = atom({
   key: 'endDateState',
   default: new Date(today.setDate(today.getDate() + 1)),

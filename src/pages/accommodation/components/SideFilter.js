@@ -97,6 +97,9 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
   };
 
   const handleResetFilter = (e) => {
+    const today = new Date();
+    setStartDate(today);
+    setEndDate(new Date(today.setDate(today.getDate() + 1)));
     setValue([1, 30]);
     setCount(1);
     setBedtype([
@@ -105,8 +108,6 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
       { id: 3, title: '트윈', class: 'twin', selected: false },
       { id: 4, title: '온돌', class: 'sedentary', selected: false },
     ]);
-    setStartDate(new Date());
-    setEndDate(null);
     setQueryArr([]);
     setCheckedAll(false);
     // forceUpdate();
