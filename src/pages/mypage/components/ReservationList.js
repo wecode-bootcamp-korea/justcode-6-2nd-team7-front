@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import MyPage from '../MyPage';
 
@@ -7,12 +8,13 @@ import NoReservation from './NoReservation';
 import * as A from './ReservationList.Styled';
 
 function ReservationList() {
-  const [reservation, setReservation] = useState(false);
+  const [reservationList, setReservationList] = useState([]);
 
-  const handleDelete = () => {
-    alert('예약이 취소 됩니다.');
-    setReservation((prev) => true);
-  };
+  useEffect(() => {
+    axios.get('data/my/reservationList.json').then((res) => setReservationList(res.data.reservation));
+  }, []);
+
+  const handleDelete = () => {};
 
   const getDayOfWeek = (date) => {
     const week = ['일', '월', '화', '수', '목', '금', '토'];
@@ -43,31 +45,29 @@ function ReservationList() {
         <A.ReservationContainer>
           <div>
             <p className='reservation'>예약내역</p>
-            {!reservation && <p>이용내역</p>}
+            {!reservationList && <p>이용내역</p>}
           </div>
-          <div className='more-reservation'>
-            {!reservation ? (
-              <div className='reservation-container'>
-                <button className='delete' onClick={handleDelete}>
-                  X
-                </button>
-                <img
-                  src='https://image.goodchoice.kr/resize_490x348/affiliate/2021/12/27/61c9485177c56.jpg'
-                  alt='reservation-img'
-                />
-                <div className='reservation-content'>
-                  <span>이용완료</span>
-                  <h2>조선 팰리스 서울 강남 럭셔리 컬렉션</h2>
-                  <p>
-                    10.23 {getDayOfWeek('5.01')} - 10.24 {getDayOfWeek('5-02')} . {getDay('5.01', '5.07')}박
-                  </p>
+          {reservationList?.map((el) => {
+            return (
+              <div className='more-reservation'>
+                <div className='reservation-container'>
+                  <button className='delete' onClick={handleDelete}>
+                    X
+                  </button>
+                  <img src={el.img} alt='reservation-img' />
+                  <div className='reservation-content'>
+                    <span>이용완료</span>
+                    <h2>{el.name}</h2>
+                    <p>
+                      {el.date1} {getDayOfWeek(el.date1)} - {el.date2} {getDayOfWeek(el.date2)}{' '}
+                      {getDay(el.date1, el.date2)}박
+                    </p>
+                  </div>
+                  <button className='rebook'>다시 예약</button>
                 </div>
-                <button className='rebook'>다시 예약</button>
               </div>
-            ) : (
-              <NoReservation />
-            )}
-          </div>
+            );
+          })}
         </A.ReservationContainer>
       </S.MyPageContainer>
     </S.Header>
@@ -75,3 +75,5 @@ function ReservationList() {
 }
 
 export default ReservationList;
+
+// <NoReservation />
