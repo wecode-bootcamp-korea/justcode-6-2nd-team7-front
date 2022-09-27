@@ -155,7 +155,7 @@ export const handleNodataType = (keyword) => {
     case 'no location':
       return false;
     default:
-      return '';
+      return true;
   }
 };
 
