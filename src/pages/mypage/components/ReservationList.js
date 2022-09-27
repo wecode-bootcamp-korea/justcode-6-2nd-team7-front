@@ -1,13 +1,12 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { deleteReservationState } from '../../../atom';
 import MyPage from '../MyPage';
-
-import * as S from '../MyPage.Styled';
 import DeleteModal from './DeleteModal';
 import NoReservation from './NoReservation';
+import * as S from '../MyPage.Styled';
 import * as A from './ReservationList.Styled';
+import axios from 'axios';
 
 function ReservationList() {
   const [reservationList, setReservationList] = useState([]);

@@ -49,6 +49,7 @@ function Login() {
     axios
       .post('http://localhost:8000/login', { email, password })
       .then((res) => {
+        console.log(res);
         if (res.data.message === 'LOGIN_SUCCESS!') {
           localStorage.setItem('token', res.data.token);
           navigate('/');
