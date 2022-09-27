@@ -20,8 +20,6 @@ const Room = ({ roomType }) => {
   const [useBtn, setUseBtn] = useState(false);
   const [period, setPeriod] = useState(1);
 
-  endDate && console.log(period);
-
   useEffect(() => {
     endDate && setPeriod(Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)) + 1);
   }, [startDate, endDate]);
