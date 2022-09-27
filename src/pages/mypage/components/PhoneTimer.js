@@ -21,16 +21,17 @@ const TimerContainer = styled.div`
     }
 
     .phone-error {
+      margin-top: 8px;
+      font-size: 14px;
       color: #ff0000;
     }
   }
 `;
 
-function PhoneTimer({ isActive }) {
+function PhoneTimer() {
   const [num, setNum] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const phoneNum = useRecoilValue(phoneCheckState);
-  const navigate = useNavigate();
 
   // timer
   const [minutes, setMinutes] = useState(3);
@@ -65,7 +66,6 @@ function PhoneTimer({ isActive }) {
         verifyCode: num,
       })
       .then((res) => {
-        console.log(res.data.message);
         if (res.data.message !== 'SMS_VERIFY_SUCCESS') {
           setErrorMessage('일치하지 않습니다.');
         } else {

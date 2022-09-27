@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import MyPage from '../MyPage';
-import * as A from './My.Styled';
-import * as S from '../MyPage.Styled';
 import LogoutModal from '../../../component/modal/LogoutModal';
 import PhoneTimer from './PhoneTimer';
+import * as A from './My.Styled';
+import * as S from '../MyPage.Styled';
 import { useRecoilState } from 'recoil';
 import { phoneCheckState } from '../../../atom';
 
@@ -14,7 +14,6 @@ const My = () => {
   const [myName, setMyname] = useState(false);
   const [phone, setPhone] = useState(false);
   const [phoneCheck, setPhoneCheck] = useState(false);
-
   const [phoneNum, setPhoneNum] = useRecoilState(phoneCheckState);
   const [isActive, setIsActive] = useState(false);
 
@@ -24,21 +23,15 @@ const My = () => {
 
   const handleBtnActive = (e) => {
     const { value } = e.target;
-    setPhoneNum(e.target.value);
-    if (value.length > 10) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
+    setPhoneNum(value);
+    value.length > 10 ? setIsActive(true) : setIsActive(false);
   };
-
-  console.log(information);
 
   // 핸드폰번호 post요청후 인증번호 받기
   const handlePhoneBtn = () => {
     phoneNum.length < 10 ? setPhoneCheck(false) : setPhoneCheck(true);
 
-    axios.post('http://localhost:8000/send', { phoneNumber: phoneNum }).then((res) => console.log(res));
+    axios.post('http://localhost:8000/send', { phoneNumber: phoneNum });
   };
 
   const [modal, setModal] = useState(false);
@@ -88,8 +81,6 @@ const My = () => {
       })
       .then((data) => setInformation(data.data.data[0]));
   }, [changeNickname, userName, information.userPhoneNumber]);
-
-  console.log(information);
 
   return (
     <S.Header>

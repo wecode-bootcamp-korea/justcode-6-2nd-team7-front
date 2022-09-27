@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-
-import * as S from './PhoneCheck.Styled';
 import Timer from './Timer';
+import * as S from './PhoneCheck.Styled';
 import { useRecoilState } from 'recoil';
 import { phoneCheckState } from '../../atom';
 
@@ -25,7 +24,7 @@ function PhoneCheck() {
   const handlePhoneBtn = () => {
     phoneNum.length < 10 ? setPhoneCheck(false) : setPhoneCheck(true);
 
-    axios.post('http://localhost:8000/send', { phoneNumber: phoneNum }).then((res) => console.log(res));
+    axios.post('http://localhost:8000/send', { phoneNumber: phoneNum });
   };
 
   return (
