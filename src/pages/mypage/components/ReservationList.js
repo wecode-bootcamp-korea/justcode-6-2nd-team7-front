@@ -13,6 +13,12 @@ function ReservationList() {
     setReservation((prev) => true);
   };
 
+  function getDayOfWeek(date) {
+    const week = ['일', '월', '화', '수', '목', '금', '토'];
+    const dayOfWeek = week[new Date(`2022-${date}`).getDay()];
+    return dayOfWeek;
+  }
+
   return (
     <S.Header>
       <div className='box'>
@@ -38,7 +44,9 @@ function ReservationList() {
                 <div className='reservation-content'>
                   <span>이용완료</span>
                   <h2>조선 팰리스 서울 강남 럭셔리 컬렉션</h2>
-                  <p>10.23 토 - 10.24 일 . 1박</p>
+                  <p>
+                    10.23 {getDayOfWeek('5.01')} - 10.24 {getDayOfWeek('5-02')} . 1박
+                  </p>
                 </div>
                 <button className='rebook'>다시 예약</button>
               </div>
