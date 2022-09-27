@@ -7,6 +7,7 @@ import NoReservation from './NoReservation';
 import * as S from '../MyPage.Styled';
 import * as A from './ReservationList.Styled';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function ReservationList() {
   const [reservationList, setReservationList] = useState([]);
@@ -14,6 +15,8 @@ function ReservationList() {
   const userId = useRecoilValue(userIdState);
 
   console.log(userId);
+
+  const navigate = useNavigate();
 
   // 데이터 받아올때 유저아이디 포함 요청
   useEffect(() => {
@@ -74,7 +77,13 @@ function ReservationList() {
                         {list.myutbak}박
                       </p>
                     </div>
-                    <button className='rebook'>다시 예약</button>
+                    <button
+                      className='rebook'
+                      onClick={() => {
+                        navigate(`/detail/${list.hotel_id}`);
+                      }}>
+                      다시 예약
+                    </button>
                   </div>
                 );
               })
