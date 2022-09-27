@@ -28,3 +28,13 @@ export const reservInfoState = atom({
     totalPrice: 0,
   },
 });
+
+export const queryState = atom({
+  key: 'queryState',
+  default: [],
+});
+
+export const personsState = atom({
+  key: 'personsState',
+  default: 1,
+});

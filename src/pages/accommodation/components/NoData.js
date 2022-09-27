@@ -29,14 +29,14 @@ const NoData = ({ keyword }) => {
           </p>
         </Main>
       )}
-      {handleNodataType(keyword) && (
+      {keyword && handleNodataType(keyword) && (
         <Main>
           <p className='bold'>'{keyword}'에 대한 검색결과가 없습니다.</p>
           <br />
           <p>다시 입력해주세요.</p>
         </Main>
       )}
-      {!handleNodataType(keyword) && (
+      {keyword && !handleNodataType(keyword) && (
         <Main>
           <p className='bold'>현재 위치를 확인할 수 없습니다.</p>
           <br />

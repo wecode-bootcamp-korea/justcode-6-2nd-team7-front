@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { useRecoilState } from 'recoil';
+import { personsState, queryState } from '../../atom';
 
 import Map from './components/Map';
 import SideFilter from './components/SideFilter';
@@ -31,6 +33,8 @@ const AccommodationList = () => {
   const [secondDateShow, setSecondDateShow] = useState(false);
   const [loading, setLoading] = useState(true);
   const [keyword, setKeyword] = useState();
+  const [count, setCount] = useRecoilState(personsState);
+  const [queryArr, setQueryArr] = useRecoilState(queryState);
 
   const param = useParams().type;
 
@@ -112,6 +116,16 @@ const AccommodationList = () => {
     (firstDateShow || secondDateShow) && setShowMenu(false);
   };
 
+  const getFilteredList = (e) => {
+    const newList = [
+      queryArr.filter((el) => {
+        return !el.includes('persons=');
+      }),
+      `persons=${count}`,
+    ].flat();
+    setQueryArr(newList);
+  };
+
   return (
     <>
       <S.Header onMouseLeave={handleShowMenu}>
@@ -170,6 +184,7 @@ const AccommodationList = () => {
           setFirstShow={setFirstDateShow}
           secondShow={secondDateShow}
           setSecondShow={setSecondDateShow}
+          getFilteredList={getFilteredList}
         />
         <main>
           {showModal && <Map setShowModal={setShowModal} list={list} />}
@@ -180,6 +195,7 @@ const AccommodationList = () => {
                 return (
                   <Thumbnail
                     key={el.name}
+                    id={el.id}
                     name={el.name}
                     promotion={el.promotion}
                     rating={el.rating}
