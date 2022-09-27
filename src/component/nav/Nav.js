@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 import MyModal from './components/MyModal';
 import SearchModal from './components/SearchModal';
@@ -73,7 +73,6 @@ const Nav = () => {
 
             <div style={{ display: listStyle }}>
               <ul className='navigate-list'>
-                <li className='list'></li>
                 <li className='list'>
                   <Link to='' className='nav-link'>
                     내주변
@@ -89,7 +88,7 @@ const Nav = () => {
                 <li className='list'>
                   <Link className='nav-link'>더보기</Link>
                 </li>
-                <li className='list'>
+                <li className='list login-my'>
                   {localStorage.getItem('token') !== null ? (
                     <>
                       <Link
@@ -101,7 +100,8 @@ const Nav = () => {
                           setMyHover(false);
                         }}
                         className='nav-link'>
-                        마이페이지
+                        <img className='smile-icon' alt='myPage' src='/images/smile_icon.png' />
+                        <FontAwesomeIcon className='caret-down' icon={faCaretDown} size='xs' color='#ffff' />
                         {myHover && <MyModal setMyHover={setMyHover} />}
                       </Link>
                     </>
