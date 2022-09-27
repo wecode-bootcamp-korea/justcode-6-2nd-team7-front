@@ -32,17 +32,18 @@ const SearchContainer = styled.div`
 `;
 const Search = () => {
   const params = useParams();
-  console.log(params.keyword.replace(/ /g, '|'));
 
   useEffect(() => {
     axios
       .get('/data/accommodation/accommodation.json')
-      // .get(`http://localhost:8000/accommodation/result/?keyword=${keyword.replace(/ /g, '|')}`)
+      // .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
       .then((res) => {
         console.log(res);
+        // 이 데이터를 topfilter, sideFilter, Thumbnail을 표현하는데 이용해야 함.
+        // 콘솔은 검색페이지 작업끝나고 지울게용
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       });
   }, []);
 
