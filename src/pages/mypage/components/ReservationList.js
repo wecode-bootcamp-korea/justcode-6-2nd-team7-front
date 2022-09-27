@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import MyPage from '../MyPage';
 
 import * as S from '../MyPage.Styled';
@@ -13,11 +14,24 @@ function ReservationList() {
     setReservation((prev) => true);
   };
 
-  function getDayOfWeek(date) {
+  const getDayOfWeek = (date) => {
     const week = ['일', '월', '화', '수', '목', '금', '토'];
     const dayOfWeek = week[new Date(`2022-${date}`).getDay()];
     return dayOfWeek;
-  }
+  };
+
+  const getDay = (date1, date2) => {
+    const splitDay1 = date1.split('.');
+    const splitDay2 = date2.split('.');
+
+    const day1 = new Date(2022, splitDay1[0], splitDay1[1]);
+    const day2 = new Date(2022, splitDay2[0], splitDay2[1]);
+
+    const time = day2.getTime() - day1.getTime();
+    const elapsedDay = time / 1000 / 60 / 60 / 24;
+
+    return elapsedDay;
+  };
 
   return (
     <S.Header>
@@ -45,7 +59,7 @@ function ReservationList() {
                   <span>이용완료</span>
                   <h2>조선 팰리스 서울 강남 럭셔리 컬렉션</h2>
                   <p>
-                    10.23 {getDayOfWeek('5.01')} - 10.24 {getDayOfWeek('5-02')} . 1박
+                    10.23 {getDayOfWeek('5.01')} - 10.24 {getDayOfWeek('5-02')} . {getDay('5.01', '5.07')}박
                   </p>
                 </div>
                 <button className='rebook'>다시 예약</button>

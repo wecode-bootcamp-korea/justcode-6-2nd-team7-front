@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const NoReservationContainer = styled.div`
@@ -32,6 +33,7 @@ const NoReservationContainer = styled.div`
 `;
 
 function NoReservation() {
+  const navigate = useNavigate();
   return (
     <NoReservationContainer>
       <div>
@@ -42,7 +44,9 @@ function NoReservation() {
           숙소들을 지금 만나세요!
         </p>
       </div>
-      <button className='reservation-btn'>다양한 숙소 보러가기</button>
+      <button className='reservation-btn' onClick={() => navigate('/')}>
+        다양한 숙소 보러가기
+      </button>
     </NoReservationContainer>
   );
 }
