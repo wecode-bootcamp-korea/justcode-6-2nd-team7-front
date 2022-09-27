@@ -30,6 +30,9 @@ const SearchContainer = styled.div`
     }
   }
 `;
+// 사용하는 컴포넌트
+// 탑필터, 사이드필터, 썸네일
+
 const Search = () => {
   const params = useParams();
 
