@@ -41,7 +41,6 @@ const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow, align })
   const handleSecondInput = (e) => {
     setSecondShow(true);
   };
-
   return (
     <>
       <S.Main align={align}>
