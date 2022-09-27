@@ -45,10 +45,10 @@ const Detail = () => {
           ...info,
           name: res.data.roomTypeData.name,
         });
-        //console.log('뫄', res);
+        console.log('뫄', res);
       }) //console은 나중에 지우도록 하겠습니다.
       .catch((err) => {
-        //console.log('뭐지', err);
+        console.log('뭐지', err);
       });
   }, []);
 
