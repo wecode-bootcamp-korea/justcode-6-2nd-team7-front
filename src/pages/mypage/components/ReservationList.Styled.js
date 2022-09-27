@@ -28,6 +28,11 @@ export const ReservationContainer = styled.div`
       margin-top: 2%;
       border: 1px solid rgb(230, 230, 230);
 
+      img {
+        height: 220px;
+        width: 100%;
+      }
+
       .delete {
         position: absolute;
         top: 10px;

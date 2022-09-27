@@ -47,27 +47,33 @@ function ReservationList() {
             <p className='reservation'>예약내역</p>
             {!reservationList && <p>이용내역</p>}
           </div>
-          {reservationList?.map((el) => {
-            return (
-              <div className='more-reservation'>
-                <div className='reservation-container'>
-                  <button className='delete' onClick={handleDelete}>
-                    X
-                  </button>
-                  <img src={el.img} alt='reservation-img' />
-                  <div className='reservation-content'>
-                    <span>이용완료</span>
-                    <h2>{el.name}</h2>
-                    <p>
-                      {el.date1} {getDayOfWeek(el.date1)} - {el.date2} {getDayOfWeek(el.date2)}{' '}
-                      {getDay(el.date1, el.date2)}박
-                    </p>
+          <div className='more-reservation'>
+            {reservationList ? (
+              reservationList?.map((el) => {
+                return (
+                  <div className='reservation-container'>
+                    <button className='delete' onClick={handleDelete}>
+                      X
+                    </button>
+
+                    <img src={el.img} alt='reservation-img' />
+
+                    <div className='reservation-content'>
+                      <span>이용완료</span>
+                      <h2>{el.name}</h2>
+                      <p>
+                        {el.date1} {getDayOfWeek(el.date1)} - {el.date2} {getDayOfWeek(el.date2)}{' '}
+                        {getDay(el.date1, el.date2)}박
+                      </p>
+                    </div>
+                    <button className='rebook'>다시 예약</button>
                   </div>
-                  <button className='rebook'>다시 예약</button>
-                </div>
-              </div>
-            );
-          })}
+                );
+              })
+            ) : (
+              <NoReservation />
+            )}
+          </div>
         </A.ReservationContainer>
       </S.MyPageContainer>
     </S.Header>
@@ -75,5 +81,3 @@ function ReservationList() {
 }
 
 export default ReservationList;
-
-// <NoReservation />
