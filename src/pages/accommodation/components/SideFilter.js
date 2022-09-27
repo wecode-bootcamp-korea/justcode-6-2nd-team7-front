@@ -56,35 +56,43 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
         : { ...type };
     });
     setBedtype(newBedtype);
-    newBedtype.forEach((el) =>
-      el.selected
+    newBedtype.forEach((el) => {
+      return el.selected
         ? setQueryArr((prev) => [...new Set([...prev, getQueryNumber(el.title)])])
-        : setQueryArr((prev) => {
-            const newArr = [...prev];
-            newArr.splice(prev.indexOf(getQueryNumber(el.title)), 1);
-            return newArr;
-          }),
-    );
+        : queryArr.includes(getQueryNumber(el.title))
+        ? setQueryArr((prev) => {
+            let arr = [];
+            for (let i = 0; i < prev.length; i++) {
+              if (prev[i] !== getQueryNumber(el.title)) {
+                arr.push(prev[i]);
+              }
+            }
+            return arr;
+          })
+        : null;
+    });
   };
-  console.log('arr', queryArr);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const getOptions = (e) => {
+    e.preventDefault();
     const option = e.currentTarget.childNodes[0].name;
     const checked = e.currentTarget.childNodes[0].checked;
-    console.log('checked', checked);
     !checked
-      ? setQueryArr((prev) => [...new Set([...prev, getQueryNumber(option)])])
+      ? setQueryArr((prev) => {
+          return [...new Set([...prev, getQueryNumber(option)])];
+        })
       : setQueryArr((prev) => {
           const newArr = [...prev];
           newArr.splice(prev.indexOf(getQueryNumber(option)), 1);
-          console.log('index', prev.indexOf(getQueryNumber(option)), 'option', getQueryNumber(option));
           return newArr;
         });
   };
+
+  console.log('arr', queryArr);
 
   const handleResetCheck = () => {};
 
