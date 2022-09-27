@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useRecoilState } from 'recoil';
+import { reservInfoState } from '../../../atom';
+
 import { MainContainerStyle } from './Main.Styled';
 
 const Main = () => {
+  const [info] = useRecoilState(reservInfoState);
   const [inputs, setInputs] = useState({
     userName: '',
     phone: '',
@@ -115,7 +119,7 @@ const Main = () => {
           <h3 className='title'>할인 수단 선택</h3>
           <div className='line'>
             <div>구매총액</div>
-            <div className='totalPrice'>40,000원</div>
+            <div className='totalPrice'>{info.totalPrice.toLocaleString()}원</div>
           </div>
           <button className='button-line'>
             사용 가능 쿠폰 <span>{coupon}</span>장

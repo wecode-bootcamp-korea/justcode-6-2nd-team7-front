@@ -24,3 +24,12 @@ export const endDateState = atom({
   key: 'endDateState',
   default: null,
 });
+
+export const reservInfoState = atom({
+  key: 'reservInfoState',
+  default: {
+    name: '',
+    roomType: '',
+    totalPrice: 0,
+  },
+});
