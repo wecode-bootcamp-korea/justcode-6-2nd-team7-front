@@ -21,7 +21,7 @@ const Sub = () => {
           <div>
             <div className='title'>객실타입/기간</div>
             <div className='content'>
-              <span>{info.type}</span> / <span>{endDate.getDate() - startDate.getDate()}</span>박
+              <span> {endDate && info.type}</span> / <span>{endDate && endDate.getDate() - startDate.getDate()}</span>박
             </div>
           </div>
           <div>
@@ -37,9 +37,9 @@ const Sub = () => {
             <div className='title'>체크아웃</div>
             <div className='content'>
               <span>
-                {endDate.getMonth() + 1}.{endDate.getDate()}
+                {endDate && endDate.getMonth() + 1}.{endDate && endDate.getDate()}
               </span>
-              <span>{week[endDate.getDay()]}</span> <span>11:00</span>
+              <span>{endDate && week[endDate.getDay()]}</span> <span>11:00</span>
             </div>
           </div>
 
