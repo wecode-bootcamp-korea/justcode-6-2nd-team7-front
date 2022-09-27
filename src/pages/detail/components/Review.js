@@ -28,7 +28,7 @@ const Review = ({ comment }) => {
   return (
     <S.Review score={reviewScore}>
       <div className='icon-wrapper'>
-        <img className='icon-size' alt='icon' src='https://image.goodchoice.kr/profile/ico/ico_24.png' />
+        <img className='icon-size' alt='icon' src='/images/smile_icon.png' />
       </div>
       <div className='comment-wrapper '>
         <img alt='best-review' src='https://static.goodchoice.kr/images/web_v3/img_bestreview_badge.svg' />
