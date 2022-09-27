@@ -56,7 +56,6 @@ export const NavStyle = styled.nav`
 
     .nav-content {
       display: flex;
-      justify-content: center;
       align-items: center;
 
       .search-icon-box {
