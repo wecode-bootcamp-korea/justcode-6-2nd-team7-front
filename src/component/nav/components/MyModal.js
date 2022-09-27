@@ -28,7 +28,6 @@ const MyModalStyle = styled.div`
 
       li {
         height: 38px;
-        /* margin: 0px 0px 25px 0px; */
 
         a {
           color: #000000;
@@ -37,7 +36,6 @@ const MyModalStyle = styled.div`
 
       .nickname {
         height: 54px;
-        /* margin: 20px 0px 20px 0px; */
         border-bottom: 1px solid rgb(220, 220, 220);
         font-size: 17px;
         font-weight: 600;
