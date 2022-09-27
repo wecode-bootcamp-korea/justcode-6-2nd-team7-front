@@ -46,7 +46,7 @@ const Router = () => {
           <Route path='/coupons' element={<Coupons />} />
           <Route path='/reservation-list' element={<ReservationList />} />
           <Route path='/my' element={<My />} />
-          <Route path='/search' element={<Search />} />
+          <Route path='/search/:keyword' element={<Search />} />
         </Routes>
         <Footer />
         <TopButton />
