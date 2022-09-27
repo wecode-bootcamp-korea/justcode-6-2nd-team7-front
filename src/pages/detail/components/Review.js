@@ -46,7 +46,7 @@ const Review = ({ comment }) => {
         </div>
         <div className='comment-style'>{comment.comment}</div>
         <div>
-          <img alt='room' class='image-size' src={comment.url} />
+          <img alt='room' className='image-size' src={comment.url} />
         </div>
       </div>
     </S.Review>

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { reservInfoState, startDateState, endDateState } from '../../atom';
 import Information from './components/Information';
-import Review from './components/Review';
+import ReviewContainer from './components/ReviewContainer';
 import RoomGuide from './components/RoomGuide';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
@@ -40,17 +40,17 @@ const Detail = () => {
   useEffect(() => {
     axios
       .get('/data/detail/roomType.json')
-      // .get(`http://localhost:8000/detail/${id}`)
+      // .get(`http://localhost:8000/accomodation/rooms/details/${id}`)
       .then((res) => {
         setShowData(res.data.roomTypeData);
         setInfo({
           ...info,
           name: res.data.roomTypeData.name,
         });
-        console.log('놔', res);
-      })
+        //console.log('뫄', res);
+      }) //console은 나중에 지우도록 하겠습니다.
       .catch((err) => {
-        console.log('뭐지', err);
+        //console.log('뭐지', err);
       });
   }, []);
 
@@ -107,7 +107,7 @@ const Detail = () => {
             ) : component === 2 ? (
               <Information informations={showData} />
             ) : (
-              <Review />
+              <ReviewContainer showData={showData} />
             )}
           </S.Context>
         </S.DetailExplanation>

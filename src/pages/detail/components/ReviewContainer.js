@@ -44,7 +44,7 @@ const ReviewContainer = ({ showData }) => {
 
         <div className='review-container'>
           {showData.comment.map((comment) => {
-            return <Review comment={comment} />;
+            return <Review key={comment.id} comment={comment} />;
           })}
         </div>
       </div>
