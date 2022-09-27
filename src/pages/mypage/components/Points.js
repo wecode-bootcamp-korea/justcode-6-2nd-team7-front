@@ -47,7 +47,7 @@ function Points() {
   useEffect(() => {
     axios
       .get('http://localhost:8000/my/point', {
-        headers: { Authorization: localStorage.getItem('token') },
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       })
       .then((res) => setPoints(res.data.data[0]));
   }, []);
