@@ -1,14 +1,25 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { startDateState, endDateState, reservInfoState } from '../../../atom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { faImages } from '@fortawesome/free-solid-svg-icons';
-import * as S from './Room.styled';
-import { useState } from 'react';
+
 import Slide from './Slide';
 import UseModal from './UseModal';
 
+import * as S from './Room.styled';
+
 const Room = ({ roomType }) => {
+  const navigate = useNavigate();
+  const [startDate] = useRecoilState(startDateState);
+  const [endDate] = useRecoilState(endDateState);
+  const [info, setInfo] = useRecoilState(reservInfoState);
   const [openBtn, setOpenBtn] = useState(false);
   const [useBtn, setUseBtn] = useState(false);
+  const [period] = useState(startDate.getDate() - startDate.getDate());
+  // const [period, setPeriod] = useState(EndDate.getDate() - startDate.getDate());
 
   const handleToggleBtn = () => {
     setOpenBtn((openBtn) => !openBtn);
@@ -16,6 +27,18 @@ const Room = ({ roomType }) => {
 
   const handleUseBtn = () => {
     setUseBtn(true);
+  };
+
+  const handleResrvBtn = () => {
+    navigate('/reservation');
+    window.scrollTo({
+      top: 0,
+    });
+    setInfo({
+      ...info,
+      roomType: roomType.type,
+      totalPrice: roomType.price * period,
+    });
   };
 
   return (
@@ -33,7 +56,10 @@ const Room = ({ roomType }) => {
             <div className='remain'>남은객실 {roomType.remain}개</div>
             <div className='flex underline-style'>
               <strong>가격</strong>
-              <strong className='font-style'>{roomType.price}원</strong>
+              <strong className='font-style'>
+                {roomType.price}원{period >= 0 && `/${period}박`}
+                {/* {roomType.price}원{period >= 2 && `/${period}박`} */}
+              </strong>
             </div>
             <div className='flex-btn'>
               <button className='use-button' onClick={handleUseBtn}>
@@ -50,7 +76,10 @@ const Room = ({ roomType }) => {
               )}
             </div>
             <div>
-              <button className='reservation-button'>예약</button>
+              <button className='reservation-button' onClick={handleResrvBtn}>
+                예약하기{period >= 0 && ` | ${period * roomType.price}원 (${period}박)`}
+                {/* 예약{period >= 2 && ` | ${period * roomType.price}원 (${period}박)`} */}
+              </button>
             </div>
           </div>
         </div>
