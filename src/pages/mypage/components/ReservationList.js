@@ -25,23 +25,23 @@ function ReservationList() {
   };
 
   const getDayOfWeek = (date) => {
-    const week = ['일', '월', '화', '수', '목', '금', '토'];
-    const dayOfWeek = week[new Date(`2022-${date}`).getDay()];
+    const week = ['월', '화', '수', '목', '금', '토', '일'];
+    const dayOfWeek = week[date]; //week[date]
     return dayOfWeek;
   };
 
-  const getDay = (date1, date2) => {
-    const splitDay1 = date1.split('-');
-    const splitDay2 = date2.split('-');
+  // const getDay = (date1, date2) => {
+  //   const splitDay1 = date1.split('-');
+  //   const splitDay2 = date2.split('-');
 
-    const day1 = new Date(splitDay1[0], splitDay1[1], splitDay1[2]);
-    const day2 = new Date(splitDay2[0], splitDay2[1], splitDay2[2]);
+  //   const day1 = new Date(splitDay1[0], splitDay1[1], splitDay1[2]);
+  //   const day2 = new Date(splitDay2[0], splitDay2[1], splitDay2[2]);
 
-    const time = day2.getTime() - day1.getTime();
-    const elapsedDay = time / 1000 / 60 / 60 / 24;
+  //   const time = day2.getTime() - day1.getTime();
+  //   const elapsedDay = time / 1000 / 60 / 60 / 24;
 
-    return elapsedDay;
-  };
+  //   return elapsedDay;
+  // };
 
   return (
     <S.Header>
@@ -57,21 +57,21 @@ function ReservationList() {
           </div>
           <div className='more-reservation'>
             {reservationList ? (
-              reservationList?.map((el) => {
+              reservationList?.map((list) => {
                 return (
-                  <div className='reservation-container'>
+                  <div className='reservation-container' key={list.hotel_id}>
                     <button className='delete' onClick={handleDelete}>
                       X
                     </button>
                     {modal && <DeleteModal />}
-                    <img src={el.img} alt='reservation-img' />
+                    <img src={list.img} alt='reservation-img' />
 
                     <div className='reservation-content'>
                       <span>이용완료</span>
-                      <h2>{el.name}</h2>
+                      <h2>{list.name}</h2>
                       <p>
-                        {el.date1} {getDayOfWeek(el.date1)} - {el.date2} {getDayOfWeek(el.date2)}{' '}
-                        {getDay(el.date1, el.date2)}박
+                        {list.date1} {getDayOfWeek(Number(list.day1))} - {list.date2} {getDayOfWeek(Number(list.day2))}{' '}
+                        {list.myutbak}박
                       </p>
                     </div>
                     <button className='rebook'>다시 예약</button>

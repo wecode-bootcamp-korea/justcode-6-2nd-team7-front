@@ -1,25 +1,34 @@
 {
   "reservation": [
     {
-      "id": 1,
+      "hotel_id": 1,
       "name": "AC 호텔 바이 메리어트 서울 강남",
       "img": "https://images.unsplash.com/photo-1568084680786-a84f91d1153c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80",
-      "date1": "2022-05-01",
-      "date2": "2022-05-05"
+      "date1": "05-01",
+      "date2": "05-05",
+      "day1": "1",
+      "day2": "2",
+      "myutbak": "1"
     },
     {
-      "id": 2,
+      "hotel_id": 2,
       "name": "호텔 크레센도 서울",
       "img": "https://images.unsplash.com/photo-1455587734955-081b22074882?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80",
-      "date1": "2022-07-08",
-      "date2": "2022-07-10"
+      "date1": "07-08",
+      "date2": "07-10",
+      "day1": "1",
+      "day2": "2",
+      "myutbak": "1"
     },
     {
-      "id": 3,
+      "hotel_id": 3,
       "name": "글래드 강남 코엑스센터",
       "img": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
-      "date1": "2022-05-01",
-      "date2": "2022-05-01"
+      "date1": "05-01",
+      "date2": "05-01",
+      "day1": "3",
+      "day2": "6",
+      "myutbak": "1"
     }
   ]
 }
