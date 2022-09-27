@@ -33,3 +33,8 @@ export const reservInfoState = atom({
     totalPrice: 0,
   },
 });
+
+export const deleteReservationState = atom({
+  key: 'deleteReservationState',
+  default: false,
+});

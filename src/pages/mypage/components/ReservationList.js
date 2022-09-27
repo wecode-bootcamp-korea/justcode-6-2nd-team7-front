@@ -1,20 +1,25 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { deleteReservationState } from '../../../atom';
 import MyPage from '../MyPage';
 
 import * as S from '../MyPage.Styled';
+import DeleteModal from './DeleteModal';
 import NoReservation from './NoReservation';
 import * as A from './ReservationList.Styled';
 
 function ReservationList() {
   const [reservationList, setReservationList] = useState([]);
+  const [modal, setModal] = useRecoilState(deleteReservationState);
 
   useEffect(() => {
     axios.get('data/my/reservationList.json').then((res) => setReservationList(res.data.reservation));
   }, []);
 
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    setModal(true);
+  };
 
   const getDayOfWeek = (date) => {
     const week = ['일', '월', '화', '수', '목', '금', '토'];
@@ -55,7 +60,7 @@ function ReservationList() {
                     <button className='delete' onClick={handleDelete}>
                       X
                     </button>
-
+                    {modal && <DeleteModal />}
                     <img src={el.img} alt='reservation-img' />
 
                     <div className='reservation-content'>

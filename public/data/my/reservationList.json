@@ -13,6 +13,13 @@
       "img": "https://images.unsplash.com/photo-1455587734955-081b22074882?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80",
       "date1": "7.28",
       "date2": "8.07"
+    },
+    {
+      "id": 3,
+      "name": "글래드 강남 코엑스센터",
+      "img": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+      "date1": "10.22",
+      "date2": "10.24"
     }
   ]
 }
