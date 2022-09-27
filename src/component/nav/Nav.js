@@ -88,29 +88,30 @@ const Nav = () => {
                 <li className='list'>
                   <Link className='nav-link'>더보기</Link>
                 </li>
-                <li className='list login-my'>
-                  {localStorage.getItem('token') !== null ? (
-                    <>
-                      <Link
-                        to='/my'
-                        onMouseOver={() => {
-                          setMyHover(true);
-                        }}
-                        onMouseOut={() => {
-                          setMyHover(false);
-                        }}
-                        className='nav-link'>
-                        <img className='smile-icon' alt='myPage' src='/images/smile_icon.png' />
-                        <FontAwesomeIcon className='caret-down' icon={faCaretDown} size='xs' color='#ffff' />
-                        {myHover && <MyModal setMyHover={setMyHover} />}
-                      </Link>
-                    </>
-                  ) : (
+
+                {localStorage.getItem('token') !== null ? (
+                  <li className='list icon-li'>
+                    <Link
+                      to='/my'
+                      onMouseOver={() => {
+                        setMyHover(true);
+                      }}
+                      onMouseOut={() => {
+                        setMyHover(false);
+                      }}
+                      className='nav-link '>
+                      <img className='smile-icon' alt='myPage' src='/images/smile_icon.png' />
+                      <FontAwesomeIcon className='caret-down' icon={faCaretDown} size='xs' color='#ffff' />
+                      {myHover && <MyModal setMyHover={setMyHover} />}
+                    </Link>
+                  </li>
+                ) : (
+                  <li className='list '>
                     <Link to='/login' className='nav-link'>
                       로그인
                     </Link>
-                  )}
-                </li>
+                  </li>
+                )}
               </ul>
             </div>
           </div>

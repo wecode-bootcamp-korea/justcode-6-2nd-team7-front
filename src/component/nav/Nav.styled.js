@@ -90,7 +90,7 @@ export const NavStyle = styled.nav`
         line-height: 55px;
         .list {
           float: left;
-          padding-top: 16px;
+          /* padding-top: 16px; */
 
           /* line-height: 40px; */
           line-height: inherit;
@@ -106,6 +106,10 @@ export const NavStyle = styled.nav`
               margin-top: 10px;
             }
           }
+        }
+
+        .icon-li {
+          height: 30px;
         }
       }
     }
