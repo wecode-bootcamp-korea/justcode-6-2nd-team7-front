@@ -20,7 +20,11 @@ const ReservationList = () => {
 
   // 데이터 받아올때 유저아이디 포함 요청
   useEffect(() => {
-    axios.get('data/my/reservationList.json').then((res) => setReservationList(res.data.reservation));
+    axios
+      .get('http://localhost:8000/my/reservations', {
+        id: userId,
+      })
+      .then((res) => console.log(res));
   }, []);
 
   const handleDelete = () => {
@@ -29,7 +33,7 @@ const ReservationList = () => {
 
   const getDayOfWeek = (date) => {
     const week = ['월', '화', '수', '목', '금', '토', '일'];
-    const dayOfWeek = week[date]; //week[date]
+    const dayOfWeek = week[date];
     return dayOfWeek;
   };
 
