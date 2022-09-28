@@ -147,6 +147,7 @@ const AccomodationList = () => {
       })
       .catch((err) => {
         console.log(err);
+        console.log(`http://localhost:8000/accomodations/${param}?${queryArr.join('&')}`);
         setLoading(false);
         setList([]);
       });
@@ -238,7 +239,7 @@ const AccomodationList = () => {
             </ul>
           )}
           {loading && <LoadingSpinner />}
-          {loading && list && list.length === 0 && <NoData keyword={keyword} />}
+          {!loading && list && list.length === 0 && <NoData keyword={keyword} />}
         </main>
       </S.Body>
     </>

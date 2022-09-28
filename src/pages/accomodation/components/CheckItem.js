@@ -49,18 +49,26 @@ const List = styled.li`
 `;
 
 const CheckItem = forwardRef(({ text, getOptions }, ref) => {
-  useImperativeHandle(ref, () => ({
-    resetCheck,
-  }));
   const [check, setCheck] = useState(false);
+  useImperativeHandle(
+    ref,
+    () => ({
+      check,
+      setCheck,
+      resetCheck,
+    }),
+    [check],
+  );
+
   const resetCheck = () => {
-    console.log('클릭');
+    console.log(text, '왜안꺼져..', ref);
     setCheck(false);
+    console.log('---------------------------------------');
   };
 
   return (
     <List onClick={getOptions}>
-      <input id={text} name={text} type='checkbox' checked={check} readOnly />
+      <input id={text} name={text} type='checkbox' ref={ref} checked={check} readOnly />
       <span
         className='checkbox'
         onClick={(e) => {

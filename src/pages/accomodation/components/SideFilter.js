@@ -105,6 +105,9 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
       { id: 4, title: '온돌', class: 'sedentary', selected: false },
     ]);
     setQueryArr([]);
+    childComponentRef.current.resetCheck();
+    // console.log('current', childComponentRef.current);
+    // console.log('ref', childComponentRef);
   };
 
   return (
@@ -143,12 +146,13 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
             list={options[handleSelectFilter(param)].typeList}
             title={options[handleSelectFilter(param)].type}
             getOptions={getOptions}
+            ref={childComponentRef}
           />
         )}
 
         {options[handleSelectFilter(param)].theme &&
           options[handleSelectFilter(param)].theme.map((type, i) => (
-            <OptionList key={i} list={type} getOptions={getOptions} />
+            <OptionList key={i} list={type} getOptions={getOptions} ref={childComponentRef} />
           ))}
 
         {handleShowCount(param) && (
@@ -204,7 +208,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
         )}
         {options[handleSelectFilter(param)].options &&
           options[handleSelectFilter(param)].options.map((type, i) => (
-            <OptionList key={i} list={type} getOptions={getOptions} />
+            <OptionList key={i} list={type} getOptions={getOptions} ref={childComponentRef} />
           ))}
       </div>
     </aside>
