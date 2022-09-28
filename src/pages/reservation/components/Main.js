@@ -22,8 +22,8 @@ const Main = () => {
   useEffect(() => {
     if (localStorage.getItem('token') !== null) {
       axios
-        // .get('/data/my/userInfo.json')
-        .get('http://localhost:8000/my', { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
+        .get('/data/my/userInfo.json')
+        // .get('http://localhost:8000/my', { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
         .then((res) => {
           setInputs({
             ...inputs,
@@ -33,10 +33,10 @@ const Main = () => {
         })
         .catch((err) => console.log(err));
       axios
-        // .get('/data/my/point.json')
-        .get('http://localhost:8000/my/point', {
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-        })
+        .get('/data/my/point.json')
+        // .get('http://localhost:8000/my/point', {
+        // headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        // })
         .then((res) => {
           if (res.data.data !== null) {
             let pointSum = 0;
