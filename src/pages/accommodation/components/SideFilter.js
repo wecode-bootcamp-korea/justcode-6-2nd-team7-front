@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { useRecoilState } from 'recoil';
@@ -42,6 +42,11 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
   const [queryArr, setQueryArr] = useRecoilState(queryState);
   const [startDate, setStartDate] = useRecoilState(startDateState);
   const [endDate, setEndDate] = useRecoilState(endDateState);
+  const [state, updateState] = useState();
+  const [checkedAll, setCheckedAll] = useState(true);
+  // const forceUpdate = useCallback(() => {
+  //   updateState({});
+  // }, []);
 
   const handleCount = (e) => {
     e.target.closest('.down') && setCount((prev) => (prev === 1 ? 1 : prev - 1));
@@ -56,15 +61,20 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
         : { ...type };
     });
     setBedtype(newBedtype);
-    newBedtype.forEach((el) =>
-      el.selected
+    newBedtype.forEach((el) => {
+      return el.selected
         ? setQueryArr((prev) => [...new Set([...prev, getQueryNumber(el.title)])])
-        : setQueryArr((prev) => {
-            const newArr = [...prev];
-            newArr.splice(prev.indexOf(getQueryNumber(el.title)), 1);
-            return newArr;
-          }),
-    );
+        : queryArr.includes(getQueryNumber(el.title)) &&
+            setQueryArr((prev) => {
+              let arr = [];
+              for (let i = 0; i < prev.length; i++) {
+                if (prev[i] !== getQueryNumber(el.title)) {
+                  arr.push(prev[i]);
+                }
+              }
+              return arr;
+            });
+    });
   };
 
   const handleChange = (event, newValue) => {
@@ -72,20 +82,19 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
   };
 
   const getOptions = (e) => {
+    e.preventDefault();
     const option = e.currentTarget.childNodes[0].name;
     const checked = e.currentTarget.childNodes[0].checked;
-    console.log('checked', checked);
     !checked
-      ? setQueryArr((prev) => [...new Set([...prev, getQueryNumber(option)])])
+      ? setQueryArr((prev) => {
+          return [...new Set([...prev, getQueryNumber(option)])];
+        })
       : setQueryArr((prev) => {
           const newArr = [...prev];
           newArr.splice(prev.indexOf(getQueryNumber(option)), 1);
-          console.log('index', prev.indexOf(getQueryNumber(option)), 'option', getQueryNumber(option));
           return newArr;
         });
   };
-
-  const handleResetCheck = () => {};
 
   const handleResetFilter = (e) => {
     setValue([1, 30]);
@@ -99,6 +108,8 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
     setStartDate(new Date());
     setEndDate(null);
     setQueryArr([]);
+    setCheckedAll(false);
+    // forceUpdate();
   };
 
   return (
@@ -137,7 +148,6 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
             list={options[handleSelectFilter(param)].typeList}
             title={options[handleSelectFilter(param)].type}
             getOptions={getOptions}
-            handleResetCheck={handleResetCheck}
           />
         )}
 
@@ -185,7 +195,8 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
         {handleShowRange(param) && (
           <section className='price-container mt32 mb18'>
             <h5 className='title mt32 mb18'>
-              가격<span>3만원이상</span>
+              가격{value[0] !== 1 && <span>{value[0]}만원이상</span>}
+              {value[1] !== 30 && <span>{value[1]}만원이하</span>}
             </h5>
             <div className='slider-box'>
               <CustomSlider value={value} handleChange={handleChange} />
