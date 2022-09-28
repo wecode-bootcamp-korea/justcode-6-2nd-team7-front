@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useReducer } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { useRecoilState } from 'recoil';
@@ -42,8 +42,12 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
   const [queryArr, setQueryArr] = useRecoilState(queryState);
   const [startDate, setStartDate] = useRecoilState(startDateState);
   const [endDate, setEndDate] = useRecoilState(endDateState);
-  const [state, updateState] = useState();
   const [checkedAll, setCheckedAll] = useState(true);
+  const [, updateState] = useState();
+  const forceUpdate = useCallback(() => {
+    console.log('실행');
+    return updateState({});
+  }, []);
   // const forceUpdate = useCallback(() => {
   //   updateState({});
   // }, []);
@@ -111,6 +115,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
     setQueryArr([]);
     setCheckedAll(false);
     // forceUpdate();
+    forceUpdate();
   };
 
   return (
