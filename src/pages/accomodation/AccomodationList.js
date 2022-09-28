@@ -59,6 +59,7 @@ const AccomodationList = () => {
     setLoading(true);
 
     if (Number(id) === 2) {
+      if (list.length === 0) return setLoading(false);
       const getLatLng = (res) => {
         const myLat = res.coords.latitude;
         const myLng = res.coords.longitude;
@@ -90,6 +91,7 @@ const AccomodationList = () => {
         })
         .catch((err) => {
           console.log(err);
+          console.log('url', url);
           setLoading(false);
           setList([]);
         });
@@ -138,15 +140,19 @@ const AccomodationList = () => {
     setQueryArr(newList);
     axios
       // .get(`/data/accommodation/accommodation.json`)
-      .get(`http://localhost:8000/accomodation/${param}?${queryArr.join('&')}`)
+      // .get(`http://localhost:8000/accomodations/${param}?${'facility=6'}`)
+      .get(`http://localhost:8000/accomodations/${param}?${queryArr.join('&')}`)
       .then((res) => {
         setList(res.data);
         setLoading(false);
         setKeyword();
+        console.log('url', `http://localhost:8000/accomodations/${param}?${queryArr.join('&')}`);
         res.data.length === 0 && setList([]);
       })
       .catch((err) => {
         console.log(err);
+        // console.log('url', `http://localhost:8000/accomodations/${param}?${'facility=6'}`);
+        console.log('url', `http://localhost:8000/accomodations/${param}?${queryArr.join('&')}`);
         setLoading(false);
         setList([]);
       });
@@ -220,7 +226,7 @@ const AccomodationList = () => {
               {list.map((el) => {
                 return (
                   <Thumbnail
-                    key={el.name}
+                    key={el.id}
                     id={el.id}
                     name={el.name}
                     promotion={el.promotion}
