@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
@@ -69,6 +70,12 @@ const DeleteModal = () => {
   // 삭제 통신 예약아이디
   const handleLogout = () => {
     setModal(false);
+
+    axios
+      .delete(
+        'http://localhost:8000/my/reservations', //{아이디}
+      )
+      .then((res) => console.log(res));
   };
 
   return (

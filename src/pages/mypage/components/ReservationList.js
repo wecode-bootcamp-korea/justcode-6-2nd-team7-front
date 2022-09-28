@@ -22,9 +22,9 @@ const ReservationList = () => {
   useEffect(() => {
     axios
       .get('http://localhost:8000/my/reservations', {
-        id: userId,
+        headers: { id: 123 },
       })
-      .then((res) => console.log(res));
+      .then((res) => setReservationList(res.data.reservations));
   }, []);
 
   const handleDelete = () => {
