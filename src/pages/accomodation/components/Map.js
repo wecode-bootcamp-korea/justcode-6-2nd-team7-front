@@ -75,7 +75,7 @@ const Map = ({ setShowModal, list }) => {
         });
         marker.setMap(kakaoMap);
 
-        const content = returnHtml(el.name, el.img, el.saleprice);
+        const content = returnHtml(el.name, el.image, el.saleprice);
         const infowindow = new kakao.maps.InfoWindow({
           position: new kakao.maps.LatLng(el.lat, el.lng),
           content: content,

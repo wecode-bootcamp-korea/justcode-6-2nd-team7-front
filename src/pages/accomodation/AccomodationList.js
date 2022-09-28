@@ -15,10 +15,10 @@ import NoData from './components/NoData';
 import { region } from './data/region';
 import { handleCategory, handleSelectUrl, getDistanceFromLatLonInKm } from './data/functions';
 
-import * as S from './AccommodationList.styled';
+import * as S from './AccomodationList.styled';
 import LoadingSpinner from './components/LoadingSpinner';
 
-const AccommodationList = () => {
+const AccomodationList = () => {
   const [city, setCity] = useState(
     region.map((el, i) => {
       return i === 0 ? { ...el, show: true } : { ...el, show: false };
@@ -40,7 +40,7 @@ const AccommodationList = () => {
 
   useEffect(() => {
     axios
-      // .get('/data/accommodation/accommodation.json')
+      // .get('/data/accomodation/accomodation.json')
       .get(`http://localhost:8000/accomodations/${param}`)
       .then((res) => {
         console.log(res);
@@ -72,15 +72,15 @@ const AccommodationList = () => {
     } else {
       let url = '';
       if (queryArr.length) {
-        url = `http://localhost:8000/accomodation/${param}${handleSelectUrl(id)}${`&${queryArr.join('&')}`}`;
+        url = `http://localhost:8000/accomodations/${param}${handleSelectUrl(id)}${`&${queryArr.join('&')}`}`;
         if (Number(id) === 1) {
-          url = `http://localhost:8000/accomodation/${param}${handleSelectUrl(id)}?${queryArr.join('&')}`;
+          url = `http://localhost:8000/accomodations/${param}${handleSelectUrl(id)}?${queryArr.join('&')}`;
         }
       } else {
-        url = `http://localhost:8000/accomodation/${param}${handleSelectUrl(id)}`;
+        url = `http://localhost:8000/accomodations/${param}${handleSelectUrl(id)}`;
       }
       axios
-        // .get(`/data/accommodation/accommodation.json`)
+        // .get(`/data/accomodation/accomodation.json`)
         .get(url)
         .then((res) => {
           setList(res.data);
@@ -229,8 +229,8 @@ const AccommodationList = () => {
                     review={el.review}
                     region={el.region}
                     remain={el.remain}
-                    price={el.price}
-                    saleprice={el.saleprice}
+                    saleprice={el.price}
+                    price={el.saleprice}
                     img={el.image}
                   />
                 );
@@ -245,4 +245,4 @@ const AccommodationList = () => {
   );
 };
 
-export default AccommodationList;
+export default AccomodationList;

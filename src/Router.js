@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AccommodationList from './pages/accommodation/AccommodationList';
+import AccomodationList from './pages/accomodation/AccomodationList';
 import { ThemeProvider } from 'styled-components';
 import { useRecoilState } from 'recoil';
 import { logoutModalState } from './atom';
@@ -41,7 +41,7 @@ const Router = () => {
           <Route path='/signup-page' element={<SignUpPage />} />
           <Route path='/detail/:id' element={<Detail />} />
           <Route path='/reservation' element={<Reservation />} />
-          <Route path='/accommodation/:type' element={<AccommodationList />} />
+          <Route path='/accomodations/:type' element={<AccomodationList />} />
           <Route path='/mypage' element={<Points />} />
           <Route path='/coupons' element={<Coupons />} />
           <Route path='/reservation-list' element={<ReservationList />} />
