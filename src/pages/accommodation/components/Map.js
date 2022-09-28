@@ -15,7 +15,7 @@ const Main = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #00000099;
+  background-color: ${({ theme }) => theme.colors.modalBg};
   z-index: 100;
 
   .container {
