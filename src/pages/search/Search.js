@@ -39,18 +39,22 @@ const Search = () => {
   //처음 검색했을 때 받아오는 정보
   useEffect(() => {
     axios
-      .get('/data/accommodation/accommodation.json')
+      // .get('/data/accommodation/accommodation.json')
       // .get(`/data/accommodation/accommodationNoData.json`)
-      // .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
+      .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
       .then((res) => {
-        // console.log('res.data : ', res.data.data);
-        setList(res.data.data);
+        console.log('res', res);
+        // console.log('res.data : ', res.data);
+        // setList(res.data.data); 실제코드
+        setList(res.data);
         setLoading(false);
-        res.data.data.length === 0 && setList([]);
+        // res.data.data.length === 0 && setList([]); 실제코드
+        res.data.length === 0 && setList([]);
       })
       .catch((err) => {
-        console.log(err);
+        console.log('err', err);
         setLoading(false);
+        setList([]);
       });
   }, []);
 
@@ -71,20 +75,27 @@ const Search = () => {
       });
     } else {
       axios
-        .get(`/data/accommodation/accommodation.json`)
+        // .get(`/data/accommodation/accommodation.json`)
         // .get(`/data/accommodation/accommodationNoData.json`)
-        // .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
-        // .get(`http://localhost:8000/accommodation/${param}${handleSelectUrl(id)}`)
-
+        .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
+        // .get(
+        //   `http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}${handleSelectUrl(
+        //     id,
+        //   )}`,
+        // )
         .then((res) => {
           // console.log(res);
-          setList(res.data.data);
+          // setList(res.data.data); 실제코드
+          setList(res.data);
           setLoading(false);
           setKeyword(params.keyword);
-          res.data.data.length === 0 && setList([]);
+          // res.data.data.length === 0 && setList([]); 실제코드
+          res.data.length === 0 && setList([]);
         })
         .catch((err) => {
           console.log(err);
+          setKeyword(params.keyword);
+          setLoading(false);
           setList([]);
         });
     }
@@ -136,7 +147,7 @@ const Search = () => {
             </ul>
           )}
           {loading && <LoadingSpinner />}
-          {list && list.length === 0 && <NoData keyword={keyword} />}
+          {!loading && list && list.length === 0 && <NoData keyword={keyword} />}
         </main>
       </S.Body>
     </SearchContainer>
