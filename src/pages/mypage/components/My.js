@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import MyPage from '../MyPage';
-import LogoutModal from '../../../component/modal/LogoutModal';
 import PhoneTimer from './PhoneTimer';
 import * as A from './My.Styled';
 import * as S from '../MyPage.Styled';
 import { useRecoilState } from 'recoil';
-import { phoneCheckState } from '../../../atom';
+import { phoneCheckState, logoutModalState } from '../../../atom';
 
 const My = () => {
   const [nickname, setNickname] = useState(false);
   const [myName, setMyname] = useState(false);
   const [phone, setPhone] = useState(false);
   const [phoneCheck, setPhoneCheck] = useState(false);
+  const [modal, setModal] = useRecoilState(logoutModalState);
   const [phoneNum, setPhoneNum] = useRecoilState(phoneCheckState);
   const [isActive, setIsActive] = useState(false);
 
@@ -33,8 +33,6 @@ const My = () => {
 
     axios.post('http://localhost:8000/send', { phoneNumber: phoneNum });
   };
-
-  const [modal, setModal] = useState(false);
 
   // 버튼 toggle
   const handleNickname = () => {
@@ -205,8 +203,7 @@ const My = () => {
               }}>
               로그아웃
             </Link>
-            {/* 로그아웃 모달 창 */}
-            {modal && <LogoutModal setModal={setModal} />}
+            {/* {modal && <LogoutModal setModal={setModal} />} */}
             <Link to='/login'>회원탈퇴</Link>
           </div>
         </A.MyContainer>
