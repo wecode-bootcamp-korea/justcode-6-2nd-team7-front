@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, forwardRef, useImperativeHandle } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -48,8 +48,15 @@ const List = styled.li`
   }
 `;
 
-const CheckItem = ({ text, getOptions }) => {
+const CheckItem = forwardRef(({ text, getOptions }, ref) => {
+  useImperativeHandle(ref, () => ({
+    resetCheck,
+  }));
   const [check, setCheck] = useState(false);
+  const resetCheck = () => {
+    console.log('클릭');
+    setCheck(false);
+  };
 
   return (
     <List onClick={getOptions}>
@@ -70,6 +77,6 @@ const CheckItem = ({ text, getOptions }) => {
       </label>
     </List>
   );
-};
+});
 
 export default CheckItem;

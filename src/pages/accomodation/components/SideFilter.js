@@ -1,4 +1,4 @@
-import { useState, useCallback, useReducer } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { useRecoilState } from 'recoil';
@@ -42,15 +42,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
   const [queryArr, setQueryArr] = useRecoilState(queryState);
   const [startDate, setStartDate] = useRecoilState(startDateState);
   const [endDate, setEndDate] = useRecoilState(endDateState);
-  const [checkedAll, setCheckedAll] = useState(true);
-  const [, updateState] = useState();
-  const forceUpdate = useCallback(() => {
-    console.log('실행');
-    return updateState({});
-  }, []);
-  // const forceUpdate = useCallback(() => {
-  //   updateState({});
-  // }, []);
+  const childComponentRef = useRef();
 
   const handleCount = (e) => {
     e.target.closest('.down') && setCount((prev) => (prev === 1 ? 1 : prev - 1));
@@ -113,9 +105,6 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
       { id: 4, title: '온돌', class: 'sedentary', selected: false },
     ]);
     setQueryArr([]);
-    setCheckedAll(false);
-    // forceUpdate();
-    forceUpdate();
   };
 
   return (
@@ -144,7 +133,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
           <ul>
             {options[handleSelectFilter(param)].availablePromotion &&
               options[handleSelectFilter(param)].availablePromotion.map((el) => {
-                return <CheckItem text={el} key={el} id={el} getOptions={getOptions} />;
+                return <CheckItem text={el} key={el} id={el} getOptions={getOptions} ref={childComponentRef} />;
               })}
           </ul>
         </section>

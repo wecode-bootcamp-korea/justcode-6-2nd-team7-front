@@ -1,4 +1,4 @@
-import { useEffect, useState, useReducer, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -43,10 +43,8 @@ const AccomodationList = () => {
       // .get('/data/accomodation/accomodation.json')
       .get(`http://localhost:8000/accomodations/${param}`)
       .then((res) => {
-        console.log(res);
         setList(res.data);
         setLoading(false);
-        // res.data.length === 0 && setList([]);
       })
       .catch((err) => {
         console.log(err);
@@ -80,8 +78,8 @@ const AccomodationList = () => {
       } else {
         url = `http://localhost:8000/accomodations/${param}${handleSelectUrl(id)}`;
       }
+      // .get(`/data/accomodation/accomodation.json`)
       axios
-        // .get(`/data/accomodation/accomodation.json`)
         .get(url)
         .then((res) => {
           setList(res.data);
@@ -131,6 +129,7 @@ const AccomodationList = () => {
   };
 
   const getFilteredList = (e) => {
+    setLoading(true);
     const newList = [
       queryArr.filter((el) => {
         return !el.includes('persons=');
@@ -139,20 +138,16 @@ const AccomodationList = () => {
     ].flat();
     setQueryArr(newList);
     axios
-      // .get(`/data/accommodation/accommodation.json`)
       // .get(`http://localhost:8000/accomodations/${param}?${'facility=6'}`)
       .get(`http://localhost:8000/accomodations/${param}?${queryArr.join('&')}`)
       .then((res) => {
         setList(res.data);
         setLoading(false);
         setKeyword();
-        console.log('url', `http://localhost:8000/accomodations/${param}?${queryArr.join('&')}`);
         res.data.length === 0 && setList([]);
       })
       .catch((err) => {
         console.log(err);
-        // console.log('url', `http://localhost:8000/accomodations/${param}?${'facility=6'}`);
-        console.log('url', `http://localhost:8000/accomodations/${param}?${queryArr.join('&')}`);
         setLoading(false);
         setList([]);
       });
@@ -235,16 +230,18 @@ const AccomodationList = () => {
                     review={el.review}
                     region={el.region}
                     remain={el.remain}
-                    saleprice={el.price}
-                    price={el.saleprice}
-                    img={el.image}
+                    saleprice={Math.floor(Number(el.price) - Number(el.salerate) * 0.01 * Number(el.price))
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                    price={el.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                    img={el.img}
                   />
                 );
               })}
             </ul>
           )}
           {loading && <LoadingSpinner />}
-          {list && list.length === 0 && <NoData keyword={keyword} />}
+          {loading && list && list.length === 0 && <NoData keyword={keyword} />}
         </main>
       </S.Body>
     </>

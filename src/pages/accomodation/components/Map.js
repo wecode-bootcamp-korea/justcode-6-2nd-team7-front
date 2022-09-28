@@ -49,7 +49,7 @@ const Map = ({ setShowModal, list }) => {
   useEffect(() => {
     const container = document.getElementById('map');
     const options = {
-      center: new kakao.maps.LatLng(37.504897, 127.04961),
+      center: new kakao.maps.LatLng(37.508897, 127.04161),
       level: 6,
     };
     const kakaoMap = new kakao.maps.Map(container, options);
@@ -75,7 +75,7 @@ const Map = ({ setShowModal, list }) => {
         });
         marker.setMap(kakaoMap);
 
-        const content = returnHtml(el.name, el.image, el.saleprice);
+        const content = returnHtml(el.name, el.img, el.saleprice);
         const infowindow = new kakao.maps.InfoWindow({
           position: new kakao.maps.LatLng(el.lat, el.lng),
           content: content,
