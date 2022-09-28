@@ -29,48 +29,48 @@ const MainLinkContainer = styled.section`
 `;
 
 const MainLink = () => {
-  const accommodationArr = [
+  const accomodationArr = [
     {
       id: 1,
       name: '모텔',
       eng: 'motel',
-      link: '/accommodation/motel',
+      link: '/accomodations/motel',
     },
     {
       id: 2,
       name: '호텔·리조트',
       eng: 'hotel',
-      link: '/accommodation/hotel',
+      link: '/accomodations/hotel',
     },
     {
       id: 3,
       name: '펜션',
       eng: 'pension',
-      link: '/accommodation/pension',
+      link: '/accomodations/pension',
     },
     {
       id: 4,
       name: '게스트하우스',
       eng: 'ghestHouse',
-      link: '/accommodation/ghesthouse',
+      link: '/accomodations/ghesthouse',
     },
     {
       id: 5,
       name: '캠핑·글램핑',
       eng: 'camping',
-      link: '/accommodation/camping',
+      link: '/accomodations/camping',
     },
     {
       id: 6,
       name: '한옥',
       eng: 'koreanHouse',
-      link: '/accommodation/hanok',
+      link: '/accomodations/hanok',
     },
     {
       id: 7,
       name: '내주변',
       eng: 'mySpace',
-      link: '/accommodation/nearby',
+      link: '/accomodations/nearby',
     },
     {
       id: 8,
@@ -83,12 +83,12 @@ const MainLink = () => {
   return (
     <MainLinkContainer>
       <ul className='link-list'>
-        {accommodationArr.map((accommodation) => {
+        {accomodationArr.map((accomodation) => {
           return (
-            <li key={accommodation.id}>
-              <Link to={accommodation.link}>
-                <img alt={accommodation.eng} src={`images/main/icon/${accommodation.eng}.png`} />
-                {accommodation.name}
+            <li key={accomodation.id}>
+              <Link to={accomodation.link}>
+                <img alt={accomodation.eng} src={`images/main/icon/${accomodation.eng}.png`} />
+                {accomodation.name}
               </Link>
             </li>
           );
