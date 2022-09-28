@@ -13,14 +13,11 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 const Detail = () => {
+  const params = useParams();
   const [info, setInfo] = useRecoilState(reservInfoState);
-  const [startDate, setStartDate] = useRecoilState(startDateState);
-  const [endDate, setEndDate] = useRecoilState(endDateState);
   const [openModal, setOpenModal] = useState(false);
   const [showData, setShowData] = useState();
   const [component, setComponent] = useState(1);
-
-  const param = useParams().id;
 
   const handleClickBtn = () => {
     setOpenModal(true);
@@ -37,10 +34,11 @@ const Detail = () => {
       default:
     }
   };
+
   useEffect(() => {
     axios
       .get('/data/detail/roomType.json')
-      // .get(`http://localhost:8000/accomodation/rooms/details/${id}`)
+      // .get(`http://localhost:8000/accomodation/rooms/details/${params.id}`)
       .then((res) => {
         setShowData(res.data.roomTypeData);
         setInfo({
