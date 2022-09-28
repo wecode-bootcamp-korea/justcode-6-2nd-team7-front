@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { reservInfoState, startDateState, endDateState } from '../../atom';
+import { reservInfoState } from '../../atom';
 import Information from './components/Information';
 import ReviewContainer from './components/ReviewContainer';
 import RoomGuide from './components/RoomGuide';
@@ -10,7 +11,6 @@ import * as S from './Detail.styled';
 import EventModal from './components/EventModal';
 import SubjectSlide from './components/SubjectSlide';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 
 const Detail = () => {
   const params = useParams();

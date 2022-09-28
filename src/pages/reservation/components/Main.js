@@ -42,7 +42,7 @@ const Main = () => {
           setPoint(pointSum);
         });
     }
-  }, [inputs]);
+  }, []);
 
   const changeInput = (e) => {
     const { id, value } = e.target;
