@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { deleteReservationState } from '../../../atom';
 
-const ModalContainer = styled.div`
+const DeleteContainer = styled.div`
   .bg {
     display: 'flex';
     position: fixed;
@@ -73,7 +73,7 @@ const DeleteModal = () => {
   };
 
   return (
-    <ModalContainer>
+    <DeleteContainer>
       <div className='bg' onClick={clickBg}></div>
       <div className='logout-container'>
         <p>예약을 취소 하시겠습니까?</p>
@@ -90,7 +90,7 @@ const DeleteModal = () => {
           </button>
         </div>
       </div>
-    </ModalContainer>
+    </DeleteContainer>
   );
 };
 
