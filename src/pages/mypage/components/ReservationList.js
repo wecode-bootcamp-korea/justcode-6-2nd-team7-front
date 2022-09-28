@@ -15,7 +15,7 @@ const ReservationList = () => {
   const userId = useRecoilValue(userIdState);
 
   console.log(userId);
-
+  console.log(reservationList);
   const navigate = useNavigate();
 
   // 데이터 받아올때 유저아이디 포함 요청
@@ -25,17 +25,17 @@ const ReservationList = () => {
         headers: { id: 123 },
       })
       .then((res) => setReservationList(res.data.reservations));
-  }, []);
+  }, [reservationList]);
 
   const handleDelete = () => {
     setModal(true);
   };
 
-  const getDayOfWeek = (date) => {
-    const week = ['월', '화', '수', '목', '금', '토', '일'];
-    const dayOfWeek = week[date];
-    return dayOfWeek;
-  };
+  // const getDayOfWeek = (date) => {
+  const week = ['월', '화', '수', '목', '금', '토', '일'];
+  //   const dayOfWeek = week[date];
+  //   return dayOfWeek;
+  // };
 
   // const getDay = (date1, date2) => {
   //   const splitDay1 = date1.split('-');
@@ -77,8 +77,7 @@ const ReservationList = () => {
                       <span>이용완료</span>
                       <h2>{list.name}</h2>
                       <p>
-                        {list.date1} {getDayOfWeek(Number(list.day1))} - {list.date2} {getDayOfWeek(Number(list.day2))}{' '}
-                        {list.myutbak}박
+                        {list.date1} {week[Number(list.day1)]} - {list.date2} {week[Number(list.day2)]} {list.myutbak}박
                       </p>
                     </div>
                     <button
