@@ -1,17 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
 import { reservInfoState } from '../../../atom';
 
 import { MainContainerStyle } from './Main.Styled';
 
-const Main = ({ inputs, setInputs, point, setPoint, checkList, setCheckList, nameValid, setNameValid }) => {
+const Main = ({
+  inputs,
+  setInputs,
+  point,
+  setPoint,
+  checkList,
+  setCheckList,
+  nameValid,
+  setNameValid,
+  phoneValid,
+  setPhoneValid,
+}) => {
   const [info] = useRecoilState(reservInfoState);
   const { userName, phone, coupon, pointInput } = inputs;
-  const [phoneValid, setPhoneValid] = useState(true);
 
   useEffect(() => {
     if (localStorage.getItem('token') !== null) {
+      setNameValid(true);
+      setPhoneValid(true);
       axios
         .get('/data/my/userInfo.json')
         // .get('http://localhost:8000/my', { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
@@ -46,7 +58,6 @@ const Main = ({ inputs, setInputs, point, setPoint, checkList, setCheckList, nam
       ...inputs,
       [id]: value,
     });
-    // setSubmitName(inputs.name);
   };
 
   const handledNameInput = (e) => {

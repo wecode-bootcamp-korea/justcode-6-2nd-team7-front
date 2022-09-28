@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { startDateState, endDateState, reservInfoState } from '../../../atom';
 
@@ -6,18 +6,13 @@ import SubmitModal from './SubmitModal';
 
 import { SubContainerStyle } from '../Reservation.Styled';
 
-const Sub = ({ inputs, point, checkList }) => {
+const Sub = ({ modalMsg, setModalMsg }) => {
   const [startDate] = useRecoilState(startDateState);
   const [endDate] = useRecoilState(endDateState);
   const [info] = useRecoilState(reservInfoState);
   const [reservModal, setReservModal] = useState(false);
-  const [modalType, setModalType] = useState('');
   const period = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
   const week = ['일', '월', '화', '수', '목', '금', '토'];
-
-  // useEffect(() => {
-  //   inputs();
-  // }, []);
 
   const clickReservBtn = () => {
     setReservModal(true);
@@ -77,7 +72,7 @@ const Sub = ({ inputs, point, checkList }) => {
         </div>
 
         <button onClick={clickReservBtn}>결제하기</button>
-        {reservModal && <SubmitModal setReservModal={setReservModal} />}
+        {reservModal && <SubmitModal setReservModal={setReservModal} modalMsg={modalMsg} setModalMsg={setModalMsg} />}
       </SubContainerStyle>
     </>
   );

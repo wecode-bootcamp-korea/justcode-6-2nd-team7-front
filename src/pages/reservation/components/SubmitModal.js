@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const ModalContainer = styled.div`
@@ -31,6 +32,11 @@ const ModalContainer = styled.div`
       color: #000000de;
     }
 
+    .complete-msg {
+      line-height: 25px;
+      padding: 35px 30px 25px;
+    }
+
     .reserv-btn {
       display: flex;
       justify-content: end;
@@ -47,39 +53,82 @@ const ModalContainer = styled.div`
       }
       .cancel {
         color: ${({ theme }) => theme.colors.text};
+        display: none;
       }
       .submit {
         color: ${({ theme }) => theme.colors.mainColor};
+      }
+      .block {
+        display: block;
       }
     }
   }
 `;
 
-const SubmitModal = ({ setReservModal }) => {
-  const clickBg = () => {
+const SubmitModal = ({ setReservModal, modalMsg }) => {
+  const [submit, setSubmit] = useState(false);
+  const [completeMsg, setCompleteMsg] = useState(false);
+
+  useEffect(() => {
+    if (modalMsg === '결제하시겠습니까?') {
+      setSubmit(true);
+    } else {
+      setSubmit(false);
+    }
+  }, [modalMsg]);
+
+  const handleModal = () => {
     setReservModal(false);
   };
 
-  const handleSubmitBtn = () => {
-    setReservModal(false);
+  const handlePayBtn = () => {
+    setSubmit(false);
+    setCompleteMsg(true);
   };
 
   return (
     <ModalContainer>
-      <div className='bg' onClick={clickBg}></div>
+      <div className='bg' onClick={handleModal}></div>
       <div className='reserv-container'>
-        <p>결제하시겠습니까?</p>
+        {!completeMsg ? (
+          <p>{modalMsg}</p>
+        ) : (
+          <p className='complete-msg'>
+            결제가 완료되었습니다.
+            <br />
+            마이페이지에서 예약내역을 확인하세요.
+          </p>
+        )}
         <div className='reserv-btn'>
           <button
-            className='cancel'
+            className={`cancel ${submit && 'block'}`}
             onClick={() => {
               setReservModal(false);
             }}>
             취소
           </button>
-          <button className='submit' onClick={handleSubmitBtn}>
-            결제하기
-          </button>
+          {!submit && !completeMsg && (
+            <button
+              className='submit'
+              onClick={() => {
+                handleModal();
+              }}>
+              확인
+            </button>
+            // 결제 불가능할때
+          )}
+          {submit && (
+            <button className='submit' onClick={handlePayBtn}>
+              결제하기
+            </button>
+          )}
+          {/* 결제가능할 때 */}
+          {completeMsg && (
+            <button className='submit' onClick={handleModal}>
+              확인
+            </button>
+            // 결제 후 확인버튼
+          )}
         </div>
       </div>
     </ModalContainer>
