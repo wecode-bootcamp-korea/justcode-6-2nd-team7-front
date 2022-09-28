@@ -9,12 +9,12 @@ import { useRecoilState } from 'recoil';
 import { phoneCheckState, logoutModalState } from '../../../atom';
 
 const My = () => {
+  const [, setModal] = useRecoilState(logoutModalState);
+  const [phoneNum, setPhoneNum] = useRecoilState(phoneCheckState);
   const [nickname, setNickname] = useState(false);
   const [myName, setMyname] = useState(false);
   const [phone, setPhone] = useState(false);
   const [phoneCheck, setPhoneCheck] = useState(false);
-  const [modal, setModal] = useRecoilState(logoutModalState);
-  const [phoneNum, setPhoneNum] = useRecoilState(phoneCheckState);
   const [isActive, setIsActive] = useState(false);
 
   const [information, setInformation] = useState([]);
