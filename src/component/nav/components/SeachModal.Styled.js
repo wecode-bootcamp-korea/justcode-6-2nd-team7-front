@@ -35,12 +35,15 @@ export const Recommend = styled.div`
       font-size: 15px;
     }
 
-    a {
+    .recommend-link {
       width: 200px;
       margin: 4px 0px;
       font-weight: 300;
       font-size: 14.6px;
       color: ${({ theme }) => theme.colors.text};
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 `;

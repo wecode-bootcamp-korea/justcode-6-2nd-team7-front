@@ -43,13 +43,14 @@ const Search = () => {
       // .get(`/data/accommodation/accommodationNoData.json`)
       // .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
       .then((res) => {
-        // console.log(res);
-        setList(res.data.accommodation);
+        // console.log('res.data : ', res.data.data);
+        setList(res.data.data);
         setLoading(false);
-        res.data.accommodation.length === 0 && setList([]);
+        res.data.data.length === 0 && setList([]);
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
       });
   }, []);
 
@@ -77,10 +78,10 @@ const Search = () => {
 
         .then((res) => {
           // console.log(res);
-          setList(res.data.accommodation);
+          setList(res.data.data);
           setLoading(false);
           setKeyword(params.keyword);
-          res.data.accommodation.length === 0 && setList([]);
+          res.data.data.length === 0 && setList([]);
         })
         .catch((err) => {
           console.log(err);
