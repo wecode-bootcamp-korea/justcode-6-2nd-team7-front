@@ -49,6 +49,7 @@ const AccommodationList = () => {
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
         setList([]);
       });
   }, []);
@@ -88,7 +89,7 @@ const AccommodationList = () => {
         })
         .catch((err) => {
           console.log(err);
-          console.log(url);
+          setLoading(false);
           setList([]);
         });
     }
@@ -145,7 +146,7 @@ const AccommodationList = () => {
       })
       .catch((err) => {
         console.log(err);
-        console.log(`http://localhost:8000/accommodation/${param}?${queryArr.join('&')}`);
+        setLoading(false);
         setList([]);
       });
   };
