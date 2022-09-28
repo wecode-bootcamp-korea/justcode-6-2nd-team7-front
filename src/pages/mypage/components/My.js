@@ -203,7 +203,6 @@ const My = () => {
               }}>
               로그아웃
             </Link>
-            {/* {modal && <LogoutModal setModal={setModal} />} */}
             <Link to='/login'>회원탈퇴</Link>
           </div>
         </A.MyContainer>
