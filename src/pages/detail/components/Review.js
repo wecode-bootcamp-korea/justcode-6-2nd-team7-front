@@ -3,6 +3,7 @@ import * as S from './ReviewContainer.stlyed';
 
 const Review = ({ comment }) => {
   const [reviewScore, setReviewScore] = useState();
+  console.log('리뷰', comment);
 
   useEffect(() => {
     if (comment.score <= 2) {
@@ -37,7 +38,7 @@ const Review = ({ comment }) => {
         </div>
         <div className='score'>
           <div className='star'></div>
-          <div>{comment.score}</div>
+          <div>{comment.rating}</div>
         </div>
         <div className='name-flex'>
           <div className='name'>
@@ -46,7 +47,7 @@ const Review = ({ comment }) => {
         </div>
         <div className='comment-style'>{comment.comment}</div>
         <div>
-          <img alt='room' className='image-size' src={comment.url} />
+          <img alt='room' className='image-size' src={comment.img} />
         </div>
       </div>
     </S.Review>

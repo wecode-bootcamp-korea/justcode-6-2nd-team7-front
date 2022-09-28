@@ -39,15 +39,17 @@ const Detail = () => {
 
   useEffect(() => {
     axios
-      .get('/data/detail/roomType.json')
-      // .get(`http://localhost:8000/accomodation/rooms/details/${params.id}`)
+      // .get('/data/detail/roomType.json')
+      .get(`http://localhost:8000/accomodation/rooms/details?acno=${params.id}`)
       .then((res) => {
-        setShowData(res.data.roomTypeData);
+        console.log('data', res.data.roomTypeData[0]);
+        setShowData(res.data.roomTypeData[0]);
+
         setInfo({
           ...info,
-          name: res.data.roomTypeData.name,
+          name: res.data.roomTypeData[0].name,
         });
-        console.log('뫄', res);
+        console.log('뫄', res.data);
       }) //console은 나중에 지우도록 하겠습니다.
       .catch((err) => {
         console.log('뭐지', err);
@@ -68,22 +70,24 @@ const Detail = () => {
                 <span className='recommend'>{showData.recommend}</span>
               </div>
               <p className='address'>{showData.address}</p>
-              <div>
-                <button className='event' onClick={handleClickBtn}>
-                  <div className='icon-flex'>
-                    <li className='li-style'>{showData.event[0]}</li>
-                    <FontAwesomeIcon icon={faAngleRight} color='#fff' />
-                  </div>
-                </button>
-                {openModal && (
-                  <EventModal
-                    open={openModal}
-                    onClose={() => {
-                      setOpenModal(false);
-                    }}
-                  />
-                )}
-              </div>
+              {showData.event !== null && (
+                <div>
+                  <button className='event' onClick={handleClickBtn}>
+                    <div className='icon-flex'>
+                      <li className='li-style'>{showData.event[0]}</li>
+                      <FontAwesomeIcon icon={faAngleRight} color='#fff' />
+                    </div>
+                  </button>
+                  {openModal && (
+                    <EventModal
+                      open={openModal}
+                      onClose={() => {
+                        setOpenModal(false);
+                      }}
+                    />
+                  )}
+                </div>
+              )}
               <div className='comment-ceo'>
                 <p className='ceo'>사장님의 한마디</p>
                 <p className='ripple'>{showData.ceo}</p>

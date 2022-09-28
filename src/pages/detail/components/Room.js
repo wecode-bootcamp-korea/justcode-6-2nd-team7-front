@@ -18,7 +18,8 @@ const Room = ({ roomType }) => {
   const [info, setInfo] = useRecoilState(reservInfoState);
   const [openBtn, setOpenBtn] = useState(false);
   const [useBtn, setUseBtn] = useState(false);
-  const [period, setPeriod] = useState(Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)));
+  const [period, setPeriod] = useState(1);
+  console.log('aaa', roomType);
 
   useEffect(() => {
     endDate && setPeriod(Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)));
@@ -43,48 +44,52 @@ const Room = ({ roomType }) => {
       totalPrice: roomType.price * period,
     });
   };
-
   return (
     <>
-      <S.RoomType>
-        <div className='flex'>
-          <div>
+      {roomType.image.length !== 0 && (
+        <S.RoomType>
+          <div className='flex'>
             <div>
-              <img alt='room-img' className='img-size' src={roomType.image[0].url} />
-              <FontAwesomeIcon icon={faImages} className='icon-style' onClick={() => handleToggleBtn(true)} />
-            </div>
-          </div>
-          <div>
-            <strong className='subject'>{roomType.type}</strong>
-            <div className='remain'>남은객실 {roomType.remain}개</div>
-            <div className='flex underline-style'>
-              <strong>가격</strong>
-              <strong className='font-style'>
-                {roomType.price.toLocaleString()}원{period >= 2 && `/${period}박`}
-              </strong>
-            </div>
-            <div className='flex-btn'>
-              <button className='use-button' onClick={handleUseBtn}>
-                객실 이용안내
-              </button>
-              <FontAwesomeIcon icon={faAngleRight} />
-              {useBtn && (
-                <UseModal
-                  open={useBtn}
-                  onClose={() => {
-                    setUseBtn(false);
-                  }}
-                />
-              )}
+              <div>
+                <img alt='room-img' className='img-size' src={roomType.image[0].url} />
+
+                <FontAwesomeIcon icon={faImages} className='icon-style' onClick={() => handleToggleBtn(true)} />
+              </div>
             </div>
             <div>
-              <button className='reservation-button' onClick={endDate && handleResrvBtn}>
-                예약{period >= 2 && ` | ${(period * roomType.price).toLocaleString()}원 (${period}박)`}
-              </button>
+              <strong className='subject'>{roomType.type}</strong>
+              <div className='remain'>남은객실 {roomType.remain}개</div>
+              <div className='flex underline-style'>
+                <strong>가격</strong>
+                {roomType.price !== null && (
+                  <strong className='font-style'>
+                    {roomType.price.toLocaleString()}원{period >= 2 && `/${period}박`}
+                  </strong>
+                )}
+              </div>
+              <div className='flex-btn'>
+                <button className='use-button' onClick={handleUseBtn}>
+                  객실 이용안내
+                </button>
+                <FontAwesomeIcon icon={faAngleRight} />
+                {useBtn && (
+                  <UseModal
+                    open={useBtn}
+                    onClose={() => {
+                      setUseBtn(false);
+                    }}
+                  />
+                )}
+              </div>
+              <div>
+                <button className='reservation-button' onClick={endDate && handleResrvBtn}>
+                  예약{period >= 2 && ` | ${(period * roomType.price).toLocaleString()}원 (${period}박)`}
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </S.RoomType>
+        </S.RoomType>
+      )}
       <div>{openBtn === true ? <Slide images={roomType.image} /> : null}</div>
     </>
   );
