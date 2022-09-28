@@ -138,7 +138,6 @@ const AccomodationList = () => {
     ].flat();
     setQueryArr(newList);
     axios
-      // .get(`http://localhost:8000/accomodations/${param}?${'facility=6'}`)
       .get(`http://localhost:8000/accomodations/${param}?${queryArr.join('&')}`)
       .then((res) => {
         setList(res.data);
@@ -230,10 +229,8 @@ const AccomodationList = () => {
                     review={el.review}
                     region={el.region}
                     remain={el.remain}
-                    saleprice={Math.floor(Number(el.price) - Number(el.salerate) * 0.01 * Number(el.price))
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                    price={el.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                    saleprice={el.saleprice}
+                    price={el.price}
                     img={el.img}
                   />
                 );
