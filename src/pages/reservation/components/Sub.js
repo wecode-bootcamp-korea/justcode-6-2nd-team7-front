@@ -8,7 +8,6 @@ const Sub = () => {
   const [endDate] = useRecoilState(endDateState);
   const [info] = useRecoilState(reservInfoState);
   const week = ['일', '월', '화', '수', '목', '금', '토'];
-
   return (
     <>
       <SubContainerStyle>
@@ -22,21 +21,29 @@ const Sub = () => {
           <div>
             <div className='title'>객실타입/기간</div>
             <div className='content'>
-              <span>{info.roomType}</span> / <span>{startDate.getDate() - startDate.getDate()}</span>박
-              {/* <span>{info.type}</span> / <span>{endDate.getDate() - startDate.getDate()}</span>박 */}
+              <span> {endDate && info.type}</span> /{' '}
+              <span>
+                {endDate && Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)) + 1}
+              </span>
+              박
             </div>
           </div>
           <div>
             <div className='title'>체크인</div>
             <div className='content'>
-              <span>09.{startDate.getDate()}</span> <span>{week[startDate.getDay()]}</span> <span>15:00</span>
+              <span>
+                {startDate.getMonth() + 1}.{startDate.getDate()}
+              </span>{' '}
+              <span>{week[startDate.getDay()]}</span> <span>15:00</span>
             </div>
           </div>
           <div>
             <div className='title'>체크아웃</div>
             <div className='content'>
-              <span>09.{startDate.getDate()}</span> <span>{week[startDate.getDay()]}</span> <span>11:00</span>
-              {/* <span>09.{endDate.getDate()}</span> <span>{week[endDate.getDay()]}</span> <span>11:00</span> */}
+              <span>
+                {endDate && endDate.getMonth() + 1}.{endDate && endDate.getDate()}
+              </span>{' '}
+              <span>{endDate && week[endDate.getDay()]}</span> <span>11:00</span>
             </div>
           </div>
 

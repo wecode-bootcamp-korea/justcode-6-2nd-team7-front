@@ -11,7 +11,6 @@ import 'swiper/css/thumbs';
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from 'swiper';
-import styled from 'styled-components';
 
 const SubjectSlide = ({ sliderImg }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -31,9 +30,9 @@ const SubjectSlide = ({ sliderImg }) => {
         className='mySwiper2'>
         {sliderImg.map((showImg) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={showImg.id}>
               <div>
-                <img key={showImg.id} alt='hotel-img' src={showImg.url} />
+                <img alt='hotel-img' src={showImg.url} />
               </div>
             </SwiperSlide>
           );
@@ -50,9 +49,9 @@ const SubjectSlide = ({ sliderImg }) => {
         className='mySwiper'>
         {sliderImg.map((showImg) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={showImg.id}>
               <div>
-                <img key={showImg.id} alt='hotel-img' src={showImg.url} />
+                <img alt='hotel-img' src={showImg.url} />
               </div>
             </SwiperSlide>
           );

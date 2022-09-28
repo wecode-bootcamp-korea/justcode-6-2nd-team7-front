@@ -18,8 +18,11 @@ const Room = ({ roomType }) => {
   const [info, setInfo] = useRecoilState(reservInfoState);
   const [openBtn, setOpenBtn] = useState(false);
   const [useBtn, setUseBtn] = useState(false);
-  const [period] = useState(startDate.getDate() - startDate.getDate());
-  // const [period, setPeriod] = useState(EndDate.getDate() - startDate.getDate());
+  const [period, setPeriod] = useState(1);
+
+  useEffect(() => {
+    endDate && setPeriod(Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)) + 1);
+  }, [startDate, endDate]);
 
   const handleToggleBtn = () => {
     setOpenBtn((openBtn) => !openBtn);
@@ -57,8 +60,7 @@ const Room = ({ roomType }) => {
             <div className='flex underline-style'>
               <strong>가격</strong>
               <strong className='font-style'>
-                {roomType.price}원{period >= 0 && `/${period}박`}
-                {/* {roomType.price}원{period >= 2 && `/${period}박`} */}
+                {roomType.price.toLocaleString()}원{period >= 2 && `/${period}박`}
               </strong>
             </div>
             <div className='flex-btn'>
@@ -76,9 +78,8 @@ const Room = ({ roomType }) => {
               )}
             </div>
             <div>
-              <button className='reservation-button' onClick={handleResrvBtn}>
-                예약하기{period >= 0 && ` | ${period * roomType.price}원 (${period}박)`}
-                {/* 예약{period >= 2 && ` | ${period * roomType.price}원 (${period}박)`} */}
+              <button className='reservation-button' onClick={endDate && handleResrvBtn}>
+                예약{period >= 2 && ` | ${(period * roomType.price).toLocaleString()}원 (${period}박)`}
               </button>
             </div>
           </div>
