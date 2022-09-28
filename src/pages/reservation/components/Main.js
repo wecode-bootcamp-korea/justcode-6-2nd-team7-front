@@ -22,8 +22,8 @@ const Main = () => {
   useEffect(() => {
     if (localStorage.getItem('token') !== null) {
       axios
-        .get('/data/my/userInfo.json')
-        // .get('http://localhost:8000/my', { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
+        // .get('/data/my/userInfo.json')
+        .get('http://localhost:8000/my', { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
         .then((res) => {
           console.log(res.data);
           setInputs({
@@ -33,16 +33,16 @@ const Main = () => {
           });
         })
         .catch((err) => console.log(err));
-      // axios
-      //   .get('/data/my/point.json')
-      //   // .get('http://localhost:8000/my/point', { headers: { Authorization: localStorage.getItem('token') } })
-      //   .then((res) => {
-      //     let pointSum = 0;
-      //     res.data.data.forEach((data) => {
-      //       pointSum = pointSum + data.point;
-      //     });
-      //     setPoint(pointSum);
-      //   });
+      axios
+        // .get('/data/my/point.json')
+        .get('http://localhost:8000/my/point', { headers: { Authorization: localStorage.getItem('token') } })
+        .then((res) => {
+          let pointSum = 0;
+          res.data.data.forEach((data) => {
+            pointSum = pointSum + data.point;
+          });
+          setPoint(pointSum);
+        });
     }
   }, []);
 
