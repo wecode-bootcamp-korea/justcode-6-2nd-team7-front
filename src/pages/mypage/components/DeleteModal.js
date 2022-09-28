@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { reservationModalState } from '../../../atom';
+import { reservationIdState, reservationListState, reservationModalState, userIdState } from '../../../atom';
 
 const DeleteContainer = styled.div`
   .bg {
@@ -62,20 +62,29 @@ const DeleteContainer = styled.div`
 
 const DeleteModal = () => {
   const [, setModal] = useRecoilState(reservationModalState);
+  const [reservationID] = useRecoilState(reservationIdState);
+  const [, setReservationList] = useRecoilState(reservationListState);
+  const userId = useRecoilValue(userIdState);
 
   const clickBg = () => {
     setModal(false);
   };
 
+  console.log(reservationID);
+
   // 삭제 통신 예약아이디
   const handleLogout = () => {
     setModal(false);
 
-    axios
-      .delete(
-        'http://localhost:8000/my/reservations', //{아이디}
-      )
-      .then((res) => console.log(res));
+    axios.delete('http://localhost:8000/my/reservations', { data: { id: userId } }).then((res) => {
+      if (res.statusText === 'OK') {
+        axios
+          .get('http://localhost:8000/my/reservations', {
+            headers: { id: userId },
+          })
+          .then((res) => setReservationList(res.data.reservation));
+      }
+    });
   };
 
   return (

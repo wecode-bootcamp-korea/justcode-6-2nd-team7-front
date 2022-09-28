@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { reservationModalState, userIdState } from '../../../atom';
+import { reservationIdState, reservationListState, reservationModalState, userIdState } from '../../../atom';
 import MyPage from '../MyPage';
 import DeleteModal from './DeleteModal';
 import NoReservation from './NoReservation';
@@ -10,9 +10,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const ReservationList = () => {
-  const [reservationList, setReservationList] = useState([]);
+  const [reservationList, setReservationList] = useRecoilState(reservationListState);
   const [modal, setModal] = useRecoilState(reservationModalState);
   const userId = useRecoilValue(userIdState);
+  const [, setReservationId] = useRecoilState(reservationIdState);
 
   console.log(userId);
   console.log(reservationList);
@@ -22,10 +23,16 @@ const ReservationList = () => {
   useEffect(() => {
     axios
       .get('http://localhost:8000/my/reservations', {
-        headers: { id: 123 },
+        headers: { id: userId },
       })
-      .then((res) => setReservationList(res.data.reservations));
-  }, [reservationList]);
+      .then((res) => {
+        console.log(res);
+        setReservationList(res.data.reservation);
+        setReservationId(res.data.reservation.reservation_id);
+      });
+  }, [reservationList.reservation_id]);
+
+  console.log(reservationList);
 
   const handleDelete = () => {
     setModal(true);
@@ -63,36 +70,33 @@ const ReservationList = () => {
             {!reservationList && <p>이용내역</p>}
           </div>
           <div className='more-reservation'>
-            {reservationList ? (
-              reservationList?.map((list) => {
-                return (
-                  <div className='reservation-container' key={list.hotel_id}>
-                    <button className='delete' onClick={handleDelete}>
-                      X
-                    </button>
+            {reservationList?.map((list) => {
+              return (
+                <div className='reservation-container' key={list.hotel_id}>
+                  <button className='delete' onClick={handleDelete}>
+                    X
+                  </button>
 
-                    <img src={list.img} alt='reservation-img' />
+                  <img src={list.img} alt='reservation-img' />
 
-                    <div className='reservation-content'>
-                      <span>이용완료</span>
-                      <h2>{list.name}</h2>
-                      <p>
-                        {list.date1} {week[Number(list.day1)]} - {list.date2} {week[Number(list.day2)]} {list.myutbak}박
-                      </p>
-                    </div>
-                    <button
-                      className='rebook'
-                      onClick={() => {
-                        navigate(`/detail/${list.hotel_id}`);
-                      }}>
-                      다시 예약
-                    </button>
+                  <div className='reservation-content'>
+                    <span>이용완료</span>
+                    <h2>{list.name}</h2>
+                    <p>
+                      {list.date1} {week[Number(list.day1)]} - {list.date2} {week[Number(list.day2)]} {list.myutbak}박
+                    </p>
                   </div>
-                );
-              })
-            ) : (
-              <NoReservation />
-            )}
+                  <button
+                    className='rebook'
+                    onClick={() => {
+                      navigate(`/detail/${list.hotel_id}`);
+                    }}>
+                    다시 예약
+                  </button>
+                </div>
+              );
+            })}
+            {reservationList.length === 0 && <NoReservation />}
           </div>
           {modal && <DeleteModal />}
         </A.ReservationContainer>
