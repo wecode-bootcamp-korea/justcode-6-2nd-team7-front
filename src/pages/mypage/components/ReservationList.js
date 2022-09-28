@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { deleteReservationState, userIdState } from '../../../atom';
+import { reservationModalState, userIdState } from '../../../atom';
 import MyPage from '../MyPage';
 import DeleteModal from './DeleteModal';
 import NoReservation from './NoReservation';
@@ -9,9 +9,9 @@ import * as A from './ReservationList.Styled';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function ReservationList() {
+const ReservationList = () => {
   const [reservationList, setReservationList] = useState([]);
-  const [modal, setModal] = useRecoilState(deleteReservationState);
+  const [modal, setModal] = useRecoilState(reservationModalState);
   const userId = useRecoilValue(userIdState);
 
   console.log(userId);
@@ -66,7 +66,7 @@ function ReservationList() {
                     <button className='delete' onClick={handleDelete}>
                       X
                     </button>
-                    {modal && <DeleteModal />}
+
                     <img src={list.img} alt='reservation-img' />
 
                     <div className='reservation-content'>
@@ -91,10 +91,11 @@ function ReservationList() {
               <NoReservation />
             )}
           </div>
+          {modal && <DeleteModal />}
         </A.ReservationContainer>
       </S.MyPageContainer>
     </S.Header>
   );
-}
+};
 
 export default ReservationList;

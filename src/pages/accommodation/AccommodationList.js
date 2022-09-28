@@ -33,7 +33,7 @@ const AccommodationList = () => {
   const [secondDateShow, setSecondDateShow] = useState(false);
   const [loading, setLoading] = useState(true);
   const [keyword, setKeyword] = useState();
-  const [count, setCount] = useRecoilState(personsState);
+  const [count, _] = useRecoilState(personsState);
   const [queryArr, setQueryArr] = useRecoilState(queryState);
 
   const param = useParams().type;
@@ -68,9 +68,18 @@ const AccommodationList = () => {
         setLoading(false);
       });
     } else {
+      let url = '';
+      if (queryArr.length) {
+        url = `http://localhost:8000/accommodation/${param}${handleSelectUrl(id)}${`&${queryArr.join('&')}`}`;
+        if (Number(id) === 1) {
+          url = `http://localhost:8000/accommodation/${param}${handleSelectUrl(id)}?${queryArr.join('&')}`;
+        }
+      } else {
+        url = `http://localhost:8000/accommodation/${param}${handleSelectUrl(id)}`;
+      }
       axios
-        .get(`/data/accommodation/accommodation.json`)
-        // .get(`http://localhost:8000/accommodation/${param}${handleSelectUrl(id)}`)
+        // .get(`/data/accommodation/accommodation.json`)
+        .get(url)
         .then((res) => {
           setList(res.data.accommodation);
           setLoading(false);
@@ -79,6 +88,7 @@ const AccommodationList = () => {
         })
         .catch((err) => {
           console.log(err);
+          console.log(url);
           setList([]);
         });
     }
@@ -124,6 +134,20 @@ const AccommodationList = () => {
       `persons=${count}`,
     ].flat();
     setQueryArr(newList);
+    axios
+      // .get(`/data/accommodation/accommodation.json`)
+      .get(`http://localhost:8000/accommodation/${param}?${queryArr.join('&')}`)
+      .then((res) => {
+        setList(res.data.accommodation);
+        setLoading(false);
+        setKeyword();
+        res.data.accommodation.length === 0 && setList([]);
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(`http://localhost:8000/accommodation/${param}?${queryArr.join('&')}`);
+        setList([]);
+      });
   };
 
   return (

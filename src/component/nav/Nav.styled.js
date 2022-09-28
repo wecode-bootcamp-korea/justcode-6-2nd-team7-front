@@ -56,12 +56,13 @@ export const NavStyle = styled.nav`
 
     .nav-content {
       display: flex;
+      align-items: center;
 
       .search-icon-box {
         display: flex;
         flex-direction: row-reverse;
         width: 524px;
-        margin-right: 30px;
+        margin: 0px 30px 0px 20px;
         padding-right: 0px;
         transition-duration: 0.5s;
         &:hover {
@@ -80,6 +81,7 @@ export const NavStyle = styled.nav`
       }
 
       .navigate-list {
+        line-height: 55px;
         .list {
           float: left;
           line-height: inherit;
@@ -87,13 +89,32 @@ export const NavStyle = styled.nav`
           .nav-link {
             margin-left: 20px;
             font-size: 18px;
+
+            .smile-icon {
+              width: 40px;
+              height: 40px;
+              margin-top: 10px;
+            }
+
+            .caret-down {
+              margin-bottom: 12px;
+              padding-left: 8px;
+            }
           }
+        }
+
+        .icon-li {
+          height: 30px;
         }
       }
     }
 
     .none {
       display: none;
+    }
+
+    .flex {
+      display: flex;
     }
   }
 `;

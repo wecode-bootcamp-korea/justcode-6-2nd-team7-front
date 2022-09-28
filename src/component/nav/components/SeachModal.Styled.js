@@ -7,7 +7,7 @@ export const SearchModalBg = styled.div`
   left: 0px;
   width: 100vw;
   height: 100vh;
-  background-color: #00000059;
+  background-color: ${({ theme }) => theme.colors.modalBg};
   &:hover {
     cursor: default;
   }

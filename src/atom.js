@@ -15,23 +15,20 @@ export const logoutModalState = atom({
   default: false,
 });
 
+export const reservationModalState = atom({
+  key: 'reservationModalState',
+  default: false,
+});
+
 export const startDateState = atom({
   key: 'startDateState',
   default: new Date(),
 });
 
+const today = new Date();
 export const endDateState = atom({
   key: 'endDateState',
-  default: null,
-});
-
-export const reservInfoState = atom({
-  key: 'reservInfoState',
-  default: {
-    name: '',
-    roomType: '',
-    totalPrice: 0,
-  },
+  default: new Date(today.setDate(today.getDate() + 1)),
 });
 
 export const queryState = atom({
@@ -44,7 +41,11 @@ export const personsState = atom({
   default: 1,
 });
 
-export const deleteReservationState = atom({
-  key: 'deleteReservationState',
-  default: false,
+export const reservInfoState = atom({
+  key: 'reservInfoState',
+  default: {
+    name: '',
+    roomType: '',
+    totalPrice: 0,
+  },
 });

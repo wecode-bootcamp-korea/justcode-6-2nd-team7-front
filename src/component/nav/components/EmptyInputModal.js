@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const ModalContainer = styled.div`
   .bg {
-    display: 'flex';
     position: fixed;
     top: 0%;
     left: 0%;
@@ -19,30 +18,33 @@ const ModalContainer = styled.div`
     left: 40%;
     width: 360px;
     margin: auto;
-    padding-bottom: 30px;
+    padding-bottom: 25px;
     background-color: #fff;
     border-radius: 8px;
     z-index: 100;
 
     p {
       width: 100%;
-      padding: 40px 30px 30px;
+      padding: 20px 30px 12px;
       font-size: 18px;
       color: ${({ theme }) => theme.colors.text};
-      line-height: 30px;
+      line-height: 27px;
     }
 
-    button {
-      width: 290px;
-      height: 56px;
-      margin-left: 36px;
-      border: none;
-      border-radius: 5px;
-      outline: none;
-      background-color: ${({ theme }) => theme.colors.mainColor};
-      font-weight: 700;
-      font-size: 15px;
-      cursor: pointer;
+    .btn {
+      display: flex;
+      button {
+        width: 300px;
+        height: 48px;
+        margin: auto;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        background-color: ${({ theme }) => theme.colors.mainColor};
+        font-weight: 700;
+        font-size: 15px;
+        cursor: pointer;
+      }
     }
   }
 `;

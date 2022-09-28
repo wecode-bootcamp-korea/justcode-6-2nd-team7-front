@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 import MyModal from './components/MyModal';
 import SearchModal from './components/SearchModal';
@@ -73,7 +73,6 @@ const Nav = () => {
 
             <div style={{ display: listStyle }}>
               <ul className='navigate-list'>
-                <li className='list'></li>
                 <li className='list'>
                   <Link to='' className='nav-link'>
                     내주변
@@ -89,28 +88,30 @@ const Nav = () => {
                 <li className='list'>
                   <Link className='nav-link'>더보기</Link>
                 </li>
-                <li className='list'>
-                  {localStorage.getItem('token') !== null ? (
-                    <>
-                      <Link
-                        to='/my'
-                        onMouseOver={() => {
-                          setMyHover(true);
-                        }}
-                        onMouseOut={() => {
-                          setMyHover(false);
-                        }}
-                        className='nav-link'>
-                        마이페이지
-                        {myHover && <MyModal setMyHover={setMyHover} />}
-                      </Link>
-                    </>
-                  ) : (
+
+                {localStorage.getItem('token') !== null ? (
+                  <li className='list icon-li'>
+                    <Link
+                      to='/my'
+                      onMouseOver={() => {
+                        setMyHover(true);
+                      }}
+                      onMouseOut={() => {
+                        setMyHover(false);
+                      }}
+                      className='nav-link '>
+                      <img className='smile-icon' alt='myPage' src='/images/smile_icon.png' />
+                      <FontAwesomeIcon className='caret-down' icon={faCaretDown} size='xs' color='#ffff' />
+                      {myHover && <MyModal setMyHover={setMyHover} />}
+                    </Link>
+                  </li>
+                ) : (
+                  <li className='list '>
                     <Link to='/login' className='nav-link'>
                       로그인
                     </Link>
-                  )}
-                </li>
+                  </li>
+                )}
               </ul>
             </div>
           </div>

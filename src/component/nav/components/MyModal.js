@@ -17,8 +17,8 @@ const MyModalStyle = styled.div`
     box-shadow: 0px 8px 6px rgb(0 0 0 / 15%);
 
     .modal-list {
-      height: inherit;
-      margin-top: 20px;
+      height: 263px;
+      margin-top: 26px;
       padding: 0px 25px;
       border: 1px solid #ffff;
       border-radius: 13px;
@@ -27,17 +27,15 @@ const MyModalStyle = styled.div`
       font-size: 16px;
 
       li {
-        height: 30px;
-        margin: 10px 0px;
+        height: 38px;
 
         a {
           color: #000000;
-          text-decoration: none;
         }
       }
 
       .nickname {
-        margin: 20px 0px 20px 0px;
+        height: 54px;
         border-bottom: 1px solid rgb(220, 220, 220);
         font-size: 17px;
         font-weight: 600;

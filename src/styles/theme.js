@@ -8,5 +8,6 @@ export default {
     bkText: '#303030',
     text: '#7A7A7A',
     greyBg: '#efefef',
+    modalBg: '#00000099',
   },
 };

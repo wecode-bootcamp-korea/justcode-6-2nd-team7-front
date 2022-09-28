@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { deleteReservationState } from '../../../atom';
+import { reservationModalState } from '../../../atom';
 
 const DeleteContainer = styled.div`
   .bg {
@@ -11,8 +11,7 @@ const DeleteContainer = styled.div`
     left: 0%;
     height: 100vh;
     width: 100vw;
-    background-color: #2a2a2a;
-    opacity: 0.4;
+    background-color: ${({ theme }) => theme.colors.modalBg};
     color: ${({ theme }) => theme.colors.text};
     opacity: calc() 0.4;
     z-index: 99;
@@ -61,7 +60,7 @@ const DeleteContainer = styled.div`
 `;
 
 const DeleteModal = () => {
-  const [, setModal] = useRecoilState(deleteReservationState);
+  const [, setModal] = useRecoilState(reservationModalState);
 
   const clickBg = () => {
     setModal(false);

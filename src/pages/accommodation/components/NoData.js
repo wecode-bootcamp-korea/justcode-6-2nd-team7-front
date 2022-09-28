@@ -31,7 +31,7 @@ const NoData = ({ keyword }) => {
       )}
       {keyword && handleNodataType(keyword) && (
         <Main>
-          <p className='bold'>'{keyword}'에 대한 검색결과가 없습니다.</p>
+          <p className='bold'>' {keyword} ' 에 대한 검색결과가 없습니다.</p>
           <br />
           <p>다시 입력해주세요.</p>
         </Main>
