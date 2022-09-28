@@ -5,19 +5,10 @@ import { reservInfoState } from '../../../atom';
 
 import { MainContainerStyle } from './Main.Styled';
 
-const Main = () => {
+const Main = ({ inputs, setInputs, point, setPoint, checkList, setCheckList, nameValid, setNameValid }) => {
   const [info] = useRecoilState(reservInfoState);
-  const [inputs, setInputs] = useState({
-    userName: '',
-    phone: '',
-    coupon: 0,
-    pointInput: '',
-  });
-  const [point, setPoint] = useState(0);
   const { userName, phone, coupon, pointInput } = inputs;
-  const [checkList, setCheckList] = useState([]);
   const [phoneValid, setPhoneValid] = useState(true);
-  const [nameValid, setNameValid] = useState(true);
 
   useEffect(() => {
     if (localStorage.getItem('token') !== null) {
@@ -55,6 +46,7 @@ const Main = () => {
       ...inputs,
       [id]: value,
     });
+    // setSubmitName(inputs.name);
   };
 
   const handledNameInput = (e) => {

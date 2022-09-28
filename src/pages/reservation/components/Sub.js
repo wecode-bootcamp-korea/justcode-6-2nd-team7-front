@@ -1,83 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { startDateState, endDateState, reservInfoState } from '../../../atom';
-import styled from 'styled-components';
+
+import SubmitModal from './SubmitModal';
 
 import { SubContainerStyle } from '../Reservation.Styled';
 
-const ModalContainer = styled.div`
-  .bg {
-    display: 'flex';
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    height: 100vh;
-    width: 100vw;
-    background-color: #000000c7;
-    color: ${({ theme }) => theme.colors.text};
-    z-index: 99;
-  }
-
-  .reserv-container {
-    position: fixed;
-    top: 38%;
-    left: 40%;
-    width: 360px;
-    margin: auto;
-    background-color: #fff;
-    border-radius: 8px;
-    z-index: 100;
-
-    p {
-      width: 100%;
-      padding: 50px 30px 40px;
-      border-bottom: 1px solid #b8b8b8;
-      font-size: 16px;
-      color: #000000de;
-    }
-
-    .reserv-btn {
-      display: flex;
-      justify-content: end;
-      padding: 0px 15px;
-      button {
-        width: 70px;
-        height: 48px;
-        border: none;
-        outline: none;
-        background-color: #fff;
-        font-weight: 700;
-        font-size: 15px;
-        cursor: pointer;
-      }
-      .cancel {
-        color: ${({ theme }) => theme.colors.text};
-      }
-      .submit {
-        color: ${({ theme }) => theme.colors.mainColor};
-      }
-    }
-  }
-`;
-
-const Sub = () => {
+const Sub = ({ inputs, point, checkList }) => {
   const [startDate] = useRecoilState(startDateState);
   const [endDate] = useRecoilState(endDateState);
   const [info] = useRecoilState(reservInfoState);
   const [reservModal, setReservModal] = useState(false);
+  const [modalType, setModalType] = useState('');
   const period = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
   const week = ['일', '월', '화', '수', '목', '금', '토'];
 
+  // useEffect(() => {
+  //   inputs();
+  // }, []);
+
   const clickReservBtn = () => {
     setReservModal(true);
-  };
-
-  const clickBg = () => {
-    setReservModal(false);
-  };
-
-  const handleSubmitBtn = () => {
-    setReservModal(false);
   };
 
   return (
@@ -134,26 +77,7 @@ const Sub = () => {
         </div>
 
         <button onClick={clickReservBtn}>결제하기</button>
-        {reservModal && (
-          <ModalContainer>
-            <div className='bg' onClick={clickBg}></div>
-            <div className='reserv-container'>
-              <p>결제하시겠습니까?</p>
-              <div className='reserv-btn'>
-                <button
-                  className='cancel'
-                  onClick={() => {
-                    setReservModal(false);
-                  }}>
-                  취소
-                </button>
-                <button className='submit' onClick={handleSubmitBtn}>
-                  결제하기
-                </button>
-              </div>
-            </div>
-          </ModalContainer>
-        )}
+        {reservModal && <SubmitModal setReservModal={setReservModal} />}
       </SubContainerStyle>
     </>
   );
