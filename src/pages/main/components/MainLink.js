@@ -52,7 +52,7 @@ const MainLink = () => {
       id: 4,
       name: '게스트하우스',
       eng: 'ghestHouse',
-      link: '/accomodations/ghesthouse',
+      link: '/accomodations/guesthouse',
     },
     {
       id: 5,
