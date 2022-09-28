@@ -36,8 +36,6 @@ const Search = () => {
   const [secondDateShow, setSecondDateShow] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  console.log(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`);
-
   //처음 검색했을 때 받아오는 정보
   useEffect(() => {
     axios
