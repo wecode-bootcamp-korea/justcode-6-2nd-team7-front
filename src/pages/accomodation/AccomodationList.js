@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useReducer, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,10 +15,10 @@ import NoData from './components/NoData';
 import { region } from './data/region';
 import { handleCategory, handleSelectUrl, getDistanceFromLatLonInKm } from './data/functions';
 
-import * as S from './AccommodationList.styled';
+import * as S from './AccomodationList.styled';
 import LoadingSpinner from './components/LoadingSpinner';
 
-const AccommodationList = () => {
+const AccomodationList = () => {
   const [city, setCity] = useState(
     region.map((el, i) => {
       return i === 0 ? { ...el, show: true } : { ...el, show: false };
@@ -40,15 +40,17 @@ const AccommodationList = () => {
 
   useEffect(() => {
     axios
-      .get('/data/accommodation/accommodation.json')
-      //   .get(`http://localhost:8000/accommodation/${param}`)
+      // .get('/data/accomodation/accomodation.json')
+      .get(`http://localhost:8000/accomodations/${param}`)
       .then((res) => {
-        setList(res.data.accommodation);
+        console.log(res);
+        setList(res.data);
         setLoading(false);
-        res.data.accommodation.length === 0 && setList([]);
+        // res.data.length === 0 && setList([]);
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
         setList([]);
       });
   }, []);
@@ -70,25 +72,25 @@ const AccommodationList = () => {
     } else {
       let url = '';
       if (queryArr.length) {
-        url = `http://localhost:8000/accommodation/${param}${handleSelectUrl(id)}${`&${queryArr.join('&')}`}`;
+        url = `http://localhost:8000/accomodations/${param}${handleSelectUrl(id)}${`&${queryArr.join('&')}`}`;
         if (Number(id) === 1) {
-          url = `http://localhost:8000/accommodation/${param}${handleSelectUrl(id)}?${queryArr.join('&')}`;
+          url = `http://localhost:8000/accomodations/${param}${handleSelectUrl(id)}?${queryArr.join('&')}`;
         }
       } else {
-        url = `http://localhost:8000/accommodation/${param}${handleSelectUrl(id)}`;
+        url = `http://localhost:8000/accomodations/${param}${handleSelectUrl(id)}`;
       }
       axios
-        // .get(`/data/accommodation/accommodation.json`)
+        // .get(`/data/accomodation/accomodation.json`)
         .get(url)
         .then((res) => {
-          setList(res.data.accommodation);
+          setList(res.data);
           setLoading(false);
           setKeyword();
-          res.data.accommodation.length === 0 && setList([]);
+          res.data.length === 0 && setList([]);
         })
         .catch((err) => {
           console.log(err);
-          console.log(url);
+          setLoading(false);
           setList([]);
         });
     }
@@ -136,16 +138,16 @@ const AccommodationList = () => {
     setQueryArr(newList);
     axios
       // .get(`/data/accommodation/accommodation.json`)
-      .get(`http://localhost:8000/accommodation/${param}?${queryArr.join('&')}`)
+      .get(`http://localhost:8000/accomodation/${param}?${queryArr.join('&')}`)
       .then((res) => {
-        setList(res.data.accommodation);
+        setList(res.data);
         setLoading(false);
         setKeyword();
-        res.data.accommodation.length === 0 && setList([]);
+        res.data.length === 0 && setList([]);
       })
       .catch((err) => {
         console.log(err);
-        console.log(`http://localhost:8000/accommodation/${param}?${queryArr.join('&')}`);
+        setLoading(false);
         setList([]);
       });
   };
@@ -213,7 +215,7 @@ const AccommodationList = () => {
         <main>
           {showModal && <Map setShowModal={setShowModal} list={list} />}
           <TopFilter setShowModal={setShowModal} getNewList={getNewList} />
-          {!loading && (
+          {!loading && list && (
             <ul className='thumbnail-container mt32'>
               {list.map((el) => {
                 return (
@@ -227,9 +229,9 @@ const AccommodationList = () => {
                     review={el.review}
                     region={el.region}
                     remain={el.remain}
-                    price={el.price}
-                    saleprice={el.saleprice}
-                    img={el.img}
+                    saleprice={el.price}
+                    price={el.saleprice}
+                    img={el.image}
                   />
                 );
               })}
@@ -243,4 +245,4 @@ const AccommodationList = () => {
   );
 };
 
-export default AccommodationList;
+export default AccomodationList;

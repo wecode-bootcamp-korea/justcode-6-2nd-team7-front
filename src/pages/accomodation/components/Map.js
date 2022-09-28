@@ -15,7 +15,7 @@ const Main = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #00000099;
+  background-color: ${({ theme }) => theme.colors.modalBg};
   z-index: 100;
 
   .container {
@@ -75,7 +75,7 @@ const Map = ({ setShowModal, list }) => {
         });
         marker.setMap(kakaoMap);
 
-        const content = returnHtml(el.name, el.img, el.saleprice);
+        const content = returnHtml(el.name, el.image, el.saleprice);
         const infowindow = new kakao.maps.InfoWindow({
           position: new kakao.maps.LatLng(el.lat, el.lng),
           content: content,
