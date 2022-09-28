@@ -23,26 +23,28 @@ const Main = () => {
     if (localStorage.getItem('token') !== null) {
       axios
         .get('/data/my/userInfo.json')
-        // .get('http://localhost:8000/my', { headers: { Authorization: localStorage.getItem('token') } })
+        // .get('http://localhost:8000/my', { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
         .then((res) => {
+          console.log(res.data);
           setInputs({
             ...inputs,
             userName: res.data.data[0].userName,
             phone: res.data.data[0].userPhoneNumber,
           });
-        });
-      axios
-        .get('/data/my/point.json')
-        // .get('http://localhost:8000/my/point', { headers: { Authorization: localStorage.getItem('token') } })
-        .then((res) => {
-          let pointSum = 0;
-          res.data.data.forEach((data) => {
-            pointSum = pointSum + data.point;
-          });
-          setPoint(pointSum);
-        });
+        })
+        .catch((err) => console.log(err));
+      // axios
+      //   .get('/data/my/point.json')
+      //   // .get('http://localhost:8000/my/point', { headers: { Authorization: localStorage.getItem('token') } })
+      //   .then((res) => {
+      //     let pointSum = 0;
+      //     res.data.data.forEach((data) => {
+      //       pointSum = pointSum + data.point;
+      //     });
+      //     setPoint(pointSum);
+      //   });
     }
-  }, [inputs]);
+  }, []);
 
   const changeInput = (e) => {
     const { id, value } = e.target;
