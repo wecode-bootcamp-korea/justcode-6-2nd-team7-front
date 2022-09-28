@@ -51,7 +51,7 @@ const Main = ({ inputs, setInputs, point, setPoint, checkList, setCheckList, nam
 
   const handledNameInput = (e) => {
     const valid = /^[0-9|a-zA-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣 ]*$/;
-    6 > e.target.value.length > 0 && e.target.value.split(' ').length - 1 < 2 && valid.test(e.target.value)
+    21 > e.target.value.length > 0 && e.target.value.split(' ').length - 1 < 2 && valid.test(e.target.value)
       ? setNameValid(true)
       : setNameValid(false);
   };
@@ -89,7 +89,7 @@ const Main = ({ inputs, setInputs, point, setPoint, checkList, setCheckList, nam
                 }}
               />
               <div className={` name-valid input-valid small-text ${nameValid && 'none'}`}>
-                한글, 영문, 숫자 5자리 입력 가능.(문자 사이 공백은 1칸만 입력 가능)
+                한글, 영문, 숫자 20자리 입력 가능.(문자 사이 공백은 1칸만 입력 가능)
               </div>
             </div>
             <div>

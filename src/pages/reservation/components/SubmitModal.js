@@ -8,7 +8,7 @@ const ModalContainer = styled.div`
     left: 0%;
     height: 100vh;
     width: 100vw;
-    background-color: #000000c7;
+    background-color: ${({ theme }) => theme.colors.modalBg};
     color: ${({ theme }) => theme.colors.text};
     z-index: 99;
   }
