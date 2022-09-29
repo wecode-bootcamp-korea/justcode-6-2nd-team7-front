@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
-import { personsState, queryState } from '../../atom';
+import { queryState } from '../../atom';
 
 import Map from '../accommodation/components/Map';
 import SideFilter from '../accommodation/components/SideFilter';
@@ -32,8 +32,8 @@ const SearchContainer = styled.div`
 const Search = () => {
   const params = useParams();
   const [queryArr, setQueryArr] = useRecoilState(queryState);
-  const [list, setList] = useState();
-  const [keyword, setKeyword] = useState();
+  const [list, setList] = useState([]);
+  const [keyword, setKeyword] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [firstDateShow, setFirstDateShow] = useState(false);
   const [secondDateShow, setSecondDateShow] = useState(false);
@@ -51,7 +51,6 @@ const Search = () => {
         res.data.length === 0 && setList([]);
       })
       .catch((err) => {
-        console.log('err', err);
         setLoading(false);
         setList([]);
       });
