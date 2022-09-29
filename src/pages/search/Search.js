@@ -123,19 +123,14 @@ const Search = () => {
 
   const getFilteredList = (e) => {
     setLoading(true);
-    if (queryArr[0] !== null) {
-      const newList = [
-        queryArr.filter((el) => {
-          return !el.includes('persons=');
-        }),
-        `persons=${count}`,
-      ].flat();
-      setQueryArr(newList);
-    }
-
     axios
-      // .get(`http://localhost:8000/accommodations/?${queryArr.join('&')}&keyword=${params.keyword.replace(/ /g, '|')}`)
-      .get(`/data/accommodation/accommodation.json`)
+      .get(
+        `http://localhost:8000/accommodations/?${queryArr.join('&')}&keyword=${params.keyword.replace(
+          / /g,
+          '|',
+        )}&${queryArr.join('&')}`,
+      )
+      // .get(`/data/accommodation/accommodation.json`)
       .then((res) => {
         setList(res.data);
         setLoading(false);
