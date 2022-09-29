@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import { useRecoilState } from 'recoil';
-import { queryState } from '../../atom';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { personsState, queryState } from '../../atom';
 
 import Map from '../accommodation/components/Map';
 import SideFilter from '../accommodation/components/SideFilter';
@@ -31,7 +31,8 @@ const SearchContainer = styled.div`
 
 const Search = () => {
   const params = useParams();
-  const [queryArr] = useRecoilState(queryState);
+  const [queryArr, setQueryArr] = useRecoilState(queryState);
+  const count = useRecoilValue(personsState);
   const [list, setList] = useState([]);
   const [keyword, setKeyword] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -42,9 +43,9 @@ const Search = () => {
   //처음 검색했을 때 받아오는 정보
   useEffect(() => {
     axios
-      // .get('/data/accommodation/accommodation.json')
+      .get('/data/accommodation/accommodation.json')
       // .get(`/data/accommodation/accommodationNoData.json`)
-      .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
+      // .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
       .then((res) => {
         setList(res.data);
         setLoading(false);
@@ -54,7 +55,7 @@ const Search = () => {
         console.log(err);
         setLoading(false);
       });
-  }, []);
+  }, [params.keyword]);
 
   //탑필터 누를때마다 받아오는 정보
   const getNewList = (id) => {
@@ -85,7 +86,7 @@ const Search = () => {
           url = `http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(
             / /g,
             '|',
-          )}${handleSelectUrl(id)}`;
+          )}${handleSelectUrl(id)}?${queryArr.join('&')}`;
           // ${handleSelectUrl(id)}?${queryArr.join('&')}; ?어디다가 쓰는거지
         }
       } else {
@@ -95,8 +96,8 @@ const Search = () => {
         ).replace('?', '&')}`;
       }
       axios
-        // .get(`/data/accommodation/accommodation.json`)
-        .get(url)
+        .get(`/data/accommodation/accommodation.json`)
+        // .get(url)
         .then((res) => {
           setList(res.data);
           setLoading(false);
@@ -105,7 +106,7 @@ const Search = () => {
         .catch((err) => {
           console.log(err);
           setLoading(false);
-          // setList([]);
+          setList([]);
         });
     }
   };
@@ -121,36 +122,47 @@ const Search = () => {
   };
 
   // 일단 사용안하는 중이라 주석
-  // const getFilteredList = (e) => {
-  //   setLoading(true);
-  //   const newList = [
-  //     queryArr.filter((el) => {
-  //       return !el.includes('persons=');
-  //     }),
-  //     `persons=${count}`,
-  //   ].flat();
-  //   setQueryArr(newList);
-  //   axios
-  //     .get(
-  //       `http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}?${queryArr.join('&')}`,
-  //     )
-  //     .then((res) => {
-  //       setList(res.data);
-  //       setLoading(false);
-  //       setKeyword();
-  //       res.data.length === 0 && setList([]);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       console.log(
-  //         `http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}?${queryArr.join(
-  //           '&',
-  //         )}`,
-  //       );
-  //       setLoading(false);
-  //       setList([]);
-  //     });
-  // };
+
+  const getFilteredList = (e) => {
+    setLoading(true);
+    if (queryArr[0] !== null) {
+      const newList = [
+        queryArr.filter((el) => {
+          return !el.includes('persons=');
+        }),
+        `persons=${count}`,
+      ].flat();
+      setQueryArr(newList);
+    }
+
+    axios
+      .get(`http://localhost:8000/accommodations/?${queryArr.join('&')}&keyword=${params.keyword.replace(/ /g, '|')}`)
+      .then((res) => {
+        setList(res.data);
+        setLoading(false);
+        setKeyword();
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+        setList([]);
+      });
+  };
+
+  const handleResetList = () => {
+    axios
+      // .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
+      .get(`/data/accommodation/accommodation.json`)
+      .then((res) => {
+        setList(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+        setList([]);
+      });
+  };
 
   return (
     <SearchContainer>
@@ -162,6 +174,8 @@ const Search = () => {
           setFirstShow={setFirstDateShow}
           secondShow={secondDateShow}
           setSecondShow={setSecondDateShow}
+          getFilteredList={getFilteredList}
+          handleResetList={handleResetList}
         />
         <main>
           {showModal && <Map setShowModal={setShowModal} list={list} />}
