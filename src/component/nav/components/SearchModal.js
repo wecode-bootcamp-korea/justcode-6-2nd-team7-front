@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
@@ -23,13 +22,13 @@ const InputContainer = styled.div`
       color: ${(props) => props.inputColor};
     }
   }
+
   .none {
     display: none;
   }
 `;
 
 const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput, emptySubmit, setEmptySubmit }) => {
-  const navigate = useNavigate();
   const [inputColor, setInputColor] = useState('#ffffffc4');
   const recommendArr = [
     { id: 1, keyword: '강남' },
@@ -45,7 +44,7 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput,
 
   const clickRecommend = (e) => {
     setListStyle('block');
-    navigate(`/search/${input}`);
+    window.location.replace(`/search/${e.target.id}`);
   };
 
   const handleInput = (e) => {
@@ -56,7 +55,7 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput,
     if (e.key === 'Enter' && input !== '') {
       setListStyle('block');
       setInput('');
-      navigate(`/search/${input}`);
+      window.location.replace(`/search/${input}`);
     } else if (e.key === 'Enter' && input === '') {
       setEmptySubmit(true);
     }
@@ -94,9 +93,13 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput,
             {recommendArr.length !== 0 &&
               recommendArr.map((recommend) => {
                 return (
-                  <Link to={`/search/${recommend.keyword}`} onClick={clickRecommend} key={recommend.id}>
+                  <div
+                    id={recommend.keyword}
+                    className='recommend-link'
+                    onClick={clickRecommend}
+                    key={recommend.keyword}>
                     {recommend.keyword}
-                  </Link>
+                  </div>
                 );
               })}
           </div>
