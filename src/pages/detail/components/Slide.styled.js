@@ -49,7 +49,7 @@ export const Wrapper = styled.div`
     position: absolute;
     padding: 5px 10px;
     border-radius: 5px;
-    left: 30em;
+    left: 29em;
     width: 5em;
     background-color: #00000042;
   }

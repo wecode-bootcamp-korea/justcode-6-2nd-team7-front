@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 const CalenderWrapper = styled.div`
-  width: 248px;
-  margin: 32px;
+  width: 390px;
+  margin-top: 50px;
 `;
 
 const RoomGuide = ({ roomType }) => {
@@ -20,7 +20,7 @@ const RoomGuide = ({ roomType }) => {
           setFirstShow={setFirstShow}
           secondShow={secondShow}
           setSecondShow={setSecondShow}
-          align='column'
+          align='row'
         />
       </CalenderWrapper>
       {roomType.length !== 0 &&

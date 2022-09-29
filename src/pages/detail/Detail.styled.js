@@ -89,7 +89,7 @@ export const DetailExplanation = styled.div`
 `;
 
 export const MenuBar = styled.div`
-  margin-top: 38px;
+  margin-top: -30px;
   padding-top: 15px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.greyBg};
   .button {
