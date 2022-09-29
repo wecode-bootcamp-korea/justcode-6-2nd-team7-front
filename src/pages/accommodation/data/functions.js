@@ -368,6 +368,25 @@ export const getQueryNumber = (option) => {
     case '온돌':
       return 'bed_type=4';
     default:
-      return null;
+      return '';
+  }
+};
+
+export const getQueryNumberSearch = (option) => {
+  switch (option) {
+    case '모텔':
+      return 'accno=1';
+    case '호텔·리조트':
+      return 'accno=2';
+    case '펜션':
+      return 'accno=3';
+    case '게스트하우스':
+      return 'accno=4';
+    case '캠핑':
+      return 'accno=5';
+    case '한옥':
+      return 'accno=6';
+    default:
+      return '';
   }
 };
