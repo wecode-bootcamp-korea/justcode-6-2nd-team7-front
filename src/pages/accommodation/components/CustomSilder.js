@@ -34,17 +34,15 @@ const MySlider = styled(Slider)`
 
 const CustomSilder = ({ value, handleChange }) => {
   return (
-    <>
-      <MySlider
-        getAriaLabel={() => 'price range'}
-        value={value}
-        onChange={handleChange}
-        valueLabelDisplay='auto'
-        max={30}
-        min={1}
-        stpe={1}
-      />
-    </>
+    <MySlider
+      getAriaLabel={() => 'price range'}
+      value={value}
+      onChange={handleChange}
+      valueLabelDisplay='auto'
+      max={30}
+      min={1}
+      stpe={1}
+    />
   );
 };
 

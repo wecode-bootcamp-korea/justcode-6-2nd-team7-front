@@ -1,6 +1,5 @@
 import CheckItem from './CheckItem';
 import styled from 'styled-components';
-import { forwardRef } from 'react';
 
 const Container = styled.ul`
   display: flex;
@@ -13,7 +12,7 @@ const Container = styled.ul`
   }
 `;
 
-const OptionList = forwardRef(({ list, title, getOptions }, ref) => {
+const OptionList = ({ list, title, getOptions, checked, setChecked }) => {
   return (
     <>
       {list.optionList && (
@@ -21,7 +20,16 @@ const OptionList = forwardRef(({ list, title, getOptions }, ref) => {
           <h5 className='title mt32 mb18'>{list.title}</h5>
           <Container>
             {list.optionList.map((option, i) => {
-              return <CheckItem text={option} key={i} id={option} getOptions={getOptions} ref={ref} />;
+              return (
+                <CheckItem
+                  text={option}
+                  key={i}
+                  id={option}
+                  getOptions={getOptions}
+                  checked={checked}
+                  setChecked={setChecked}
+                />
+              );
             })}
           </Container>
         </section>
@@ -31,13 +39,22 @@ const OptionList = forwardRef(({ list, title, getOptions }, ref) => {
           <h5 className='title mt32 mb18'>{title}&nbsp;유형</h5>
           <ul>
             {list.map((type, i) => {
-              return <CheckItem text={type} key={i} id={type} getOptions={getOptions} ref={ref} />;
+              return (
+                <CheckItem
+                  text={type}
+                  key={i}
+                  id={type}
+                  getOptions={getOptions}
+                  checked={checked}
+                  setChecked={setChecked}
+                />
+              );
             })}
           </ul>
         </section>
       )}
     </>
   );
-});
+};
 
 export default OptionList;

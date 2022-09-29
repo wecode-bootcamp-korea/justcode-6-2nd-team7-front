@@ -25,7 +25,7 @@ const ReservationList = () => {
       .then((res) => {
         setReservationList(res.data.reservation);
       });
-  }, [reservationList]);
+  }, []);
 
   const handleDelete = () => {
     setModal(true);

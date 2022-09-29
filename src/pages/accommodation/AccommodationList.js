@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { personsState, queryState } from '../../atom';
 
 import Map from './components/Map';
@@ -27,26 +27,28 @@ const AccommodationList = () => {
   const [seletedCity, setSelectedCity] = useState('서울');
   const [seletedRegion, setSelectedRegion] = useState('강남/역삼/삼성/신사/청담');
   const [showMenu, setShowMenu] = useState(false);
+
   const [list, setList] = useState();
+  const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [keyword, setKeyword] = useState();
+  const [queryArr, setQueryArr] = useRecoilState(queryState);
+
   const [firstDateShow, setFirstDateShow] = useState(false);
   const [secondDateShow, setSecondDateShow] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [keyword, setKeyword] = useState();
-  const [count, _] = useRecoilState(personsState);
-  const [queryArr, setQueryArr] = useRecoilState(queryState);
+  const count = useRecoilValue(personsState);
 
   const param = useParams().type;
 
   useEffect(() => {
     axios
-      // .get('/data/accommodation/accommodation.json')
       .get(`http://localhost:8000/accommodations/${param}`)
 
       .then((res) => {
         // setList(res.data);
         setList(res.data);
         setLoading(false);
+        setList([]);
       })
       .catch((err) => {
         console.log(err);
@@ -54,6 +56,38 @@ const AccommodationList = () => {
         setList([]);
       });
   }, []);
+
+  const handleSelected = (e) => {
+    const text = e.target.textContent;
+    const newCity = city.map((el) => {
+      return el.title === text ? { ...el, show: true } : { ...el, show: false };
+    });
+    setCity(newCity);
+  };
+
+  const handleDetailRegion = (e) => {
+    const newSelectedCity = city.find((el) => {
+      return el.detail.includes(e.target.textContent) ? el.title : null;
+    }).title;
+    setSelectedCity(newSelectedCity);
+    setSelectedRegion(e.target.textContent);
+  };
+
+  const handleShowMenu = (e) => {
+    setShowMenu(true);
+    e.type === 'mouseleave' && setShowMenu(false);
+    (firstDateShow || secondDateShow) && setShowMenu(false);
+  };
+
+  const handleSortList = (lat, lng) => {
+    const haveDisList = list.map((el) => ({
+      ...el,
+      distance: Number(getDistanceFromLatLonInKm(lat, lng, el.lat, el.lng)),
+    }));
+    haveDisList.sort((a, b) => a.distance - b.distance);
+    setList(haveDisList);
+    setLoading(false);
+  };
 
   const getNewList = (id) => {
     setLoading(true);
@@ -80,7 +114,6 @@ const AccommodationList = () => {
       } else {
         url = `http://localhost:8000/accommodations/${param}${handleSelectUrl(id)}`;
       }
-
       axios
         .get(`/data/accommodation/accommodation.json`)
         // .get(url)
@@ -92,43 +125,10 @@ const AccommodationList = () => {
         })
         .catch((err) => {
           console.log(err);
-          console.log('url', url);
           setLoading(false);
           setList([]);
         });
     }
-  };
-
-  const handleSortList = (lat, lng) => {
-    const haveDisList = list.map((el) => ({
-      ...el,
-      distance: Number(getDistanceFromLatLonInKm(lat, lng, el.lat, el.lng)),
-    }));
-    haveDisList.sort((a, b) => a.distance - b.distance);
-    setList(haveDisList);
-    setLoading(false);
-  };
-
-  const handleSelected = (e) => {
-    const text = e.target.textContent;
-    const newCity = city.map((el) => {
-      return el.title === text ? { ...el, show: true } : { ...el, show: false };
-    });
-    setCity(newCity);
-  };
-
-  const handleDetailRegion = (e) => {
-    const newSelectedCity = city.find((el) => {
-      return el.detail.includes(e.target.textContent) ? el.title : null;
-    }).title;
-    setSelectedCity(newSelectedCity);
-    setSelectedRegion(e.target.textContent);
-  };
-
-  const handleShowMenu = (e) => {
-    setShowMenu(true);
-    e.type === 'mouseleave' && setShowMenu(false);
-    (firstDateShow || secondDateShow) && setShowMenu(false);
   };
 
   const getFilteredList = (e) => {
@@ -150,7 +150,6 @@ const AccommodationList = () => {
       })
       .catch((err) => {
         console.log(err);
-        console.log(`http://localhost:8000/accommodations/${param}?${queryArr.join('&')}`);
         setLoading(false);
         setList([]);
       });

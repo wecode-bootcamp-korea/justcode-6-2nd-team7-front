@@ -36,6 +36,11 @@ export const personsState = atom({
   default: 1,
 });
 
+export const checkedState = atom({
+  key: 'checkedState',
+  default: [],
+});
+
 export const reservInfoState = atom({
   key: 'reservInfoState',
   default: {

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
 import { returnHtml } from '../data/functions';
+import styled from 'styled-components';
 
 const { kakao } = window;
 
