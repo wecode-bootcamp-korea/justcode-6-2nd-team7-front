@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
+import { useRecoilState } from 'recoil';
+import { personsState, queryState } from '../../atom';
 
 import Map from '../accommodation/components/Map';
 import SideFilter from '../accommodation/components/SideFilter';
@@ -29,6 +31,7 @@ const SearchContainer = styled.div`
 
 const Search = () => {
   const params = useParams();
+  const [queryArr, setQueryArr] = useRecoilState(queryState);
   const [list, setList] = useState();
   const [keyword, setKeyword] = useState();
   const [showModal, setShowModal] = useState(false);
@@ -43,12 +46,8 @@ const Search = () => {
       // .get(`/data/accommodation/accommodationNoData.json`)
       .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
       .then((res) => {
-        console.log('res', res);
-        // console.log('res.data : ', res.data);
-        // setList(res.data.data); 실제코드
         setList(res.data);
         setLoading(false);
-        // res.data.data.length === 0 && setList([]); 실제코드
         res.data.length === 0 && setList([]);
       })
       .catch((err) => {
@@ -62,39 +61,51 @@ const Search = () => {
   const getNewList = (id) => {
     setLoading(true);
     if (Number(id) === 2) {
+      //거리순
+      if (list.length === 0) return setLoading(false);
       const getLatLng = (res) => {
         const myLat = res.coords.latitude;
         const myLng = res.coords.longitude;
         handleSortList(myLat, myLng);
       };
-
       navigator.geolocation.getCurrentPosition(getLatLng, (err) => {
         setKeyword('no location');
         setList([]);
         setLoading(false);
       });
     } else {
+      let url = '';
+      if (queryArr.length) {
+        url = `http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}${handleSelectUrl(
+          id,
+        )}
+        ${`&${queryArr.join('&')}`}
+        `;
+        if (Number(id) === 1) {
+          //추천 순
+          url = `http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(
+            / /g,
+            '|',
+          )}${handleSelectUrl(id)}`;
+          // ${handleSelectUrl(id)}?${queryArr.join('&')}; ?어디다가 쓰는거지
+        }
+      } else {
+        //낮은&높은 가격 순
+        url = `http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}${handleSelectUrl(
+          id,
+        ).replace('?', '&')}`;
+      }
       axios
         // .get(`/data/accommodation/accommodation.json`)
-        // .get(`/data/accommodation/accommodationNoData.json`)
-        .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
-        // .get(
-        //   `http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}${handleSelectUrl(
-        //     id,
-        //   )}`,
-        // )
+        .get(url)
         .then((res) => {
-          // console.log(res);
-          // setList(res.data.data); 실제코드
           setList(res.data);
           setLoading(false);
-          setKeyword(params.keyword);
-          // res.data.data.length === 0 && setList([]); 실제코드
+          setKeyword();
           res.data.length === 0 && setList([]);
         })
         .catch((err) => {
           console.log(err);
-          setKeyword(params.keyword);
           setLoading(false);
           setList([]);
         });
@@ -110,6 +121,38 @@ const Search = () => {
     setList(haveDisList);
     setLoading(false);
   };
+
+  // 일단 사용안하는 중이라 주석
+  // const getFilteredList = (e) => {
+  //   setLoading(true);
+  //   const newList = [
+  //     queryArr.filter((el) => {
+  //       return !el.includes('persons=');
+  //     }),
+  //     `persons=${count}`,
+  //   ].flat();
+  //   setQueryArr(newList);
+  //   axios
+  //     .get(
+  //       `http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}?${queryArr.join('&')}`,
+  //     )
+  //     .then((res) => {
+  //       setList(res.data);
+  //       setLoading(false);
+  //       setKeyword();
+  //       res.data.length === 0 && setList([]);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       console.log(
+  //         `http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}?${queryArr.join(
+  //           '&',
+  //         )}`,
+  //       );
+  //       setLoading(false);
+  //       setList([]);
+  //     });
+  // };
 
   return (
     <SearchContainer>

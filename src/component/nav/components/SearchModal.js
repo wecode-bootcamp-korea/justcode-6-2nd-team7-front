@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
@@ -30,7 +29,6 @@ const InputContainer = styled.div`
 `;
 
 const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput, emptySubmit, setEmptySubmit }) => {
-  const navigate = useNavigate();
   const [inputColor, setInputColor] = useState('#ffffffc4');
   const recommendArr = [
     { id: 1, keyword: '강남' },
@@ -100,7 +98,6 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput,
                     className='recommend-link'
                     onClick={clickRecommend}
                     key={recommend.keyword}>
-                    {/* to={`/search/${recommend.keyword}`}> */}
                     {recommend.keyword}
                   </div>
                 );
