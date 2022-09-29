@@ -24,7 +24,7 @@ function PhoneCheck() {
   const handlePhoneBtn = () => {
     phoneNum.length < 10 ? setPhoneCheck(false) : setPhoneCheck(true);
 
-    axios.post('http://localhost:8000/send', { phoneNumber: phoneNum });
+    axios.post('http://localhost:8000/send', { phoneNumber: phoneNum }).then((res) => console.log(res));
   };
 
   return (

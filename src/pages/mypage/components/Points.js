@@ -63,7 +63,7 @@ function Points() {
           <p className='points'>포인트</p>
           <div className='point-box'>
             <div>
-              <p className='my-points'>{points.history}</p>
+              <p className='my-points'>{points.history && points.history}</p>
               <h2>{points.point && points.point.toLocaleString()}</h2>
               <div>
                 <p className='point-delete'>

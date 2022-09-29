@@ -26,7 +26,12 @@ export const ReservationContainer = styled.div`
       height: 380px;
       margin-right: 2%;
       margin-top: 2%;
-      border: 1px solid rgb(230, 230, 230);
+      border: 1px solid #e6e6e6;
+
+      img {
+        height: 220px;
+        width: 100%;
+      }
 
       .delete {
         position: absolute;
@@ -46,7 +51,7 @@ export const ReservationContainer = styled.div`
 
         span {
           margin: 3%;
-          background-color: rgb(230, 230, 230);
+          background-color: #e6e6e6;
           font-size: 15px;
         }
 
@@ -64,8 +69,9 @@ export const ReservationContainer = styled.div`
         margin-left: 40%;
         background: none;
         border: none;
-        color: rgb(13, 103, 88);
+        color: #0d6758;
         font-size: 15px;
+        cursor: pointer;
       }
     }
   }

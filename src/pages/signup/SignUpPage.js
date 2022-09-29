@@ -31,7 +31,7 @@ function SignUpPage() {
   const handlePwInput = (e) => {
     setPassword(e.target.value);
 
-    password.length < 10 ? setPwCheck(true) : setPwCheck(false);
+    password.length < 5 ? setPwCheck(true) : setPwCheck(false);
   };
 
   const handlePwCheckInput = (e) => {
@@ -44,7 +44,7 @@ function SignUpPage() {
 
   // 버튼색상변경
   const handleBtn = () => {
-    email.includes('@') && password.length > 10 && password === passwordCheck ? setIsValid(true) : setIsValid(false);
+    email.includes('@') && password.length > 5 && password === passwordCheck ? setIsValid(true) : setIsValid(false);
   };
 
   // 사용자가 입력한 닉네임
@@ -98,7 +98,7 @@ function SignUpPage() {
             onChange={handlePwInput}
             onKeyUp={handleBtn}
           />
-          {pwCheck && <p className='check'>사용불가 : 최소 10자 이상 입력해주세요.</p>}
+          {pwCheck && <p className='check'>사용불가 : 최소 6자 이상 입력해주세요.</p>}
         </div>
         <div className='input-container'>
           <label>비밀번호 확인</label>

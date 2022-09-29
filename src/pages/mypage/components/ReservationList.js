@@ -1,17 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { userIdState } from '../../../atom';
 import MyPage from '../MyPage';
-
-import * as S from '../MyPage.Styled';
+import DeleteModal from './DeleteModal';
 import NoReservation from './NoReservation';
+import * as S from '../MyPage.Styled';
 import * as A from './ReservationList.Styled';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-function ReservationList() {
-  const [reservation, setReservation] = useState(false);
+const ReservationList = () => {
+  const [reservationList, setReservationList] = useState([]);
+  const [modal, setModal] = useState(false);
+  const userId = useRecoilValue(userIdState);
+
+  const navigate = useNavigate();
+
+  // 데이터 받아올때 유저아이디 포함 요청
+  useEffect(() => {
+    axios
+      .get('http://localhost:8000/my/reservations', {
+        headers: { id: userId },
+      })
+      .then((res) => {
+        setReservationList(res.data.reservation);
+      });
+  }, [reservationList]);
 
   const handleDelete = () => {
-    alert('예약이 취소 됩니다.');
-    setReservation((prev) => true);
+    setModal(true);
   };
+
+  const week = ['월', '화', '수', '목', '금', '토', '일'];
 
   return (
     <S.Header>
@@ -23,33 +43,42 @@ function ReservationList() {
         <A.ReservationContainer>
           <div>
             <p className='reservation'>예약내역</p>
-            {!reservation && <p>이용내역</p>}
+            {!reservationList && <p>이용내역</p>}
           </div>
           <div className='more-reservation'>
-            {!reservation ? (
-              <div className='reservation-container'>
-                <button className='delete' onClick={handleDelete}>
-                  X
-                </button>
-                <img
-                  src='https://image.goodchoice.kr/resize_490x348/affiliate/2021/12/27/61c9485177c56.jpg'
-                  alt='reservation-img'
-                />
-                <div className='reservation-content'>
-                  <span>이용완료</span>
-                  <h2>조선 팰리스 서울 강남 럭셔리 컬렉션</h2>
-                  <p>10.23 토 - 10.24 일 . 1박</p>
+            {reservationList?.map((list) => {
+              return (
+                <div className='reservation-container' key={list.hotel_id}>
+                  <button className='delete' onClick={handleDelete}>
+                    X
+                  </button>
+
+                  <img src={list.img} alt='reservation-img' />
+
+                  <div className='reservation-content'>
+                    <span>이용완료</span>
+                    <h2>{list.name}</h2>
+                    <p>
+                      {list.date1} {week[Number(list.day1)]} - {list.date2} {week[Number(list.day2)]} {list.myutbak}박
+                    </p>
+                  </div>
+                  <button
+                    className='rebook'
+                    onClick={() => {
+                      navigate(`/detail/${list.hotel_id}`);
+                    }}>
+                    다시 예약
+                  </button>
                 </div>
-                <button className='rebook'>다시 예약</button>
-              </div>
-            ) : (
-              <NoReservation />
-            )}
+              );
+            })}
+            {reservationList.length === 0 && <NoReservation />}
           </div>
+          {modal && <DeleteModal setReservationList={setReservationList} setModal={setModal} />}
         </A.ReservationContainer>
       </S.MyPageContainer>
     </S.Header>
   );
-}
+};
 
 export default ReservationList;
