@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { handleEvaluate } from '../../accommodation/data/functions';
 import Review from './Review';
 import * as S from './ReviewContainer.stlyed';
 
@@ -28,25 +29,11 @@ const ReviewContainer = ({ showData }) => {
     }
   }, [showData.score]);
 
-  const handleTotalComment = (score) => {
-    if (score >= 9.6) {
-      return '최고에요';
-    } else if (9.0 <= score && score < 9.6) {
-      return '추천해요';
-    } else if (7.0 <= score && score < 9.0) {
-      return '만족해요';
-    } else if (5.0 <= score && score < 7.0) {
-      return '좋아요';
-    } else {
-      return '평범해요';
-    }
-  };
-
   return (
     <S.ReviewContainer score={score}>
       <div>
         <div className='score-top'>
-          <div className='general-review'>{handleTotalComment(showData.score)}</div>
+          <div className='general-review'>{handleEvaluate(showData.score)}</div>
           <div className='score-total'>
             <div className='star-total'></div>
             <div className='score-num'>{showData.score}</div>
