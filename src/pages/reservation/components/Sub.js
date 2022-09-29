@@ -1,14 +1,22 @@
+import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { startDateState, endDateState, reservInfoState } from '../../../atom';
 
+import SubmitModal from './SubmitModal';
+
 import { SubContainerStyle } from '../Reservation.Styled';
 
-const Sub = () => {
+const Sub = ({ modalMsg, setModalMsg }) => {
   const [startDate] = useRecoilState(startDateState);
   const [endDate] = useRecoilState(endDateState);
   const [info] = useRecoilState(reservInfoState);
+  const [modal, setModal] = useState(false);
   const period = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
   const week = ['일', '월', '화', '수', '목', '금', '토'];
+
+  const clickPayBtn = () => {
+    setModal(true);
+  };
 
   return (
     <>
@@ -55,15 +63,16 @@ const Sub = () => {
               </div>
             </div>
             <ul>
-              <li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
+              <li>해당 객실가는 세금, 봉사료가 포함된 금액입니다.</li>
               <li>
-                결제완료 후 <span>예약자 이름</span>으로 바로 <span>체크인</span> 하시면 됩니다
+                결제완료 후 <span>예약자 이름</span>으로 바로 <span>체크인</span> 하시면 됩니다.
               </li>
             </ul>
           </div>
         </div>
 
-        <button>결제하기</button>
+        <button onClick={clickPayBtn}>결제하기</button>
+        {modal && <SubmitModal setModal={setModal} modalMsg={modalMsg} setModalMsg={setModalMsg} />}
       </SubContainerStyle>
     </>
   );
