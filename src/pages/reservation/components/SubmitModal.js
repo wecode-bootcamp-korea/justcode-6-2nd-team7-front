@@ -70,11 +70,7 @@ const SubmitModal = ({ setModal, modalMsg }) => {
   const [completeMsg, setCompleteMsg] = useState(false);
 
   useEffect(() => {
-    if (modalMsg === '결제하시겠습니까?') {
-      setSubmit(true);
-    } else {
-      setSubmit(false);
-    }
+    modalMsg === '결제하시겠습니까?' ? setSubmit(true) : setSubmit(false);
   }, [modalMsg]);
 
   const handleModal = () => {
