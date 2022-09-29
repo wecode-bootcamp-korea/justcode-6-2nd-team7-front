@@ -15,6 +15,8 @@ import axios from 'axios';
 const Detail = () => {
   const params = useParams();
   const [info, setInfo] = useRecoilState(reservInfoState);
+  const [startDate, setStartDate] = useRecoilState(startDateState);
+  const [endDate, setEndDate] = useRecoilState(endDateState);
   const [openModal, setOpenModal] = useState(false);
   const [showData, setShowData] = useState();
   const [component, setComponent] = useState(1);
