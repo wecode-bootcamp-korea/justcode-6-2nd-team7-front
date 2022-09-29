@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { useRecoilState } from 'recoil';
-import { queryState, personsState, startDateState, endDateState } from '../../../atom';
+import { queryState, personsState, startDateState, endDateState, refState } from '../../../atom';
 
 import CheckItem from './CheckItem';
 import OptionList from './OptionList';
@@ -42,6 +42,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
   const [queryArr, setQueryArr] = useRecoilState(queryState);
   const [startDate, setStartDate] = useRecoilState(startDateState);
   const [endDate, setEndDate] = useRecoilState(endDateState);
+
   const childComponentRef = useRef();
 
   const handleCount = (e) => {
@@ -105,7 +106,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
       { id: 4, title: '온돌', class: 'sedentary', selected: false },
     ]);
     setQueryArr([]);
-    childComponentRef.current.resetCheck();
+    // childComponentRef.current.resetCheck();
   };
 
   return (
