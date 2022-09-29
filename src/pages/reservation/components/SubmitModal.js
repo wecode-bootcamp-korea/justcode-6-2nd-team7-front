@@ -100,7 +100,7 @@ const SubmitModal = ({ setModal, modalMsg }) => {
           <button className={`cancel ${submit && 'block'}`} onClick={handleModal}>
             취소
           </button>
-          {!submit && !completeMsg && (
+          {!submit && (
             <button className='submit' onClick={handleModal}>
               확인
             </button>
@@ -108,11 +108,6 @@ const SubmitModal = ({ setModal, modalMsg }) => {
           {submit && (
             <button className='submit' onClick={handlePayBtn}>
               결제하기
-            </button>
-          )}
-          {completeMsg && (
-            <button className='submit' onClick={handleModal}>
-              확인
             </button>
           )}
         </div>
