@@ -41,7 +41,7 @@ const ReviewContainer = ({ showData }) => {
       return '평범해요';
     }
   };
-  console.log('뫄', typeof showData.score);
+
   return (
     <S.ReviewContainer score={score}>
       <div>

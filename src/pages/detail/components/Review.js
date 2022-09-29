@@ -3,7 +3,6 @@ import * as S from './ReviewContainer.stlyed';
 
 const Review = ({ comment }) => {
   const [reviewScore, setReviewScore] = useState();
-  console.log('리뷰', comment);
 
   useEffect(() => {
     if (comment.rating <= 2) {
