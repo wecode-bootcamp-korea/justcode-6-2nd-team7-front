@@ -15,11 +15,6 @@ export const logoutModalState = atom({
   default: false,
 });
 
-export const reservationModalState = atom({
-  key: 'reservationModalState',
-  default: false,
-});
-
 export const startDateState = atom({
   key: 'startDateState',
   default: new Date(),

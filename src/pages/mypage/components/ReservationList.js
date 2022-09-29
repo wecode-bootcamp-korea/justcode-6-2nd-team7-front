@@ -27,8 +27,6 @@ const ReservationList = () => {
       });
   }, [reservationList]);
 
-  console.log(reservationList);
-
   const handleDelete = () => {
     setModal(true);
   };
