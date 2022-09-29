@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { personsState, queryState } from '../../atom';
 
 import Map from './components/Map';
@@ -27,14 +27,16 @@ const AccommodationList = () => {
   const [seletedCity, setSelectedCity] = useState('서울');
   const [seletedRegion, setSelectedRegion] = useState('강남/역삼/삼성/신사/청담');
   const [showMenu, setShowMenu] = useState(false);
+
   const [list, setList] = useState();
   const [showModal, setShowModal] = useState(false);
+  const [keyword, setKeyword] = useState();
+  const [queryArr, setQueryArr] = useRecoilState(queryState);
+
   const [firstDateShow, setFirstDateShow] = useState(false);
   const [secondDateShow, setSecondDateShow] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [keyword, setKeyword] = useState();
-  const [count, _] = useRecoilState(personsState);
-  const [queryArr, setQueryArr] = useRecoilState(queryState);
+  const count = useRecoilValue(personsState);
 
   const param = useParams().type;
 

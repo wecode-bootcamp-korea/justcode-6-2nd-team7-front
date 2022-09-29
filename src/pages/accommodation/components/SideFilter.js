@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { useRecoilState } from 'recoil';
-import { queryState, personsState, startDateState, endDateState, refState } from '../../../atom';
+import { queryState, personsState, startDateState, endDateState } from '../../../atom';
 
 import CheckItem from './CheckItem';
 import OptionList from './OptionList';
@@ -31,6 +31,17 @@ const Up = styled.span`
 `;
 
 const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow, getFilteredList }) => {
+  const checkArr = [
+    ...options[handleSelectFilter(param)].availablePromotion,
+    options[handleSelectFilter(param)].typeList,
+    options[handleSelectFilter(param)].theme,
+    options[handleSelectFilter(param)].options.map((el) => el.optionList).flat(),
+  ]
+    .flat()
+    .filter((el) => el !== undefined)
+    .map((el, i) => {
+      return { name: el, checked: false };
+    });
   const [count, setCount] = useRecoilState(personsState);
   const [bedtype, setBedtype] = useState([
     { id: 1, title: '싱글', class: 'single', selected: false },
@@ -40,10 +51,9 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
   ]);
   const [value, setValue] = useState([1, 30]);
   const [queryArr, setQueryArr] = useRecoilState(queryState);
-  const [startDate, setStartDate] = useRecoilState(startDateState);
-  const [endDate, setEndDate] = useRecoilState(endDateState);
-
-  const childComponentRef = useRef();
+  const [, setStartDate] = useRecoilState(startDateState);
+  const [, setEndDate] = useRecoilState(endDateState);
+  const [checked, setChecked] = useState(checkArr);
 
   const handleCount = (e) => {
     e.target.closest('.down') && setCount((prev) => (prev === 1 ? 1 : prev - 1));
@@ -106,7 +116,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
       { id: 4, title: '온돌', class: 'sedentary', selected: false },
     ]);
     setQueryArr([]);
-    // childComponentRef.current.resetCheck();
+    setChecked((prev) => prev.map((el) => ({ id: el.id, name: el.name, checked: false })));
   };
 
   return (
@@ -135,7 +145,16 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
           <ul>
             {options[handleSelectFilter(param)].availablePromotion &&
               options[handleSelectFilter(param)].availablePromotion.map((el) => {
-                return <CheckItem text={el} key={el} id={el} getOptions={getOptions} ref={childComponentRef} />;
+                return (
+                  <CheckItem
+                    text={el}
+                    key={el}
+                    id={el}
+                    getOptions={getOptions}
+                    checked={checked}
+                    setChecked={setChecked}
+                  />
+                );
               })}
           </ul>
         </section>
@@ -145,13 +164,14 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
             list={options[handleSelectFilter(param)].typeList}
             title={options[handleSelectFilter(param)].type}
             getOptions={getOptions}
-            ref={childComponentRef}
+            checked={checked}
+            setChecked={setChecked}
           />
         )}
 
         {options[handleSelectFilter(param)].theme &&
           options[handleSelectFilter(param)].theme.map((type, i) => (
-            <OptionList key={i} list={type} getOptions={getOptions} ref={childComponentRef} />
+            <OptionList key={i} list={type} getOptions={getOptions} checked={checked} setChecked={setChecked} />
           ))}
 
         {handleShowCount(param) && (
@@ -207,7 +227,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
         )}
         {options[handleSelectFilter(param)].options &&
           options[handleSelectFilter(param)].options.map((type, i) => (
-            <OptionList key={i} list={type} getOptions={getOptions} ref={childComponentRef} />
+            <OptionList key={i} list={type} getOptions={getOptions} checked={checked} setChecked={setChecked} />
           ))}
       </div>
     </aside>
