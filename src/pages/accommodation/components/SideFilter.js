@@ -15,6 +15,7 @@ import {
   handleShowCount,
   handleShowBedtype,
   getQueryNumber,
+  getQueryNumberSearch,
 } from '../data/functions';
 import styled from 'styled-components';
 
@@ -107,6 +108,18 @@ const SideFilter = ({
     e.preventDefault();
     const option = e.currentTarget.childNodes[0].name;
     const checked = e.currentTarget.childNodes[0].checked;
+    if (param === 'search') {
+      !checked
+        ? setQueryArr((prev) => {
+            return [...new Set([...prev, getQueryNumberSearch(option)])];
+          })
+        : setQueryArr((prev) => {
+            const newArr = [...prev];
+            newArr.splice(prev.indexOf(getQueryNumberSearch(option)), 1);
+            return newArr;
+          });
+      return;
+    }
     !checked
       ? setQueryArr((prev) => {
           return [...new Set([...prev, getQueryNumber(option)])];
