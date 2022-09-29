@@ -42,19 +42,19 @@ export const Wrapper = styled.div`
   }
 
   .mySwiper2 {
-    height: 250%;
+    height: 150%;
   }
 
   .mySwiper {
-    height: 50%;
+    height: 0%;
     width: 80%;
     box-sizing: border-box;
-    padding: 80px 0;
+    margin-top: -20px;
+    padding: 40px 0;
   }
 
   .swiper-slide img {
-    display: block;
-    width: 100%;
+    width: 500px;
     object-fit: cover;
   }
   .swiper-button-prev {
@@ -66,5 +66,14 @@ export const Wrapper = styled.div`
     ::after {
       font-variant: unset;
     }
+  }
+
+  .top-image-container {
+    width: 500px;
+    height: 355px;
+  }
+
+  .image-container {
+    height: 66px;
   }
 `;

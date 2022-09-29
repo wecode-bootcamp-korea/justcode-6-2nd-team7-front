@@ -18,10 +18,6 @@ const SubjectSlide = ({ sliderImg }) => {
   return (
     <S.Wrapper>
       <Swiper
-        style={{
-          '--swiper-navigation-color': '#fff',
-          '--swiper-pagination-color': '#fff',
-        }}
         loop={true}
         spaceBetween={10}
         navigation={true}
@@ -31,7 +27,7 @@ const SubjectSlide = ({ sliderImg }) => {
         {sliderImg.map((showImg) => {
           return (
             <SwiperSlide key={showImg.id}>
-              <div>
+              <div className='top-image-container'>
                 <img alt='hotel-img' src={showImg.url} />
               </div>
             </SwiperSlide>
@@ -50,7 +46,7 @@ const SubjectSlide = ({ sliderImg }) => {
         {sliderImg.map((showImg) => {
           return (
             <SwiperSlide key={showImg.id}>
-              <div>
+              <div className='image-container'>
                 <img alt='hotel-img' className='slider-img' src={showImg.url} />
               </div>
             </SwiperSlide>
