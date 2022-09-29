@@ -18,10 +18,10 @@ const Room = ({ roomType }) => {
   const [info, setInfo] = useRecoilState(reservInfoState);
   const [openBtn, setOpenBtn] = useState(false);
   const [useBtn, setUseBtn] = useState(false);
-  const [period, setPeriod] = useState(1);
+  const [period, setPeriod] = useState(Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)));
 
   useEffect(() => {
-    endDate && setPeriod(Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)) + 1);
+    endDate && setPeriod(Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)));
   }, [startDate, endDate]);
 
   const handleToggleBtn = () => {

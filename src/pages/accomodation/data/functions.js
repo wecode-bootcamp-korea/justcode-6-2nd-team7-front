@@ -43,7 +43,7 @@ export const handleCategory = (param) => {
       return '호텔·리조트';
     case 'pension':
       return '펜션';
-    case 'ghesthouse':
+    case 'guesthouse':
       return '게스트하우스';
     case 'camping':
       return '캠핑·글램핑';
@@ -64,7 +64,7 @@ export const handleSelectFilter = (param) => {
       return 1;
     case 'pension':
       return 2;
-    case 'ghesthouse':
+    case 'guesthouse':
       return 3;
     case 'camping':
       return 4;
@@ -83,7 +83,7 @@ export const handleShowRange = (param) => {
   switch (param) {
     case 'motel':
     case 'pension':
-    case 'ghesthouse':
+    case 'guesthouse':
     case 'camping':
     case 'hanok':
     case 'search':
@@ -103,7 +103,7 @@ export const handleShowCount = (param) => {
       return false;
     case 'hotel':
     case 'pension':
-    case 'ghesthouse':
+    case 'guesthouse':
     case 'camping':
     case 'hanok':
       return true;
@@ -120,7 +120,7 @@ export const handleShowBedtype = (param) => {
       return false;
     case 'hotel':
     case 'pension':
-    case 'ghesthouse':
+    case 'guesthouse':
       return true;
     default:
       return false;

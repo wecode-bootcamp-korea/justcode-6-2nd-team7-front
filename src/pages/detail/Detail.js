@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { reservInfoState, startDateState, endDateState } from '../../atom';
+import { reservInfoState } from '../../atom';
 import Information from './components/Information';
 import ReviewContainer from './components/ReviewContainer';
 import RoomGuide from './components/RoomGuide';
@@ -10,17 +11,13 @@ import * as S from './Detail.styled';
 import EventModal from './components/EventModal';
 import SubjectSlide from './components/SubjectSlide';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 
 const Detail = () => {
+  const params = useParams();
   const [info, setInfo] = useRecoilState(reservInfoState);
-  const [startDate, setStartDate] = useRecoilState(startDateState);
-  const [endDate, setEndDate] = useRecoilState(endDateState);
   const [openModal, setOpenModal] = useState(false);
   const [showData, setShowData] = useState();
   const [component, setComponent] = useState(1);
-
-  const param = useParams().id;
 
   const handleClickBtn = () => {
     setOpenModal(true);
@@ -37,10 +34,11 @@ const Detail = () => {
       default:
     }
   };
+
   useEffect(() => {
     axios
       .get('/data/detail/roomType.json')
-      // .get(`http://localhost:8000/accomodation/rooms/details/${id}`)
+      // .get(`http://localhost:8000/accomodation/rooms/details/${params.id}`)
       .then((res) => {
         setShowData(res.data.roomTypeData);
         setInfo({

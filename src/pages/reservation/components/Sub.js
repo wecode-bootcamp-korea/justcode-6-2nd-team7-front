@@ -7,7 +7,9 @@ const Sub = () => {
   const [startDate] = useRecoilState(startDateState);
   const [endDate] = useRecoilState(endDateState);
   const [info] = useRecoilState(reservInfoState);
+  const period = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
   const week = ['일', '월', '화', '수', '목', '금', '토'];
+
   return (
     <>
       <SubContainerStyle>
@@ -21,11 +23,7 @@ const Sub = () => {
           <div>
             <div className='title'>객실타입/기간</div>
             <div className='content'>
-              <span> {endDate && info.type}</span> /{' '}
-              <span>
-                {endDate && Math.floor((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)) + 1}
-              </span>
-              박
+              <span> {endDate && info.roomType}</span> / <span>{endDate && period}</span>박
             </div>
           </div>
           <div>
