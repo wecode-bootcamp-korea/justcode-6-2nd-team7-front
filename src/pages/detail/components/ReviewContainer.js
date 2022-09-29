@@ -22,7 +22,7 @@ const ReviewContainer = ({ showData }) => {
       setScore(-214);
     } else if (showData.score <= 9.9) {
       setScore(-252);
-    } else if (showData.score === 10) {
+    } else if (showData.score == 10.0) {
       setScore(-289);
     }
   }, [showData.score]);
