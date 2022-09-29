@@ -80,13 +80,19 @@ const MainLink = () => {
     },
   ];
 
+  const handleClick = () => {
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
   return (
     <MainLinkContainer>
       <ul className='link-list'>
         {accomodationArr.map((accomodation) => {
           return (
             <li key={accomodation.id}>
-              <Link to={accomodation.link}>
+              <Link to={accomodation.link} onClick={handleClick}>
                 <img alt={accomodation.eng} src={`images/main/icon/${accomodation.eng}.png`} />
                 {accomodation.name}
               </Link>

@@ -37,6 +37,15 @@ const Nav = () => {
 
   const logoClick = () => {
     setListStyle('block');
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
+  const handleClick = () => {
+    window.scrollTo({
+      top: 0,
+    });
   };
 
   return (
@@ -74,18 +83,19 @@ const Nav = () => {
             <div style={{ display: listStyle }}>
               <ul className='navigate-list'>
                 <li className='list'>
-                  <Link to='' className='nav-link'>
+                  <Link to='nearby' className='nav-link' onClick={handleClick}>
                     내주변
                   </Link>
                 </li>
                 <li className='list'>
                   <Link
                     to={localStorage.getItem('token') !== null ? '/reservation-list' : '/login'}
-                    className='nav-link'>
+                    className='nav-link'
+                    onClick={handleClick}>
                     예약내역
                   </Link>
                 </li>
-                <li className='list'>
+                <li className='list' onClick={handleClick}>
                   <Link className='nav-link'>더보기</Link>
                 </li>
 
@@ -100,9 +110,9 @@ const Nav = () => {
                         setMyHover(false);
                       }}
                       className='nav-link '>
-                      <img className='smile-icon' alt='myPage' src='/images/smile_icon.png' />
+                      <img className='smile-icon' onClick={handleClick} alt='myPage' src='/images/smile_icon.png' />
                       <FontAwesomeIcon className='caret-down' icon={faCaretDown} size='xs' color='#ffff' />
-                      {myHover && <MyModal setMyHover={setMyHover} />}
+                      {myHover && <MyModal setMyHover={setMyHover} onClick={handleClick} />}
                     </Link>
                   </li>
                 ) : (
