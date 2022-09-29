@@ -49,13 +49,3 @@ export const reservInfoState = atom({
     totalPrice: 0,
   },
 });
-
-export const reservationIdState = atom({
-  key: 'reservationIdState',
-  default: '',
-});
-
-export const reservationListState = atom({
-  key: 'reservationListState',
-  default: [],
-});

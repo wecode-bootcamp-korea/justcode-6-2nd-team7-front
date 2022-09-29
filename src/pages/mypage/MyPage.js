@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import * as S from './MyPage.Styled';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 function MyPage() {
   return (

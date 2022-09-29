@@ -1,8 +1,8 @@
-import axios from 'axios';
 import React from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
+import { userIdState } from '../../../atom';
 import styled from 'styled-components';
-import { reservationIdState, reservationListState, reservationModalState, userIdState } from '../../../atom';
+import axios from 'axios';
 
 const DeleteContainer = styled.div`
   .bg {
@@ -60,19 +60,14 @@ const DeleteContainer = styled.div`
   }
 `;
 
-const DeleteModal = () => {
-  const [, setModal] = useRecoilState(reservationModalState);
-  const [reservationID] = useRecoilState(reservationIdState);
-  const [, setReservationList] = useRecoilState(reservationListState);
+const DeleteModal = ({ setModal, setReservationList }) => {
   const userId = useRecoilValue(userIdState);
 
   const clickBg = () => {
     setModal(false);
   };
 
-  console.log(reservationID);
-
-  // 삭제 통신 예약아이디
+  // 삭제 통신 예약아이디 전달
   const handleLogout = () => {
     setModal(false);
 

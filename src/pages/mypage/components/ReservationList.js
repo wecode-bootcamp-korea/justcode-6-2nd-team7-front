@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { reservationIdState, reservationListState, reservationModalState, userIdState } from '../../../atom';
+import { useRecoilValue } from 'recoil';
+import { userIdState } from '../../../atom';
 import MyPage from '../MyPage';
 import DeleteModal from './DeleteModal';
 import NoReservation from './NoReservation';
@@ -10,13 +10,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const ReservationList = () => {
-  const [reservationList, setReservationList] = useRecoilState(reservationListState);
-  const [modal, setModal] = useRecoilState(reservationModalState);
+  const [reservationList, setReservationList] = useState([]);
+  const [modal, setModal] = useState(false);
   const userId = useRecoilValue(userIdState);
-  const [, setReservationId] = useRecoilState(reservationIdState);
 
-  console.log(userId);
-  console.log(reservationList);
   const navigate = useNavigate();
 
   // 데이터 받아올때 유저아이디 포함 요청
@@ -26,11 +23,9 @@ const ReservationList = () => {
         headers: { id: userId },
       })
       .then((res) => {
-        console.log(res);
         setReservationList(res.data.reservation);
-        setReservationId(res.data.reservation.reservation_id);
       });
-  }, [reservationList.reservation_id]);
+  }, [reservationList]);
 
   console.log(reservationList);
 
@@ -38,24 +33,7 @@ const ReservationList = () => {
     setModal(true);
   };
 
-  // const getDayOfWeek = (date) => {
   const week = ['월', '화', '수', '목', '금', '토', '일'];
-  //   const dayOfWeek = week[date];
-  //   return dayOfWeek;
-  // };
-
-  // const getDay = (date1, date2) => {
-  //   const splitDay1 = date1.split('-');
-  //   const splitDay2 = date2.split('-');
-
-  //   const day1 = new Date(splitDay1[0], splitDay1[1], splitDay1[2]);
-  //   const day2 = new Date(splitDay2[0], splitDay2[1], splitDay2[2]);
-
-  //   const time = day2.getTime() - day1.getTime();
-  //   const elapsedDay = time / 1000 / 60 / 60 / 24;
-
-  //   return elapsedDay;
-  // };
 
   return (
     <S.Header>
@@ -98,7 +76,7 @@ const ReservationList = () => {
             })}
             {reservationList.length === 0 && <NoReservation />}
           </div>
-          {modal && <DeleteModal />}
+          {modal && <DeleteModal setReservationList={setReservationList} setModal={setModal} />}
         </A.ReservationContainer>
       </S.MyPageContainer>
     </S.Header>
