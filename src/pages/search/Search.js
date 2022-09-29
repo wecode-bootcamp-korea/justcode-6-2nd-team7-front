@@ -31,7 +31,7 @@ const SearchContainer = styled.div`
 
 const Search = () => {
   const params = useParams();
-  const [queryArr, setQueryArr] = useRecoilState(queryState);
+  const [queryArr] = useRecoilState(queryState);
   const [list, setList] = useState([]);
   const [keyword, setKeyword] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -48,11 +48,11 @@ const Search = () => {
       .then((res) => {
         setList(res.data);
         setLoading(false);
-        res.data.length === 0 && setList([]);
+        setKeyword(params.keyword);
       })
       .catch((err) => {
+        console.log(err);
         setLoading(false);
-        setList([]);
       });
   }, []);
 
@@ -100,13 +100,12 @@ const Search = () => {
         .then((res) => {
           setList(res.data);
           setLoading(false);
-          setKeyword();
-          res.data.length === 0 && setList([]);
+          setKeyword(params.keyword);
         })
         .catch((err) => {
           console.log(err);
           setLoading(false);
-          setList([]);
+          // setList([]);
         });
     }
   };
