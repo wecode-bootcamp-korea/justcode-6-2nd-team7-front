@@ -70,7 +70,6 @@ export const Review = styled.div`
         background-size: 180px;
         overflow: hidden;
         background-position: 4px ${(props) => props.score}px;
-        /* background-position: 4px 3px; */
       }
     }
   }

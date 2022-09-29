@@ -6,26 +6,26 @@ const Review = ({ comment }) => {
   console.log('리뷰', comment);
 
   useEffect(() => {
-    if (comment.score <= 2) {
+    if (comment.rating <= 2) {
       setReviewScore(3);
-    } else if (comment.score <= 3) {
+    } else if (comment.rating <= 3) {
       setReviewScore(-18);
-    } else if (comment.score <= 4) {
+    } else if (comment.rating <= 4) {
       setReviewScore(-39);
-    } else if (comment.score <= 5) {
+    } else if (comment.rating <= 5) {
       setReviewScore(-59);
-    } else if (comment.score <= 6) {
+    } else if (comment.rating <= 6) {
       setReviewScore(-78);
-    } else if (comment.score <= 7) {
+    } else if (comment.rating <= 7) {
       setReviewScore(-98);
-    } else if (comment.score <= 8) {
+    } else if (comment.rating <= 8) {
       setReviewScore(-118);
-    } else if (comment.score <= 9) {
+    } else if (comment.rating <= 9) {
       setReviewScore(-138);
-    } else if (comment.score <= 10) {
+    } else if (comment.rating <= 10) {
       setReviewScore(-159);
     }
-  }, [comment.score]);
+  }, [comment.rating]);
   return (
     <S.Review score={reviewScore}>
       <div className='icon-wrapper'>

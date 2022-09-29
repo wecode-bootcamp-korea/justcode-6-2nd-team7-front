@@ -5,6 +5,7 @@ import * as S from './ReviewContainer.stlyed';
 
 const ReviewContainer = ({ showData }) => {
   const [score, setScore] = useState();
+
   useEffect(() => {
     if (showData.score <= 2.9) {
       setScore(2);
@@ -22,16 +23,30 @@ const ReviewContainer = ({ showData }) => {
       setScore(-214);
     } else if (showData.score <= 9.9) {
       setScore(-252);
-    } else if (showData.score == 10.0) {
+    } else if (showData.score <= 10.0) {
       setScore(-289);
     }
   }, [showData.score]);
 
+  const handleTotalComment = (score) => {
+    if (score >= 9.6) {
+      return '최고에요';
+    } else if (9.0 <= score && score < 9.6) {
+      return '추천해요';
+    } else if (7.0 <= score && score < 9.0) {
+      return '만족해요';
+    } else if (5.0 <= score && score < 7.0) {
+      return '좋아요';
+    } else {
+      return '평범해요';
+    }
+  };
+  console.log('뫄', typeof showData.score);
   return (
     <S.ReviewContainer score={score}>
       <div>
         <div className='score-top'>
-          <div className='general-review'>추천해요</div>
+          <div className='general-review'>{handleTotalComment(showData.score)}</div>
           <div className='score-total'>
             <div className='star-total'></div>
             <div className='score-num'>{showData.score}</div>
