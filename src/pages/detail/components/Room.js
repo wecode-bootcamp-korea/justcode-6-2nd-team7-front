@@ -50,9 +50,14 @@ const Room = ({ roomType }) => {
           <div className='flex'>
             <div>
               <div>
-                <img alt='room-img' className='img-size' src={roomType.image[0].url} />
+                <img
+                  alt='room-img'
+                  className='img-size'
+                  src={roomType.image[0].url}
+                  onClick={() => handleToggleBtn(true)}
+                />
 
-                <FontAwesomeIcon icon={faImages} className='icon-style' onClick={() => handleToggleBtn(true)} />
+                <FontAwesomeIcon icon={faImages} className='icon-style' />
               </div>
             </div>
             <div>

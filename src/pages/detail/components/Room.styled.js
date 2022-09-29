@@ -18,6 +18,7 @@ export const RoomType = styled.div`
     display: inline;
     width: 376px;
     height: 226px;
+    cursor: pointer;
   }
   .icon-style {
     position: relative;
@@ -60,6 +61,7 @@ export const RoomType = styled.div`
     border: none;
     font-size: 18px;
     text-align: center;
+    cursor: pointer;
   }
   .remain {
     margin-bottom: 5px;
