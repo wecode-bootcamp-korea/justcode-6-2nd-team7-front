@@ -45,7 +45,7 @@ const AccommodationList = () => {
 
       .then((res) => {
         // setList(res.data);
-        setList(res.data.data);
+        setList(res.data);
         setLoading(false);
       })
       .catch((err) => {
@@ -85,8 +85,7 @@ const AccommodationList = () => {
         .get(`/data/accommodation/accommodation.json`)
         // .get(url)
         .then((res) => {
-          // setList(res.data);
-          setList(res.data.data);
+          setList(res.data);
           setLoading(false);
           setKeyword();
           res.data.length === 0 && setList([]);
