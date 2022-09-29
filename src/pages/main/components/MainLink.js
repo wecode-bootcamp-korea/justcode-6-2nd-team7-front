@@ -70,7 +70,7 @@ const MainLink = () => {
       id: 7,
       name: '내주변',
       eng: 'mySpace',
-      link: '/accommodations/nearby',
+      link: '/',
     },
     {
       id: 8,
