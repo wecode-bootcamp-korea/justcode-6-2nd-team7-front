@@ -28,7 +28,7 @@ export const Wrapper = styled.div`
   .swiper-slide img {
     display: block;
     width: 485px;
-    height: 250px;
+    height: 350px;
     object-fit: cover;
   }
   .swiper {
