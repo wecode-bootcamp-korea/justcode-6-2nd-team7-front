@@ -121,8 +121,6 @@ const Search = () => {
     setLoading(false);
   };
 
-  // 일단 사용안하는 중이라 주석
-
   const getFilteredList = (e) => {
     setLoading(true);
     if (queryArr[0] !== null) {
@@ -136,7 +134,8 @@ const Search = () => {
     }
 
     axios
-      .get(`http://localhost:8000/accommodations/?${queryArr.join('&')}&keyword=${params.keyword.replace(/ /g, '|')}`)
+      // .get(`http://localhost:8000/accommodations/?${queryArr.join('&')}&keyword=${params.keyword.replace(/ /g, '|')}`)
+      .get(`/data/accommodation/accommodation.json`)
       .then((res) => {
         setList(res.data);
         setLoading(false);
