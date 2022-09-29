@@ -112,6 +112,7 @@ const AccommodationList = () => {
         url = `http://localhost:8000/accommodations/${param}${handleSelectUrl(id)}`;
       }
       axios
+        // .get(`/data/accommodation/accommodation.json`)
         .get(url)
         .then((res) => {
           setList(res.data);
