@@ -18,8 +18,9 @@ const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow, align })
   const [endDate, setEndDate] = useRecoilState(endDateState);
 
   useEffect(() => {
-    startDate > endDate && setEndDate();
-  }, [startDate, endDate]);
+    const newStartDate = new Date(startDate.getTime());
+    startDate >= endDate && setEndDate(new Date(newStartDate.setDate(newStartDate.getDate() + 1)));
+  }, [startDate]);
 
   const handleShowCalendar = (e) => {
     !e.target.closest('.container') && setFirstShow(false);
