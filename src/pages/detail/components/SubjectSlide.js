@@ -51,7 +51,7 @@ const SubjectSlide = ({ sliderImg }) => {
           return (
             <SwiperSlide key={showImg.id}>
               <div>
-                <img alt='hotel-img' src={showImg.url} />
+                <img alt='hotel-img' className='slider-img' src={showImg.url} />
               </div>
             </SwiperSlide>
           );

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   width: 500px;
+  height: 540px;
   display: flex;
   flex-direction: column;
 
@@ -25,12 +26,12 @@ export const Wrapper = styled.div`
   .swiper-slide img {
     display: block;
     width: 100%;
-    /* object-fit: cover; */
+    height: inherit;
+    object-fit: cover;
   }
 
   .swiper {
     width: 100%;
-    height: 500px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -45,10 +46,10 @@ export const Wrapper = styled.div`
   }
 
   .mySwiper {
-    height: 100%;
+    height: 50%;
     width: 80%;
     box-sizing: border-box;
-    padding: 10px 0;
+    padding: 80px 0;
   }
 
   .swiper-slide img {
@@ -59,9 +60,6 @@ export const Wrapper = styled.div`
   .swiper-button-prev {
     position: absolute;
     color: ${({ theme }) => theme.colors.text};
-    ::after {
-      font-variant: unset;
-    }
   }
   .swiper-button-next {
     color: ${({ theme }) => theme.colors.text};
