@@ -106,8 +106,6 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
     ]);
     setQueryArr([]);
     childComponentRef.current.resetCheck();
-    // console.log('current', childComponentRef.current);
-    // console.log('ref', childComponentRef);
   };
 
   return (
