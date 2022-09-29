@@ -15,10 +15,10 @@ import NoData from './components/NoData';
 import { region } from './data/region';
 import { handleCategory, handleSelectUrl, getDistanceFromLatLonInKm } from './data/functions';
 
-import * as S from './AccomodationList.styled';
+import * as S from './AccommodationList.styled';
 import LoadingSpinner from './components/LoadingSpinner';
 
-const AccomodationList = () => {
+const AccommodationList = () => {
   const [city, setCity] = useState(
     region.map((el, i) => {
       return i === 0 ? { ...el, show: true } : { ...el, show: false };
@@ -40,8 +40,8 @@ const AccomodationList = () => {
 
   useEffect(() => {
     axios
-      // .get('/data/accomodation/accomodation.json')
-      .get(`http://localhost:8000/accomodations/${param}`)
+      // .get('/data/accommodation/accommodation.json')
+      .get(`http://localhost:8000/accommodations/${param}`)
       .then((res) => {
         setList(res.data);
         setLoading(false);
@@ -71,14 +71,14 @@ const AccomodationList = () => {
     } else {
       let url = '';
       if (queryArr.length) {
-        url = `http://localhost:8000/accomodations/${param}${handleSelectUrl(id)}${`&${queryArr.join('&')}`}`;
+        url = `http://localhost:8000/accommodations/${param}${handleSelectUrl(id)}${`&${queryArr.join('&')}`}`;
         if (Number(id) === 1) {
-          url = `http://localhost:8000/accomodations/${param}${handleSelectUrl(id)}?${queryArr.join('&')}`;
+          url = `http://localhost:8000/accommodations/${param}${handleSelectUrl(id)}?${queryArr.join('&')}`;
         }
       } else {
-        url = `http://localhost:8000/accomodations/${param}${handleSelectUrl(id)}`;
+        url = `http://localhost:8000/accommodations/${param}${handleSelectUrl(id)}`;
       }
-      // .get(`/data/accomodation/accomodation.json`)
+      // .get(`/data/accommodation/accommodation.json`)
       axios
         .get(url)
         .then((res) => {
@@ -138,7 +138,7 @@ const AccomodationList = () => {
     ].flat();
     setQueryArr(newList);
     axios
-      .get(`http://localhost:8000/accomodations/${param}?${queryArr.join('&')}`)
+      .get(`http://localhost:8000/accommodations/${param}?${queryArr.join('&')}`)
       .then((res) => {
         setList(res.data);
         setLoading(false);
@@ -147,7 +147,7 @@ const AccomodationList = () => {
       })
       .catch((err) => {
         console.log(err);
-        console.log(`http://localhost:8000/accomodations/${param}?${queryArr.join('&')}`);
+        console.log(`http://localhost:8000/accommodations/${param}?${queryArr.join('&')}`);
         setLoading(false);
         setList([]);
       });
@@ -246,4 +246,4 @@ const AccomodationList = () => {
   );
 };
 
-export default AccomodationList;
+export default AccommodationList;

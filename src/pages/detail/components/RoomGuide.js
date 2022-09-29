@@ -1,5 +1,5 @@
 import Room from './Room';
-import Calendar from '../../accomodation/components/Calendar';
+import Calendar from '../../accommodation/components/Calendar';
 import styled from 'styled-components';
 import { useState } from 'react';
 

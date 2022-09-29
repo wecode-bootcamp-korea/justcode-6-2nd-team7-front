@@ -3,16 +3,16 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
-import Map from '../accomodation/components/Map';
-import SideFilter from '../accomodation/components/SideFilter';
-import TopFilter from '../accomodation/components/TopFilter';
-import Thumbnail from '../accomodation/components/Thumbnail';
-import NoData from '../accomodation/components/NoData';
-import LoadingSpinner from '../accomodation/components/LoadingSpinner';
+import Map from '../accommodation/components/Map';
+import SideFilter from '../accommodation/components/SideFilter';
+import TopFilter from '../accommodation/components/TopFilter';
+import Thumbnail from '../accommodation/components/Thumbnail';
+import NoData from '../accommodation/components/NoData';
+import LoadingSpinner from '../accommodation/components/LoadingSpinner';
 
-import { handleSelectUrl, getDistanceFromLatLonInKm } from '../accomodation/data/functions';
+import { handleSelectUrl, getDistanceFromLatLonInKm } from '../accommodation/data/functions';
 
-import * as S from '../accomodation/AccomodationList.styled';
+import * as S from '../accommodation/AccommodationList.styled';
 
 const SearchContainer = styled.div`
   header {

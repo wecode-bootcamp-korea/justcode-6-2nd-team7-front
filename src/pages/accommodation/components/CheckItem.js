@@ -1,4 +1,4 @@
-import { useState, forwardRef, useImperativeHandle } from 'react';
+import { useState, forwardRef, useImperativeHandle, useEffect } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -54,21 +54,16 @@ const CheckItem = forwardRef(({ text, getOptions }, ref) => {
     ref,
     () => ({
       check,
-      setCheck,
       resetCheck,
     }),
     [check],
   );
 
-  const resetCheck = () => {
-    console.log(text, '왜안꺼져..', ref);
-    setCheck(false);
-    console.log('---------------------------------------');
-  };
+  const resetCheck = () => setCheck(false);
 
   return (
     <List onClick={getOptions}>
-      <input id={text} name={text} type='checkbox' ref={ref} checked={check} readOnly />
+      <input id={text} name={text} type='checkbox' ref={ref} checked={check} />
       <span
         className='checkbox'
         onClick={(e) => {
