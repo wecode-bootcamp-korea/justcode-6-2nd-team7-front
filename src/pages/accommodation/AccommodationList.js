@@ -42,8 +42,10 @@ const AccommodationList = () => {
     axios
       // .get('/data/accommodation/accommodation.json')
       .get(`http://localhost:8000/accommodations/${param}`)
+
       .then((res) => {
-        setList(res.data);
+        // setList(res.data);
+        setList(res.data.data);
         setLoading(false);
       })
       .catch((err) => {
@@ -78,11 +80,13 @@ const AccommodationList = () => {
       } else {
         url = `http://localhost:8000/accommodations/${param}${handleSelectUrl(id)}`;
       }
-      // .get(`/data/accommodation/accommodation.json`)
+
       axios
-        .get(url)
+        .get(`/data/accommodation/accommodation.json`)
+        // .get(url)
         .then((res) => {
-          setList(res.data);
+          // setList(res.data);
+          setList(res.data.data);
           setLoading(false);
           setKeyword();
           res.data.length === 0 && setList([]);
