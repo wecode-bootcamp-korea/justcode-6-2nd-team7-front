@@ -70,7 +70,7 @@ const MainLink = () => {
       id: 7,
       name: '내주변',
       eng: 'mySpace',
-      link: '/',
+      link: '/accommodations/nearby',
     },
     {
       id: 8,
@@ -80,13 +80,19 @@ const MainLink = () => {
     },
   ];
 
+  const handleClick = () => {
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
   return (
     <MainLinkContainer>
       <ul className='link-list'>
         {accomodationArr.map((accomodation) => {
           return (
             <li key={accomodation.id}>
-              <Link to={accomodation.link}>
+              <Link to={accomodation.link} onClick={handleClick}>
                 <img alt={accomodation.eng} src={`images/main/icon/${accomodation.eng}.png`} />
                 {accomodation.name}
               </Link>
