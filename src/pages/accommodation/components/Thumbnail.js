@@ -26,7 +26,7 @@ const Thumbnail = ({ id, name, promotion, rating, score, review, region, remain,
             <div className='price-container'>
               {remain && <p className='remaining-room'>남은 객실 {remain}개</p>}
               {price && <p className='original-price'>{price.toLocaleString()}원</p>}
-              {saleprice && <p className='final-price'>{saleprice.toLocaleString()}원</p>}
+              <p className='final-price'>{saleprice.toLocaleString()}원</p>
             </div>
           </div>
         </div>
