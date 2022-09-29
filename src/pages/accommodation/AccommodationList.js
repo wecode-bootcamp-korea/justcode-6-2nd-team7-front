@@ -43,12 +43,9 @@ const AccommodationList = () => {
   useEffect(() => {
     axios
       .get(`http://localhost:8000/accommodations/${param}`)
-
       .then((res) => {
-        // setList(res.data);
         setList(res.data);
         setLoading(false);
-        setList([]);
       })
       .catch((err) => {
         console.log(err);
@@ -115,13 +112,11 @@ const AccommodationList = () => {
         url = `http://localhost:8000/accommodations/${param}${handleSelectUrl(id)}`;
       }
       axios
-        .get(`/data/accommodation/accommodation.json`)
-        // .get(url)
+        .get(url)
         .then((res) => {
           setList(res.data);
           setLoading(false);
           setKeyword();
-          res.data.length === 0 && setList([]);
         })
         .catch((err) => {
           console.log(err);
@@ -146,7 +141,20 @@ const AccommodationList = () => {
         setList(res.data);
         setLoading(false);
         setKeyword();
-        res.data.length === 0 && setList([]);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+        setList([]);
+      });
+  };
+
+  const handleResetList = () => {
+    axios
+      .get(`http://localhost:8000/accommodations/${param}`)
+      .then((res) => {
+        setList(res.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -214,6 +222,7 @@ const AccommodationList = () => {
           secondShow={secondDateShow}
           setSecondShow={setSecondDateShow}
           getFilteredList={getFilteredList}
+          handleResetList={handleResetList}
         />
         <main>
           {showModal && <Map setShowModal={setShowModal} list={list} />}

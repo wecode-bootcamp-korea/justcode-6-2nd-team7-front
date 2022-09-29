@@ -30,7 +30,15 @@ const Up = styled.span`
   cursor: ${({ count }) => (count === 10 ? 'not-allowed' : 'pointer')};
 `;
 
-const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow, getFilteredList }) => {
+const SideFilter = ({
+  param,
+  firstShow,
+  setFirstShow,
+  secondShow,
+  setSecondShow,
+  getFilteredList,
+  handleResetList,
+}) => {
   const theme = options[handleSelectFilter(param)].theme
     ? options[handleSelectFilter(param)].theme.map((el) => el.optionList).flat()
     : undefined;
@@ -124,6 +132,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
     ]);
     setQueryArr([]);
     setChecked((prev) => prev.map((el) => ({ id: el.id, name: el.name, checked: false })));
+    handleResetList();
   };
 
   return (
