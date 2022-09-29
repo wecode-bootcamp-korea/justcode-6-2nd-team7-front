@@ -43,9 +43,9 @@ const Search = () => {
   //처음 검색했을 때 받아오는 정보
   useEffect(() => {
     axios
-      .get('/data/accommodation/accommodation.json')
+      // .get('/data/accommodation/accommodation.json')
       // .get(`/data/accommodation/accommodationNoData.json`)
-      // .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
+      .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
       .then((res) => {
         setList(res.data);
         setLoading(false);
@@ -96,8 +96,8 @@ const Search = () => {
         ).replace('?', '&')}`;
       }
       axios
-        .get(`/data/accommodation/accommodation.json`)
-        // .get(url)
+        // .get(`/data/accommodation/accommodation.json`)
+        .get(url)
         .then((res) => {
           setList(res.data);
           setLoading(false);
@@ -145,8 +145,8 @@ const Search = () => {
 
   const handleResetList = () => {
     axios
-      // .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
-      .get(`/data/accommodation/accommodation.json`)
+      .get(`http://localhost:8000/accommodation/result?keyword=${params.keyword.replace(/ /g, '|')}`)
+      // .get(`/data/accommodation/accommodation.json`)
       .then((res) => {
         setList(res.data);
         setLoading(false);

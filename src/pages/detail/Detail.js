@@ -36,8 +36,8 @@ const Detail = () => {
   };
   useEffect(() => {
     axios
-      .get('/data/detail/roomType.json')
-      // .get(`http://localhost:8000/accommodation/rooms/details?acno=${params.id}`)
+      // .get('/data/detail/roomType.json')
+      .get(`http://localhost:8000/accommodation/rooms/details?acno=${params.id}`)
       .then((res) => {
         console.log('data', res.data.roomTypeData[0]);
         setShowData(res.data.roomTypeData[0]);

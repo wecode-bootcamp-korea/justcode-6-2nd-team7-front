@@ -40,7 +40,6 @@ const Event = () => {
                     <div className='box-content'>{event.content}</div>
                   </div>
                   <FontAwesomeIcon className='event-icon' icon={event.icon} color='#01AEF0' />
-                  {/*  theme.js에서 메인컬러 가져오려했는데 실패..일단 하드코딩 */}
                 </div>
               );
             })}
