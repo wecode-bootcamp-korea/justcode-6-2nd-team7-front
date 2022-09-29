@@ -5,22 +5,10 @@ import Sub from './components/Sub';
 import { ReservationStyle } from './Reservation.Styled';
 
 const Reservation = () => {
-  const [inputs, setInputs] = useState({
-    userName: '',
-    phone: '',
-    coupon: 0,
-    pointInput: '',
-  });
-  const [point, setPoint] = useState(0);
   const [checkList, setCheckList] = useState([]);
   const [nameValid, setNameValid] = useState(false);
   const [phoneValid, setPhoneValid] = useState(false);
-  const [modalMsg, setModalMsg] = useState();
-
-  useEffect(() => {
-    localStorage.getItem('token') !== null && setNameValid(true);
-    localStorage.getItem('token') !== null && setPhoneValid(true);
-  }, []);
+  const [modalMsg, setModalMsg] = useState('');
 
   useEffect(() => {
     !nameValid
@@ -32,13 +20,16 @@ const Reservation = () => {
       : setModalMsg('결제하시겠습니까?');
   }, [nameValid, phoneValid, checkList]);
 
+  useEffect(() => {
+    if (localStorage.getItem('token') !== null) {
+      setNameValid(true);
+      setPhoneValid(true);
+    }
+  }, []);
+
   return (
     <ReservationStyle>
       <Main
-        inputs={inputs}
-        setInputs={setInputs}
-        point={point}
-        setPoint={setPoint}
         checkList={checkList}
         setCheckList={setCheckList}
         nameValid={nameValid}

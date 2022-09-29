@@ -10,12 +10,12 @@ const Sub = ({ modalMsg, setModalMsg }) => {
   const [startDate] = useRecoilState(startDateState);
   const [endDate] = useRecoilState(endDateState);
   const [info] = useRecoilState(reservInfoState);
-  const [reservModal, setReservModal] = useState(false);
+  const [modal, setModal] = useState(false);
   const period = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
   const week = ['일', '월', '화', '수', '목', '금', '토'];
 
-  const clickReservBtn = () => {
-    setReservModal(true);
+  const clickPayBtn = () => {
+    setModal(true);
   };
 
   return (
@@ -71,8 +71,8 @@ const Sub = ({ modalMsg, setModalMsg }) => {
           </div>
         </div>
 
-        <button onClick={clickReservBtn}>결제하기</button>
-        {reservModal && <SubmitModal setReservModal={setReservModal} modalMsg={modalMsg} setModalMsg={setModalMsg} />}
+        <button onClick={clickPayBtn}>결제하기</button>
+        {modal && <SubmitModal setModal={setModal} modalMsg={modalMsg} setModalMsg={setModalMsg} />}
       </SubContainerStyle>
     </>
   );

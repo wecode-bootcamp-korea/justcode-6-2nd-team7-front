@@ -65,7 +65,7 @@ const ModalContainer = styled.div`
   }
 `;
 
-const SubmitModal = ({ setReservModal, modalMsg }) => {
+const SubmitModal = ({ setModal, modalMsg }) => {
   const [submit, setSubmit] = useState(false);
   const [completeMsg, setCompleteMsg] = useState(false);
 
@@ -78,7 +78,8 @@ const SubmitModal = ({ setReservModal, modalMsg }) => {
   }, [modalMsg]);
 
   const handleModal = () => {
-    setReservModal(false);
+    setModal(false);
+    completeMsg && window.location.replace('/');
   };
 
   const handlePayBtn = () => {
@@ -100,34 +101,23 @@ const SubmitModal = ({ setReservModal, modalMsg }) => {
           </p>
         )}
         <div className='reserv-btn'>
-          <button
-            className={`cancel ${submit && 'block'}`}
-            onClick={() => {
-              setReservModal(false);
-            }}>
+          <button className={`cancel ${submit && 'block'}`} onClick={handleModal}>
             취소
           </button>
           {!submit && !completeMsg && (
-            <button
-              className='submit'
-              onClick={() => {
-                handleModal();
-              }}>
+            <button className='submit' onClick={handleModal}>
               확인
             </button>
-            // 결제 불가능할때
           )}
           {submit && (
             <button className='submit' onClick={handlePayBtn}>
               결제하기
             </button>
           )}
-          {/* 결제가능할 때 */}
           {completeMsg && (
             <button className='submit' onClick={handleModal}>
               확인
             </button>
-            // 결제 후 확인버튼
           )}
         </div>
       </div>
