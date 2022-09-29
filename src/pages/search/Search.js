@@ -125,10 +125,7 @@ const Search = () => {
     setLoading(true);
     axios
       .get(
-        `http://localhost:8000/accommodations/?${queryArr.join('&')}&keyword=${params.keyword.replace(
-          / /g,
-          '|',
-        )}&${queryArr.join('&')}`,
+        `http://localhost:8000/accommodation/result?${queryArr.join('&')}&keyword=${params.keyword.replace(/ /g, '|')}`,
       )
       // .get(`/data/accommodation/accommodation.json`)
       .then((res) => {
@@ -181,6 +178,7 @@ const Search = () => {
                   <Thumbnail
                     key={el.name}
                     name={el.name}
+                    id={el.id}
                     promotion={el.promotion}
                     rating={el.rating}
                     score={el.score}

@@ -39,15 +39,12 @@ const Detail = () => {
       // .get('/data/detail/roomType.json')
       .get(`http://localhost:8000/accommodation/rooms/details?acno=${params.id}`)
       .then((res) => {
-        console.log('data', res.data.roomTypeData[0]);
         setShowData(res.data.roomTypeData[0]);
-
         setInfo({
           ...info,
           name: res.data.roomTypeData[0].name,
         });
-        console.log('뫄', res.data);
-      }) //console은 나중에 지우도록 하겠습니다.
+      })
       .catch((err) => {
         console.log('뭐지', err);
       });
