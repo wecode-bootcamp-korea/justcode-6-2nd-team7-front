@@ -29,26 +29,26 @@ const AccommodationList = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   const [list, setList] = useState();
+  const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [keyword, setKeyword] = useState();
   const [queryArr, setQueryArr] = useRecoilState(queryState);
 
   const [firstDateShow, setFirstDateShow] = useState(false);
   const [secondDateShow, setSecondDateShow] = useState(false);
-  const [loading, setLoading] = useState(true);
   const count = useRecoilValue(personsState);
 
   const param = useParams().type;
 
   useEffect(() => {
     axios
-      // .get('/data/accommodation/accommodation.json')
       .get(`http://localhost:8000/accommodations/${param}`)
 
       .then((res) => {
         // setList(res.data);
         setList(res.data);
         setLoading(false);
+        setList([]);
       })
       .catch((err) => {
         console.log(err);
@@ -56,6 +56,38 @@ const AccommodationList = () => {
         setList([]);
       });
   }, []);
+
+  const handleSelected = (e) => {
+    const text = e.target.textContent;
+    const newCity = city.map((el) => {
+      return el.title === text ? { ...el, show: true } : { ...el, show: false };
+    });
+    setCity(newCity);
+  };
+
+  const handleDetailRegion = (e) => {
+    const newSelectedCity = city.find((el) => {
+      return el.detail.includes(e.target.textContent) ? el.title : null;
+    }).title;
+    setSelectedCity(newSelectedCity);
+    setSelectedRegion(e.target.textContent);
+  };
+
+  const handleShowMenu = (e) => {
+    setShowMenu(true);
+    e.type === 'mouseleave' && setShowMenu(false);
+    (firstDateShow || secondDateShow) && setShowMenu(false);
+  };
+
+  const handleSortList = (lat, lng) => {
+    const haveDisList = list.map((el) => ({
+      ...el,
+      distance: Number(getDistanceFromLatLonInKm(lat, lng, el.lat, el.lng)),
+    }));
+    haveDisList.sort((a, b) => a.distance - b.distance);
+    setList(haveDisList);
+    setLoading(false);
+  };
 
   const getNewList = (id) => {
     setLoading(true);
@@ -82,7 +114,6 @@ const AccommodationList = () => {
       } else {
         url = `http://localhost:8000/accommodations/${param}${handleSelectUrl(id)}`;
       }
-
       axios
         .get(`/data/accommodation/accommodation.json`)
         // .get(url)
@@ -94,43 +125,10 @@ const AccommodationList = () => {
         })
         .catch((err) => {
           console.log(err);
-          console.log('url', url);
           setLoading(false);
           setList([]);
         });
     }
-  };
-
-  const handleSortList = (lat, lng) => {
-    const haveDisList = list.map((el) => ({
-      ...el,
-      distance: Number(getDistanceFromLatLonInKm(lat, lng, el.lat, el.lng)),
-    }));
-    haveDisList.sort((a, b) => a.distance - b.distance);
-    setList(haveDisList);
-    setLoading(false);
-  };
-
-  const handleSelected = (e) => {
-    const text = e.target.textContent;
-    const newCity = city.map((el) => {
-      return el.title === text ? { ...el, show: true } : { ...el, show: false };
-    });
-    setCity(newCity);
-  };
-
-  const handleDetailRegion = (e) => {
-    const newSelectedCity = city.find((el) => {
-      return el.detail.includes(e.target.textContent) ? el.title : null;
-    }).title;
-    setSelectedCity(newSelectedCity);
-    setSelectedRegion(e.target.textContent);
-  };
-
-  const handleShowMenu = (e) => {
-    setShowMenu(true);
-    e.type === 'mouseleave' && setShowMenu(false);
-    (firstDateShow || secondDateShow) && setShowMenu(false);
   };
 
   const getFilteredList = (e) => {
@@ -152,7 +150,6 @@ const AccommodationList = () => {
       })
       .catch((err) => {
         console.log(err);
-        console.log(`http://localhost:8000/accommodations/${param}?${queryArr.join('&')}`);
         setLoading(false);
         setList([]);
       });

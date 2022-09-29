@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { useRecoilState } from 'recoil';
 import { queryState, personsState, startDateState, endDateState } from '../../../atom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 import CheckItem from './CheckItem';
 import OptionList from './OptionList';
@@ -31,11 +31,17 @@ const Up = styled.span`
 `;
 
 const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow, getFilteredList }) => {
+  const theme = options[handleSelectFilter(param)].theme
+    ? options[handleSelectFilter(param)].theme.map((el) => el.optionList).flat()
+    : undefined;
+  const filterOptions = options[handleSelectFilter(param)].options
+    ? options[handleSelectFilter(param)].options.map((el) => el.optionList).flat()
+    : undefined;
   const checkArr = [
-    ...options[handleSelectFilter(param)].availablePromotion,
+    options[handleSelectFilter(param)].availablePromotion,
     options[handleSelectFilter(param)].typeList,
-    options[handleSelectFilter(param)].theme,
-    options[handleSelectFilter(param)].options.map((el) => el.optionList).flat(),
+    theme,
+    filterOptions,
   ]
     .flat()
     .filter((el) => el !== undefined)
@@ -50,10 +56,11 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
     { id: 4, title: '온돌', class: 'sedentary', selected: false },
   ]);
   const [value, setValue] = useState([1, 30]);
-  const [queryArr, setQueryArr] = useRecoilState(queryState);
   const [, setStartDate] = useRecoilState(startDateState);
   const [, setEndDate] = useRecoilState(endDateState);
   const [checked, setChecked] = useState(checkArr);
+
+  const [queryArr, setQueryArr] = useRecoilState(queryState);
 
   const handleCount = (e) => {
     e.target.closest('.down') && setCount((prev) => (prev === 1 ? 1 : prev - 1));
@@ -84,7 +91,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
     });
   };
 
-  const handleChange = (event, newValue) => {
+  const handleSilderChange = (event, newValue) => {
     setValue(newValue);
   };
 
@@ -217,7 +224,7 @@ const SideFilter = ({ param, firstShow, setFirstShow, secondShow, setSecondShow,
               {value[1] !== 30 && <span>{value[1]}만원이하</span>}
             </h5>
             <div className='slider-box'>
-              <CustomSlider value={value} handleChange={handleChange} />
+              <CustomSlider value={value} handleChange={handleSilderChange} />
             </div>
             <div className='price-range'>
               <p>1만원</p>

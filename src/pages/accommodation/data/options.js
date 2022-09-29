@@ -2,7 +2,6 @@ export const options = [
   {
     id: 1,
     type: '모텔',
-    typeList: null,
     availablePromotion: ['대실 예약', '숙박 예약', '50%할인'],
     theme: [
       {
@@ -388,6 +387,5 @@ export const options = [
     id: 7,
     type: '숙소',
     typeList: ['모텔', '호텔·리조트', '한옥', '펜션', '게스트하우스', '캠핑'],
-    options: null,
   },
 ];

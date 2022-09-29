@@ -20,12 +20,7 @@ const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow, align })
   useEffect(() => {
     const newStartDate = new Date(startDate.getTime());
     startDate >= endDate && setEndDate(new Date(newStartDate.setDate(newStartDate.getDate() + 1)));
-  }, [startDate]);
-
-  const handleShowCalendar = (e) => {
-    !e.target.closest('.container') && setFirstShow(false);
-    !e.target.closest('.container') && setSecondShow(false);
-  };
+  }, [startDate, endDate]);
 
   useEffect(() => {
     document.addEventListener('mousedown', handleShowCalendar);
@@ -35,6 +30,11 @@ const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow, align })
     };
   }, []);
 
+  const handleShowCalendar = (e) => {
+    !e.target.closest('.container') && setFirstShow(false);
+    !e.target.closest('.container') && setSecondShow(false);
+  };
+
   const handleFirstInput = (e) => {
     setFirstShow(true);
   };
@@ -42,6 +42,7 @@ const Calendar = ({ firstShow, setFirstShow, secondShow, setSecondShow, align })
   const handleSecondInput = (e) => {
     setSecondShow(true);
   };
+
   return (
     <>
       <S.Main align={align}>

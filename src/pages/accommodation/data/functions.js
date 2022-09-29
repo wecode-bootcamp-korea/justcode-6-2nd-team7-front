@@ -70,8 +70,6 @@ export const handleSelectFilter = (param) => {
       return 4;
     case 'hanok':
       return 5;
-    case 'nearby':
-      return 1;
     case 'search':
       return 6;
     default:

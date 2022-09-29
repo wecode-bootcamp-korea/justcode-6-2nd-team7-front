@@ -21,6 +21,7 @@ const List = styled.li`
     height: 0;
     width: 0;
   }
+
   .checkbox {
     display: flex;
     justify-content: center;
