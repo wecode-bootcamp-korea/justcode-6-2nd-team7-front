@@ -24,11 +24,11 @@ export const handleRating = (rating) => {
 export const handleEvaluate = (score) => {
   if (Number(score) >= 9.6) {
     return '최고에요';
-  } else if (8.9 < Number(score) < 9.6) {
+  } else if (9.0 <= Number(score) && Number(score) < 9.6) {
     return '추천해요';
-  } else if (6.9 < Number(score) < 9.0) {
+  } else if (7.0 <= Number(score) && Number(score) < 9.0) {
     return '만족해요';
-  } else if (4.9 < Number(score) < 7.0) {
+  } else if (5.0 <= Number(score) && Number(score) < 7.0) {
     return '좋아요';
   } else {
     return '평범해요';

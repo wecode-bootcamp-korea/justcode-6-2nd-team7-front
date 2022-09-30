@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { handleEvaluate } from '../../accommodation/data/functions';
 import Review from './Review';
 import * as S from './ReviewContainer.stlyed';
 
 const ReviewContainer = ({ showData }) => {
   const [score, setScore] = useState();
+
   useEffect(() => {
     if (showData.score <= 2.9) {
       setScore(2);
@@ -22,7 +24,7 @@ const ReviewContainer = ({ showData }) => {
       setScore(-214);
     } else if (showData.score <= 9.9) {
       setScore(-252);
-    } else if (showData.score == 10.0) {
+    } else if (showData.score <= 10.0) {
       setScore(-289);
     }
   }, [showData.score]);
@@ -31,7 +33,7 @@ const ReviewContainer = ({ showData }) => {
     <S.ReviewContainer score={score}>
       <div>
         <div className='score-top'>
-          <div className='general-review'>추천해요</div>
+          <div className='general-review'>{handleEvaluate(showData.score)}</div>
           <div className='score-total'>
             <div className='star-total'></div>
             <div className='score-num'>{showData.score}</div>

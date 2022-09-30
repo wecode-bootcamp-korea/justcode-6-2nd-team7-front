@@ -107,6 +107,11 @@ export const MenuBar = styled.div`
       outline: none;
     }
   }
+  .on-button.button {
+    border-bottom: 4px solid ${({ theme }) => theme.colors.mainColor};
+    color: ${({ theme }) => theme.colors.mainColor};
+    outline: none;
+  }
 `;
 
 export const Context = styled.div`

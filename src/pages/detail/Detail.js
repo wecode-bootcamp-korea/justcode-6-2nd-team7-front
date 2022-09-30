@@ -18,12 +18,14 @@ const Detail = () => {
   const [openModal, setOpenModal] = useState(false);
   const [showData, setShowData] = useState();
   const [component, setComponent] = useState(1);
+  const [guide, setGuide] = useState(true);
 
   const handleClickBtn = () => {
     setOpenModal(true);
   };
 
   const clickTab = (e) => {
+    e.target.value === '객실안내/예약' ? setGuide(true) : setGuide(false);
     switch (e.target.value) {
       case '객실안내/예약':
         return setComponent(1);
@@ -36,7 +38,6 @@ const Detail = () => {
   };
   useEffect(() => {
     axios
-      // .get('/data/detail/roomType.json')
       .get(`http://localhost:8000/accommodation/rooms/details?acno=${params.id}`)
       .then((res) => {
         setShowData(res.data.roomTypeData[0]);
@@ -45,9 +46,7 @@ const Detail = () => {
           name: res.data.roomTypeData[0].name,
         });
       })
-      .catch((err) => {
-        console.log('뭐지', err);
-      });
+      .catch((err) => {});
   }, []);
 
   return (
@@ -89,7 +88,7 @@ const Detail = () => {
             </div>
           </div>
           <S.MenuBar>
-            <button className='button' onClick={clickTab} value={'객실안내/예약'}>
+            <button className={guide ? 'on-button button' : 'button'} onClick={clickTab} value={'객실안내/예약'}>
               객실안내/예약
             </button>
             <button className='button' onClick={clickTab} value={'숙소정보'}>

@@ -12,7 +12,7 @@ const Modal = styled.div`
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 9999;
+  z-index: 99;
   .modal-container {
     width: 368px;
     height: fit-content;
@@ -33,8 +33,8 @@ const Modal = styled.div`
     cursor: pointer;
   }
   .first {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.greyBg};
     font-size: 18px;
-    padding-top: 50px;
   }
   .sub-subject {
     color: #ffffff;
@@ -42,8 +42,8 @@ const Modal = styled.div`
     padding: 15px;
   }
   .content {
-    border: 1px solid #009abd;
-    padding: 5px;
+    padding: 10px 0px;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.greyBg};
   }
 `;
 
@@ -60,12 +60,17 @@ const UseModal = ({ onClose }) => {
         <div>
           <div>
             <div>
-              <strong className='first'>진행중인이벤트</strong>
+              <strong className='first'>객실 이용안내</strong>
             </div>
-            <div className='sub-subject'>병따개이벤트</div>
+            <div className='sub-subject'>기본정보</div>
             <div className='content'>
-              <p>당일 12:00~21:00중 최대 9시간 이용가능</p>
-              <p>(숙박불가/ 객실 9시간 이용권)</p>
+              <strong>기본정보</strong>
+              <p>2인 기준 최대 2인</p>
+              <p> 더블베드 1개</p>
+            </div>
+            <div className='content'>
+              <strong>추가정보</strong>
+              <p>21시까지 체크인</p>
             </div>
           </div>
         </div>
