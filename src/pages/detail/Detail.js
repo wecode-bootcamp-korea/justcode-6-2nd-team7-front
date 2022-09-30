@@ -41,7 +41,6 @@ const Detail = () => {
       .get(`http://localhost:8000/accommodation/rooms/details?acno=${params.id}`)
       .then((res) => {
         setShowData(res.data.roomTypeData[0]);
-
         setInfo({
           ...info,
           name: res.data.roomTypeData[0].name,
