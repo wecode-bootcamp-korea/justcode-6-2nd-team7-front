@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { logoutModalState } from '../../atom';
@@ -60,7 +59,6 @@ const ModalContainer = styled.div`
 
 function LogoutModal() {
   const [, setModal] = useRecoilState(logoutModalState);
-  const navigate = useNavigate();
 
   const clickBg = () => {
     setModal(false);
@@ -68,7 +66,7 @@ function LogoutModal() {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/');
+    window.location.replace('/');
     setModal(false);
   };
 

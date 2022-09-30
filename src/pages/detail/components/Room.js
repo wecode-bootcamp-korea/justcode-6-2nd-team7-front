@@ -19,7 +19,6 @@ const Room = ({ roomType }) => {
   const [openBtn, setOpenBtn] = useState(false);
   const [useBtn, setUseBtn] = useState(false);
   const [period, setPeriod] = useState(1);
-  console.log('aaa', roomType);
 
   useEffect(() => {
     endDate && setPeriod(Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)));
