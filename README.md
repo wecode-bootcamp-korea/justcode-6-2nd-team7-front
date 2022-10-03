@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# 저기어때(JGUD) Project
+- 국내 숙박 예약 사이트 "[여기어때](https://www.goodchoice.kr/)"를 모티브로 한 프로젝트입니다. 
+- 사이트 선정이유
+이전 클론 코딩 프로젝트로 다들 이커머스를 진행하여 새로운 유형의 사이트를 하고 희망하기에 선정하였습니다. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img width="893" alt="스크린샷 2022-10-03 오후 4 27 31" src="https://user-images.githubusercontent.com/108171986/193522631-e9e5389d-0e20-4fa6-9b3a-8b50513fd864.png">
 
-## Available Scripts
+##📆 1. 개발 기간 및 인원
 
-In the project directory, you can run:
+- __개발 기간__  : 2022.09.19 ~ 2022.09.30(14일)
 
-### `npm start`
+- __프론트엔드__ : 박예선, 봉원희, 서지원, 이유나 (4명)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- __백엔드__ : 오지호, 이윤재 (2인) 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- __[프론트엔드 GitHub](https://github.com/wecode-bootcamp-korea/justcode-6-2nd-team7-front)__ 
+- __[백엔드 GitHub](https://github.com/wecode-bootcamp-korea/justcode-6-2nd-team7-back)__
 
-### `npm test`
+- __[팀 노션](https://www.notion.so/wecode/Team7-JGUD-895618b19f4941dabc8961ff0e1b16cf)__
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+##📈 2. 데이터 모델링
+:paperclip:  [dbdiogram 링크](https://dbdiagram.io/d/6327d7f90911f91ba5dbaa80)
+![image](https://user-images.githubusercontent.com/108171986/193518846-9790ec9b-4bc5-41a3-b91f-caf8c05e2bf8.png)
 
-### `npm run build`
+##📽 3. 시연 영상
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+:paperclip: 유튜브 링크 - https://youtu.be/6d540y6y650 (약 7분)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+##💻 4. 적용 기술 및 구현 기능
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 4-1. 적용 기술(수정 필요)
++ Front-end : JavaScript, React.js styled component, recoil
++ Back-end : JavaScript, Node.js, Express, bcrypt, JWT
++ Database : MySQL 
++ HTTP : Postman
++ Common : Slack, Zep, Notion, Git&Github
 
-### `npm run eject`
+### 4-2. 구현 기능
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+➡️ 프론트엔드
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 박예선
+  - 메인페이지
+  - 검색페이지
+  - 검색기능 
+  - 예약페이지
+           
+- 봉원희
+   - 카테고리페이지
+   - 달력
+   - 지도
+   - 필터 기능
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- 서지원
+  - 로그인
+  - 회원가입
+  - 마이페이지
+  
+- 이유나
+  - 상세페이지
+  - 리뷰
+ 
+➡️ 백엔드
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- 오지호  
+  - 숙박관련API
+  - 검색기능
+  - 데이터 필터링
+  - 예약데이터 
 
-## Learn More
+- 이윤재
+  - 문자인증
+  - 카카오인증
+  - 회원가입
+  - 로그인
+  - 마이페이지
+  - 리뷰
+  
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Reference
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 이 프로젝트는 [여기어때](https://www.goodchoice.kr/) 사이트를 참조하여 학습목적으로 만들었습니다.
+- 실무수준의 프로젝트이지만 학습용으로 만들었기 때문에 이 코드를 활용하여 이득을 취하거나 무단 배포할 경우 법적으로 문제될 수 있습니다.
