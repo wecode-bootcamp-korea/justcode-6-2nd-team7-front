@@ -5,7 +5,7 @@
 
 <img width="893" alt="스크린샷 2022-10-03 오후 4 27 31" src="https://user-images.githubusercontent.com/108171986/193522631-e9e5389d-0e20-4fa6-9b3a-8b50513fd864.png">
 
-##📆 1. 개발 기간 및 인원
+## 📆 1. 개발 기간 및 인원
 
 - __개발 기간__  : 2022.09.19 ~ 2022.09.30(14일)
 
@@ -18,17 +18,17 @@
 
 - __[팀 노션](https://www.notion.so/wecode/Team7-JGUD-895618b19f4941dabc8961ff0e1b16cf)__
 
-##📈 2. 데이터 모델링
+## 📈 2. 데이터 모델링
 :paperclip:  [dbdiogram 링크](https://dbdiagram.io/d/6327d7f90911f91ba5dbaa80)
 ![image](https://user-images.githubusercontent.com/108171986/193518846-9790ec9b-4bc5-41a3-b91f-caf8c05e2bf8.png)
 
-##📽 3. 시연 영상
+## 📽 3. 시연 영상
 
 :paperclip: 유튜브 링크 - https://youtu.be/6d540y6y650 (약 7분)
 
-##💻 4. 적용 기술 및 구현 기능
+## 💻 4. 적용 기술 및 구현 기능
 
-### 4-1. 적용 기술(수정 필요)
+### 4-1. 적용 기술 
 + Front-end : JavaScript, React.js styled component, recoil
 + Back-end : JavaScript, Node.js, Express, bcrypt, JWT
 + Database : MySQL 
