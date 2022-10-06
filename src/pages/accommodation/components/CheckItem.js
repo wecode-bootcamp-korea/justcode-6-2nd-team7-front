@@ -2,6 +2,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 
+const CheckItem = ({ text, getOptions, checked, setChecked }) => {
+  const handleCheck = () => {
+    const thisCheck = checked.filter((el) => el.name === text)[0];
+    const newChecked = checked.filter((el) => el.name !== text);
+    setChecked(() => [...newChecked, { name: text, checked: !thisCheck.checked }]);
+  };
+
+  return (
+    <List onClick={getOptions}>
+      <input
+        id={text}
+        name={text}
+        type='checkbox'
+        checked={checked.filter((el) => el.name === text)[0].checked}
+        readOnly
+      />
+      <span className='checkbox' onClick={handleCheck}>
+        <FontAwesomeIcon icon={faCheck} className='check' />
+      </span>
+      <label htmlFor={text} onClick={handleCheck}>
+        {text}
+      </label>
+    </List>
+  );
+};
+
+export default CheckItem;
+
 const List = styled.li`
   display: flex;
   position: relative;
@@ -47,31 +75,3 @@ const List = styled.li`
     }
   }
 `;
-
-const CheckItem = ({ text, getOptions, checked, setChecked }) => {
-  const handleCheck = () => {
-    const thisCheck = checked.filter((el) => el.name === text)[0];
-    const newChecked = checked.filter((el) => el.name !== text);
-    setChecked(() => [...newChecked, { name: text, checked: !thisCheck.checked }]);
-  };
-
-  return (
-    <List onClick={getOptions}>
-      <input
-        id={text}
-        name={text}
-        type='checkbox'
-        checked={checked.filter((el) => el.name === text)[0].checked}
-        readOnly
-      />
-      <span className='checkbox' onClick={handleCheck}>
-        <FontAwesomeIcon icon={faCheck} className='check' />
-      </span>
-      <label htmlFor={text} onClick={handleCheck}>
-        {text}
-      </label>
-    </List>
-  );
-};
-
-export default CheckItem;

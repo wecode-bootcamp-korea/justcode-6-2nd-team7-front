@@ -1,6 +1,19 @@
 import CircularProgress from '@mui/material/CircularProgress';
 import styled from 'styled-components';
 
+const LoadingSpinner = (props) => {
+  return (
+    <Loading>
+      <CircularProgress color='info' />
+      <p className='bold '>잠시만 기다려주세요.</p>
+      <br />
+      <p>로딩 중입니다.</p>
+    </Loading>
+  );
+};
+
+export default LoadingSpinner;
+
 const Loading = styled.div`
   display: flex;
   flex-direction: column;
@@ -20,16 +33,3 @@ const Loading = styled.div`
     font-size: 20px;
   }
 `;
-
-const LoadingSpinner = (props) => {
-  return (
-    <Loading>
-      <CircularProgress color='info' />
-      <p className='bold '>잠시만 기다려주세요.</p>
-      <br />
-      <p>로딩 중입니다.</p>
-    </Loading>
-  );
-};
-
-export default LoadingSpinner;

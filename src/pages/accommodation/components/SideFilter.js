@@ -19,18 +19,6 @@ import {
 } from '../data/functions';
 import styled from 'styled-components';
 
-const Down = styled.span`
-  color: ${({ theme }) => theme.colors.text};
-  opacity: ${({ count }) => (count === 1 ? 0.5 : 1)};
-  cursor: ${({ count }) => (count === 1 ? 'not-allowed' : 'pointer')};
-`;
-
-const Up = styled.span`
-  color: ${({ theme }) => theme.colors.text};
-  opacity: ${({ count }) => (count === 10 ? 0.5 : 1)};
-  cursor: ${({ count }) => (count === 10 ? 'not-allowed' : 'pointer')};
-`;
-
 const SideFilter = ({
   param,
   firstShow,
@@ -264,3 +252,15 @@ const SideFilter = ({
 };
 
 export default SideFilter;
+
+const Down = styled.span`
+  color: ${({ theme }) => theme.colors.text};
+  opacity: ${({ count }) => (count === 1 ? 0.5 : 1)};
+  cursor: ${({ count }) => (count === 1 ? 'not-allowed' : 'pointer')};
+`;
+
+const Up = styled.span`
+  color: ${({ theme }) => theme.colors.text};
+  opacity: ${({ count }) => (count === 10 ? 0.5 : 1)};
+  cursor: ${({ count }) => (count === 10 ? 'not-allowed' : 'pointer')};
+`;

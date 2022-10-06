@@ -1,20 +1,6 @@
 import { handleNodataType } from '../data/functions';
 import styled from 'styled-components';
 
-const Main = styled.div`
-  width: 100%;
-  text-align: center;
-  margin-top: 20%;
-  color: ${({ theme }) => theme.colors.text};
-  font-size: 18px;
-  font-weight: 300;
-
-  .bold {
-    font-weight: 700;
-    font-size: 20px;
-  }
-`;
-
 const NoData = ({ keyword }) => {
   return (
     <>
@@ -47,3 +33,17 @@ const NoData = ({ keyword }) => {
   );
 };
 export default NoData;
+
+const Main = styled.div`
+  width: 100%;
+  text-align: center;
+  margin-top: 20%;
+  color: ${({ theme }) => theme.colors.text};
+  font-size: 18px;
+  font-weight: 300;
+
+  .bold {
+    font-weight: 700;
+    font-size: 20px;
+  }
+`;

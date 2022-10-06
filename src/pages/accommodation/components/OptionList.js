@@ -1,17 +1,6 @@
 import CheckItem from './CheckItem';
 import styled from 'styled-components';
 
-const Container = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-
-  li {
-    width: 50%;
-    font-size: 14px;
-  }
-`;
-
 const OptionList = ({ list, title, getOptions, checked, setChecked }) => {
   return (
     <>
@@ -58,3 +47,14 @@ const OptionList = ({ list, title, getOptions, checked, setChecked }) => {
 };
 
 export default OptionList;
+
+const Container = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  li {
+    width: 50%;
+    font-size: 14px;
+  }
+`;

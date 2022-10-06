@@ -6,40 +6,6 @@ import styled from 'styled-components';
 
 const { kakao } = window;
 
-const Main = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: ${({ theme }) => theme.colors.modalBg};
-  z-index: 100;
-
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-
-    .x-icon {
-      color: #fff;
-      transform: translateX(0.8em);
-      cursor: pointer;
-    }
-
-    .mapDetail {
-      width: 800px;
-      height: 600px;
-      background-color: #fff;
-      border-radius: 5px;
-      box-shadow: 0 4px 6px #32325d1c, 0 1px 3px #00000014;
-    }
-  }
-`;
-
 const Map = ({ setShowModal, list }) => {
   const mapEl = useRef();
   const handleShowModal = (e) => {
@@ -97,3 +63,37 @@ const Map = ({ setShowModal, list }) => {
 };
 
 export default Map;
+
+const Main = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: ${({ theme }) => theme.colors.modalBg};
+  z-index: 100;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    .x-icon {
+      color: #fff;
+      transform: translateX(0.8em);
+      cursor: pointer;
+    }
+
+    .mapDetail {
+      width: 800px;
+      height: 600px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px #32325d1c, 0 1px 3px #00000014;
+    }
+  }
+`;
