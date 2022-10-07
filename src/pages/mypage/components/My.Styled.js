@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MyContainer = styled.div`
   margin-top: 140px;
-  width: 600px;
+  /* width: 600px; */
 
   button {
     width: 144px;

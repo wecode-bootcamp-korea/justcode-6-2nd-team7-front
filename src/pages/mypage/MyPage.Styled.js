@@ -14,7 +14,9 @@ export const Header = styled.div`
       height: 30px;
       padding: 80px;
       margin-top: 50px;
-      padding-left: 205px;
+      /* padding-left: 205px; */
+      margin-left: auto;
+      /* margin-right: auto; */
       color: #fff;
       font-size: 38px;
       font-weight: normal;
@@ -31,7 +33,9 @@ export const LinkContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 27%;
-  margin-left: 100px;
+  /* margin-left: 100px; */
+  margin-left: 20%;
+  /* margin-right: auto; */
   padding-left: 95px;
 
   a {

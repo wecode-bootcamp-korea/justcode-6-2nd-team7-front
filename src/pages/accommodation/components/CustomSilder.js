@@ -1,6 +1,22 @@
 import Slider from '@mui/material/Slider';
 import { styled } from '@mui/material/styles';
 
+const CustomSilder = ({ value, handleChange }) => {
+  return (
+    <MySlider
+      getAriaLabel={() => 'price range'}
+      value={value}
+      onChange={handleChange}
+      valueLabelDisplay='auto'
+      max={30}
+      min={1}
+      stpe={1}
+    />
+  );
+};
+
+export default CustomSilder;
+
 const MySlider = styled(Slider)`
   color: #01aef0;
 
@@ -31,19 +47,3 @@ const MySlider = styled(Slider)`
     height: 2.5px;
   }
 `;
-
-const CustomSilder = ({ value, handleChange }) => {
-  return (
-    <MySlider
-      getAriaLabel={() => 'price range'}
-      value={value}
-      onChange={handleChange}
-      valueLabelDisplay='auto'
-      max={30}
-      min={1}
-      stpe={1}
-    />
-  );
-};
-
-export default CustomSilder;
