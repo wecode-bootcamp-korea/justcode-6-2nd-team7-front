@@ -16,19 +16,6 @@ import { handleSelectUrl, getDistanceFromLatLonInKm } from '../accommodation/dat
 
 import * as S from '../accommodation/AccommodationList.styled';
 
-const SearchContainer = styled.div`
-  header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 139px;
-    margin-top: 72px;
-    background-color: ${({ theme }) => theme.colors.greyBg};
-    color: ${({ theme }) => theme.colors.bkText};
-    font-size: 38px;
-  }
-`;
-
 const Search = () => {
   const params = useParams();
   const [queryArr, setQueryArr] = useRecoilState(queryState);
@@ -200,5 +187,18 @@ const Search = () => {
     </SearchContainer>
   );
 };
+
+const SearchContainer = styled.div`
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 139px;
+    margin-top: 72px;
+    background-color: ${({ theme }) => theme.colors.greyBg};
+    color: ${({ theme }) => theme.colors.bkText};
+    font-size: 38px;
+  }
+`;
 
 export default Search;

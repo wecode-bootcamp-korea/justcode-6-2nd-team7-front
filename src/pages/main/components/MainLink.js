@@ -1,33 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const MainLinkContainer = styled.section`
-  width: 924px;
-  margin: 32px auto;
-
-  .link-list {
-    display: flex;
-    justify-content: space-between;
-
-    a {
-      display: flex;
-      flex-direction: column;
-      width: 100px;
-      text-align: center;
-      color: ${({ theme }) => theme.colors.text};
-      font-size: 18px;
-      &:hover {
-        cursor: pointer;
-      }
-
-      img {
-        width: 60px;
-        margin: 0px auto 15px;
-      }
-    }
-  }
-`;
-
 const MainLink = () => {
   const accomodationArr = [
     {
@@ -103,5 +76,32 @@ const MainLink = () => {
     </MainLinkContainer>
   );
 };
+
+const MainLinkContainer = styled.section`
+  width: 924px;
+  margin: 32px auto;
+
+  .link-list {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      width: 100px;
+      text-align: center;
+      color: ${({ theme }) => theme.colors.text};
+      font-size: 18px;
+      &:hover {
+        cursor: pointer;
+      }
+
+      img {
+        width: 60px;
+        margin: 0px auto 15px;
+      }
+    }
+  }
+`;
 
 export default MainLink;

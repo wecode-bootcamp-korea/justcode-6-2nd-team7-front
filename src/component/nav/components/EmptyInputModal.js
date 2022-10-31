@@ -1,5 +1,33 @@
 import styled from 'styled-components';
 
+function EmptyInputModal({ setEmptySubmit }) {
+  const handleClose = (e) => {
+    setEmptySubmit(false);
+  };
+
+  return (
+    <ModalContainer>
+      <div className='bg' onClick={handleClose}></div>
+      <div className='container'>
+        <p>
+          검색어가 없습니다.
+          <br />
+          검색어를 입력하세요.
+        </p>
+        <div className='btn'>
+          <button
+            className='close'
+            onClick={() => {
+              setEmptySubmit(false);
+            }}>
+            확인
+          </button>
+        </div>
+      </div>
+    </ModalContainer>
+  );
+}
+
 const ModalContainer = styled.div`
   .bg {
     position: fixed;
@@ -48,33 +76,5 @@ const ModalContainer = styled.div`
     }
   }
 `;
-
-function EmptyInputModal({ setEmptySubmit }) {
-  const handleClose = (e) => {
-    setEmptySubmit(false);
-  };
-
-  return (
-    <ModalContainer>
-      <div className='bg' onClick={handleClose}></div>
-      <div className='container'>
-        <p>
-          검색어가 없습니다.
-          <br />
-          검색어를 입력하세요.
-        </p>
-        <div className='btn'>
-          <button
-            className='close'
-            onClick={() => {
-              setEmptySubmit(false);
-            }}>
-            확인
-          </button>
-        </div>
-      </div>
-    </ModalContainer>
-  );
-}
 
 export default EmptyInputModal;

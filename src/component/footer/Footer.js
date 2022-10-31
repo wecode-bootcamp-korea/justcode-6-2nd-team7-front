@@ -2,6 +2,52 @@ import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
+const Footer = () => {
+  return (
+    <FooterStyle>
+      <div className='footer-container'>
+        <div className='footer-box'>
+          <div className='link-box'>
+            <Link>회사소개 </Link>
+            <Link>이용약관</Link>
+            <Link>개인정보처리방침</Link>
+            <Link>소비자 분쟁해결 기준</Link>
+            <Link>사업자 정보확인</Link>
+          </div>
+          <div className='link-box'>
+            <Link>여기어때 마케팅센터</Link>
+            <Link>액티비티 호스트센터</Link>
+            <Link>HOTEL 여기어때</Link>
+            <Link>컨텐츠산업진흥법에의한 표시</Link>
+          </div>
+
+          <br />
+          <br />
+          <span className='service-center'>고객행복센터 02-202-2022</span>
+          <span>오전 9시 - 새벽 3시</span>
+          <br />
+          <br />
+          <div>(주) 저기어때컴퍼니</div>
+          <br />
+          <br />
+          <div>주소 : 서울특별시 저기구 어때로 365 타워 365층, 대표이사 JGUD, 사업자등록번호 : 365-36-5365</div>
+          <div>
+            (주) 저기어때컴퍼니는 통신판매중개자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련한
+            의무와 책임은 각 판매자에게 있습니다.
+          </div>
+          <br />
+
+          <div>Copyright JGUD COMPANY Corp. All rights reserved.</div>
+        </div>
+        <div className='icon-box'>
+          <img className='social-icon' alt='facebook' src='https://cdn-icons-png.flaticon.com/128/20/20673.png' />
+          <img className='social-icon' alt='blog' src='https://cdn-icons-png.flaticon.com/128/3669/3669981.png' />
+        </div>
+      </div>
+    </FooterStyle>
+  );
+};
+
 const FooterStyle = styled.footer`
   bottom: 0px;
   margin-top: 120px;
@@ -55,51 +101,5 @@ const FooterStyle = styled.footer`
     }
   }
 `;
-
-const Footer = () => {
-  return (
-    <FooterStyle>
-      <div className='footer-container'>
-        <div className='footer-box'>
-          <div className='link-box'>
-            <Link>회사소개 </Link>
-            <Link>이용약관</Link>
-            <Link>개인정보처리방침</Link>
-            <Link>소비자 분쟁해결 기준</Link>
-            <Link>사업자 정보확인</Link>
-          </div>
-          <div className='link-box'>
-            <Link>여기어때 마케팅센터</Link>
-            <Link>액티비티 호스트센터</Link>
-            <Link>HOTEL 여기어때</Link>
-            <Link>컨텐츠산업진흥법에의한 표시</Link>
-          </div>
-
-          <br />
-          <br />
-          <span className='service-center'>고객행복센터 02-202-2022</span>
-          <span>오전 9시 - 새벽 3시</span>
-          <br />
-          <br />
-          <div>(주) 저기어때컴퍼니</div>
-          <br />
-          <br />
-          <div>주소 : 서울특별시 저기구 어때로 365 타워 365층, 대표이사 JGUD, 사업자등록번호 : 365-36-5365</div>
-          <div>
-            (주) 저기어때컴퍼니는 통신판매중개자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련한
-            의무와 책임은 각 판매자에게 있습니다.
-          </div>
-          <br />
-
-          <div>Copyright JGUD COMPANY Corp. All rights reserved.</div>
-        </div>
-        <div className='icon-box'>
-          <img className='social-icon' alt='facebook' src='https://cdn-icons-png.flaticon.com/128/20/20673.png' />
-          <img className='social-icon' alt='blog' src='https://cdn-icons-png.flaticon.com/128/3669/3669981.png' />
-        </div>
-      </div>
-    </FooterStyle>
-  );
-};
 
 export default Footer;
