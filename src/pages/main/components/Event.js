@@ -1,7 +1,7 @@
-import EventSlide from './EventSlide';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowPointer, faHouse } from '@fortawesome/free-solid-svg-icons';
+
+import EventSlide from './EventSlide';
 
 import { BoxStyle } from './BoxStyle.Styled';
 

@@ -2,6 +2,41 @@ import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { logoutModalState } from '../../atom';
 
+const LogoutModal = () => {
+  const [, setModal] = useRecoilState(logoutModalState);
+
+  const clickBg = () => {
+    setModal(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.replace('/');
+    setModal(false);
+  };
+
+  return (
+    <ModalContainer>
+      <div className='bg' onClick={clickBg}></div>
+      <div className='logout-container'>
+        <p>로그아웃 하시겠습니까?</p>
+        <div className='logout-btn'>
+          <button
+            className='cancel'
+            onClick={() => {
+              setModal(false);
+            }}>
+            취소
+          </button>
+          <button className='logout' onClick={handleLogout}>
+            로그아웃
+          </button>
+        </div>
+      </div>
+    </ModalContainer>
+  );
+};
+
 const ModalContainer = styled.div`
   .bg {
     display: 'flex';
@@ -56,40 +91,5 @@ const ModalContainer = styled.div`
     }
   }
 `;
-
-function LogoutModal() {
-  const [, setModal] = useRecoilState(logoutModalState);
-
-  const clickBg = () => {
-    setModal(false);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    window.location.replace('/');
-    setModal(false);
-  };
-
-  return (
-    <ModalContainer>
-      <div className='bg' onClick={clickBg}></div>
-      <div className='logout-container'>
-        <p>로그아웃 하시겠습니까?</p>
-        <div className='logout-btn'>
-          <button
-            className='cancel'
-            onClick={() => {
-              setModal(false);
-            }}>
-            취소
-          </button>
-          <button className='logout' onClick={handleLogout}>
-            로그아웃
-          </button>
-        </div>
-      </div>
-    </ModalContainer>
-  );
-}
 
 export default LogoutModal;

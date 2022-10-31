@@ -6,28 +6,6 @@ import EmptyInputModal from './EmptyInputModal';
 
 import * as S from './SeachModal.Styled';
 
-const InputContainer = styled.div`
-  display: ${(props) => (props.listStyle === 'block' ? 'none' : 'block')};
-  position: absolute;
-  input {
-    width: 460px;
-    border: none;
-    background: transparent;
-    color: ${(props) => props.inputColor};
-    font-size: 17px;
-    &:focus {
-      outline: none;
-    }
-    &::placeholder {
-      color: ${(props) => props.inputColor};
-    }
-  }
-
-  .none {
-    display: none;
-  }
-`;
-
 const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput, emptySubmit, setEmptySubmit }) => {
   const [inputColor, setInputColor] = useState('#ffffffc4');
   const recommendArr = [
@@ -109,5 +87,27 @@ const SearchModal = ({ scrollPosition, setListStyle, listStyle, input, setInput,
     </>
   );
 };
+
+const InputContainer = styled.div`
+  display: ${(props) => (props.listStyle === 'block' ? 'none' : 'block')};
+  position: absolute;
+  input {
+    width: 460px;
+    border: none;
+    background: transparent;
+    color: ${(props) => props.inputColor};
+    font-size: 17px;
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      color: ${(props) => props.inputColor};
+    }
+  }
+
+  .none {
+    display: none;
+  }
+`;
 
 export default SearchModal;

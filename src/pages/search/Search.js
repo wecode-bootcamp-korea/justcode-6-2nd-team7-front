@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { personsState, queryState } from '../../atom';
+import { useRecoilState } from 'recoil';
+import { queryState } from '../../atom';
 
 import Map from '../accommodation/components/Map';
 import SideFilter from '../accommodation/components/SideFilter';
@@ -16,23 +16,9 @@ import { handleSelectUrl, getDistanceFromLatLonInKm } from '../accommodation/dat
 
 import * as S from '../accommodation/AccommodationList.styled';
 
-const SearchContainer = styled.div`
-  header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 139px;
-    margin-top: 72px;
-    background-color: ${({ theme }) => theme.colors.greyBg};
-    color: ${({ theme }) => theme.colors.bkText};
-    font-size: 38px;
-  }
-`;
-
 const Search = () => {
   const params = useParams();
-  const [queryArr, setQueryArr] = useRecoilState(queryState);
-  const count = useRecoilValue(personsState);
+  const [queryArr] = useRecoilState(queryState);
   const [list, setList] = useState([]);
   const [keyword, setKeyword] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -121,7 +107,7 @@ const Search = () => {
     setLoading(false);
   };
 
-  const getFilteredList = (e) => {
+  const getFilteredList = () => {
     setLoading(true);
     axios
       .get(
@@ -200,5 +186,18 @@ const Search = () => {
     </SearchContainer>
   );
 };
+
+const SearchContainer = styled.div`
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 139px;
+    margin-top: 72px;
+    background-color: ${({ theme }) => theme.colors.greyBg};
+    color: ${({ theme }) => theme.colors.bkText};
+    font-size: 38px;
+  }
+`;
 
 export default Search;

@@ -2,29 +2,6 @@ import { useState, useEffect } from 'react';
 
 import styled from 'styled-components';
 
-const SlideStyle = styled.div`
-  margin-top: 30px;
-
-  .slide-container {
-    display: flex;
-    height: 193px;
-    overflow: hidden;
-
-    .slide-box {
-      display: flex;
-
-      div {
-        width: 962px;
-        height: 193px;
-
-        img {
-          object-fit: contain;
-        }
-      }
-    }
-  }
-`;
-
 const EventSlide = () => {
   const [count, setCount] = useState(0);
 
@@ -48,7 +25,6 @@ const EventSlide = () => {
 
   const imgWidth = 962;
   const imgArrLength = imgArr.length;
-  //2.5초마다 count가 올라가면 그에 따라 이미지 위치 변경
   useEffect(() => {
     const timer = setInterval(
       () => {
@@ -88,5 +64,28 @@ const EventSlide = () => {
     </>
   );
 };
+
+const SlideStyle = styled.div`
+  margin-top: 30px;
+
+  .slide-container {
+    display: flex;
+    height: 193px;
+    overflow: hidden;
+
+    .slide-box {
+      display: flex;
+
+      div {
+        width: 962px;
+        height: 193px;
+
+        img {
+          object-fit: contain;
+        }
+      }
+    }
+  }
+`;
 
 export default EventSlide;
