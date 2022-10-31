@@ -25,7 +25,6 @@ const EventSlide = () => {
 
   const imgWidth = 962;
   const imgArrLength = imgArr.length;
-  //2.5초마다 count가 올라가면 그에 따라 이미지 위치 변경
   useEffect(() => {
     const timer = setInterval(
       () => {

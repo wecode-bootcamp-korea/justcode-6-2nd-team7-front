@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { personsState, queryState } from '../../atom';
+import { useRecoilState } from 'recoil';
+import { queryState } from '../../atom';
 
 import Map from '../accommodation/components/Map';
 import SideFilter from '../accommodation/components/SideFilter';
@@ -18,8 +18,7 @@ import * as S from '../accommodation/AccommodationList.styled';
 
 const Search = () => {
   const params = useParams();
-  const [queryArr, setQueryArr] = useRecoilState(queryState);
-  const count = useRecoilValue(personsState);
+  const [queryArr] = useRecoilState(queryState);
   const [list, setList] = useState([]);
   const [keyword, setKeyword] = useState('');
   const [showModal, setShowModal] = useState(false);
@@ -108,7 +107,7 @@ const Search = () => {
     setLoading(false);
   };
 
-  const getFilteredList = (e) => {
+  const getFilteredList = () => {
     setLoading(true);
     axios
       .get(

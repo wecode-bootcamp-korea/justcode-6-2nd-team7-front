@@ -2,7 +2,7 @@ import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { logoutModalState } from '../../atom';
 
-function LogoutModal() {
+const LogoutModal = () => {
   const [, setModal] = useRecoilState(logoutModalState);
 
   const clickBg = () => {
@@ -35,7 +35,7 @@ function LogoutModal() {
       </div>
     </ModalContainer>
   );
-}
+};
 
 const ModalContainer = styled.div`
   .bg {
