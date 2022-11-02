@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const EventSlide = () => {
   const [count, setCount] = useState(0);
-
+  const imgWidth = 962;
   const imgArr = [
     {
       id: 1,
@@ -23,8 +23,6 @@ const EventSlide = () => {
     },
   ];
 
-  const imgWidth = 962;
-  const imgArrLength = imgArr.length;
   useEffect(() => {
     const timer = setInterval(
       () => {
@@ -45,8 +43,8 @@ const EventSlide = () => {
           <div
             className='slide-box'
             style={{
-              transform: count === imgArrLength + 1 ? '' : `translate3d(${-imgWidth * count + 'px'},0px,0px)`,
-              transition: count === 0 || count !== imgArrLength + 1 ? '1000ms ease-in' : '',
+              transform: count === imgArr.length + 1 ? '' : `translate3d(${-imgWidth * count + 'px'},0px,0px)`,
+              transition: count === 0 || count !== imgArr.length + 1 ? '1000ms ease-in' : '',
             }}>
             {imgArr.map((img) => {
               return (
