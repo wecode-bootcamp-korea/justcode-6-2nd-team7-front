@@ -1,8 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowPointer, faHouse } from '@fortawesome/free-solid-svg-icons';
-
 import EventSlide from './EventSlide';
-
 import { BoxStyle } from './BoxStyle.Styled';
 
 const Event = () => {
@@ -26,27 +24,25 @@ const Event = () => {
   ];
 
   return (
-    <>
-      <BoxStyle>
-        <div className='container'>
-          <span>이벤트</span>
-          <EventSlide />
-          <div className='box-container'>
-            {eventArr.map((event) => {
-              return (
-                <div className='box' key={event.id}>
-                  <div className='box-text event'>
-                    <div className={event.className}>{event.title}</div>
-                    <div className='box-content'>{event.content}</div>
-                  </div>
-                  <FontAwesomeIcon className='event-icon' icon={event.icon} color='#01AEF0' />
+    <BoxStyle>
+      <div className='container'>
+        <span>이벤트</span>
+        <EventSlide />
+        <div className='box-container'>
+          {eventArr.map((event) => {
+            return (
+              <div className='box' key={event.id}>
+                <div className='box-text event'>
+                  <div className={event.className}>{event.title}</div>
+                  <div className='box-content'>{event.content}</div>
                 </div>
-              );
-            })}
-          </div>
+                <FontAwesomeIcon className='event-icon' icon={event.icon} color='#01AEF0' />
+              </div>
+            );
+          })}
         </div>
-      </BoxStyle>
-    </>
+      </div>
+    </BoxStyle>
   );
 };
 

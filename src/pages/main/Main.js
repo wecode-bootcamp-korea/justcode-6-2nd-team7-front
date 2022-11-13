@@ -18,8 +18,6 @@ const Main = () => {
   );
 };
 
-export default Main;
-
 export const MainStyle = styled.div`
   margin-top: 100px;
 
@@ -33,3 +31,5 @@ export const MainStyle = styled.div`
     }
   }
 `;
+
+export default Main;
