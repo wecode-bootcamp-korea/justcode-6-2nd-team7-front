@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-
 import styled from 'styled-components';
 
 const EventSlide = () => {
@@ -30,36 +29,33 @@ const EventSlide = () => {
       },
       count === 4 || count === 0 ? 0 : 2500,
     );
-
     return () => {
       clearInterval(timer);
     };
   }, [count]);
 
   return (
-    <>
-      <SlideStyle count={count}>
-        <div className='slide-container'>
-          <div
-            className='slide-box'
-            style={{
-              transform: count === imgArr.length + 1 ? '' : `translate3d(${-imgWidth * count + 'px'},0px,0px)`,
-              transition: count === 0 || count !== imgArr.length + 1 ? '1000ms ease-in' : '',
-            }}>
-            {imgArr.map((img) => {
-              return (
-                <div key={img.id}>
-                  <img alt={img.alt} src={img.src} />
-                </div>
-              );
-            })}
-            <div>
-              <img alt={imgArr[0].alt} src={imgArr[0].src} />
-            </div>
+    <SlideStyle count={count}>
+      <div className='slide-container'>
+        <div
+          className='slide-box'
+          style={{
+            transform: count === imgArr.length + 1 ? '' : `translate3d(${-imgWidth * count + 'px'},0px,0px)`,
+            transition: count === 0 || count !== imgArr.length + 1 ? '1000ms ease-in' : '',
+          }}>
+          {imgArr.map((img) => {
+            return (
+              <div key={img.id}>
+                <img alt={img.alt} src={img.src} />
+              </div>
+            );
+          })}
+          <div>
+            <img alt={imgArr[0].alt} src={imgArr[0].src} />
           </div>
         </div>
-      </SlideStyle>
-    </>
+      </div>
+    </SlideStyle>
   );
 };
 
