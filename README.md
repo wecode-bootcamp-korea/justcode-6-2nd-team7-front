@@ -1,13 +1,14 @@
 # 저기어때(JGUD) Project
 - 국내 숙박 예약 사이트 "[여기어때](https://www.goodchoice.kr/)"를 모티브로 한 프로젝트입니다. 
 - 사이트 선정이유
-이전 클론 코딩 프로젝트로 다들 이커머스를 진행하여 새로운 유형의 사이트를 하고 희망하기에 선정하였습니다. 
+팀원들 대부분 이전 프로젝트로 보편적인 이커머스사이트 개발을 진행해 \
+이번 프로젝트에서는 새로운 유형의 사이트를 개발해보기 위해 선정하였습니다. 
 
 <img width="893" alt="스크린샷 2022-10-03 오후 4 27 31" src="https://user-images.githubusercontent.com/108171986/193522631-e9e5389d-0e20-4fa6-9b3a-8b50513fd864.png">
 
 ## 📆 1. 개발 기간 및 인원
 
-- __개발 기간__  : 2022.09.19 ~ 2022.09.30(14일)
+- __개발 기간__  : 2022.09.19 ~ 2022.09.30 (14일)
 
 - __프론트엔드__ : 박예선, 봉원희, 서지원, 이유나 (4명)
 
@@ -17,6 +18,9 @@
 - __[백엔드 GitHub](https://github.com/wecode-bootcamp-korea/justcode-6-2nd-team7-back)__
 
 - __[팀 노션](https://www.notion.so/wecode/Team7-JGUD-895618b19f4941dabc8961ff0e1b16cf)__
+
+- **프로젝트 회고록** : [박예선(프론트엔드)](https://velog.io/@lynn080/%ED%8C%80-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%9A%8C%EA%B3%A0-%EC%97%AC%EA%B8%B0%EC%96%B4%EB%95%8C-%ED%81%B4%EB%A1%A0-JustCode-%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84)
+
 
 ## 📈 2. 데이터 모델링
 :paperclip:  [dbdiogram 링크](https://dbdiagram.io/d/6327d7f90911f91ba5dbaa80)
@@ -29,11 +33,11 @@
 ## 💻 4. 적용 기술 및 구현 기능
 
 ### 4-1. 적용 기술 
-+ Front-end : JavaScript, React.js styled component, recoil
-+ Back-end : JavaScript, Node.js, Express, bcrypt, JWT
-+ Database : MySQL 
-+ HTTP : Postman
-+ Common : Slack, Zep, Notion, Git&Github
++ Front-end : `JavaScript`, `React.js`, `styled component`, `recoil`
++ Back-end : `JavaScript`, `Node.js`, `Express`, `bcrypt`, `JWT`
++ Database : `MySQL`
++ HTTP : `Postman`
++ Common : `Slack`, `Zep`, `Notion`, `Git&Github`
 
 ### 4-2. 구현 기능
 
