@@ -2,57 +2,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const MainLink = () => {
-  const accomodationArr = [
-    {
-      id: 1,
-      name: '모텔',
-      eng: 'motel',
-      link: '/accommodations/motel',
-    },
-    {
-      id: 2,
-      name: '호텔·리조트',
-      eng: 'hotel',
-      link: '/accommodations/hotel',
-    },
-    {
-      id: 3,
-      name: '펜션',
-      eng: 'pension',
-      link: '/accommodations/pension',
-    },
-    {
-      id: 4,
-      name: '게스트하우스',
-      eng: 'ghestHouse',
-      link: '/accommodations/guesthouse',
-    },
-    {
-      id: 5,
-      name: '캠핑·글램핑',
-      eng: 'camping',
-      link: '/accommodations/camping',
-    },
-    {
-      id: 6,
-      name: '한옥',
-      eng: 'koreanHouse',
-      link: '/accommodations/hanok',
-    },
-    {
-      id: 7,
-      name: '내주변',
-      eng: 'mySpace',
-      link: '/',
-    },
-    {
-      id: 8,
-      name: '페이백',
-      eng: 'payBack',
-      link: '/',
-    },
-  ];
-
   const clickIcon = () => {
     window.scrollTo({
       top: 0,
@@ -76,6 +25,57 @@ const MainLink = () => {
     </MainLinkContainer>
   );
 };
+
+const accomodationArr = [
+  {
+    id: 1,
+    name: '모텔',
+    eng: 'motel',
+    link: '/accommodations/motel',
+  },
+  {
+    id: 2,
+    name: '호텔·리조트',
+    eng: 'hotel',
+    link: '/accommodations/hotel',
+  },
+  {
+    id: 3,
+    name: '펜션',
+    eng: 'pension',
+    link: '/accommodations/pension',
+  },
+  {
+    id: 4,
+    name: '게스트하우스',
+    eng: 'ghestHouse',
+    link: '/accommodations/guesthouse',
+  },
+  {
+    id: 5,
+    name: '캠핑·글램핑',
+    eng: 'camping',
+    link: '/accommodations/camping',
+  },
+  {
+    id: 6,
+    name: '한옥',
+    eng: 'koreanHouse',
+    link: '/accommodations/hanok',
+  },
+  {
+    id: 7,
+    name: '내주변',
+    eng: 'mySpace',
+    link: '/',
+  },
+  {
+    id: 8,
+    name: '페이백',
+    eng: 'payBack',
+    link: '/',
+  },
+];
 
 const MainLinkContainer = styled.section`
   width: 924px;

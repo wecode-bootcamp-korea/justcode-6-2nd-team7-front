@@ -25,14 +25,14 @@ const EventSlide = () => {
   useEffect(() => {
     const timer = setInterval(
       () => {
-        setCount((prev) => (prev === 4 ? 0 : prev + 1));
+        setCount((prev) => (prev === imgArr.length + 1 ? 0 : prev + 1));
       },
-      count === 4 || count === 0 ? 0 : 2500,
+      count === imgArr.length + 1 || count === 0 ? 0 : 2500,
     );
     return () => {
       clearInterval(timer);
     };
-  }, [count]);
+  });
 
   return (
     <SlideStyle count={count}>
